@@ -1,0 +1,2767 @@
+@misc{Liesing2017,
+	title        = {{The Ether Thief}},
+	author       = {Liesing, Mathew},
+	year         = 2017
+}
+@inproceedings{Bhargavan2016,
+	title        = {{Formal Verification of Smart Contracts}},
+	author       = {Bhargavan, Karthikeyan and Swamy, Nikhil and Zanella-B{\'{e}}guelin, Santiago and Delignat-Lavaud, Antoine and Fournet, C{\'{e}}dric and Gollamudi, Anitha and Gonthier, Georges and Kobeissi, Nadim and Kulatova, Natalia and Rastogi, Aseem and Sibut-Pinote, Thomas},
+	year         = 2016,
+	booktitle    = {PLAS},
+	doi          = {10.1145/2993600.2993611},
+	isbn         = 9781450345743,
+	url          = {http://dl.acm.org/citation.cfm?doid=2993600.2993611},
+	abstract     = {Ethereum is a cryptocurrency framework that uses blockchain technology to provide an open distributed computing plat-form, called the Ethereum Virtual Machine (EVM). EVM programs are written in bytecode which operates on a sim-ple stack machine. Programmers do not usually write EVM code; instead, they can program in a JavaScript-like lan-guage called Solidity that compiles to bytecode. Since the main application of EVM programs is as smart contracts that manage and transfer digital assets, security is of paramount importance. However, writing trustworthy smart contracts can be extremely difficult due to the intricate semantics of EVM and its openness: both programs and pseudonymous users can call into the public methods of other programs. This problem is best illustrated by the recent attack on TheDAO contract, which allowed roughly {\$}50M USD worth of Ether to be transferred into the control of an attacker. Re-covering the funds required a hard fork of the blockchain, contrary to the code is law premise of the system. In this paper, we outline a framework to analyze and verify both the runtime safety and the functional correctness of Solidity contracts in F , a functional programming language aimed at program verification.},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/plas16.pdf:pdf},
+	keywords     = {EVM,ethereum,formal verification,smart contracts,solidity}
+}
+@inproceedings{Leroy2006,
+	title        = {{Formal certification of a compiler back-end or: programming a compiler with a proof assistant}},
+	author       = {Leroy, Xavier},
+	year         = 2006,
+	booktitle    = {POPL},
+	doi          = {10.1145/1111320.1111042},
+	isbn         = 1595930272,
+	issn         = {03621340},
+	url          = {http://portal.acm.org/citation.cfm?id=1111037.1111042},
+	abstract     = {This paper reports on the development and formal certification (proof of semantic preservation) of a compiler from Cminor (a C-like imperative language) to PowerPC assembly code, using the Coq proof assistant both for programming the compiler and for ...},
+	file         = {::},
+	keywords     = {certified compilation,compiler transformations and optimizations,program proof,semantic preservation,the Coq theorem prover}
+}
+@article{Tonelli2018,
+	title        = {{Smart Contracts Software Metrics: a First Study}},
+	author       = {Tonelli, Roberto and Destefanis, Giuseppe and Marchesi, Michele and Ortu, Marco},
+	year         = 2018,
+	doi          = {arXiv:1802.01517v1},
+	url          = {http://arxiv.org/abs/1802.01517},
+	abstract     = {Smart contracts (SC) are software codes which reside and run over a blockchain. The code can be written in different languages with the common purpose of implementing various kinds of transactions onto the hosting blockchain, They are ruled by the blockchain infrastructure and work in order to satisfy conditions typical of traditional contracts. The software code must satisfy constrains strongly context dependent which are quite different from traditional software code. In particular, since the bytecode is uploaded in the hosting blockchain, size, computational resources, interaction between different parts of software are all limited and even if the specific software languages implement more or less the same constructs of traditional languages there is not the same freedom as in normal software development. SC software is expected to reflect these constrains on SC software metrics which should display metric values characteristic of the domain and different from more traditional software metrics. We tested this hypothesis on the code of more than twelve thousands SC written in Solidity and uploaded on the Ethereum blockchain. We downloaded the SC from a public repository and computed the statistics of a set of software metrics related to SC and compared them to the metrics extracted from more traditional software projects. Our results show that generally Smart Contracts metrics have ranges more restricted than the corresponding metrics in traditional software systems. Some of the stylized facts, like power law in the tail of the distribution of some metrics, are only approximate but the lines of code follow a log normal distribution which reminds of the same behavior already found in traditional software systems.},
+	archiveprefix = {arXiv},
+	arxivid      = {1802.01517},
+	eprint       = {1802.01517},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/1802.01517.pdf:pdf}
+}
+@inproceedings{Nguyen2017,
+	title        = {{Just-in-Time Static Analysis}},
+	author       = {Nguyen, Lisa and Do, Quang and Ali, Karim and Livshits, Benjamin and Bodden, Eric and Smith, Justin and Murphy-Hill, Emerson},
+	year         = 2017,
+	booktitle    = {ISSTA},
+	abstract     = {—We present the concept of Just-In-Time (JIT) static analysis that interleaves code development and bug fixing in an integrated development environ-ment. Unlike traditional static analysis tools, a JIT analysis tool presents warnings to code developers over time, providing the most relevant results quickly, and computing less relevant results incrementally later. This paper outlines general guidelines for designing JIT analyses. We also present a general recipe for turning static data-flow analyses into JIT analyses through a concept of layered analysis execution il-lustrated through Cheetah, a JIT taint analysis for Android applications. Our evaluation of Cheetah on real-world applications and our user study show that JIT analyses are able to present those warnings that are of importance to the code developers just-in-time, allowing them to start fixing problems immediately, without losing their context. Furthermore, study par-ticipants consistently reported higher satisfaction levels with Cheetah compared to its traditional counterpart.}
+}
+@article{Grishchenko2018,
+	title        = {{A Semantic Framework for the Security Analysis of Ethereum smart contracts}},
+	author       = {Grishchenko, Ilya and Maffei, Matteo and Schneidewind, Clara},
+	year         = 2018,
+	doi          = {10.1007/978-3-319-89722-6_10},
+	isbn         = 9783319897219,
+	issn         = 16113349,
+	url          = {http://arxiv.org/abs/1802.08660{\%}0Ahttp://dx.doi.org/10.1007/978-3-319-89722-6{\_}10},
+	abstract     = {Smart contracts are programs running on cryptocurrency (e.g., Ethereum) blockchains, whose popularity stem from the possibility to perform financial transactions, such as payments and auctions, in a distributed environment without need for any trusted third party. Given their financial nature, bugs or vulnerabilities in these programs may lead to catastrophic consequences, as witnessed by recent attacks. Unfortunately, programming smart contracts is a delicate task that requires strong expertise: Ethereum smart contracts are written in Solidity, a dedicated language resembling JavaScript, and shipped over the blockchain in the EVM bytecode format. In order to rigorously verify the security of smart contracts, it is of paramount importance to formalize their semantics as well as the security properties of interest, in particular at the level of the bytecode being executed. In this paper, we present the first complete small-step semantics of EVM bytecode, which we formalize in the F* proof assistant, obtaining executable code that we successfully validate against the official Ethereum test suite. Furthermore, we formally define for the first time a number of central security properties for smart contracts, such as call integrity, atomicity, and independence from miner controlled parameters. This formalization relies on a combination of hyper- and safety properties. Along this work, we identified various mistakes and imprecisions in existing semantics and verification tools for Ethereum smart contracts, thereby demonstrating once more the importance of rigorous semantic foundations for the design of security verification techniques.},
+	archiveprefix = {arXiv},
+	arxivid      = {1802.08660},
+	eprint       = {1802.08660},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/Grishchenko, Maffei, Schneidewind - 2018 - A Semantic Framework for the Security Analysis of Ethereum smart contracts.pdf:pdf}
+}
+@article{harz2018towards,
+	title        = {{Towards Safer Smart Contracts: A Survey of Languages and Verification Methods}},
+	author       = {Harz, Dominik and Knottenbelt, William},
+	year         = 2018,
+	journal      = {arXiv preprint arXiv:1809.09805},
+	file         = {::}
+}
+@misc{Breidenbach,
+	title        = {{An In-Depth Look at the Parity Multisig Bug}},
+	author       = {Breidenbach, Lorenz and Daian, Phil and Juels, Ari and Sirer, Emin G{\"{u}}n}
+}
+@inproceedings{Luu2016a,
+	title        = {{Making Smart Contracts Smarter}},
+	author       = {Luu, Loi and Chu, Duc-Hiep and Olickel, Hrishi and Saxena, Prateek and Hobor, Aquinas},
+	year         = 2016,
+	booktitle    = {CCS},
+	doi          = {10.1145/2976749.2978309},
+	abstract     = {Cryptocurrencies record transactions in a decentralized data structure called a blockchain. Two of the most popular cryptocurrencies, Bitcoin and Ethereum, support the fea-ture to encode rules or scripts for processing transactions. This feature has evolved to give practical shape to the ideas of smart contracts, or full-fledged programs that are run on blockchains. Recently, Ethereum's smart contract system has seen steady adoption, supporting tens of thousands of contracts, holding millions dollars worth of virtual coins. In this paper, we investigate the security of running smart contracts based on Ethereum in an open distributed network like those of cryptocurrencies. We introduce several new se-curity problems in which an adversary can manipulate smart contract execution to gain profit. These bugs suggest subtle gaps in the understanding of the distributed semantics of the underlying platform. As a refinement, we propose ways to enhance the operational semantics of Ethereum to make con-tracts less vulnerable. For developers writing contracts for the existing Ethereum system, we build a symbolic execution tool called Oyente to find potential security bugs. Among 19, 366 existing Ethereum contracts, Oyente flags 8, 833 of them as vulnerable, including the TheDAO bug which led to a 60 million US dollar loss in June 2016. We also discuss the severity of other attacks for several case studies which have source code available and confirm the attacks (which target only our accounts) in the main Ethereum network.},
+	file         = {::}
+}
+@article{Sanchez2018,
+	title        = {{arXiv : 1807 . 09484v1 [ cs . CR ] 25 Jul 2018 Raziel : Private and Verifiable Smart Contracts on Blockchains}},
+	author       = {S{\'{a}}nchez, David Cerezo},
+	year         = 2018,
+	pages        = {1--58},
+	archiveprefix = {arXiv},
+	arxivid      = {arXiv:1807.09484v1},
+	eprint       = {arXiv:1807.09484v1},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/S{\'{a}}nchez - 2018 - arXiv 1807 . 09484v1 cs . CR 25 Jul 2018 Raziel Private and Verifiable Smart Contracts on Blockchains.pdf:pdf}
+}
+@article{Bartoletti2017a,
+	title        = {{Dissecting Ponzi schemes on Ethereum: identification, analysis, and impact}},
+	author       = {Bartoletti, Massimo and Carta, Salvatore and Cimoli, Tiziana and Saia, Roberto},
+	year         = 2017,
+	url          = {http://arxiv.org/abs/1703.03779},
+	abstract     = {Ponzi schemes are financial frauds where, under the promise of high profits, users put their money, recovering their investment and interests only if enough users after them continue to invest money. Originated in the offline world 150 years ago, Ponzi schemes have since then migrated to the digital world, approaching first on the Web, and more recently hanging over cryptocurrencies like Bitcoin. Smart contract platforms like Ethereum have provided a new opportunity for scammers, who have now the possibility of creating "trustworthy" frauds that still make users lose money, but at least are guaranteed to execute "correctly". We present a comprehensive survey of Ponzi schemes on Ethereum, analysing their behaviour and their impact from various viewpoints. Perhaps surprisingly, we identify a remarkably high number of Ponzi schemes, despite the hosting platform has been operating for less than two years.},
+	archiveprefix = {arXiv},
+	arxivid      = {1703.03779},
+	eprint       = {1703.03779},
+	file         = {::}
+}
+@article{Manzano2017,
+	title        = {{Automatic Bug-Finding for the Blockchain Who are we ?}},
+	author       = {Manzano, Felipe and Feist, Josselin},
+	year         = 2017,
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/Manzano, Feist - 2017 - Automatic Bug-Finding for the Blockchain Who are we.pdf:pdf}
+}
+@article{Harz2018,
+	title        = {{The Scalability of Trustless Trust}},
+	author       = {Harz, Dominik and Boman, Magnus},
+	year         = 2018,
+	doi          = {arXiv:1801.09535v1},
+	url          = {http://arxiv.org/abs/1801.09535},
+	abstract     = {Permission-less blockchains can realise trustless trust, albeit at the cost of limiting the complexity of computation tasks. To explain the implications for scalability, we have implemented a trust model for smart contracts, described as agents in an open multi-agent system. Agent intentions are not necessarily known and autonomous agents have to be able to make decisions under risk. The ramifications of these general conditions for scalability are analysed for Ethereum and then generalised to other current and future platforms.},
+	archiveprefix = {arXiv},
+	arxivid      = {1801.09535},
+	eprint       = {1801.09535},
+	file         = {::},
+	keywords     = {agent,blockchain,distributed ledger,ethereum,multi-agent system,scalability,smart contract,trustless trust}
+}
+@article{Heilman2017a,
+	title        = {{TumbleBit: An Untrusted Bitcoin-Compatible Anonymous Payment Hub}},
+	author       = {Heilman, Ethan and Alshenibr, Leen and Baldimtsi, Foteini and Scafuro, Alessandra and Goldberg, Sharon},
+	year         = 2017,
+	journal      = {NDSS 2017 (24th Network and Distributed System Security Symposium)},
+	number       = {March},
+	doi          = {10.14722/ndss.2017.23086},
+	isbn         = 1891562460,
+	abstract     = {—This paper presents TumbleBit, a new uni-directional unlinkable payment hub that is fully com-patible with today's Bitcoin protocol. TumbleBit allows parties to make fast, anonymous, off-blockchain payments through an untrusted intermediary called the Tumbler. TumbleBit's anonymity properties are similar to classic Chaumian eCash: no one, not even the Tumbler, can link a payment from its payer to its payee. Every payment made via TumbleBit is backed by bitcoins, and comes with a guarantee that Tumbler can neither violate anonymity, nor steal bitcoins, nor " print money " by issuing payments to itself. We prove the security of TumbleBit using the real/ideal world paradigm and the random oracle model. Security follows from the standard RSA assumption and ECDSA unforgeability. We implement TumbleBit, mix payments from 800 users and show that TumbleBit's off-blockchain payments can complete in seconds.},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/575.pdf:pdf}
+}
+@article{Albert,
+	title        = {{EthIR: A Framework for High-Level Analysis of Ethereum Bytecode}},
+	author       = {Albert, Elvira and Gordillo, Pablo and Livshits, Benjamin and Rubio, Albert and Sergey, Ilya},
+	abstract     = {Analyzing Ethereum bytecode, rather than the source code from which it was generated, is a necessity when: (1) the source code is not available (e.g., the blockchain only stores the bytecode), (2) the information to be gathered in the analysis is only visible at the level of bytecode (e.g., gas consumption is specified at the level of EVM in-structions), (3) the analysis results may be affected by optimizations performed by the compiler (thus the analysis should be done ideally after compilation). This paper presents EthIR, a framework for ana-lyzing Ethereum bytecode, which relies on (an extension of) Oyente, a tool that generates CFGs; EthIR produces from the CFGs, a rule-based representation (RBR) of the bytecode that enables the application of (existing) high-level analyses to infer properties of EVM code.},
+	archiveprefix = {arXiv},
+	arxivid      = {1805.07208},
+	eprint       = {1805.07208},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/Albert et al. - Unknown - EthIR A Framework for High-Level Analysis of Ethereum Bytecode.pdf:pdf}
+}
+@article{Brent2018,
+	title        = {Vandal: {A} Scalable Security Analysis Framework for Smart Contracts},
+	author       = {Lexi Brent and Anton Jurisevic and Michael Kong and Eric Liu and Fran{\c{c}}ois Gauthier and Vincent Gramoli and Ralph Holz and Bernhard Scholz},
+	year         = 2018,
+	journal      = {CoRR},
+	volume       = {abs/1809.03981},
+	url          = {http://arxiv.org/abs/1809.03981},
+	archiveprefix = {arXiv},
+	eprint       = {1809.03981},
+	timestamp    = {Fri, 05 Oct 2018 11:34:52 +0200},
+	biburl       = {https://dblp.org/rec/bib/journals/corr/abs-1809-03981},
+	bibsource    = {dblp computer science bibliography, https://dblp.org},
+	arxivid      = {arXiv:1809.03981v1}
+}
+@article{Molina-Jimenez2018,
+	title        = {{On and Off-Blockchain Enforcement Of Smart Contracts}},
+	author       = {Molina-Jimenez, Carlos and Solaiman, Ellis and Sfyrakis, Ioannis and Ng, Irene and Crowcroft, Jon},
+	year         = 2018,
+	pages        = {1--7},
+	url          = {http://arxiv.org/abs/1805.00626},
+	abstract     = {In this paper we discuss how conventional business contracts can be converted into smart contracts---their electronic equivalents that can be used to systematically monitor and enforce contractual rights, obligations and prohibitions at run time. We explain that emerging blockchain technology is certainly a promising platform for implementing smart contracts but argue that there is a large class of applications, where blockchain is inadequate due to performance, scalability, and consistency requirements, and also due to language expressiveness and cost issues that are hard to solve. We explain that in some situations a centralised approach that does not rely on blockchain is a better alternative due to its simplicity, scalability, and performance. We suggest that in applications where decentralisation and transparency are essential, developers can advantageously combine the two approaches into hybrid solutions where some operations are enforced by enforcers deployed on--blockchains and the rest by enforcers deployed on trusted third parties.},
+	archiveprefix = {arXiv},
+	arxivid      = {1805.00626},
+	eprint       = {1805.00626},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/Molina-Jimenez et al. - 2018 - On and Off-Blockchain Enforcement Of Smart Contracts.pdf:pdf}
+}
+@article{Vukolic2017,
+	title        = {{Rethinking Permissioned Blockchains}},
+	author       = {Vukoli{\'{c}}, Marko},
+	year         = 2017,
+	journal      = {Proceedings of the ACM Workshop on Blockchain, Cryptocurrencies and Contracts},
+	doi          = {10.1145/3055518.3055526},
+	isbn         = 9781450349741,
+	url          = {http://dl.acm.org/citation.cfm?doid=3055518.3055526},
+	abstract     = {Current blockchain platforms, especially the recent permis-sioned systems, have architectural limitations: smart con-tracts run sequentially, all node executes all smart contracts, consensus protocols are hard-coded, the trust model is static and not flexible, and non-determinism in smart-contract ex-ecution poses serious problems. Overcoming these limita-tions is critical for improving both functional properties of blockchains, such as confidentiality and consistency, as well as their non-functional properties, such as performance and scalability. We discuss these limitations in the context of permissioned blockchains, including an early version of the Hyperledger Fabric blockchain platform, and how a re-design of Hyper-ledger Fabric's architecture addresses them.},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/Vukoli{\'{c}} - 2017 - Rethinking Permissioned Blockchains.pdf:pdf},
+	keywords     = {blockchain,byzantine fault-tolerance,consensus,hyper-,ledger fabric,system architecture}
+}
+@inproceedings{Juels2016,
+	title        = {{The Ring of Gyges : Investigating the Future of Criminal Smart Contracts}},
+	author       = {Juels, Ari and Kosba, Ahmed and Shi, Elaine},
+	year         = 2016,
+	booktitle    = {ACM CCS},
+	doi          = {10.1145/2976749.2978362},
+	isbn         = 9781450341394,
+	issn         = 15437221,
+	url          = {http://www.initc3.org/files/Gyges.pdf},
+	abstract     = {Thanks to their anonymity (pseudonymity) and elimination of trusted$\backslash$nintermediaries, cryptocurrencies such as Bitcoin have created or$\backslash$nstimulated growth in many businesses and communities. Unfortunately,$\backslash$nsome of these are criminal, e.g., money laundering, illicit$\backslash$nmarketplaces, and ransomware.$\backslash$nNext-generation cryptocurrencies such as Ethereum will include rich$\backslash$nscripting languages in support of smart contracts, programs that$\backslash$nautonomously intermediate transactions. In this paper, we explore the$\backslash$nrisk of smart contracts fueling new criminal ecosystems. Specifically,$\backslash$nwe show how what we call criminal smart contracts (CSCs) can facilitate$\backslash$nleakage of confidential information, theft of cryptographic keys, and$\backslash$nvarious real-world crimes (murder, arson, terrorism).$\backslash$nWe show that CSCs for leakage of secrets (a la Wikileaks) are$\backslash$nefficiently realizable in existing scripting languages such as that in$\backslash$nEthereum. We show that CSCs for theft of cryptographic keys can be$\backslash$nachieved using primitives, such as Succinct Non-interactive ARguments of$\backslash$nKnowledge (SNARKs), that are already expressible in these languages and$\backslash$nfor which efficient supporting language extensions are anticipated. We$\backslash$nshow similarly that authenticated data feeds, an emerging feature of$\backslash$nsmart contract systems, can facilitate CSCs for real-world crimes (e.g.,$\backslash$nproperty crimes).$\backslash$nOur results highlight the urgency of creating policy and technical$\backslash$nsafeguards against CSCs in order to realize the promise of smart$\backslash$ncontracts for beneficial goals.},
+	file         = {::}
+}
+@article{Grishchenko2018a,
+	title        = {{Foundations and tools for the static analysis of ethereum smart contracts}},
+	author       = {Grishchenko, Ilya and Maffei, Matteo and Schneidewind, Clara},
+	year         = 2018,
+	journal      = {Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)},
+	volume       = {10981 LNCS},
+	pages        = {51--78},
+	doi          = {10.1007/978-3-319-96145-3_4},
+	isbn         = 9783319961446,
+	issn         = 16113349,
+	abstract     = {{\textcopyright} The Author(s) 2018. The recent growth of the blockchain technology market puts its main cryptocurrencies in the spotlight. Among them, Ethereum stands out due to its virtual machine (EVM) supporting smart contracts, i.e., distributed programs that control the flow of the digital currency Ether. Being written in a Turing complete language, Ethereum smart contracts allow for expressing a broad spectrum of financial applications. The price for this expressiveness, however, is a significant semantic complexity, which increases the risk of programming errors. Recent attacks exploiting bugs in smart contract implementations call for the design of formal verification techniques for smart contracts. This, however, requires rigorous semantic foundations, a formal characterization of the expected security properties, and dedicated abstraction techniques tailored to the specific EVM semantics. This work will overview the state-of-the-art in smart contract verification, covering formal semantics, security definitions, and verification tools. We will then focus on EtherTrust [1], a framework for the static analysis of Ethereum smart contracts which includes the first complete small-step semantics of EVM bytecode, the first formal characterization of a large class of security properties for smart contracts, and the first static analysis for EVM bytecode that comes with a proof of soundness.},
+	archiveprefix = {arXiv},
+	arxivid      = {1802.08660},
+	eprint       = {1802.08660},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/cav2018.pdf:pdf}
+}
+@article{Delmolino2015,
+	title        = {{Step by Step Towards Creating a Safe Smart Contract: Lessons and Insights from a Cryptocurrency Lab}},
+	author       = {Delmolino, Kevin and Arnett, Mitchell and Kosba, Ahmed and Miller, Andrew and Shi, Elaine},
+	year         = 2015,
+	abstract     = {We document our experiences in teaching smart contract programming to undergraduate students at the University of Maryland, the first pedagogical attempt of its kind. Since smart contracts deal directly with the movement of valuable currency units between contratual parties, security of a contract program is of paramount importance. Our lab exposed numerous common pitfalls in designing safe and secure smart contracts. We document several typical classes of mistakes students made, suggest ways to fix/avoid them, and advocate best practices for programming smart contracts. Finally, our pedagogical efforts have also resulted in online open course materials for programming smart contracts, which may be of independent interest to the community.},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/Delmolino et al. - 2015 - Step by Step Towards Creating a Safe Smart Contract Lessons and Insights from a Cryptocurrency Lab.pdf:pdf}
+}
+@inproceedings{Sergey2018,
+	title        = {{Programming and Proving with Distributed Protocols}},
+	author       = {Sergey, Ilya and Wilcox, James R and Tatlock, Zachary},
+	year         = 2018,
+	booktitle    = {POPL},
+	abstract     = {Distributed systems play a crucial role in modern infrastructure, but are notoriously difficult to implement correctly. This difficulty arises from two main challenges: (a) correctly implementing core system components (e.g., two-phase commit), so all their internal invariants hold, and (b) correctly composing standalone system components into functioning trustworthy applications (e.g., persistent storage built on top of a two-phase commit instance). Recent work has developed several approaches for addressing (a) by means of mechanically verifying implementations of core distributed components, but no methodology exists to address (b) by composing such verified components into larger verified applications. As a result, expensive verification efforts for key system components are not easily reusable, which hinders further verification efforts. In this paper, we present Disel, the first framework for implementation and compositional verification of distributed systems and their clients, all within the mechanized, foundational context of the Coq proof assistant. In Disel, users implement distributed systems using a domain specific language shallowly embedded in Coq and providing both high-level programming constructs as well as low-level communication primitives. Components of composite systems are specified in Disel as protocols, which capture system-specific logic and disentangle system definitions from implementation details. By virtue of Disel's dependent type system, well-typed implementations always satisfy their protocols' invariants and never go wrong, allowing users to verify system implementations interactively using Disel's Hoare-style program logic, which extends state-of-the-art techniques for concurrency verification to the distributed setting. By virtue of the substitution principle and frame rule provided by Disel's logic, system components can be composed leading to modular, reusable verified distributed systems. We describe Disel, illustrate its use with a series of examples, outline its logic and metatheory, and report on our experience using it as a framework for implementing, specifying, and verifying distributed systems. 1 INTRODUCTION Real-world software systems, including distributed systems, are rarely built as standalone, monolithic pieces of code. Rather, they are composed of multiple independent modules, which are connected either by the linker or through communication channels. Such a compositional approach enables clean separation of concerns and a modular development process: in order to use one component within a larger system, one only needs to know what it does without requiring details on how it works. Unfortunately, the benefits of modular software development are not yet fully realized in the context of verified distributed systems. Recent work has produced several impressive formal proofs of correctness for implementations of core distributed system components, ranging from consensus protocols to causally consistent key-value stores (Hawblitzel et al. 2015; Lesani et al. 2016; Newcombe et al. 2015; Wilcox et al. 2015). These artifacts, while formally verified are not immediately reusable in the context of larger verified applications. For example, to compose a linearizable database with a causally consistent cache (Ahamad et al. 1995), one would need a framework general enough to express both specifications and reason about their interaction. Furthermore, existing verified systems entangle implementation details with abstract protocol definitions, preventing independent evolution and requiring extensive refactoring when changes are made (Woos et al. 2016). Finally, like all software, real-world distributed systems exist in an open world, and should be usable in multiple contexts by various clients, each of which may make different assumptions.},
+	file         = {::}
+}
+@article{Dika2017,
+	title        = {{Ethereum Smart Contracts : Security Vulnerabilities and Security Tools}},
+	author       = {Dika, Ardit},
+	year         = 2017,
+	number       = {December},
+	url          = {https://brage.bibsys.no/xmlui/bitstream/handle/11250/2479191/18400_FULLTEXT.pdf?sequence=1},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/Dika - 2017 - Ethereum Smart Contracts Security Vulnerabilities and Security Tools.pdf:pdf}
+}
+@article{Buterin2014,
+	title        = {{A next-generation smart contract and decentralized application platform}},
+	author       = {Buterin, Vitalik},
+	year         = 2014,
+	journal      = {Ethereum},
+	number       = {January},
+	pages        = {1--36},
+	url          = {http://buyxpr.com/build/pdfs/EthereumWhitePaper.pdf},
+	abstract     = {Satoshi Nakamoto's development of Bitcoin in 2009 has often been hailed as a radical development in money and currency, being the first example of a digital asset which simultaneously has no backing or "intrinsic value" and no centralized issuer or controller. However, another, arguably more important, part of the Bitcoin experiment is the underlying blockchain technology as a tool of distributed consensus, and attention is rapidly starting to shift to this other aspect of Bitcoin. Commonly cited alternative applications of blockchain technology include using on-blockchain digital assets to represent custom currencies and financial instruments ("colored coins"), the ownership of an underlying physical device ("smart property"), non-fungible assets such as domain names ("Namecoin"), as well as more complex applications involving having digital assets being directly controlled by a piece of code implementing arbitrary rules ("smart contracts") or even blockchain-based "decentralized autonomous organizations" (DAOs). What Ethereum intends to provide is a blockchain with a built-in fully fledged Turing-complete programming language that can be used to create "contracts" that can be used to encode arbitrary state transition functions, allowing users to create any of the systems described above, as well as many others that we have not yet imagined, simply by writing up the logic in a few lines of code.},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/Ethereum{\_}white{\_}paper-a{\_}next{\_}generation{\_}smart{\_}contract{\_}and{\_}decentralized{\_}application{\_}platform-vitalik-buterin.pdf:pdf}
+}
+@article{Miller2017,
+	title        = {{Zero-collateral lotteries in Bitcoin and Ethereum}},
+	author       = {Miller, Andrew and Bentov, Iddo},
+	year         = 2017,
+	journal      = {Proceedings - 2nd IEEE European Symposium on Security and Privacy Workshops, EuroS and PW 2017},
+	pages        = {4--13},
+	doi          = {10.1109/EuroSPW.2017.44},
+	isbn         = 9780769561073,
+	abstract     = {We present cryptocurrency-based lottery protocols that do not require any collateral from the players. Previous protocols for this task required a security deposit that is {\$}O(N{\^{}}2){\$} times larger than the bet amount, where {\$}N{\$} is the number of players. Our protocols are based on a tournament bracket construction, and require only {\$}O(\backslashlog N){\$} rounds. Our lottery protocols thus represent a significant improvement, both because they allow players with little money to participate, and because of the time value of money. The Ethereum-based implementation of our lottery is highly efficient. The Bitcoin implementation requires an {\$}O(2{\^{}}N){\$} off-chain setup phase, which demonstrates that the expressive power of the scripting language can have important implications. We also describe a minimal modification to the Bitcoin protocol that would eliminate the exponential blowup.},
+	archiveprefix = {arXiv},
+	arxivid      = {1612.05390},
+	eprint       = {1612.05390},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/Miller, Bentov - 2017 - Zero-collateral lotteries in Bitcoin and Ethereum.pdf:pdf}
+}
+@article{Wan2017,
+	title        = {{Bug Characteristics in Blockchain Systems: A Large-Scale Empirical Study}},
+	author       = {Wan, Zhiyuan and Lo, David and Xia, Xin and Cai, Liang},
+	year         = 2017,
+	journal      = {IEEE International Working Conference on Mining Software Repositories},
+	pages        = {413--424},
+	doi          = {10.1109/MSR.2017.59},
+	isbn         = 9781538615447,
+	issn         = 21601860,
+	abstract     = {—Bugs severely hurt blockchain system dependability. A thorough understanding of blockchain bug characteristics is required to design effective tools for preventing, detecting and mitigating bugs. We perform an empirical study on bug charac-teristics in eight representative open source blockchain systems. First, we manually examine 1,108 bug reports to understand the nature of the reported bugs. Second, we leverage card sorting to label the bug reports, and obtain ten bug categories in blockchain systems. We further investigate the frequency distribution of bug categories across projects and programming languages. Finally, we study the relationship between bug categories and bug fixing time. The findings include: (1) semantic bugs are the dominant runtime bug category; (2) frequency distributions of bug types show similar trends across different projects and programming languages; (3) security bugs take the longest median time to be fixed; (4) 35.71{\%} performance bugs are fixed in more than one year; performance bugs take the longest average time to be fixed.},
+	annote       = {
+		Bug types are not mutually exclusive but bugs are only assigned a single type. A bug could belong to both semantic and security type. A better classification could be to consider the cause of the bug and the consequence of the bug distinctly. Semantic would be the cause of the bug and security its impact.
+
+		Finding the relation between cause of the bugs and their impact could also be interesting.
+	},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/Bug characteristics in blockchain systems{\_} A large-scale empirica.pdf:pdf},
+	keywords     = {Bug characteristics,Empirical study,blockchain}
+}
+@article{Dickerson2017,
+	title        = {{Adding Concurrency to Smart Contracts}},
+	author       = {Dickerson, Thomas and Gazzillo, Paul and Herlihy, Maurice and Koskinen, Eric},
+	year         = 2017,
+	pages        = {303--312},
+	doi          = {10.1145/3087801.3087835},
+	isbn         = 9781450349925,
+	url          = {http://arxiv.org/abs/1702.04467},
+	abstract     = {Modern cryptocurrency systems, such as Ethereum, permit complex financial transactions through scripts called smart contracts. These smart contracts are executed many, many times, always without real concurrency. First, all smart contracts are serially executed by miners before appending them to the blockchain. Later, those contracts are serially re-executed by validators to verify that the smart contracts were executed correctly by miners. Serial execution limits system throughput and fails to exploit today's concurrent multicore and cluster architectures. Nevertheless, serial execution appears to be required: contracts share state, and contract programming languages have a serial semantics. This paper presents a novel way to permit miners and validators to execute smart contracts in parallel, based on techniques adapted from software transactional memory. Miners execute smart contracts speculatively in parallel, allowing non-conflicting contracts to proceed concurrently, and "discovering" a serializable concurrent schedule for a block's transactions, This schedule is captured and encoded as a deterministic fork-join program used by validators to re-execute the miner's parallel schedule deterministically but concurrently. Smart contract benchmarks run on a JVM with ScalaSTM show that a speedup of of 1.33x can be obtained for miners and 1.69x for validators with just three concurrent threads.},
+	archiveprefix = {arXiv},
+	arxivid      = {1702.04467},
+	eprint       = {1702.04467},
+	file         = {::}
+}
+@article{Livshits2015,
+	title        = {{In defense of soundiness}},
+	author       = {Livshits, Benjamin and Vardoulakis, Dimitrios and Sridharan, Manu and Smaragdakis, Yannis and Lhot{\'{a}}k, Ondřej and Amaral, J. Nelson and Chang, Bor-Yuh Evan and Guyer, Samuel Z. and Khedker, Uday P. and M{\o}ller, Anders},
+	year         = 2015,
+	journal      = {Communications of the ACM},
+	volume       = 58,
+	number       = 2,
+	pages        = {44--46},
+	doi          = {10.1145/2644805},
+	issn         = {00010782},
+	url          = {http://dl.acm.org/citation.cfm?doid=2728770.2644805},
+	file         = {::}
+}
+@inproceedings{Nanevski2014,
+	title        = {{Communicating state transition systems for fine-grained concurrent resources}},
+	author       = {Nanevski, Aleksandar and Ley-Wild, Ruy and Sergey, Ilya and Delbianco, Germ{\'{a}}n Andr{\'{e}}s},
+	year         = 2014,
+	booktitle    = {ESOP},
+	doi          = {10.1007/978-3-642-54833-8_16},
+	isbn         = 9783642548321,
+	issn         = 16113349,
+	file         = {::}
+}
+@article{Ellis2017,
+	title        = {{A Decentralized Oracle Network}},
+	author       = {Ellis, Steve and Juels, Ari and Nazarov, Sergey},
+	year         = 2017,
+	volume       = 2017,
+	number       = {September},
+	pages        = {1--38},
+	file         = {::}
+}
+@article{Pawlick2017,
+	title        = {{A Game-Theoretic Taxonomy and Survey of Defensive Deception for Cybersecurity and Privacy}},
+	author       = {Pawlick, Jeffrey and Colbert, Edward and Zhu, Quanyan},
+	year         = 2017,
+	doi          = {10.1145/0000000.0000000},
+	abstract     = {Cyber attacks on both databases and critical infrastructure have threatened public and private sectors. Meanwhile, ubiquitous tracking and wearable computing have infringed upon privacy. Advocates and engineers have recently proposed using defensive deception as a means to leverage the information asymmetry typically enjoyed by attackers as a tool for defenders. The term deception, however, has been employed broadly and with a variety of meanings. In this paper, we survey 24 articles from 2007-2017 that use game theory to model defensive deception for cybersecurity and privacy. Then we propose a taxonomy that defines six types of deception: perturbation, moving target defense, obfuscation, mixing, honey-x, and attacker engagement. These types are delineated by their incentive structures, agents, actions, and duration: precisely concepts captured by game theory. Our aims are to rigorously define types of defensive deception, to capture a snapshot of the state of the literature, to provide a menu of models which can be used for applied research, and to identify promising areas for future work. Our taxonomy provides a systematic foundation for understanding different types of defensive deception commonly encountered in cybersecurity and privacy.},
+	archiveprefix = {arXiv},
+	arxivid      = {1712.05441},
+	eprint       = {1712.05441},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/Pawlick, Colbert, Zhu - 2017 - A Game-Theoretic Taxonomy and Survey of Defensive Deception for Cybersecurity and Privacy.pdf:pdf}
+}
+@article{Watt2018,
+	title        = {{Mechanising and verifying the WebAssembly specification}},
+	author       = {Watt and Conrad},
+	year         = 2018,
+	journal      = {Proceedings of the 7th ACM SIGPLAN International Conference on Certified Programs and Proofs},
+	pages        = {53--65},
+	doi          = {10.1145/3167082},
+	isbn         = {978-1-4503-5586-5},
+	url          = {https://dl.acm.org/citation.cfm?id=3167082{\&}CFID=851114064{\&}CFTOKEN=83204809},
+	abstract     = {WebAssembly is a new low-level language currently being implemented in all major web browsers. It is designed to become the universal compilation target for the web, obsolet-ing existing solutions in this area, such as asm.js and Native Client. The WebAssembly working group has incorporated formal techniques into the development of the language, but their efforts so far have focussed on pen and paper formal specification. We present a mechanised Isabelle specification for the WebAssembly language, together with a verified executable interpreter and type checker. Moreover, we present a fully mechanised proof of the soundness of the WebAssembly type system, and detail how our work on this proof has exposed several issues with the official WebAssembly specification, influencing its development. Finally, we give a brief account of our efforts in performing differential fuzzing of our inter-preter against industry implementations.},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/mechanising-and-verifying-the-webassembly-specification-draft.pdf:pdf},
+	keywords     = {bytecode,reduction,soundness,stack machine}
+}
+@misc{Delaware2015,
+	title        = {{Fiat: deductive synthesis of abstract data types in a proof assistant}},
+	author       = {Delaware, Benjamin and Pit-Claudel, Cl{\'{e}}ment and Gross, Jason and Chlipala, Adam},
+	year         = 2015,
+	booktitle    = {POPL},
+	doi          = {10.1145/2775051.2677006},
+	isbn         = 9781450333009,
+	issn         = {0362-1340},
+	url          = {http://doi.acm.org/10.1145/2775051.2677006},
+	abstract     = {We present Fiat, a library for the Coq proof assistant supporting$\backslash$nrefinement of declarative specifications into efficient functional$\backslash$nprograms with a high degree of automation. Each refinement process$\backslash$nleaves a proof trail, checkable by the normal Coq kernel, justifying$\backslash$nits soundness. We focus on the synthesis of abstract data types that$\backslash$npackage methods with private data. We demonstrate the utility of$\backslash$nour framework by applying it to the synthesis of $\backslash$textit{\{}query structures{\}}$\backslash$n-- abstract data types with SQL-like query and insert operations.$\backslash$nFiat includes a library for writing specifications of query structures$\backslash$nin SQL-inspired notation, expressing operations over relations (tables)$\backslash$nin terms of mathematical sets. This library includes a set of tactics$\backslash$nfor automating the refinement of these specifications into efficient,$\backslash$ncorrect-by-construction OCaml code. Using these tactics, a programmer$\backslash$ncan generate such an implementation completely automatically by only$\backslash$nspecifying the equivalent of SQL indexes, data structures capturing$\backslash$nuseful views of the abstract data. We conclude by speculating on$\backslash$nthe new programming modularity possibilities enabled by an automated$\backslash$nrefinement system with proved-correct rules.},
+	file         = {::},
+	keywords     = {deductive synthesis,mechanized derivation of abstract data types}
+}
+@article{Bartoletti2017b,
+	title        = {{An empirical analysis of smart contracts: platforms, applications, and design patterns}},
+	author       = {Bartoletti, Massimo and Pompianu, Livio},
+	year         = 2017,
+	pages        = {1--16},
+	url          = {http://arxiv.org/abs/1703.06322},
+	abstract     = {Smart contracts are computer programs that can be consistently executed by a network of mutually distrusting nodes, without the arbitration of a trusted authority. Because of their resilience to tampering, smart contracts are appealing in many scenarios, especially in those which require transfers of money to respect certain agreed rules (like in financial services and in games). Over the last few years many platforms for smart contracts have been proposed, and some of them have been actually implemented and used. We study how the notion of smart contract is interpreted in some of these platforms. Focussing on the two most widespread ones, Bitcoin and Ethereum, we quantify the usage of smart contracts in relation to their application domain. We also analyse the most common programming patterns in Ethereum, where the source code of smart contracts is available.},
+	archiveprefix = {arXiv},
+	arxivid      = {1703.06322},
+	eprint       = {1703.06322},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/1703.06322.pdf:pdf}
+}
+@article{Clack2016,
+	title        = {{Smart Contract Templates: foundations, design landscape and research directions}},
+	author       = {Clack, Christopher D. and Bakshi, Vikram A. and Braine, Lee},
+	year         = 2016,
+	journal      = {T Http://Arxiv.Org/Abs/1608.00771},
+	pages        = {1--15},
+	url          = {http://arxiv.org/abs/1608.00771},
+	abstract     = {In this position paper, we consider some foundational topics regarding smart contracts (such as terminology, automation, enforceability, and semantics) and define a smart contract as an agreement whose execution is both automatable and enforceable. We explore a simple semantic framework for smart contracts, covering both operational and non-operational aspects. We describe templates and agreements for legally-enforceable smart contracts, based on legal documents. Building upon the Ricardian Contract triple, we identify operational parameters in the legal documents and use these to connect legal agreements to standardised code. We also explore the design landscape, including increasing sophistication of parameters, increasing use of common standardised code, and long-term academic research. We conclude by identifying further work and sketching an initial set of requirements for a common language to support Smart Contract Templates.},
+	archiveprefix = {arXiv},
+	arxivid      = {1608.00771},
+	eprint       = {1608.00771},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/1608.00771.pdf:pdf}
+}
+@article{Chen2017,
+	title        = {{Under-optimized smart contracts devour your money}},
+	author       = {Chen, Ting and Li, Xiaoqi and Luo, Xiapu and Zhang, Xiaosong},
+	year         = 2017,
+	month        = 12,
+	journal      = {SANER 2017 - 24th IEEE International Conference on Software Analysis, Evolution, and Reengineering},
+	publisher    = {Springer, Cham},
+	pages        = {442--446},
+	doi          = {10.1109/SANER.2017.7884650},
+	isbn         = 9781509055012,
+	url          = {http://link.springer.com/10.1007/978-3-319-72359-4_1},
+	abstract     = {Smart contracts are full-fledged programs that run on blockchains (e.g., Ethereum, one of the most popular blockchains). In Ethereum, gas (in Ether, a cryptographic currency like Bitcoin) is the execution fee compensating the computing resources of miners for running smart contracts. However, we find that under-optimized smart contracts cost more gas than necessary, and therefore the creators or users will be overcharged. In this work, we conduct the first investigation on Solidity, the recommended compiler, and reveal that it fails to optimize gas-costly programming patterns. In particular, we identify 7 gas-costly patterns and group them to 2 categories. Then, we propose and develop GASPER, a new tool for automatically locating gas-costly patterns by analyzing smart contracts' bytecodes. The preliminary results on discovering 3 representative patterns from 4,240 real smart contracts show that 93.5{\%}, 90.1{\%} and 80{\%} contracts suffer from these 3 patterns, respectively.},
+	archiveprefix = {arXiv},
+	arxivid      = {1703.03994},
+	eprint       = {1703.03994},
+	file         = {::}
+}
+@inproceedings{Hirai2017,
+	title        = {{Defining the Ethereum Virtual Machine for Interactive Theorem Provers}},
+	author       = {Hirai, Yoichi},
+	year         = 2017,
+	booktitle    = {Workshop on Trusted Smart Contracts},
+	abstract     = {Smart contracts in Ethereum are executed by the Ethereum Virtual Machine (EVM). We defined EVM in Lem, a language that can be compiled for a few interactive theorem provers. We tested our defini- tion against a standard test suite for Ethereum implementations. Using our definition, we proved some safety properties of Ethereum smart con- tracts in an interactive theorem prover Isabelle/HOL. To our knowledge, ours is the first formal EVM definition for smart contract verification that implements all instructions. Our definition can serve as a basis for further analysis and generation of Ethereum smart contracts.},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/Defining the Ethereum Virtual Machine for Interactive Theorem Provers.pdf:pdf}
+}
+@article{Krupp2018,
+	title        = {{teEther: Gnawing at Ethereum to Automatically Exploit Smart Contracts}},
+	author       = {Krupp, Johannes and Rossow, Christian},
+	year         = 2018,
+	journal      = {USENIX Security},
+	isbn         = 9781931971461,
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/sec18-krupp.pdf:pdf}
+}
+@article{Zhou2018,
+	title        = {{Erays: Reverse Engineering Ethereum's Opaque Smart Contracts}},
+	author       = {Zhou, Yi and Kumar, Deepak and Bakshi, Surya and Mason, Joshua and Miller, Andrew and Bailey, Michael},
+	year         = 2018,
+	pages        = {1371--1385},
+	isbn         = {978-1-931971-46-1},
+	url          = {https://www.usenix.org/conference/usenixsecurity18/presentation/zhou},
+	abstract     = {Interacting with Ethereum smart contracts can have potentially devastating financial consequences. In light of this, several regulatory bodies have called for a need to audit smart contracts for security and correctness guarantees. Unfortunately, auditing smart contracts that do not have readily available source code can be challenging , and there are currently few tools available that aid in this process. Such contracts remain opaque to auditors. To address this, we present Erays, a reverse engineering tool for smart contracts. Erays takes in smart contract from the Ethereum blockchain, and produces high-level pseudocode suitable for manual analysis. We show how Erays can be used to provide insight into several contract properties, such as code complexity and code reuse in the ecosystem. We then leverage Erays to link contracts with no previously available source code to public source code, thus reducing the overall opacity in the ecosystem. Finally, we demonstrate how Erays can be used for reverse-engineering in four case studies: high-value multi-signature wallets, arbitrage bots, exchange accounts, and finally, a popular smart-contract game, Cryptokitties. We conclude with a discussion regarding the value of reverse engineering in the smart contract ecosystem, and how Erays can be leveraged to address the challenges that lie ahead.},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/sec18-zhou.pdf:pdf}
+}
+@article{Grech2018,
+	title        = {{MadMax: Surviving Out-of-Gas Conditions in Ethereum Smart Contracts}},
+	author       = {Grech, Neville and Kong, Michael and Jurisevic, Anton and Brent, Lexi and Scholz, Bernhard and Smaragdakis, Yannis},
+	year         = 2018,
+	journal      = {SPLASH 2018 Oopsla},
+	volume       = 2,
+	number       = {October},
+	abstract     = {Ethereum is a distributed blockchain platform, serving as an ecosystem for smart contracts: full-fledged inter-communicating programs that capture the transaction logic of an account. Unlike programs in mainstream languages, the execution of an Ethereum smart contract is restricted by a gas limit: execution proceeds as long as gas is available. Thus, gas is a valuable resource that can be manipulated by an attacker to provoke unwanted behavior in a victim's smart contract (e.g., wasting or blocking funds of said victim). Gas-focused vulnerabilities exploit undesired behavior when a contract (directly or through other interacting contracts) runs out of gas. Such vulnerabilities are among the hardest for programmers to protect against, as out-of-gas behavior may be uncommon in non-attack scenarios and reasoning about it is far from trivial. In this paper, we classify and identify gas-focused vulnerabilities, and present MadMax: a static program analysis technique to automatically detect gas-focused vulnerabilities with very high confidence. Our approach combines a control-flow-analysis-based decompiler and declarative program-structure queries. The combined analysis captures high-level domain-specific concepts (such as “dynamic data structure storage” and “safely resumable loops”) and achieves high precision and scalability. MadMax analyzes the entirety of smart contracts in the current Ethereum blockchain in just 10 hours (with decompilation timeouts in 8{\%} of the cases) and flags contracts with a current (though highly volatile) monetary value of over {\$}5B as vulnerable. Manual inspection of a sample of flagged contracts shows that 81{\%} of the sampled warnings do indeed lead to vulnerabilities, which we report on in our experiment.},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/Grech et al. - 2018 - MadMax Surviving Out-of-Gas Conditions in Ethereum Smart Contracts.pdf:pdf}
+}
+@inproceedings{Sergey2017,
+	title        = {{A Concurrent Perspective on Smart Contracts}},
+	author       = {Sergey, Ilya and Hobor, Aquinas},
+	year         = 2017,
+	booktitle    = {Workshop on Trusted Smart Contracts},
+	url          = {http://arxiv.org/abs/1702.05511},
+	abstract     = {In this paper, we explore remarkable similarities between multi-transactional behaviors of smart contracts in cryptocurrencies such as Ethereum and classical problems of shared-memory concurrency. We examine two real-world examples from the Ethereum blockchain and analyzing how they are vulnerable to bugs that are closely reminiscent to those that often occur in traditional concurrent programs. We then elaborate on the relation between observable contract behaviors and well-studied concurrency topics, such as atomicity, interference, synchronization, and resource ownership. The described contracts-as-concurrent-objects analogy provides deeper understanding of potential threats for smart contracts, indicate better engineering practices, and enable applications of existing state-of-the-art formal verification techniques.},
+	archiveprefix = {arXiv},
+	arxivid      = {1702.05511},
+	eprint       = {1702.05511},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/csc-wtsc17.pdf:pdf}
+}
+@article{Lynch1989,
+	title        = {{An Introduction to Input/Output Automata}},
+	author       = {Lynch, Nancy a and Tuttle, Mark R},
+	year         = 1989,
+	journal      = {CWI-Quarterly},
+	volume       = 2,
+	number       = 3,
+	pages        = {219--246},
+	abstract     = {The input/output automaton model is a tool for modeling components in asynchronous concurrent systems. Since its introduction, the model has been used for describing and reasoning about many different types of systems, including network resource allocation algorithms, communication algorithms, concurrent database systems, shared atomic objects, and dataflow architectures. This paper is intended to introduce researchers to the model. It contains an overview of its definitions, several illustrative examples involving candy vending machines and leader election, and a brief survey of some of the uses that have so far been made of the model.},
+	file         = {::}
+}
+@inproceedings{Sergey2015,
+	title        = {{Mechanized verification of fine-grained concurrent programs}},
+	author       = {Sergey, Ilya and Nanevski, A. and Banerjee, Anindya},
+	year         = 2015,
+	booktitle    = {PLDI},
+	doi          = {10.1145/2737924.2737964},
+	issn         = 15232867,
+	abstract     = {{\textcopyright} 2015 ACM. Efficient concurrent programs and data structures rarely employ coarse-grained synchronization mechanisms (i.e., locks); instead, they implement custom synchronization patterns via fine-grained primitives, such as compare-and-swap. Due to sophisticated interference scenarios between threads, reasoning about such programs is challenging and error-prone, and can benefit from mechanization. In this paper, we present the first completely formalized framework for mechanized verification of full functional correctness of fine-grained concurrent programs. Our tool is based on the recently proposed program logic FCSL. It is implemented as an embedded domain-specific language in the dependently-typed language of the Coq proof assistant, and is powerful enough to reason about programming features such as higher-order functions and local thread spawning. By incorporating a uniform concurrency model, based on state-transition systems and partial commutative monoids, FCSL makes it possible to build proofs about concurrent libraries in a thread-local, compositional way, thus facilitating scalability and reuse: libraries are verified just once, and their specifi-cations are used ubiquitously in client-side reasoning. We illustrate the proof layout in FCSL by example, and report on our experience of using FCSL to verify a number of concurrent programs.},
+	keywords     = {Compositional program verification,Concurrency,Dependent types,Mechanized proofs,Separation logic}
+}
+@inproceedings{Jiang:2018:CFS:3238147.3238177,
+	title        = {ContractFuzzer: Fuzzing Smart Contracts for Vulnerability Detection},
+	author       = {Jiang, Bo and Liu, Ye and Chan, W. K.},
+	year         = 2018,
+	booktitle    = {Proceedings of the 33rd ACM/IEEE International Conference on Automated Software Engineering},
+	location     = {Montpellier, France},
+	publisher    = {ACM},
+	address      = {New York, NY, USA},
+	series       = {ASE 2018},
+	pages        = {259--269},
+	doi          = {10.1145/3238147.3238177},
+	isbn         = {978-1-4503-5937-5},
+	url          = {http://doi.acm.org/10.1145/3238147.3238177},
+	numpages     = 11,
+	acmid        = 3238177,
+	keywords     = {Blockchain, Ethereum, Fuzzer, Fuzzing, Smart contract, Test oracle, Vulnerability}
+}
+@article{Guth2018,
+	title        = {{Specification Mining for Smart Contracts with Automatic Abstraction Tuning}},
+	author       = {Guth, Florentin and W{\"{u}}stholz, Valentin and Christakis, Maria and M{\"{u}}ller, Peter},
+	year         = 2018,
+	url          = {http://arxiv.org/abs/1807.07822},
+	abstract     = {Smart contracts are programs that manage digital assets according to a certain protocol, expressing for instance the rules of an auction. Understanding the possible behaviors of a smart contract is difficult, which complicates development, auditing, and the post-mortem analysis of attacks. This paper presents the first specification mining technique for smart contracts. Our technique extracts the possible behaviors of smart contracts from contract executions recorded on a blockchain and expresses them as finite automata. A novel dependency analysis allows us to separate independent interactions with a contract. Our technique tunes the abstractions for the automata construction automatically based on configurable metrics, for instance, to maximize readability or precision. We implemented our technique for the Ethereum blockchain and evaluated its usability on several real-world contracts.},
+	archiveprefix = {arXiv},
+	arxivid      = {1807.07822},
+	eprint       = {1807.07822},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/Guth et al. - 2018 - Specification Mining for Smart Contracts with Automatic Abstraction Tuning.pdf:pdf}
+}
+@article{Meiklejohn2013a,
+	title        = {{A fistful of Bitcoins: Characterizing payments among men with no names}},
+	author       = {Meiklejohn, Sarah and Pomarole, Marjori and Jordan, Grant and Levchenko, Kirill and McCoy, Damon and Voelker, Geoffrey M. and Savage, Stefan},
+	year         = 2013,
+	journal      = {Proceedings of the Internet Measurement Conference - IMC '13},
+	number       = 6,
+	pages        = {127--140},
+	doi          = {10.1145/2504730.2504747},
+	isbn         = 9781450319539,
+	issn         = 15577317,
+	url          = {http://dl.acm.org/citation.cfm?id=2504730.2504747},
+	abstract     = {Bitcoin is a purely online virtual currency, unbacked by either phys- ical commodities or sovereign obligation; instead, it relies on a combination of cryptographic protection and a peer-to-peer proto- col for witnessing settlements. Consequently, Bitcoin has the un- intuitive property that while the ownership of money is implicitly anonymous, its flow is globally visible. In this paper we explore this unique characteristic further, using heuristic clustering to group Bitcoin wallets based on evidence of shared authority, and then us- ing re-identification attacks (i.e., empirical purchasing of goods and services) to classify the operators of those clusters. From this anal- ysis, we characterize longitudinal changes in the Bitcoin market, the stresses these changes are placing on the system, and the chal- lenges for those seeking to use Bitcoin for criminal or fraudulent purposes at scale.},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/imc13.pdf:pdf},
+	keywords     = {anonymity,bitcoin,measurement}
+}
+@article{Hildenbrandt2017,
+	title        = {{KEVM: A Complete Semantics of the Ethereum Virtual Machine}},
+	author       = {Hildenbrandt, Everett and Saxena, Manasvi and Zhu, Xiaoran and Rodrigues, Nishant and Daian, Philip and Tech, Cornell and Guth, Dwight and Ro, Grigore},
+	year         = 2017,
+	pages        = {1--33},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/hildenbrandt-saxena-zhu-rodrigues-guth-daian-rosu-2017-tr.pdf:pdf}
+}
+@article{Hirai2017a,
+	title        = {{Defining the Ethereum Virtual Machine for Interactive Theorem Provers}},
+	author       = {Hirai, Yoichi},
+	year         = 2017,
+	journal      = {Lecture Notes in Computer Science},
+	booktitle    = {Workshop on Trusted Smart Contracts},
+	volume       = 10323,
+	pages        = {520--535},
+	doi          = {10.1007/978-3-319-70278-0_33},
+	isbn         = 9783319702773,
+	issn         = 16113349,
+	url          = {http://link.springer.com/10.1007/978-3-319-70278-0{\_}33},
+	abstract     = {Motivation. Public ledger is a decentralized book keeping technology and is believed to have the potential to revolutionize many areas. Besides handling crypto-currency, public ledger can be used to tokenize arbitrary assets, and then support trading of these asset tokens in a decentralized manner. With public ledger based token trading system, users do not necessarily convert their assets to currencies, but can exchange assets directly. It also avoids unnecessary transportation as the asset only needs to be physically transferred to its last owner. Furthermore, utilization of the public ledger does not require that users have to trust each other in order to trade tokens safely. However, using decentralized public ledger for trading asset tokens raises serious privacy concerns. Because token ownership information is stored on the public ledger and disclosed to the public, anyone can uncover users trading activities and history. For a token based asset trading platform, all tokens are unique and transactions are usually two-ways or multi-ways. In response to these challenges, we propose ZeroTrade, a privacy respecting heterogeneous assets trading system that leverages various cryptography tools to conceal the exchange trace of asset tokens and takes advantage of public ledger for guaranteeing fairness of asset token exchange. Solution. ZeroTrade involves trusted hubs that are responsible for converting assets to tokens and back, where trusted means that hubs will generate/accept valid tokens, and uses the public ledger to record all token exchange information. When two or more users want to exchange tokens with each other, each user picks an agent for the exchange. Asset tokens are first poured into a pool and users leverage agents to obliviously retrieve tokens from the pool in order to finish the exchange. The oblivious retrieving process cut off the connection between the original user and the agent. Therefore, one cannot determine the relationship between the original users who want to exchange tokens by observing information recorded on the public ledger. To implement the design, ZeroTrade leverages different cryptography tools including zero-knowledge proof and various encryption techniques. Considering various demands in token trade, ZeroTrade also supports operations like partial token trade and revocation. A preliminary evaluation of the performance shows that ZeroTrade only adds limited burden on top of the public ledger. More detailed information can be found in the full version of the paper. Conclusion. ZeroTrade provides a privacy friendly platform for asset trading based on public ledger. For the next step, we plan to implement a fully functional prototype and considering more complex token trading scenarios. {\textcopyright} International Financial Cryptography Association 2017.},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/malta-paper.pdf:pdf}
+}
+@inproceedings{Tsankov:2018:SPS:3243734.3243780,
+	title        = {Securify: Practical Security Analysis of Smart Contracts},
+	author       = {Tsankov, Petar and Dan, Andrei and Drachsler-Cohen, Dana and Gervais, Arthur and B\"{u}nzli, Florian and Vechev, Martin},
+	year         = 2018,
+	booktitle    = {Proceedings of the 2018 ACM SIGSAC Conference on Computer and Communications Security},
+	location     = {Toronto, Canada},
+	publisher    = {ACM},
+	address      = {New York, NY, USA},
+	series       = {CCS '18},
+	pages        = {67--82},
+	doi          = {10.1145/3243734.3243780},
+	isbn         = {978-1-4503-5693-0},
+	url          = {http://doi.acm.org/10.1145/3243734.3243780},
+	numpages     = 16,
+	acmid        = 3243780,
+	keywords     = {security analysis, smart contracts, stratified datalog, verification}
+}
+@inproceedings{Atzei2017,
+	title        = {{A survey of attacks on Ethereum smart contracts (SoK)}},
+	author       = {Atzei, Nicola and Bartoletti, Massimo and Cimoli, Tiziana},
+	year         = 2017,
+	booktitle    = {POST},
+	doi          = {10.1007/978-3-662-54455-6_8},
+	isbn         = 9783662544549,
+	issn         = 16113349,
+	abstract     = {Smart contracts are computer programs that can be correctly executed by a network of mutually distrusting nodes, without the need of an external trusted authority. Since smart contracts handle and transfer assets of considerable value, besides their correct execution it is also crucial that their implementation is secure against attacks which aim at stealing or tampering the assets. We study this problem in Ethereum, the most well-known and used framework for smart contracts so far. We analyse the security vulnerabilities of Ethereum smart contracts, providing a taxonomy of common programming pitfalls which may lead to vulnerabilities. We show a series of attacks which exploit these vulnerabilities, allowing an adversary to steal money or cause other damage.},
+	file         = {::}
+}
+@article{Nikolic2018a,
+	title        = {{Finding The Greedy, Prodigal, and Suicidal Contracts at Scale}},
+	author       = {Nikolic, Ivica and Kolluri, Aashish and Sergey, Ilya and Saxena, Prateek and Hobor, Aquinas},
+	year         = 2018,
+	doi          = {arXiv:1802.06038v1},
+	url          = {http://arxiv.org/abs/1802.06038},
+	abstract     = {Smart contracts---stateful executable objects hosted on blockchains like Ethereum---carry billions of dollars worth of coins and cannot be updated once deployed. We present a new systematic characterization of a class of trace vulnerabilities, which result from analyzing multiple invocations of a contract over its lifetime. We focus attention on three example properties of such trace vulnerabilities: finding contracts that either lock funds indefinitely, leak them carelessly to arbitrary users, or can be killed by anyone. We implemented MAIAN, the first tool for precisely specifying and reasoning about trace properties, which employs inter-procedural symbolic analysis and concrete validator for exhibiting real exploits. Our analysis of nearly one million contracts flags 34,200 (2,365 distinct) contracts vulnerable, in 10 seconds per contract. On a subset of3,759 contracts which we sampled for concrete validation and manual analysis, we reproduce real exploits at a true positive rate of 89{\%}, yielding exploits for3,686 contracts. Our tool finds exploits for the infamous Parity bug that indirectly locked 200 million dollars worth in Ether, which previous analyses failed to capture.},
+	archiveprefix = {arXiv},
+	arxivid      = {1802.06038},
+	eprint       = {1802.06038},
+	file         = {::}
+}
+@inproceedings{Martin2005,
+	title        = {{Finding application errors and security flaws using PQL}},
+	author       = {Martin, Michael and Livshits, Benjamin and Lam, Monica S.},
+	year         = 2005,
+	booktitle    = {OOPSLA},
+	doi          = {10.1145/1094811.1094840},
+	isbn         = 1595930310,
+	issn         = {03621340},
+	abstract     = {Static and dynamic techniques to find solutions to queries to catch all violations precisely as the runs and in this paper and found 206 in 6},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/Martin, Livshits, Lam - 2005 - Finding application errors and security flaws using PQL a program query language(2).pdf:pdf},
+	keywords     = {bug finding,pattern matching,program traces,resource leaks,sql injection,web applications}
+}
+@article{Tikhomirov2017,
+	title        = {{SmartCheck : Static Analysis of Ethereum Smart Contracts}},
+	author       = {Tikhomirov, Sergei and Voskresenskaya, Ekaterina and Ivanitskiy, Ivan},
+	year         = 2017,
+	number       = {October},
+	pages        = {9--16},
+	isbn         = 9781450357265,
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/Tikhomirov, Voskresenskaya, Ivanitskiy - 2017 - SmartCheck Static Analysis of Ethereum Smart Contracts.pdf:pdf},
+	keywords     = {bug detection,ethereum,smart contracts,solidity,static analysis}
+}
+@article{Huang2018,
+	title        = {{Hunting the Ethereum Smart Contract: Color-inspired Inspection of Potential Attacks}},
+	author       = {Huang, TonTon Hsien-De},
+	year         = 2018,
+	url          = {http://arxiv.org/abs/1807.01868},
+	abstract     = {Blockchain and Cryptocurrencies are gaining unprecedented popularity and understanding. Meanwhile, Ethereum is gaining a significant popularity in the blockchain community, mainly due to the fact that it is designed in a way that enables developers to write smart contract and decentralized applications (Dapps). This new paradigm of applications opens the door to many possibilities and opportunities. However, the security of Ethereum smart contracts has not received much attention; several Ethereum smart contracts malfunctioning have recently been reported. Unlike many previous works that have applied static and dynamic analyses to find bugs in smart contracts, we do not attempt to define and extract any features; instead we focus on reducing the expert's labor costs. We first present a new in-depth analysis of potential attacks methodology and then translate the bytecode of solidity into RGB color code. After that, we transform them to a fixed-sized encoded image. Finally, the encoded image is fed to convolutional neural network (CNN) for automatic feature extraction and learning, detecting compiler bugs of Ethereum smart contract.},
+	archiveprefix = {arXiv},
+	arxivid      = {1807.01868},
+	eprint       = {1807.01868},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/Huang - 2018 - Hunting the Ethereum Smart Contract Color-inspired Inspection of Potential Attacks.pdf:pdf}
+}
+@article{Bravenboer2009,
+	title        = {{Exception analysis and points-to analysis}},
+	author       = {Bravenboer, Martin and Smaragdakis, Yannis},
+	year         = 2009,
+	journal      = {ISSTA},
+	doi          = {10.1145/1572272.1572274},
+	isbn         = 9781605583389,
+	url          = {http://dl.acm.org/citation.cfm?id=1572272.1572274},
+	abstract     = {Exception analysis and points-to analysis are typically done in complete separation. Past algorithms for precise exception anal- ysis (e.g., pairing throw clauses with catch statements) use pre- computed points-to information. Past points-to analyses either un- soundly ignore exceptions, or conservatively compute a crude ap- proximation of exception throwing (e.g., considering an exception throw as an assignment to a global variable, accessible from any catch clause). We show that this separation results in significant slowdowns or vast imprecision. The two kinds of analyses are inter- dependent: neither can be performed accurately without the other. The interdependency leads us to propose a joint handling for per- formance and precision. We show that our exception analysis is expressible highly elegantly in a declarative form, and can apply to points-to analyses of varying precision. In fact, our specification of exception analysis is “fully precise”, as it models closely the Java exception handling semantics. The necessary approximation is pro- vided only through whichever abstractions are used for contexts and objects in the base points-to analysis. Our combined approach achieves similar precision relative to exceptions (exception-catch links) as the best past precise exception analysis, with a runtime of seconds instead of tens of minutes. At the same time, our analysis achieves much higher precision of points-to information (an aver- age of half as many values for each reachable variable for most of the DaCapo benchmarks) than points-to analyses that treat excep- tions conservatively, all at a fraction of the execution time.},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/Bravenboer, Smaragdakis - 2009 - Exception analysis and points-to analysis.pdf:pdf},
+	keywords     = {context-sensitive,exception handling,points-to analysis,precision}
+}
+@article{Matzutt2018,
+	title        = {{A Quantitative Analysis of the Impact of Arbitrary Blockchain Content on Bitcoin}},
+	author       = {Matzutt, Roman and Hiller, Jens and Henze, Martin and Ziegeldorf, Jan Henrik and M{\"{u}}llmann, Dirk and Hohlfeld, Oliver and Wehrle, Klaus},
+	year         = 2018,
+	journal      = {Proceedings of the 22nd International Conference on Financial Cryptography and Data Security (FC), Nieuwpoort, Cura{\c{c}}ao},
+	url          = {https://www.comsys.rwth-aachen.de/fileadmin/papers/2018/2018{\_}matzutt{\_}bitcoin-contents{\_}preproceedings-version.pdf},
+	abstract     = {Blockchains primarily enable credible accounting of digital events, e.g., money transfers in cryptocurrencies. However, beyond this original purpose, blockchains also irrevocably record arbitrary data, ranging from short messages to pictures. This does not come without risk for users as each participant has to locally replicate the complete blockchain, particularly including potentially harmful content. We provide the first systematic analysis of the benefits and threats of arbitrary blockchain content. Our analysis shows that certain content, e.g., illegal pornography, can render the mere possession of a blockchain illegal. Based on these insights, we conduct a thorough quantitative and qualitative analysis of unintended content on Bitcoin's blockchain. Although most data originates from benign extensions to Bitcoin's protocol, our analysis reveals more than 1600 files on the blockchain, over 99{\%} of which are texts or images. Among these files there is clearly objectionable content such as links to child pornography, which is distributed to all Bitcoin participants. With our analysis, we thus highlight the importance for future blockchain designs to address the possibility of unintended data insertion and protect blockchain users accordingly.},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/Matzutt et al. - 2018 - A Quantitative Analysis of the Impact of Arbitrary Blockchain Content on Bitcoin.pdf:pdf}
+}
+@inproceedings{Schrans2018,
+	title        = {{Writing safe smart contracts in Flint}},
+	author       = {Schrans, Franklin and Eisenbach, Susan and Drossopoulou, Sophia},
+	year         = 2018,
+	booktitle    = {Conference Companion of the 2nd International Conference on Art, Science, and Engineering of Programming  - Programming'18 Companion},
+	doi          = {10.1145/3191697.3213790},
+	isbn         = 9781450355131,
+	abstract     = {Blockchain-based platforms such as Ethereum support the execution of versatile decentralized applications, known as smart contracts. These typically hold and transfer digital currency (e.g., Ether) to other parties on the platform. Contracts have been subject to numerous attacks, losing hundreds of millions of dollars (in Ether). We propose Flint, a new type-safe, capabilities-secure, contract-oriented programming language specifically designed for writing robust smart contracts. To help programmers reason about access control of functions, Flint programmers use caller capabilities. To prevent vulnerabilities relating to the unintentional loss of currency , transfers of assets in Flint are performed through safe atomic operations, inspired by linear type theory.},
+	file         = {::}
+}
+@inproceedings{Hildenbrandt2018,
+	title        = {{KEVM: A complete formal semantics of the ethereum virtual machine}},
+	author       = {Hildenbrandt, Everett and Saxena, Manasvi and Rodrigues, Nishant and Zhu, Xiaoran and Daian, Philip and Guth, Dwight and Moore, Brandon and Park, Daejun and Zhang, Yi and Stefanescu, Andrei and Rosu, Grigore},
+	year         = 2018,
+	booktitle    = {Proceedings - IEEE Computer Security Foundations Symposium},
+	doi          = {10.1109/CSF.2018.00022},
+	isbn         = 9781538666807,
+	issn         = 19401434,
+	abstract     = {Maternal obesity due to long-term high-fat diet (HFD) consumption leads to faster growth in offspring during suckling, and increased adiposity at 20 days of age. Decreased expression of the orexigenic neuropeptide Y (NPY) and increased anorexigenic proopiomelanocortin (POMC) mRNA expression were observed in the fed state. However, hunger is the major drive to eat and hypothalamic appetite regulators change in response to meals. Therefore, it is important to compare both satiated and fasting states. Female Sprague-Dawley rats (8 weeks old) were fed a cafeteria-style HFD (15.33 kJ/g) or chow for 5 weeks before mating, with the same diet continuing throughout gestation and lactation. At postnatal day 20, male pups were killed either after overnight fasting or in the fed state. Pups from obese dams were hyperphagic during both pre- and postweaning periods. Pups from obese dams had higher hypothalamic mRNA expression of POMC and NPY Y1 receptor, but lower hypothalamic melanocortin-4 receptor (MC4R) and its downstream target single-minded gene 1 (Sim1), in the fed state. Overnight fasting reduced circulating glucose, insulin, and leptin and increased hypothalamic NPY Y1 receptor mRNA in pups from both lean and obese dams. Hypothalamic NPY and agouti-related protein (AgRP) were only increased by fasting in pups from obese dams; reductions in MC4R and Sim1 were only seen in pups from lean dams. At weaning, the suppressed orexigenic signals in offspring from obese dams were normalized after overnight fasting, although anorexigenic signaling appeared impaired in these animals. This may contribute to their hyperphagia and faster growth.},
+	file         = {::},
+	keywords     = {blockchain,ethereum,ethereum-virtual-machine,evm,formal-methods,k-framework,kevm,semantics,smart-contract,verification},
+	pmid         = 19282828
+}
+@inproceedings{Habib:2018:MBW:3238147.3238213,
+	title        = {{How Many of All Bugs Do We Find? A Study of Static Bug Detectors}},
+	author       = {Habib, Andrew and Pradel, Michael},
+	year         = 2018,
+	booktitle    = {Proceedings of the 33rd ACM/IEEE International Conference on Automated Software Engineering},
+	publisher    = {ACM},
+	address      = {New York, NY, USA},
+	series       = {ASE 2018},
+	pages        = {317--328},
+	doi          = {10.1145/3238147.3238213},
+	isbn         = {978-1-4503-5937-5},
+	url          = {http://doi.acm.org/10.1145/3238147.3238213},
+	file         = {::},
+	keywords     = {Defects4J,bug finding,static analysis,static bug checkers}
+}
+@techreport{Securities2017,
+	title        = {{Report of Investigation Pursuant to Section 21(a) of the Securities Exchange Act of 1934:  The DAO}},
+	author       = {Securities, Us and Commission, Exchange},
+	year         = 2017,
+	url          = {http://www.virtualschool.edu/mon/Economics/SmartContracts.html.},
+	file         = {:home/daniel/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Securities, Commission - 2017 - Report of Investigation Pursuant to Section 21(a) of the Securities Exchange Act of 1934 The DAO.pdf:pdf},
+	institution  = {{U.S. Securities and Exchange Commission}},
+	keywords     = {Date: 2017-07-25,Release No. 34-81207}
+}
+@inproceedings{DBLP:conf/ndss/KalraGDS18,
+	title        = {{ZEUS:} Analyzing Safety of Smart Contracts},
+	author       = {Sukrit Kalra and Seep Goel and Mohan Dhawan and Subodh Sharma},
+	year         = 2018,
+	booktitle    = {25th Annual Network and Distributed System Security Symposium, {NDSS} 2018, San Diego, California, USA, February 18-21, 2018},
+	doi          = {10.14722/ndss.2018.23082},
+	url          = {http://wp.internetsociety.org/ndss/wp-content/uploads/sites/25/2018/02/ndss2018\_09-1\_Kalra\_paper.pdf},
+	timestamp    = {Thu, 09 Aug 2018 10:57:16 +0200},
+	biburl       = {https://dblp.org/rec/bib/conf/ndss/KalraGDS18},
+	bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+@article{Rodler2019,
+	title        = {{Sereum : Protecting Existing Smart Contracts Against Re-Entrancy Attacks}},
+	author       = {Rodler, Michael and Li, Wenting and Karame, Ghassan O and Davi, Lucas},
+	year         = 2019,
+	number       = {February},
+	archiveprefix = {arXiv},
+	arxivid      = {arXiv:1812.05934v1},
+	eprint       = {arXiv:1812.05934v1},
+	file         = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/1812.05934.pdf:pdf},
+	mendeley-groups = {Smart Contracts security}
+}
+@inproceedings{de2008z3,
+	title        = {Z3: An efficient SMT solver},
+	author       = {De Moura, Leonardo and Bj{\o}rner, Nikolaj},
+	year         = 2008,
+	booktitle    = {International conference on Tools and Algorithms for the Construction and Analysis of Systems},
+	pages        = {337--340},
+	organization = {Springer}
+}
+@misc{XACML,
+	title        = {{eXtensible Access Control Markup Language (XACML) XML Media Type}},
+	howpublished = {\url{https://tools.ietf.org/html/rfc7061}}
+}
+@inproceedings{lattner2004llvm,
+	title        = {LLVM: A compilation framework for lifelong program analysis \& transformation},
+	author       = {Lattner, Chris and Adve, Vikram},
+	year         = 2004,
+	booktitle    = {Proceedings of the international symposium on Code generation and optimization: feedback-directed and runtime optimization},
+	pages        = 75,
+	organization = {IEEE Computer Society}
+}
+@article{bjorner2012program,
+	title        = {Program Verification as Satisfiability Modulo Theories.},
+	author       = {Bj{\o}rner, Nikolaj and McMillan, Kenneth L and Rybalchenko, Andrey},
+	publisher    = {Citeseer}
+}
+@inproceedings{mcmillan2007interpolants,
+	title        = {Interpolants and symbolic model checking},
+	author       = {McMillan, Kenneth L},
+	year         = 2007,
+	booktitle    = {International Workshop on Verification, Model Checking, and Abstract Interpretation},
+	pages        = {89--90},
+	organization = {Springer}
+}
+@book{ullman1984principles,
+	title        = {Principles of database systems},
+	author       = {Ullman, Jeffrey D},
+	year         = 1984,
+	publisher    = {Galgotia publications}
+}
+@book{Dannen:2017:IES:3103305,
+	title        = {Introducing Ethereum and Solidity: Foundations of Cryptocurrency and Blockchain Programming for Beginners},
+	author       = {Dannen, Chris},
+	year         = 2017,
+	publisher    = {Apress},
+	address      = {Berkely, CA, USA},
+	isbn         = {1484225341, 9781484225349},
+	edition      = {1st}
+}
+@misc{truffle,
+	title        = {{A development framework for Ethereum}},
+	author       = {ConSensys},
+	note         = {[Online; accessed 21-January-2019]},
+	howpublished = {\url{https://github.com/trufflesuite/truffle}}
+}
+@misc{ganache,
+	title        = {{Personal blockchain for Ethereum development}},
+	author       = {ConSensys},
+	note         = {[Online; accessed 21-January-2019]},
+	howpublished = {\url{https://github.com/trufflesuite/ganache}}
+}
+@misc{consensys-smart-contract-best-practice,
+	title        = {{Ethereum Smart Contract Best Practices}},
+	url          = {https://consensys.github.io/smart-contract-best-practices/},
+	urldate      = {2019-01-20},
+	note         = {[Online; accessed 21-January-2019]},
+	mendeley-groups = {Smart Contracts security}
+}
+@misc{eip-delegatecall,
+	title        = {{EIP 7}},
+	author       = {Vitalik Buterin},
+	year         = 2015,
+	note         = {[Online; accessed 21-January-2019]},
+	howpublished = {\url{https://github.com/ethereum/EIPs/blob/master/EIPS/eip-7.md}}
+}
+@misc{eip-blockhash,
+	title        = {{EIP 210}},
+	author       = {Vitalik Buterin},
+	year         = 2019,
+	note         = {[Online; accessed 20-July-2019]},
+	howpublished = {\url{https://github.com/ethereum/EIPs/blob/master/EIPS/eip-210.md}}
+}
+@misc{eip-1884,
+	title        = {{EIP 1184}},
+	author       = {{Martin Holst Swende}},
+	year         = 2019,
+	note         = {[Online; accessed 15-Jan-2020]},
+	howpublished = {\url{https://eips.ethereum.org/EIPS/eip-1884}}
+}
+@misc{mythril,
+	title        = {{Mythril Classic}},
+	author       = {ConsenSys},
+	note         = {[Online; accessed 21-January-2019]},
+	howpublished = {\url{https://github.com/ConsenSys/mythril-classic}}
+}
+@misc{etherscan,
+	title        = {{Etherscan --- Ethereum (ETH) Blockchain Explorer}},
+	note         = {[Online; accessed 21-January-2019]},
+	howpublished = {\url{https://etherscan.io}}
+}
+@misc{go-ethereum,
+	title        = {{Official Go implementation of the Ethereum protocol}},
+	note         = {[Online; accessed 21-January-2019]},
+	howpublished = {\url{https://github.com/ethereum/go-ethereum}}
+}
+@misc{parity-wallet-freeze,
+	title        = {{Multisig wallets affected by the Parity wallet bug}},
+	author       = {{Max Galka}},
+	note         = {[Online; accessed 21-January-2019]},
+	howpublished = {\url{https://github.com/elementus-io/parity-wallet-freeze}}
+}
+@misc{ds-eth-token,
+	title        = {{Critical ether token wrapper vulnerability - eth tokens salvaged from potential attacks}},
+	note         = {[Online; accessed 9-February-2019]},
+	howpublished = {\url{https://www.reddit.com/r/MakerDAO/comments/4niu10/critical_ether_token_wrapper_vulnerability_eth/}}
+}
+@misc{spank-chain,
+	title        = {{We Got Spanked: What We Know So Far}},
+	note         = {[Online; accessed 9-February-2019]},
+	howpublished = {\url{https://medium.com/spankchain/we-got-spanked-what-we-know-so-far-d5ed3a0f38fe}}
+}
+@misc{etherdice,
+	title        = {{Etherdice}},
+	note         = {[Online; accessed 10-February-2019]},
+	howpublished = {\url{https://www.etherdice.io}}
+}
+@misc{etherdice-issue,
+	title        = {{Etherdice is down for maintenance}},
+	note         = {[Online; accessed 10-February-2019]},
+	howpublished = {\url{https://www.reddit.com/r/ethereum/comments/47f028/etherdice_is_down_for_maintenance_we_are_having/}}
+}
+@misc{solidity-noreetrancy,
+	title        = {{Solidity 'noreentrancy' flag}},
+	note         = {[Online; accessed 11-February-2019]},
+	howpublished = {\url{https://github.com/ethereum/solidity/issues/2619}}
+}
+@misc{mining-pools,
+	title        = {{Are Miners Centralized? A Look into Mining Pools}},
+	note         = {[Online; accessed 11-February-2019]},
+	howpublished = {\url{https://media.consensys.net/are-miners-centralized-a-look-into-mining-pools-b594425411dc}}
+}
+@misc{solidified,
+	title        = {{Solidified}},
+	note         = {[Online; accessed 11-February-2019]},
+	howpublished = {\url{https://solidified.io/faq}}
+}
+@misc{maker-dao,
+	title        = {{MakerDAO}},
+	note         = {[Online; accessed 9-February-2019]},
+	howpublished = {\url{https://makerdao.com/en/}}
+}
+@misc{0x-project,
+	title        = {{0x Bug bounty}},
+	note         = {[Online; accessed 12-February-2019]},
+	howpublished = {\url{https://0x.org/wiki#Deployed-Addresses}}
+}
+@misc{oyente-benchmarks,
+	title        = {{Oyente Benchmarks}},
+	note         = {[Online; accessed 19-November-2018]},
+	howpublished = {\url{https://oyente.tech/benchmarks/}}
+}
+@misc{ether-foundation-contract-reddit,
+	title        = {{contract with 11,901,464 ether? What does it do?}},
+	note         = {[Online; accessed 12-February-2019]},
+	howpublished = {\url{https://www.reddit.com/r/ethereum/comments/3gi0qn/contract_with_11901464_ether_what_does_it_do/}}
+}
+@misc{ether-foundation-contract-code,
+	title        = {{Source code of the Ethereum Foundation Multisig wallet}},
+	note         = {[Online; accessed 12-February-2019]},
+	howpublished = {\url{https://github.com/ethereum/dapp-bin/blob/master/wallet/wallet.sol}}
+}
+@misc{golem-project,
+	title        = {{golem --- Computing Power. Shared}},
+	note         = {[Online; accessed 12-February-2019]},
+	howpublished = {\url{https://golem.network/}}
+}
+@misc{withdraw-dao,
+	title        = {{The DAO Refunds}},
+	note         = {[Online; accessed 12-February-2019]},
+	howpublished = {\url{https://theethereum.wiki/w/index.php/The_DAO_Refunds}}
+}
+@misc{Immerman99descriptivecomplexity,
+	title        = {Descriptive Complexity},
+	author       = {Neil Immerman},
+	year         = 1999
+}
+@misc{wood2014ethereum,
+	title        = {Ethereum yellow paper},
+	author       = {Wood, Gavin},
+	year         = 2014,
+	publisher    = {website}
+}
+@article{mehar2019understanding,
+	title        = {Understanding a Revolutionary and Flawed Grand Experiment in Blockchain: The DAO Attack},
+	author       = {Mehar, Muhammad Izhar and Shier, Charles Louis and Giambattista, Alana and Gong, Elgar and Fletcher, Gabrielle and Sanayhie, Ryan and Kim, Henry M and Laskowski, Marek},
+	year         = 2019,
+	journal      = {Journal of Cases on Information Technology (JCIT)},
+	publisher    = {IGI Global},
+	volume       = 21,
+	number       = 1,
+	pages        = {19--32}
+}
+@inproceedings{mulligan2014lem,
+	title        = {Lem: reusable engineering of real-world semantics},
+	author       = {Mulligan, Dominic P and Owens, Scott and Gray, Kathryn E and Ridge, Tom and Sewell, Peter},
+	year         = 2014,
+	booktitle    = {ACM SIGPLAN Notices},
+	volume       = 49,
+	number       = 9,
+	pages        = {175--188},
+	organization = {ACM}
+}
+@phdthesis{barras1997coq,
+	title        = {The Coq proof assistant reference manual: Version 6.1},
+	author       = {Barras, Bruno and Boutin, Samuel and Cornes, Cristina and Courant, Judica{\"e}l and Filliatre, Jean-Christophe and Gimenez, Eduardo and Herbelin, Hugo and Huet, Gerard and Munoz, Cesar and Murthy, Chetan and others},
+	year         = 1997,
+	school       = {Inria}
+}
+@book{nipkow2002isabelle,
+	title        = {Isabelle/HOL: a proof assistant for higher-order logic},
+	author       = {Nipkow, Tobias and Paulson, Lawrence C and Wenzel, Markus},
+	year         = 2002,
+	publisher    = {Springer Science \& Business Media},
+	volume       = 2283
+}
+@inproceedings{SwamyCFSBY11,
+	title        = {Secure distributed programming with value-dependent types},
+	author       = {Nikhil Swamy and Juan Chen and C{\'{e}}dric Fournet and Pierre{-}Yves Strub and Karthikeyan Bhargavan and Jean Yang},
+	year         = 2011,
+	booktitle    = {Proceeding of the 16th {ACM} {SIGPLAN} international conference on Functional Programming},
+	publisher    = {{ACM}},
+	pages        = {266--278},
+	doi          = {10.1145/2034773.2034811},
+	isbn         = {978-1-4503-0865-6},
+	url          = {https://www.microsoft.com/en-us/research/publication/secure-distributed-programming-with-value-dependent-types/},
+	shortbooktitle = {ICFP},
+	ee           = {http://doi.acm.org/10.1145/2034773.2034811},
+	biburl       = {http://dblp.uni-trier.de/rec/bib/conf/icfp/SwamyCFSBY11},
+	editor       = {Manuel M. T. Chakravarty and Zhenjiang Hu and Olivier Danvy}
+}
+@article{rosu-serbanuta-2010-jlap,
+	title        = {An Overview of the {K} Semantic Framework},
+	author       = {Grigore Ro{\c s}u and Traian Florin {\c S}erb{\u a}nu{\c t}{\u a}},
+	year         = 2010,
+	journal      = {Journal of Logic and Algebraic Programming},
+	volume       = 79,
+	number       = 6,
+	pages        = {397--434},
+	doi          = {10.1016/j.jlap.2010.03.012},
+	ee           = {http://dx.doi.org/10.1016/j.jlap.2010.03.012}
+}
+@inproceedings{10.1007/978-3-030-03427-6_33,
+	title        = {{Computing Exact Worst-Case Gas Consumption for Smart Contracts}},
+	author       = {Marescotti, Matteo and Blicha, Martin and Hyv{\"{a}}rinen, Antti E J and Asadi, Sepideh and Sharygina, Natasha},
+	year         = 2018,
+	booktitle    = {Leveraging Applications of Formal Methods, Verification and Validation. Industrial Practice},
+	publisher    = {Springer International Publishing},
+	address      = {Cham},
+	pages        = {450--465},
+	isbn         = {978-3-030-03427-6},
+	abstract     = {The Ethereum platform is a public, distributed, blockchain-based database that is maintained by independent parties. A user interacts with Ethereum by writing programs and having miners execute them for a fee charged on-the-fly based on the complexity of the execution. The exact fee, measured in gas consumption, in general depends on the unknown Ethereum state, and predicting even its worst case is in principle undecidable. Uncertainty in gas consumption may result in inefficiency, loss of money, and, in extreme cases, in funds being locked for an indeterminate duration. This feasibility study presents two methods for determining the exact worst-case gas consumption of a bounded Ethereum execution using methods influenced by symbolic model checking. We give several concrete cases where gas consumption estimation is needed, and provide two approaches for determining gas consumption, one based on symbolically enumerating execution paths, and the other based on computing paths modularly based on the program structure.},
+	editor       = {Margaria, Tiziana and Steffen, Bernhard},
+	file         = {::},
+	mendeley-groups = {Metering}
+}
+@article{DBLP:journals/corr/abs-1811-10403,
+	title        = {{GASTAP: A Gas Analyzer for Smart Contracts}},
+	author       = {Albert, Elvira and Gordillo, Pablo and Rubio, Albert and Sergey, Ilya},
+	year         = 2018,
+	month        = {nov},
+	journal      = {CoRR},
+	volume       = {abs/1811.1},
+	url          = {http://arxiv.org/abs/1811.10403},
+	abstract     = {Gas is a measurement unit of the computational effort that it will take to execute every single operation that takes part in the Ethereum blockchain platform. Each instruction executed by the Ethereum Virtual Machine (EVM) has an associated gas consumption specified by Ethereum. If a transaction exceeds the amount of gas allotted by the user (known as gas limit), an out-of-gas exception is raised. There is a wide family of contract vulnerabilities due to out-of-gas behaviours. We report on the design and implementation of GASTAP, a Gas-Aware Smart contracT Analysis Platform, which takes as input a smart contract (either in EVM, disassembled EVM, or in Solidity source code) and automatically infers sound gas upper bounds for all its public functions. Our bounds ensure that if the gas limit paid by the user is higher than our inferred gas bounds, the contract is free of out-of-gas vulnerabilities.},
+	archiveprefix = {arXiv},
+	arxivid      = {1811.10403},
+	eprint       = {1811.10403},
+	file         = {::},
+	mendeley-groups = {Metering}
+}
+@inproceedings{8444844,
+	title        = {{Towards Saving Money in Using Smart Contracts}},
+	author       = {Chen, T and Li, Z and Zhou, H and Chen, J and Luo, X and Li, X and Zhang, X},
+	year         = 2018,
+	month        = {may},
+	booktitle    = {2018 IEEE/ACM 40th International Conference on Software Engineering: New Ideas and Emerging Technologies Results (ICSE-NIER)},
+	pages        = {81--84},
+	file         = {::},
+	keywords     = {Anti patterns,Contracts,Detection,Ethereum,GasReducer,Optimization,Smart contract,Software engineering,Synchronization,Tools,Virtual machining,antipattern detection,blockchain platform,bytecode-to-bytecode optimization,compiler optimization,execution traces,object-oriented programming,optimising compilers,program diagnostics,resource abuse,resource allocation,smart contract deployment,smart contract invocation,software leveraging blockchain,underoptimized smart contracts,virtual machine,virtual machines},
+	mendeley-groups = {Metering}
+}
+@inproceedings{8449244,
+	title        = {{A Detailed and Real-Time Performance Monitoring Framework for Blockchain Systems}},
+	author       = {Zheng, P and Zheng, Z and Luo, X and Chen, X and Liu, X},
+	year         = 2017,
+	month        = {may},
+	booktitle    = {2018 IEEE/ACM 40th International Conference on Software Engineering: Software Engineering in Practice Track (ICSE-SEIP)},
+	pages        = {134--143},
+	file         = {::},
+	keywords     = {Bitcoin,Blockchain,Contracts,Monitoring,Peer-to-peer computing,Performance,Protocols,Real-time systems,Smart Contract},
+	mendeley-groups = {Metering}
+}
+@inproceedings{Chen2017Metering,
+	title        = {An Adaptive Gas Cost Mechanism for Ethereum to Defend Against Under-Priced DoS Attacks},
+	author       = {Chen, Ting and Li, Xiaoqi and Wang, Ying and Chen, Jiachi and Li, Zihao and Luo, Xiapu and Au, Man Ho and Zhang, Xiaosong},
+	year         = 2017,
+	booktitle    = {Information Security Practice and Experience},
+	publisher    = {Springer International Publishing},
+	address      = {Cham},
+	pages        = {3--24},
+	isbn         = {978-3-319-72359-4},
+	editor       = {Liu, Joseph K. and Samarati, Pierangela},
+	abstract     = {The gas mechanism in Ethereum charges the execution of every operation to ensure that smart contracts running in EVM (Ethereum Virtual Machine) will be eventually terminated. Failing to properly set the gas costs of EVM operations allows attackers to launch DoS attacks on Ethereum. Although Ethereum recently adjusted the gas costs of EVM operations to defend against known DoS attacks, it remains unknown whether the new setting is proper and how to configure it to defend against unknown DoS attacks. In this paper, we make the first step to address this challenging issue by first proposing an emulation-based framework to automatically measure the resource consumptions of EVM operations. The results reveal that Ethereum's new setting is still not proper. Moreover, we obtain an insight that there may always exist exploitable under-priced operations if the cost is fixed. Hence, we propose a novel gas cost mechanism, which dynamically adjusts the costs of EVM operations according to the number of executions, to thwart DoS attacks. This method punishes the operations that are executed much more frequently than before and lead to high gas costs. To make our solution flexible and secure and avoid frequent update of Ethereum client, we design a special smart contract that collaborates with the updated EVM for dynamic parameter adjustment. Experimental results demonstrate that our method can effectively thwart both known and unknown DoS attacks with flexible parameter settings. Moreover, our method only introduces negligible additional gas consumption for benign users.}
+}
+@inproceedings{10.1007/978-3-540-69166-2_15,
+	title        = {{Automatic Inference of Upper Bounds for Recurrence Relations in Cost Analysis}},
+	author       = {Albert, Elvira and Arenas, Puri and Genaim, Samir and Puebla, Germ{\'{a}}n},
+	year         = 2008,
+	booktitle    = {Static Analysis},
+	publisher    = {Springer Berlin Heidelberg},
+	address      = {Berlin, Heidelberg},
+	pages        = {221--237},
+	isbn         = {978-3-540-69166-2},
+	abstract     = {The classical approach to automatic cost analysis consists of two phases. Given a program and some measure of cost, we first produce recurrence relations (RRs) which capture the cost of our program in terms of the size of its input data. Second, we convert such RRs into closed form (i.e., without recurrences). Whereas the first phase has received considerable attention, with a number of cost analyses available for a variety of programming languages, the second phase has received comparatively little attention. In this paper we first study the features of RRs generated by automatic cost analysis and discuss why existing computer algebra systems are not appropriate for automatically obtaining closed form solutions nor upper bounds of them. Then we present, to our knowledge, the first practical framework for the fully automatic generation of reasonably accurate upper bounds of RRs originating from cost analysis of a wide range of programs. It is based on the inference of ranking functions and loop invariants and on partial evaluation.},
+	editor       = {Alpuente, Mar{\'{i}}a and Vidal, Germ{\'{a}}n},
+	file         = {:home/daniel/Downloads/Albert2008{\_}Chapter{\_}AutomaticInferenceOfUpperBound.pdf:pdf},
+	mendeley-groups = {Metering}
+}
+@misc{transaction-spam-attack,
+	title        = {{Transaction spam attack: Next Steps}},
+	author       = {Vitalik Buterin},
+	note         = {[Online; accessed 4-April-2019]},
+	howpublished = {\url{https://blog.ethereum.org/2016/09/22/transaction-spam-attack-next-steps/}}
+}
+@misc{suicide-attack,
+	title        = {{Geth nodes under attack again}},
+	author       = {Vitalik Buterin},
+	note         = {[Online; accessed 4-April-2019]},
+	howpublished = {\url{https://www.reddit.com/r/ethereum/comments/55s085/geth_nodes_under_attack_again_we_are_actively/?st=itxh568s&sh=ee3628ea}}
+}
+@misc{aleth,
+	title        = {{cpp-ethereum}},
+	author       = {{Ethereum community}},
+	note         = {[Online; accessed 1-May-2019]},
+	howpublished = {\url{http://www.ethdocs.org/en/latest/ethereum-clients/cpp-ethereum/}}
+}
+@book{boslaugh2012statistics,
+	title        = {Statistics in a nutshell: A desktop quick reference},
+	author       = {Boslaugh, Sarah},
+	year         = 2012,
+	publisher    = {" O'Reilly Media, Inc."}
+}
+@article{abdi2010principal,
+	title        = {Principal component analysis},
+	author       = {Abdi, Herv{\'e} and Williams, Lynne J},
+	year         = 2010,
+	journal      = {Wiley interdisciplinary reviews: computational statistics},
+	publisher    = {Wiley Online Library},
+	volume       = 2,
+	number       = 4,
+	pages        = {433--459}
+}
+@misc{erc150,
+	title        = {{EIP 150: Gas cost changes for IO-heavy operations }},
+	author       = {Buterin, Vitalik},
+	note         = {[Online; accessed 05-June-2019]},
+	howpublished = {\url{https://eips.ethereum.org/EIPS/eip-150}}
+}
+@misc{eip2200,
+	title        = {{EIP 2200: Structured Definitions for Net Gas}},
+	author       = {Tang, Wei},
+	note         = {[Online; accessed 10-January-2019]},
+	howpublished = {\url{https://eips.ethereum.org/EIPS/eip-2200}}
+}
+@misc{eosio-about,
+	title        = {{About EOSIO}},
+	author       = {{Block.one}},
+	year         = 2019,
+	note         = {[Online; accessed 04-June-2019]},
+	howpublished = {\url{https://eos.io/about-us/}}
+}
+@article{goodman2014tezos,
+	title        = {Tezos—a self-amending crypto-ledger White paper},
+	author       = {Goodman, LM},
+	year         = 2014
+}
+@misc{tezos-about,
+	title        = {{About Tezos}},
+	author       = {{Tezos}},
+	year         = 2019,
+	note         = {[Online; accessed 04-June-2019]},
+	howpublished = {\url{https://tezos.com/learn-about-tezos}}
+}
+@misc{constantinople,
+	title        = {{Ethereum Constantinople Upgrade Announcement}},
+	author       = {{Hudson Jameson}},
+	year         = 2019,
+	note         = {[Online; accessed 05-July-2019]},
+	howpublished = {\url{https://blog.ethereum.org/2019/01/11/ethereum-constantinople-upgrade-announcement/}}
+}
+@article{whitley1994genetic,
+	title        = {A genetic algorithm tutorial},
+	author       = {Whitley, Darrell},
+	year         = 1994,
+	journal      = {Statistics and computing},
+	publisher    = {Springer},
+	volume       = 4,
+	number       = 2,
+	pages        = {65--85}
+}
+@article{DBLP:journals/corr/abs-1905-00553,
+	title        = {{Empirically Analyzing Ethereum's Gas Mechanism}},
+	author       = {Yang, Renlord and Murray, Toby and Rimba, Paul and Parampalli, Udaya},
+	year         = 2019,
+	journal      = {CoRR},
+	volume       = {abs/1905.0},
+	url          = {http://arxiv.org/abs/1905.00553},
+	archiveprefix = {arXiv},
+	arxivid      = {1905.00553},
+	eprint       = {1905.00553},
+	file         = {:home/daniel/tmp/1905.00553.pdf:pdf},
+	mendeley-groups = {Metering}
+}
+@misc{ghemawat2011leveldb,
+	title        = {LevelDB},
+	author       = {Ghemawat, Sanjay and Dean, Jeff},
+	year         = 2011,
+	note         = {[Online; accessed 05-August-2019]},
+	howpublished = {\url{https://github.com/google/leveldb}}
+}
+@misc{leveldb-cache,
+	title        = {LevelDB documentation},
+	author       = {Ghemawat, Sanjay and Dean, Jeff},
+	year         = 2011,
+	note         = {[Online; accessed 05-August-2019]},
+	howpublished = {\url{https://github.com/google/leveldb/blob/master/doc/index.md#cache}}
+}
+@misc{gas-price-history,
+	title        = {A Brief History Of Gas Prices on Ethereum},
+	author       = {Owocki, Kevin},
+	year         = 2018,
+	note         = {[Online; accessed 05-August-2019]},
+	howpublished = {\url{https://gitcoin.co/blog/a-brief-history-of-gas-prices-on-ethereum/}}
+}
+@misc{aztec-protocol,
+	title        = {The AZTEC Protocol: A Zero-Knowledge Privacy System On Ethereum},
+	author       = {Putney, Dani},
+	year         = 2018,
+	note         = {[Online; accessed 23-August-2019]},
+	howpublished = {\url{https://www.ethnews.com/the-aztec-protocol-a-zero-knowledge-privacy-system-on-ethereum}}
+}
+@misc{geth,
+	title        = {Official Go implementation of the Ethereum protocol},
+	author       = {The go-ethereum Authors},
+	year         = 2019,
+	note         = {[Online; accessed 25-August-2019]},
+	howpublished = {\url{https://github.com/ethereum/go-ethereum/}}
+}
+@misc{geth-memory-efficiency,
+	title        = {Geth nodes under attack again (Geth issue)},
+	author       = {Buterin, Vitalik},
+	year         = 2016,
+	note         = {[Online; accessed 05-September-2019]},
+	howpublished = {\url{https://www.reddit.com/r/ethereum/comments/55s085/geth_nodes_under_attack_again_we_are_actively/d8ebsad/}}
+}
+@misc{ethereum-faq,
+	title        = {go-ethereum FAQ},
+	author       = {{Schmideg, Adam}},
+	year         = 2018,
+	note         = {[Online; accessed 08-September-2019]},
+	howpublished = {\url{https://github.com/ethereum/go-ethereum/wiki/FAQ}}
+}
+@misc{node-incentive,
+	title        = {An economic incentive for running Ethereum full nodes},
+	author       = {{Petrov, Andrev}},
+	year         = 2018,
+	note         = {[Online; accessed 08-September-2019]},
+	howpublished = {\url{https://medium.com/vipnode/an-economic-incentive-for-running-ethereum-full-nodes-ecc0c9ebe22}}
+}
+@misc{pantheon-system-requirements,
+	title        = {Pantheon Ethereum Client System requirements},
+	author       = {{PegaSys}},
+	year         = 2019,
+	note         = {[Online; accessed 08-September-2019]},
+	howpublished = {\url{http://docs.pantheon.pegasys.tech/en/latest/HowTo/Get-Started/System-Requirements/}}
+}
+@misc{eth-hardware-requirements,
+	title        = {Analyzing the hardware requirements to be an Ethereum full validated node},
+	author       = {{Palau, Albert}},
+	year         = 2019,
+	note         = {[Online; accessed 08-September-2019]},
+	howpublished = {\url{https://medium.com/coinmonks/analyzing-the-hardware-requirements-to-be-an-ethereum-full-validated-node-dc064f167902}}
+}
+@article{DBLP:journals/corr/abs-1801-03998,
+	title        = {Decentralization in Bitcoin and Ethereum Networks},
+	author       = {Adem Efe Gencer and Soumya Basu and Ittay Eyal and Robbert van Renesse and Emin G{\"{u}}n Sirer},
+	year         = 2018,
+	journal      = {CoRR},
+	booktitle    = {CoRR},
+	volume       = {abs/1801.03998},
+	doi          = {arXiv:1801.03998v1},
+	url          = {http://arxiv.org/abs/1801.03998},
+	archiveprefix = {arXiv},
+	eprint       = {1801.03998},
+	timestamp    = {Mon, 13 Aug 2018 16:48:27 +0200},
+	biburl       = {https://dblp.org/rec/bib/journals/corr/abs-1801-03998},
+	bibsource    = {dblp computer science bibliography, https://dblp.org},
+	arxivid      = {1801.03998}
+}
+@misc{incentive-full-nodes,
+	title        = {Incentives for running full Ethereum nodes},
+	author       = {{Pitts, Jamie}},
+	year         = 2019,
+	note         = {[Online; accessed 08-September-2019]},
+	howpublished = {\url{https://ethresear.ch/t/incentives-for-running-full-ethereum-nodes/1239}}
+}
+@misc{gcp-compute-engine,
+	title        = {Google Compute Engine documentation},
+	author       = {{Google}},
+	year         = 2019,
+	note         = {[Online; accessed 08-September-2019]},
+	howpublished = {\url{https://cloud.google.com/compute/docs/}}
+}
+@misc{ethereum-foundation-github,
+	title        = {Ethereum - Github},
+	year         = 2019,
+	note         = {[Online; accessed 08-September-2019]},
+	howpublished = {\url{https://github.com/ethereum}}
+}
+@misc{eth-gas-station,
+	title        = {ETH Gas Station},
+	author       = {Concourse Open Community},
+	year         = 2019,
+	note         = {[Online; accessed 09-September-2019]},
+	howpublished = {\url{https://ethgasstation.info/calculatorTxV.php}}
+}
+@misc{block-time-chart,
+	title        = {Ethereum Average Block TimeChart},
+	author       = {Etherscan},
+	year         = 2019,
+	note         = {[Online; accessed 09-September-2019]},
+	howpublished = {\url{https://etherscan.io/chart/blocktime}}
+}
+@article{gulwani2017program,
+	title        = {Program synthesis},
+	author       = {Gulwani, Sumit and Polozov, Oleksandr and Singh, Rishabh and others},
+	year         = 2017,
+	journal      = {Foundations and Trends{\textregistered} in Programming Languages},
+	publisher    = {Now Publishers, Inc.},
+	volume       = 4,
+	number       = {1-2},
+	pages        = {1--119}
+}
+@misc{ethereum-bug-bounty,
+	title        = {Ethereum Bounty Program},
+	author       = {{Ethereum Foundation}},
+	year         = 2020,
+	note         = {[Online; accessed 05-January-2020]},
+	howpublished = {\url{https://bounty.ethereum.org/}}
+}
+@article{mitzenmacher2002compressed,
+	title        = {Compressed bloom filters},
+	author       = {Mitzenmacher, Michael},
+	year         = 2002,
+	journal      = {IEEE/ACM Transactions on Networking (TON)},
+	publisher    = {IEEE Press},
+	volume       = 10,
+	number       = 5,
+	pages        = {604--612}
+}
+@misc{dynamic-trie-snapshot-pr,
+	title        = {Dynamic state snapshot},
+	author       = {{Szilágyi, Péter}},
+	year         = 2019,
+	note         = {[Online; accessed 05-January-2020]},
+	howpublished = {\url{https://github.com/ethereum/go-ethereum/pull/20152}}
+}
+@article{al2017chainspace,
+	title        = {Chainspace: A sharded smart contracts platform},
+	author       = {Al-Bassam, Mustafa and Sonnino, Alberto and Bano, Shehar and Hrycyszyn, Dave and Danezis, George},
+	year         = 2017,
+	journal      = {arXiv preprint arXiv:1708.03778}
+}
+@misc{parity-ethereum,
+	title        = {Parity Ethereum},
+	author       = {{Parity Technologies}},
+	year         = 2020,
+	note         = {[Online; accessed 05-January-2020]},
+	howpublished = {\url{https://www.parity.io/ethereum/}}
+}
+@misc{average-block-time,
+	title        = {Ethereum Average Block Time Chart},
+	author       = {{Etherscan}},
+	year         = 2020,
+	note         = {[Online; accessed 10-January-2020]},
+	howpublished = {\url{https://etherscan.io/chart/blocktime}}
+}
+@inproceedings{eyal2014majority,
+	title        = {Majority is not enough: Bitcoin mining is vulnerable},
+	author       = {Eyal, Ittay and Sirer, Emin G{\"u}n},
+	year         = 2014,
+	booktitle    = {International conference on financial cryptography and data security},
+	pages        = {436--454},
+	organization = {Springer}
+}
+@misc{ehternodes,
+	title        = {Ethereum Mainnet Statistics},
+	author       = {{ethernodes.org}},
+	year         = 2020,
+	note         = {[Online; accessed 10-January-2020]},
+	howpublished = {\url{https://www.ethernodes.org/}}
+}
+@misc{tezos-vote-reject,
+	title        = {{Tezos Brest A amendment}},
+	author       = {{Tezos Agora}},
+	year         = 2019,
+	url          = {https://www.tezosagora.org/period/15}
+}
+@misc{dao-fork,
+	title        = {{EIP 779: Hardfork Meta: DAO Fork}},
+	year         = 2017,
+	url          = {https://eips.ethereum.org/EIPS/eip-779}
+}
+@misc{byzantium-fork,
+	title        = {{EIP 609: Hardfork Meta: Byzantium}},
+	year         = 2017,
+	url          = {https://eips.ethereum.org/EIPS/eip-609}
+}
+@misc{xrpscan,
+	title        = {{XRP Scan | Ripple XRP ledger explorer}},
+	author       = {Scrambled Egg Technologies},
+	year         = 2020,
+	url          = {https://xrpscan.com/}
+}
+@misc{eosio-tokens,
+	title        = {eosio.token},
+	author       = {Obsidian Labs},
+	year         = 2019,
+	url          = {https://docs.eosstudio.io/contracts/eosio-token.html}
+}
+@misc{suspect-payment-xrp,
+	title        = {Spam? suspect BTC payments on XRPL},
+	author       = {yxxyun},
+	year         = 2019,
+	url          = {https://www.xrpchat.com/topic/33284-spam-suspect-btc-payments-on-xrpl/}
+}
+@misc{lpos,
+	title        = {Liquid Proof-of-Stake},
+	author       = {Jacob Arluck},
+	year         = 2018,
+	url          = {https://medium.com/tezos/liquid-proof-of-stake-aec2f7ef1da7}
+}
+@misc{tezos-ukraine,
+	title        = {Tezos Ukraine Infrastructure},
+	author       = {Tezos Ukraine},
+	year         = 2020,
+	url          = {https://api.tezos.org.ua/}
+}
+@inproceedings{10.1145/2660267.2660379,
+	title        = {Deanonymisation of Clients in Bitcoin P2P Network},
+	author       = {Biryukov, Alex and Khovratovich, Dmitry and Pustogarov, Ivan},
+	year         = 2014,
+	booktitle    = {Proceedings of the 2014 ACM SIGSAC Conference on Computer and Communications Security},
+	location     = {Scottsdale, Arizona, USA},
+	publisher    = {Association for Computing Machinery},
+	address      = {New York, NY, USA},
+	series       = {CCS ’14},
+	pages        = {15–29},
+	doi          = {10.1145/2660267.2660379},
+	isbn         = 9781450329576,
+	url          = {https://doi.org/10.1145/2660267.2660379},
+	numpages     = 15,
+	keywords     = {p2p, tor, bitcoin, anonymity}
+}
+@misc{yas-network,
+	title        = {YAS Network},
+	author       = {EIDOS Team},
+	year         = 2019,
+	url          = {https://enumivo.org/blog/2019/11/24/yas-network}
+}
+@misc{huang2020characterizing,
+	title        = {Characterizing EOSIO Blockchain},
+	author       = {Yuheng Huang and Haoyu Wang and Lei Wu and Gareth Tyson and Xiapu Luo and Run Zhang and Xuanzhe Liu and Gang Huang and Xuxian Jiang},
+	year         = 2020,
+	eprint       = {2002.05369},
+	archiveprefix = {arXiv},
+	primaryclass = {cs.CR}
+}
+@misc{backerei,
+	title        = {{backerei --- Automated reward payment \& account management for Tezos bakers.}},
+	author       = {Cryptium Labs},
+	year         = 2020,
+	url          = {https://github.com/cryptiumlabs/backerei}
+}
+@misc{cryptium-labs-payout,
+	title        = {{Cryptium Labs Payouts}},
+	author       = {Blockwatch Data},
+	year         = 2020,
+	url          = {https://tzstats.com/tz1cNARmnRRrvZgspPr2rSTUWq5xtGTuKuHY}
+}
+@misc{hashbaby-closing,
+	title        = {{Mark's HBS, from dapp ``vulgar rights'' to Defi ``industry foundation''}},
+	author       = {HashBaby},
+	year         = 2019,
+	url          = {https://bit.ly/hashbaby-closing}
+}
+@misc{tezos-faucet,
+	title        = {{Tezos Foundation's Faucet}},
+	author       = {{Tezos Foundation}},
+	year         = 2020,
+	url          = {https://faucet.tezos.com/}
+}
+@misc{binance-xrp-issue,
+	title        = {{Binance facing XRP withdrawal issues}},
+	author       = {AtoZMarkets},
+	year         = 2019,
+	url          = {https://atozmarkets.com/news/binance-facing-xrp-withdrawal-issues/}
+}
+@misc{visa-tps,
+	title        = {{Visa Fact Sheet}},
+	author       = {Visa},
+	year         = 2020,
+	url          = {https://usa.visa.com/dam/VCOM/download/corporate/media/visanet-technology/aboutvisafactsheet.pdf}
+}
+@misc{eth-defi-gas,
+	title        = {{Record Ethereum Network Use and Gas Fees Pose Risk to DeFi Expansion}},
+	author       = {Pechman, Marcel},
+	year         = 2020,
+	url          = {https://cointelegraph.com/news/record-ethereum-network-use-and-gas-fees-pose-risk-to-defi-expansion}
+}
+@article{gudgeon2020defi,
+	title        = {DeFi Protocols for Loanable Funds: Interest Rates, Liquidity and Market Efficiency},
+	author       = {Gudgeon, Lewis and Werner, Sam M and Perez, Daniel and Knottenbelt, William J},
+	year         = 2020,
+	journal      = {arXiv preprint arXiv:2006.13922}
+}
+@misc{eos-rental-market,
+	title        = {{EOSIO Resource Allocation Proposal}},
+	author       = {EOSIO},
+	year         = 2020,
+	url          = {https://eos.io/news/eosio-resource-allocation-proposal/}
+}
+@misc{xrp-fees,
+	title        = {Fee Voting},
+	author       = {{XRP Ledger Project}},
+	year         = 2019,
+	url          = {https://xrpl.org/fee-voting.html}
+}
+@misc{eip-1559,
+	title        = {{EIP-1559: Fee market change for ETH 1.0 chain}},
+	author       = {Buterin, Vitalik and Conner,  Eric and Dudley, Rick and Slipper, Matthew and Norden,  Ian},
+	year         = 2019,
+	url          = {https://eips.ethereum.org/EIPS/eip-1559}
+}
+@inproceedings{DBLP:conf/ndss/0002L20,
+	title        = {Broken Metre: Attacking Resource Metering in {EVM}},
+	author       = {Daniel P{\'{e}}rez and Benjamin Livshits},
+	year         = 2020,
+	booktitle    = {27th Annual Network and Distributed System Security Symposium, {NDSS} 2020, San Diego, California, USA, February 23-26, 2020},
+	publisher    = {The Internet Society},
+	url          = {https://www.ndss-symposium.org/ndss-paper/broken-metre-attacking-resource-metering-in-evm/},
+	timestamp    = {Tue, 21 Jul 2020 16:10:07 +0200},
+	biburl       = {https://dblp.org/rec/conf/ndss/0002L20.bib},
+	bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+@unpublished{warren20170x,
+	title        = {{0x: An open protocol for decentralized exchange on the Ethereum blockchain}},
+	author       = {Warren, Will and Bandeali, Amir},
+	year         = 2017
+}
+@misc{Silkjr2019,
+	title        = {{14 Common Misunderstandings About Ripple And XRP}},
+	author       = {Silkj{\ae}r, Thomas},
+	year         = 2019,
+	booktitle    = {Forbes},
+	url          = {https://www.forbes.com/sites/thomassilkjaer/2019/03/07/14-common-misunderstandings-about-ripple-and-xrp/}
+}
+@misc{CiTEZen.tez,
+	title        = {{@maqstik Reward payments}},
+	author       = {{CitezenB}},
+	year         = 2020,
+	booktitle    = {Twitter},
+	url          = {https://twitter.com/CitezenB/status/1256147427905716224}
+}
+@inproceedings{8968856,
+	title        = {{A Hybrid POW-POS Implementation Against 51 percent Attack in Cryptocurrency System}},
+	author       = {Gupta, K D and Rahman, A and Poudyal, S and Huda, M N and Mahmud, M A P},
+	year         = 2019,
+	booktitle    = {2019 IEEE International Conference on Cloud Computing Technology and Science (CloudCom)},
+	pages        = {396--403}
+}
+@misc{Silkjr2018a,
+	title        = {{A monthly XRP ledger analysis}},
+	author       = {Silkj{\ae}r, Thomas},
+	year         = 2018,
+	url          = {https://xrpcommunity.blog/a-monthly-xrp-ledger-analysis/}
+}
+@inproceedings{ferrin2015preliminary,
+	title        = {{A preliminary field guide for bitcoin transaction patterns}},
+	author       = {Ferrin, Danno},
+	year         = 2015,
+	booktitle    = {Texas Bitcoin Conference},
+	pages        = {1--8}
+}
+@article{8653269,
+	title        = {{A Survey on Long-Range Attacks for Proof of Stake Protocols}},
+	author       = {Deirmentzoglou, E and Papakyriakopoulos, G and Patsakis, C},
+	year         = 2019,
+	journal      = {IEEE Access},
+	volume       = 7,
+	pages        = {28712--28725}
+}
+@article{Xie2019,
+	title        = {{A Survey on the Scalability of Blockchain Systems}},
+	author       = {Xie, Junfeng and Yu, F. Richard and Huang, Tao and Xie, Renchao and Liu, Jiang and Liu, Yunjie},
+	year         = 2019,
+	journal      = {IEEE Network},
+	volume       = 33,
+	number       = 5,
+	pages        = {166--173},
+	doi          = {10.1109/MNET.001.1800290},
+	issn         = {1558156X},
+	keywords     = {cryptography, data mining, electronic money, peer-to-}
+}
+@misc{EOSIO2019,
+	title        = {{About System Contracts}},
+	author       = {{EOSIO}},
+	year         = 2019,
+	url          = {https://eosio.github.io/eosio.contracts/latest/index}
+}
+@misc{XRPLedger2019,
+	title        = {{Accounts}},
+	author       = {{XRP Ledger}},
+	year         = 2019,
+	booktitle    = {XRP Ledger Dev Portal},
+	url          = {https://xrpl.org/accounts.html#special-addresses}
+}
+@article{victoraddress,
+	title        = {{Address clustering heuristics for Ethereum}},
+	author       = {Victor, Friedhelm},
+	year         = 2020
+}
+@article{algorand,
+	title        = {{Algorand: Scaling Byzantine Agreements for Cryptocurrencies}},
+	author       = {Gilad, Yossi and Hemo, Rotem and Micali, Silvio and Vlachos, Georgios and Zeldovich, Nickolai},
+	year         = 2017,
+	month        = 7,
+	journal      = {SOSP 2017 - Proceedings of the 26th ACM Symposium on Operating Systems Principles},
+	publisher    = {ACM},
+	address      = {New York, NY, USA},
+	series       = {SOSP '17},
+	volume       = {abs/1607.0},
+	pages        = {51--68},
+	doi          = {10.1145/3132747.3132757},
+	isbn         = 9781450350853,
+	url          = {http://arxiv.org/abs/1607.01341 http://doi.acm.org/10.1145/3132747.3132757},
+	arxivid      = {1607.01341}
+}
+@misc{PPOS,
+	title        = {{Algorand’s Pure Proof-of-Stake Approach}},
+	author       = {{Algorand}},
+	howpublished = {{\textbackslash}url{\{}https://www.algorand.com/what-we-do/technology/pure-proof-of-stake/{\}}}
+}
+@article{Mariem2020,
+	title        = {{All that Glitters is not Bitcoin -- Unveiling the Centralized Nature of the BTC (IP) Network}},
+	author       = {Mariem, Sami Ben and Casas, Pedro and Romiti, Matteo and Donnet, Benoit and St{\"{u}}tz, Rainer and Haslhofer, Bernhard},
+	year         = 2020,
+	pages        = {1--9},
+	url          = {http://arxiv.org/abs/2001.09105},
+	arxivid      = {2001.09105}
+}
+@article{mariem2020all,
+	title        = {{All that Glitters is not Bitcoin--Unveiling the Centralized Nature of the BTC (IP) Network}},
+	author       = {Mariem, Sami Ben and Casas, Pedro and Romiti, Matteo and Donnet, Benoit and Stutz, Rainer and Haslhofer, Bernhard},
+	year         = 2020,
+	journal      = {arXiv preprint arXiv:2001.09105}
+}
+@inproceedings{10.1007/978-3-319-50901-3_59,
+	title        = {{An analysis of the Bitcoin users graph: inferring unusual behaviours}},
+	author       = {Di Francesco Maesa, Damiano and Marino, Andrea and Ricci, Laura},
+	year         = 2017,
+	booktitle    = {Complex Networks {\&} Their Applications V},
+	publisher    = {Springer International Publishing},
+	address      = {Cham},
+	pages        = {749--760},
+	isbn         = {978-3-319-50901-3},
+	editor       = {Cherifi, Hocine and Gaito, Sabrina and Quattrociocchi, Walter and Sala, Alessandra}
+}
+@article{DBLP:journals/corr/abs-1903-07994,
+	title        = {{An Evaluation of Bitcoin Address Classification based on Transaction History Summarization}},
+	author       = {Lin, Yu-Jing and Wu, Po-Wei and Hsu, Cheng-Han and Tu, I-Ping and Liao, Shih-Wei},
+	year         = 2019,
+	journal      = {CoRR},
+	volume       = {abs/1903.0},
+	url          = {http://arxiv.org/abs/1903.07994},
+	arxivid      = {1903.07994}
+}
+@article{Zheng2017b,
+	title        = {{An Overview of Blockchain Technology: Architecture, Consensus, and Future Trends}},
+	author       = {Zheng, Zibin and Xie, Shaoan and Dai, Hongning and Chen, Xiangping and Wang, Huaimin},
+	year         = 2017,
+	journal      = {Proceedings - 2017 IEEE 6th International Congress on Big Data, BigData Congress 2017},
+	pages        = {557--564},
+	doi          = {10.1109/BigDataCongress.2017.85},
+	isbn         = 9781538619964,
+	url          = {https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8029379},
+	keywords     = {Blockchain, consensus, decentralization, scalability}
+}
+@article{DBLP:journals/corr/abs-1112-4980,
+	title        = {{Analysis of Bitcoin Pooled Mining Reward Systems}},
+	author       = {Rosenfeld, Meni},
+	year         = 2011,
+	month        = 12,
+	journal      = {CoRR},
+	volume       = {abs/1112.4},
+	url          = {http://arxiv.org/abs/1112.4980},
+	arxivid      = {1112.4980}
+}
+@techreport{Chase2018,
+	title        = {{Analysis of the XRP Ledger Consensus Protocol}},
+	author       = {Chase, Brad and Macbrough, Ethan},
+	year         = 2018,
+	month        = 2,
+	url          = {http://arxiv.org/abs/1802.07242},
+	institution  = {Ripple Labs, Inc.},
+	arxivid      = {1802.07242v1}
+}
+@misc{LordofCrypto2018,
+	title        = {{Anybody else notice the {\$}100billion worth of {\$}BTC and {\$}60billion of other assets move across the {\$}XRP ledger today? Anybody know what this is all about? @xrptips @XRPTrump @RabbitKickClub @rjr13579 @TplusZero {\#}Ripple {\#}XRP}},
+	author       = {{Lord{\_}of{\_}Crypto}},
+	year         = 2018,
+	booktitle    = {Twitter},
+	url          = {https://twitter.com/Lord_of_Crypto/status/965344062084497408}
+}
+@misc{EOSDocs2020,
+	title        = {{API endpoints}},
+	author       = {{EOSDocs.io}},
+	year         = 2020,
+	url          = {https://www.eosdocs.io/resources/apiendpoints/}
+}
+@article{asynchronous_byzantine,
+	title        = {{Asynchronous Byzantine agreement protocols}},
+	author       = {Bracha, Gabriel},
+	year         = 1987,
+	journal      = {Information and Computation},
+	volume       = 75,
+	number       = 2,
+	pages        = {130--143},
+	doi          = {10.1016/0890-5401(87)90054-X},
+	issn         = 10902651
+}
+@misc{CryptiumLabs2019,
+	title        = {{Babylon 2.0 (PsBABY5HQ)}},
+	author       = {{Cryptium Labs}},
+	year         = 2019,
+	url          = {https://www.tezosagora.org/proposal/5}
+}
+@article{fanti2019barracuda,
+	title        = {{Barracuda: The Power of {\$}{\$}{\textbackslash}{\$}ell {\$}-polling in Proof-of-Stake Blockchains}},
+	author       = {Fanti, Giulia and Jiao, Jiantao and Makkuva, Ashok and Oh, Sewoong and Rana, Ranvir and Viswanath, Pramod},
+	year         = 2019,
+	journal      = {arXiv preprint arXiv:1909.08719}
+}
+@article{fanti2019barracudab,
+	title        = {{Barracuda: The Power of {\$}{\$}{\textbackslash}{\$}ell {\$}-polling in Proof-of-Stake Blockchains}},
+	author       = {Fanti, Giulia and Jiao, Jiantao and Makkuva, Ashok and Oh, Sewoong and Rana, Ranvir and Viswanath, Pramod},
+	year         = 2019,
+	journal      = {arXiv preprint arXiv:1909.08719}
+}
+@misc{Ripplea,
+	title        = {{Benefits of XRP in Payments}},
+	author       = {{Ripple}},
+	year         = 2020,
+	booktitle    = {XRP Charts},
+	url          = {https://ripple.com/xrp/}
+}
+@misc{azouvi2018betting,
+	title        = {{Betting on Blockchain Consensus with Fantomette}},
+	author       = {Azouvi, Sarah and McCorry, Patrick and Meiklejohn, Sarah},
+	year         = 2018,
+	arxivid      = {cs.CR/1805.06786}
+}
+@misc{AtoZMarkets2019,
+	title        = {{Binance facing XRP withdrawal issues}},
+	author       = {{AtoZ Markets}},
+	year         = 2019,
+	url          = {https://atozmarkets.com/news/binance-facing-xrp-withdrawal-issues/}
+}
+@unpublished{nakamoto2012bitcoin,
+	title        = {{Bitcoin: A Peer-to-Peer Electronic Cash System}},
+	author       = {Nakamoto, Satoshi},
+	year         = 2008,
+	url          = {http://www.bitcoin.org/bitcoin.pdf www.bitcoin.org},
+	keywords     = {imported}
+}
+@misc{bitscope,
+	title        = {{BitScope: Scaling Bitcoin Address De-anonymization using Multi-Resolution Clustering}},
+	author       = {Zhang, Zhen and Zhou, Tianyi and Xie, Zhitong},
+	year         = 2019,
+	pages        = {1--11},
+	howpublished = {{\textbackslash}url{\{}https://izgzhen.github.io/bitscope-public/paper.pdf{\}}}
+}
+@article{Wang2018,
+	title        = {{Blockchain challenges and opportunities: a survey}},
+	author       = {Wang, Huaimin and Zheng, Zibin and Xie, Shaoan and Dai, Hong Ning and Chen, Xiangping},
+	year         = 2018,
+	journal      = {International Journal of Web and Grid Services},
+	volume       = 14,
+	number       = 4,
+	pages        = 352,
+	doi          = {10.1504/ijwgs.2018.10016848},
+	issn         = {1741-1106},
+	url          = {https://www.researchgate.net/publication/328271018},
+	keywords     = {IoT, blockchain, consensus algorithms, cryptocurrency, internet of things, smart contract}
+}
+@article{saleh2020blockchain,
+	title        = {{Blockchain without waste: Proof-of-stake}},
+	author       = {Saleh, Fahad},
+	year         = 2020,
+	journal      = {Available at SSRN 3183935}
+}
+@misc{BTGPactual2019,
+	title        = {{BTG Pactual and Dalma Capital to utilize Tezos Blockchain for Security Token Offerings (STOs)}},
+	author       = {{BTG Pactual} and {Dalma Capital}},
+	year         = 2019,
+	url          = {https://www.prnewswire.co.uk/news-releases/btg-pactual-and-dalma-capital-to-utilize-tezos-blockchain-for-security-token-offerings-stos--880726956.html}
+}
+@article{he2019characterizing,
+	title        = {{Characterizing Code Clones in the Ethereum Smart Contract Ecosystem}},
+	author       = {He, Ningyu and Wu, Lei and Wang, Haoyu and Guo, Yao and Jiang, Xuxian},
+	year         = 2019,
+	journal      = {arXiv preprint arXiv:1905.00272}
+}
+@inproceedings{fanti2019compounding,
+	title        = {{Compounding of wealth in proof-of-stake cryptocurrencies}},
+	author       = {Fanti, Giulia and Kogan, Leonid and Oh, Sewoong and Ruan, Kathleen and Viswanath, Pramod and Wang, Gerui},
+	year         = 2019,
+	booktitle    = {International Conference on Financial Cryptography and Data Security},
+	pages        = {42--61},
+	organization = {Springer}
+}
+@inproceedings{fanti2019compoundingb,
+	title        = {{Compounding of wealth in proof-of-stake cryptocurrencies}},
+	author       = {Fanti, Giulia and Kogan, Leonid and Oh, Sewoong and Ruan, Kathleen and Viswanath, Pramod and Wang, Gerui},
+	year         = 2019,
+	booktitle    = {International Conference on Financial Cryptography and Data Security},
+	pages        = {42--61},
+	organization = {Springer}
+}
+@inproceedings{DiLuzio2017,
+	title        = {{Consensus Robustness and Transaction De-Anonymization in the Ripple Currency Exchange System}},
+	author       = {Di Luzio, Adriano and Mei, Alessandro and Stefa, Julinda},
+	year         = 2017,
+	month        = 6,
+	booktitle    = {2017 IEEE 37th International Conference on Distributed Computing Systems (ICDCS)},
+	publisher    = {IEEE},
+	pages        = {140--150},
+	doi          = {10.1109/ICDCS.2017.52},
+	isbn         = {978-1-5386-1792-2},
+	issn         = {1063-6927},
+	url          = {http://ieeexplore.ieee.org/document/7979962/},
+	keywords     = {Anonymity, Consensus., Credit networks, Distributed ledger, Distributed systems, Payments, Privacy, Ripple, Transactions}
+}
+@misc{cryptoeprint:2020:041,
+	title        = {{Consistency in Proof-of-Stake Blockchains with Concurrent Honest Slot Leaders}},
+	author       = {Kiayias, Aggelos and Quader, Saad and Russell, Alexander},
+	year         = 2020,
+	howpublished = {Cryptology ePrint Archive, Report 2020/041}
+}
+@article{Jiang2018,
+	title        = {{ContractFuzzer : Fuzzing Smart Contracts for Vulnerability Detection}},
+	author       = {Jiang, Bo and Liu, Ye and Chan, W K},
+	year         = 2018,
+	journal      = {Proceedings of the 33rd ACM/IEEE International Conference on Automated Software Engineering},
+	number       = {July},
+	pages        = {259--269},
+	institution  = {ACM},
+	keywords     = {ethereum, fuzzing, smart contract, vulnerability}
+}
+@misc{Kramer,
+	title        = {{Could EOSIO be the Foundation of a Blockchain Future}},
+	author       = {Kramer, Melanie and O'Sullivan, Michael},
+	year         = 2019,
+	booktitle    = {Bywire Decentralised News},
+	url          = {https://bywire.news/articles/could-eosio-be-the-foundation-of-a-blockchain-future}
+}
+@article{karakostas2019cryptocurrency,
+	title        = {{Cryptocurrency Egalitarianism: A Quantitative Approach}},
+	author       = {Karakostas, Dimitris and Kiayias, Aggelos and Nasikas, Christos and Zindros, Dionysis},
+	year         = 2019,
+	journal      = {OpenAccess Series in Informatics},
+	volume       = 71,
+	doi          = {10.4230/OASIcs.Tokenomics.2019.7},
+	isbn         = 9783959771085,
+	issn         = 21906807,
+	arxivid      = {cs.CY/1907.02434},
+	keywords     = {Blockchain, Cryptocurrency, Economics, Egalitarianism, Proof-of-stake, Proof-of-work}
+}
+@article{DBLP:journals/corr/abs-1803-00646,
+	title        = {{Data mining for detecting Bitcoin Ponzi schemes}},
+	author       = {Bartoletti, Massimo and Pes, Barbara and Serusi, Sergio},
+	year         = 2018,
+	journal      = {CoRR},
+	volume       = {abs/1803.0},
+	url          = {http://arxiv.org/abs/1803.00646},
+	arxivid      = {1803.00646}
+}
+@inproceedings{8802640,
+	title        = {{Deanonymizing Cryptocurrency With Graph Learning: The Promises and Challenges}},
+	author       = {Gaihre, A and Pandey, S and Liu, H},
+	year         = 2019,
+	month        = 6,
+	booktitle    = {2019 IEEE Conference on Communications and Network Security (CNS)},
+	pages        = {1--3},
+	doi          = {10.1109/CNS.2019.8802640},
+	keywords     = {Bitcoin publicly, Satoshi Nakamoto, cryptocurrencies, cryptocurrency-based illicit activities, cyberfighters, decentralized transaction verification, financial data processing, graph learning, graph theory, graph vertices, latent feature extraction, law administration, law enforcement, learning (artificial intelligence), transaction processing, trustless transaction verification, world economy}
+}
+@misc{bitshares,
+	title        = {{Delegated Proof of Stake (DPOS)}},
+	author       = {{Bitshares}},
+	year         = 2018,
+	url          = {https://github.com/bitshares/how.bitshares.works/blob/master/docs/technology/dpos.rst}
+}
+@misc{Labs2018,
+	title        = {{Delegating your coins}},
+	author       = {{Nomadic Labs}},
+	year         = 2018,
+	booktitle    = {How to run Tezos},
+	url          = {https://tezos.gitlab.io/introduction/howtorun.html#delegating-your-coins}
+}
+@misc{NomadicLabs2018b,
+	title        = {{Delegation}},
+	author       = {{Nomadic Labs}},
+	year         = 2018,
+	booktitle    = {Proof-of-stake in Tezos},
+	url          = {http://tezos.gitlab.io/whitedoc/proof_of_stake.html#delegation}
+}
+@article{besta2019demystifying,
+	title        = {{Demystifying Graph Databases: Analysis and Taxonomy of Data Organization, System Designs, and Graph Queries}},
+	author       = {Besta, Maciej and Peter, Emanuel and Gerstenberger, Robert and Fischer, Marc and Podstawski Micha{\l}and Barthels, Claude and Alonso, Gustavo and Hoefler, Torsten},
+	year         = 2019,
+	journal      = {arXiv preprint arXiv:1910.09017}
+}
+@article{DIFRANCESCOMAESA201763,
+	title        = {{Detecting artificial behaviours in the Bitcoin users graph}},
+	author       = {Maesa, Damiano Di Francesco and Marino, Andrea and Ricci, Laura},
+	year         = 2017,
+	journal      = {Online Social Networks and Media},
+	volume       = {3-4},
+	pages        = {63--74},
+	doi          = {https://doi.org/10.1016/j.osnem.2017.10.006},
+	issn         = {2468-6964},
+	url          = {http://www.sciencedirect.com/science/article/pii/S2468696417300836},
+	keywords     = {Bitcoin, Blockchain, Deanonymization, Graph analysis}
+}
+@article{DBLP:journals/corr/abs-1906-07974,
+	title        = {{Detecting problematic transactions in a consumer-to-consumer e-commerce network}},
+	author       = {Kodate, Shun and Chiba, Ryusuke and Kimura, Shunya and Masuda, Naoki},
+	year         = 2019,
+	journal      = {CoRR},
+	volume       = {abs/1906.0},
+	url          = {http://arxiv.org/abs/1906.07974},
+	arxivid      = {1906.07974}
+}
+@incollection{inbook,
+	title        = {{Dissecting Ethereum Blockchain Analytics: What We Learn from Topology and Geometry of the Ethereum Graph?}},
+	author       = {Li, Yitao and Islambekov, Umar and Akcora, Cuneyt and Smirnova, Ekaterina and Gel, Yulia and Kantarcioglu, Murat},
+	year         = 2020,
+	pages        = {523--531},
+	doi          = {10.1137/1.9781611976236.59},
+	isbn         = {978-1-61197-623-6}
+}
+@article{10.1371/journal.pone.0086197,
+	title        = {{Do the Rich Get Richer? An Empirical Analysis of the Bitcoin Transaction Network}},
+	author       = {Kondor, Dániel and P{\'{o}}sfai, Márton and Csabai, István and Vattay, Gábor},
+	year         = 2014,
+	journal      = {PLOS ONE},
+	publisher    = {Public Library of Science},
+	volume       = 9,
+	number       = 2,
+	pages        = {1--10},
+	doi          = {10.1371/journal.pone.0086197},
+	issn         = 19326203,
+	url          = {https://doi.org/10.1371/journal.pone.0086197},
+	arxivid      = {1308.3892}
+}
+@misc{dpos,
+	title        = {{DPoS}},
+	author       = {Wiki, The Bitcoin},
+	howpublished = {{\textbackslash}url{\{}https://en.bitcoinwiki.org/wiki/DPoS{\}}}
+}
+@inproceedings{Liu:2018:EDS:3236024.3264596,
+	title        = {{EClone: Detect Semantic Clones in Ethereum via Symbolic Transaction Sketch}},
+	author       = {Liu, Han and Yang, Zhiqiang and Liu, Chao and Jiang, Yu and Zhao, Wenqi and Sun, Jiaguang},
+	year         = 2018,
+	booktitle    = {Proceedings of the 2018 26th ACM Joint Meeting on European Software Engineering Conference and Symposium on the Foundations of Software Engineering},
+	publisher    = {ACM},
+	address      = {New York, NY, USA},
+	series       = {ESEC/FSE 2018},
+	pages        = {900--903},
+	doi          = {10.1145/3236024.3264596},
+	isbn         = {978-1-4503-5573-5},
+	url          = {http://doi.acm.org/10.1145/3236024.3264596},
+	keywords     = {Smart contracts, semantic clone, symbolic transaction}
+}
+@misc{EOS,
+	title        = {{EOS.IO Technical White Paper v2}},
+	author       = {{block.one}},
+	year         = 2018,
+	url          = {https://github.com/EOSIO/Documentation/blob/master/TechnicalWhitePaper.md}
+}
+@techreport{Xua,
+	title        = {{EOS: An Architectural, Performance, and Economic Analysis}},
+	author       = {Xu, Brent and Luthra, Dhruv and Cole, Zak and Blakely, Nate},
+	year         = 2018
+}
+@misc{EOSIO2020,
+	title        = {{eosio.contracts}},
+	author       = {{EOSIO}},
+	year         = 2020,
+	url          = {https://github.com/EOSIO/eosio.contracts/blob/master/README.md}
+}
+@inproceedings{10.1007/978-3-030-36938-5_7,
+	title        = {{Ethereum Analysis via Node Clustering}},
+	author       = {Sun, Hanyi and Ruan, Na and Liu, Hanqing},
+	year         = 2019,
+	booktitle    = {Network and System Security},
+	publisher    = {Springer International Publishing},
+	address      = {Cham},
+	pages        = {114--129},
+	isbn         = {978-3-030-36938-5},
+	editor       = {Liu, Joseph K and Huang, Xinyi}
+}
+@techreport{Wood2014,
+	title        = {{Ethereum: a secure decentralised generalised transaction ledger}},
+	author       = {Wood, Gavin},
+	year         = 2019,
+	booktitle    = {Ethereum Project Yellow Paper},
+	pages        = {1--32},
+	doi          = {10.1017/CBO9781107415324.004},
+	isbn         = 9788578110796,
+	issn         = {1098-6596},
+	pmid         = 25246403,
+	arxivid      = {arXiv:1011.1669v3}
+}
+@techreport{Tikhomirov,
+	title        = {{Ethereum: state of knowledge and research perspectives}},
+	author       = {Tikhomirov, Sergei},
+	url          = {https://allquantor.at/blockchainbib/pdf/tikhomirov2017ethereum.pdf},
+	keywords     = {Ethereum, blockchain, smart contracts, state of knowledge}
+}
+@inproceedings{10.1007/978-3-319-70278-0_16,
+	title        = {{Exchange Pattern Mining in the Bitcoin Transaction Directed Hypergraph}},
+	author       = {Ranshous, Stephen and Joslyn, Cliff A and Kreyling, Sean and Nowak, Kathleen and Samatova, Nagiza F and West, Curtis L and Winters, Samuel},
+	year         = 2017,
+	booktitle    = {Financial Cryptography and Data Security},
+	publisher    = {Springer International Publishing},
+	address      = {Cham},
+	pages        = {248--263},
+	isbn         = {978-3-319-70278-0},
+	editor       = {Brenner, Michael and Rohloff, Kurt and Bonneau, Joseph and Miller, Andrew and Ryan, Peter Y A and Teague, Vanessa and Bracciali, Andrea and Sala, Massimiliano and Pintore, Federico and Jakobsson, Markus}
+}
+@techreport{begicheva2018fair,
+	title        = {{Fair proof of stake}},
+	author       = {Begicheva, A and Kofman, A},
+	year         = 2018,
+	institution  = {Tech. Rep}
+}
+@misc{xrp_ledger_overview,
+	title        = {{Fast, Efficient Consensus Algorithm}},
+	author       = {{XRP Ledger}},
+	year         = 2019,
+	booktitle    = {XRP Ledger Overview},
+	url          = {https://xrpl.org/xrp-ledger-overview.html#fast-efficient-consensus-algorithm}
+}
+@inproceedings{10.1145/3328526.3329567,
+	title        = {{Formal Barriers to Longest-Chain Proof-of-Stake Protocols}},
+	author       = {Brown-Cohen, Jonah and Narayanan, Arvind and Psomas, Alexandros and Weinberg, S Matthew},
+	year         = 2019,
+	booktitle    = {Proceedings of the 2019 ACM Conference on Economics and Computation},
+	publisher    = {Association for Computing Machinery},
+	address      = {New York, NY, USA},
+	series       = {EC ’19},
+	pages        = {459–473},
+	doi          = {10.1145/3328526.3329567},
+	isbn         = 9781450367929,
+	url          = {https://doi.org/10.1145/3328526.3329567},
+	keywords     = {cryptocurrencies, longest chain, proof of stake}
+}
+@misc{Holler2012,
+	title        = {{Fuzzing with Code Fragments}},
+	author       = {Holler, Christian and Herzig, Kim and Zeller, Andreas},
+	year         = 2012,
+	pages        = {445--458},
+	url          = {https://www.usenix.org/conference/usenixsecurity12/technical-sessions/presentation/holler}
+}
+@misc{XRPLedger2020a,
+	title        = {{Get Exchange Rates}},
+	author       = {{XRP Ledger}},
+	year         = 2020,
+	booktitle    = {XRP Ledger Dev Portal},
+	url          = {https://xrpl.org/data-api.html#get-exchange-rates}
+}
+@misc{XRPLedger2020c,
+	title        = {{Get Exchanges}},
+	author       = {{XRP Ledger}},
+	year         = 2020,
+	booktitle    = {XRP Ledger Dev Portal},
+	url          = {https://xrpl.org/data-api.html#get-exchanges}
+}
+@misc{Enumivo2019,
+	title        = {{Get Free EIDOS}},
+	author       = {{enumivo}},
+	year         = 2019,
+	url          = {https://enumivo.org/get-free-eidos}
+}
+@techreport{Grech,
+	title        = {{Gigahorse: Thorough, Declarative Decompilation of Smart Contracts}},
+	author       = {Grech, Neville and Brent, Lexi and Scholz, Bernhard and Smaragdakis, Yannis},
+	url          = {http://yanniss.github.io/gigahorse-icse19.pdf},
+	keywords     = {Blockchain, Decompiler, Index Terms-Ethereum, Program Analysis, Security}
+}
+@inproceedings{gupta2017gini,
+	title        = {{Gini Coefficient Based Wealth Distribution in the Bitcoin Network: A Case Study}},
+	author       = {Gupta, Manas and Gupta, Parth},
+	year         = 2017,
+	booktitle    = {International Conference on Computing, Analytics and Networks},
+	pages        = {192--202},
+	organization = {Springer}
+}
+@inproceedings{Godefroid2008,
+	title        = {{Grammar-based whitebox fuzzing}},
+	author       = {Godefroid, Patrice and Kiezun, Adam and Levin, Michael Y. and Godefroid, Patrice and Kiezun, Adam and Levin, Michael Y.},
+	year         = 2008,
+	booktitle    = {Proceedings of the 2008 ACM SIGPLAN conference on Programming language design and implementation  - PLDI '08},
+	publisher    = {ACM Press},
+	address      = {New York, New York, USA},
+	volume       = 43,
+	number       = 6,
+	pages        = 206,
+	doi          = {10.1145/1375581.1375607},
+	isbn         = 9781595938602,
+	issn         = {0362-1340},
+	url          = {http://portal.acm.org/citation.cfm?doid=1375581.1375607},
+	keywords     = {automatic test generation, grammars, program verification, software testing}
+}
+@misc{Moos2018,
+	title        = {{How Cartels May Control EOS and Fundamentally Threaten its Survival}},
+	author       = {Moos, Mitchell},
+	year         = 2018,
+	booktitle    = {CryptoSlate},
+	url          = {https://cryptoslate.com/how-cartels-may-control-eos-and-fundamentally-threaten-its-survival/}
+}
+@misc{Jaffry2019,
+	title        = {{How we used machine learning to classify one million Ethereum addresses}},
+	author       = {Jaffry, Aymen},
+	year         = 2019,
+	url          = {https://medium.com/trm-insights/how-we-used-machine-learning-to-label-one-million-ethereum-addresses-e69c96a841b9}
+}
+@inproceedings{8254420,
+	title        = {{Identification of High Yielding Investment Programs in Bitcoin via Transactions Pattern Analysis}},
+	author       = {Toyoda, K and Ohtsuki, T and Mathiopoulos, P T},
+	year         = 2017,
+	month        = 12,
+	booktitle    = {GLOBECOM 2017 - 2017 IEEE Global Communications Conference},
+	pages        = {1--6},
+	doi          = {10.1109/GLOCOM.2017.8254420},
+	keywords     = {Bitcoin, Feature extraction, HYIP activity, HYIP addresses, High Yield Investment Program, High yielding Investment programs, Investment, Pattern analysis, Roads, cryptography, data mining, financial data processing, fraud, fraudulent activities, graph theory, investment, labeled Bitcoin addresses, pattern classification, signed integer, signed integer called pattern, successful decentralized cryptocurrency, transaction, transactions pattern, undesired activities}
+}
+@misc{kwon2019impossibility,
+	title        = {{Impossibility of Full Decentralization in Permissionless Blockchains}},
+	author       = {Kwon, Yujin and Liu, Jian and Kim, Minjeong and Song, Dawn and Kim, Yongdae},
+	year         = 2019,
+	arxivid      = {cs.CR/1905.05158}
+}
+@unpublished{Howell2018,
+	title        = {{Initial Coin Offerings: Financing Growth with Cryptocurrency Token Sales}},
+	author       = {Howell, Sabrina and Niessner, Marina and Yermack, David},
+	year         = 2018,
+	booktitle    = {SSRN Electronic Journal},
+	doi          = {10.2139/ssrn.3201259},
+	url          = {https://www.coinschedule.com/stats.}
+}
+@article{bitcoin_centralization,
+	title        = {{Is bitcoin a decentralized currency?}},
+	author       = {Gervais, Arthur and Karame, Ghassan O and Capkun, Vedran and Capkun, Srdjan},
+	year         = 2014,
+	journal      = {IEEE security {\&} privacy},
+	publisher    = {IEEE},
+	volume       = 12,
+	number       = 3,
+	pages        = {54--60}
+}
+@article{Dupont2015,
+	title        = {{Ledgers and Law in the Blockchain}},
+	author       = {Dupont, Quinn and Maurer, Bill},
+	year         = 2015,
+	journal      = {King's Review}
+}
+@inproceedings{shun2013ligra,
+	title        = {{Ligra: a lightweight graph processing framework for shared memory}},
+	author       = {Shun, Julian and Blelloch, Guy E},
+	year         = 2013,
+	booktitle    = {ACM Sigplan Notices},
+	volume       = 48,
+	number       = 8,
+	pages        = {135--146},
+	organization = {ACM}
+}
+@article{moreno2016listening,
+	title        = {{Listening to whispers of ripple: Linking wallets and deanonymizing transactions in the ripple network}},
+	author       = {Moreno-Sanchez, Pedro and Zafar, Muhammad Bilal and Kate, Aniket},
+	year         = 2016,
+	journal      = {Proceedings on Privacy Enhancing Technologies},
+	publisher    = {De Gruyter Open},
+	volume       = 2016,
+	number       = 4,
+	pages        = {436--453}
+}
+@inproceedings{macko2015llama,
+	title        = {{Llama: Efficient graph analytics using large multiversioned arrays}},
+	author       = {Macko, Peter and Marathe, Virendra J and Margo, Daniel W and Seltzer, Margo I},
+	year         = 2015,
+	booktitle    = {2015 IEEE 31st International Conference on Data Engineering},
+	pages        = {363--374},
+	organization = {IEEE}
+}
+@inproceedings{dhulipala2019low,
+	title        = {{Low-latency graph streaming using compressed purely-functional trees}},
+	author       = {Dhulipala, Laxman and Blelloch, Guy E and Shun, Julian},
+	year         = 2019,
+	booktitle    = {Proceedings of the 40th ACM SIGPLAN Conference on Programming Language Design and Implementation},
+	pages        = {918--934},
+	organization = {ACM}
+}
+@article{pow_selfish_mining,
+	title        = {{Majority Is Not Enough: Bitcoin mining is vulnerable}},
+	author       = {Eyal, Ittay and Sirer, Emin Gün},
+	year         = 2018,
+	month        = 6,
+	journal      = {Communications of the ACM},
+	publisher    = {ACM},
+	address      = {New York, NY, USA},
+	volume       = 61,
+	number       = 7,
+	pages        = {95--102},
+	doi          = {10.1145/3212998},
+	issn         = 15577317,
+	url          = {http://doi.acm.org/10.1145/3212998},
+	arxivid      = {1311.0243}
+}
+@article{Bernardo2019,
+	title        = {{Mi-Cho-Coq, a framework for certifying Tezos Smart Contracts}},
+	author       = {Bernardo, Bruno and Cauderlier, Raphaël and Hu, Zhenlei and Pesin, Basile and Tesson, Julien},
+	year         = 2019,
+	month        = 9,
+	doi          = {10.1145/360933.360975},
+	isbn         = {1909.08671v1},
+	url          = {https://doi.org/10.1145/360933.360975 https://gitlab.com/nomadic-labs/mi-cho-coq/tree/FMBC_2019. http://arxiv.org/abs/1909.08671},
+	arxivid      = {1909.08671},
+	keywords     = {Blockchains, Blockchains {\textperiodcentered}, Certified programming, Certified programming {\textperiodcentered}, Programming languages, Programming languages {\textperiodcentered}, Smart contracts}
+}
+@misc{NomadicLabs2018,
+	title        = {{Michelson: the language of Smart Contracts in Tezos}},
+	author       = {{Nomadic Labs}},
+	year         = 2018,
+	booktitle    = {Tezos Developer Resources},
+	url          = {https://tezos.gitlab.io/whitedoc/michelson.html}
+}
+@misc{bitcoin_mining,
+	title        = {{Mining}},
+	author       = {Wiki, The Bitcoin},
+	howpublished = {{\textbackslash}url{\{}https://en.bitcoin.it/wiki/Mining{\}}}
+}
+@misc{Ripple2020,
+	title        = {{Network Metrics}},
+	author       = {{Ripple}},
+	year         = 2020,
+	booktitle    = {XRP Charts},
+	url          = {https://xrpcharts.ripple.com/#/metrics}
+}
+@misc{xrp,
+	title        = {{No Title}}
+}
+@misc{xrpb,
+	title        = {{No Title}}
+}
+@article{DBLP:journals/corr/GroverL16,
+	title        = {{node2vec: Scalable Feature Learning for Networks}},
+	author       = {Grover, Aditya and Leskovec, Jure},
+	year         = 2016,
+	journal      = {CoRR},
+	volume       = {abs/1607.0},
+	url          = {http://arxiv.org/abs/1607.00653},
+	arxivid      = {1607.00653}
+}
+@inproceedings{haslhofer2016bitcoin,
+	title        = {{O Bitcoin Where Art Thou? Insight into Large-Scale Transaction Graphs.}},
+	author       = {Haslhofer, Bernhard and Karl, Roman and Filtz, Erwin},
+	year         = 2016,
+	booktitle    = {SEMANTiCS (Posters, Demos, SuCCESS)}
+}
+@misc{fooladgar2019incentive,
+	title        = {{On Incentive Compatible Role-based Reward Distribution in Algorand}},
+	author       = {Fooladgar, Mehdi and Manshaei, Mohammad Hossein and Jadliwala, Murtuza and Rahman, Mohammad Ashiqur},
+	year         = 2019,
+	arxivid      = {cs.CR/1911.03356}
+}
+@misc{fooladgar2019incentiveb,
+	title        = {{On Incentive Compatible Role-based Reward Distribution in Algorand}},
+	author       = {Fooladgar, Mehdi and Manshaei, Mohammad Hossein and Jadliwala, Murtuza and Rahman, Mohammad Ashiqur},
+	year         = 2019,
+	arxivid      = {cs.CR/1911.03356}
+}
+@article{Grossman2018,
+	title        = {{Online Detection of Effectively Callback Free Objects with Applications to Smart Contracts}},
+	author       = {Grossman, Shelly},
+	year         = 2018,
+	doi          = {10.1145/3158136},
+	url          = {https://doi.org/10.1145/3158136},
+	keywords     = {Modular reasoning, Program analysis, Smart contracts}
+}
+@article{grossman2017online,
+	title        = {{Online detection of effectively callback free objects with applications to smart contracts}},
+	author       = {Grossman, Shelly and Abraham, Ittai and Golan-Gueta, Guy and Michalevsky, Yan and Rinetzky, Noam and Sagiv, Mooly and Zohar, Yoni},
+	year         = 2017,
+	journal      = {Proceedings of the ACM on Programming Languages},
+	publisher    = {ACM},
+	volume       = 2,
+	number       = {POPL},
+	pages        = 48
+}
+@misc{NomadicLabs2018a,
+	title        = {{Originated accounts and contracts}},
+	author       = {{Nomadic Labs}},
+	year         = 2018,
+	booktitle    = {How to use Tezos},
+	url          = {https://tezos.gitlab.io/introduction/howtouse.html}
+}
+@inproceedings{torres2018osiris,
+	title        = {{Osiris: Hunting for integer bugs in ethereum smart contracts}},
+	author       = {Torres, Christof Ferreira and Sch{\"{u}}tte, Julian and {others}},
+	year         = 2018,
+	booktitle    = {Proceedings of the 34th Annual Computer Security Applications Conference},
+	pages        = {664--676},
+	organization = {ACM}
+}
+@inproceedings{badertscher2018ouroboros,
+	title        = {{Ouroboros genesis: Composable proof-of-stake blockchains with dynamic availability}},
+	author       = {Badertscher, Christian and Ga{\v{z}}i, Peter and Kiayias, Aggelos and Russell, Alexander and Zikas, Vassilis},
+	year         = 2018,
+	booktitle    = {Proceedings of the 2018 ACM SIGSAC Conference on Computer and Communications Security},
+	pages        = {913--930}
+}
+@inproceedings{10.1007/978-3-319-63688-7_12,
+	title        = {{Ouroboros: A Provably Secure Proof-of-Stake Blockchain Protocol}},
+	author       = {Kiayias, Aggelos and Russell, Alexander and David, Bernardo and Oliynykov, Roman},
+	year         = 2017,
+	booktitle    = {Advances in Cryptology -- CRYPTO 2017},
+	publisher    = {Springer International Publishing},
+	address      = {Cham},
+	pages        = {357--388},
+	isbn         = {978-3-319-63688-7},
+	editor       = {Katz, Jonathan and Shacham, Hovav}
+}
+@article{king2012ppcoin,
+	title        = {{Ppcoin: Peer-to-peer crypto-currency with proof-of-stake}},
+	author       = {King, Sunny and Nadal, Scott},
+	year         = 2012,
+	journal      = {self-published paper, August},
+	volume       = 19
+}
+@article{king2012ppcoinb,
+	title        = {{Ppcoin: Peer-to-peer crypto-currency with proof-of-stake}},
+	author       = {King, Sunny and Nadal, Scott},
+	year         = 2012,
+	journal      = {self-published paper, August},
+	volume       = 19
+}
+@inproceedings{bitcoin_ghash_io,
+	title        = {{Preventing the 51{\%}-attack: a stochastic analysis of two phase proof of work in bitcoin}},
+	author       = {Bastiaan, Martijn},
+	year         = 2015,
+	booktitle    = {Availab le at http://referaat. cs. utwente. nl/conference/22/paper/7473/preventingthe-51-attack-a-stochasticanalysis-oftwo-phase-proof-of-work-in-bitcoin. pdf}
+}
+@article{cha2018privacy,
+	title        = {{Privacy Enhancing Technologies in the Internet of Things: Perspectives and Challenges}},
+	author       = {Cha, Shi-Cho and Hsu, Tzu-Yang and Xiang, Yang and Yeh, Kuo-Hui},
+	year         = 2018,
+	journal      = {IEEE Internet of Things Journal},
+	publisher    = {IEEE},
+	volume       = 6,
+	number       = 2,
+	pages        = {2159--2187}
+}
+@article{casper,
+	title        = {{Proof of Stake Made Simple with Casper}},
+	author       = {Moindrot, Olivier and Bournhonesque, Charles},
+	year         = 2017,
+	pages        = {1--7}
+}
+@misc{Tezos2018,
+	title        = {{Proof-of-stake in Tezos}},
+	author       = {{Tezos}},
+	year         = 2018,
+	pages        = {1--6},
+	url          = {https://tezos.gitlab.io/whitedoc/proof_of_stake.html}
+}
+@misc{http://tezos.gitlab.io/user/glossary.htmlprotocol-alpha,
+	title        = {{Protocol alpha}},
+	author       = {{Nomadic Labs}},
+	year         = 2018,
+	booktitle    = {Glossary},
+	url          = {http://tezos.gitlab.io/user/glossary.html#endorsement-rights}
+}
+@misc{TeamRipple,
+	title        = {{Q4 2019 XRP Markets Report}},
+	author       = {{Team Ripple}},
+	year         = 2020,
+	booktitle    = {Ripple Insights},
+	url          = {https://ripple.com/insights/q4-2019-xrp-markets-report/}
+}
+@inproceedings{10.1007/978-3-642-39884-1_2,
+	title        = {{Quantitative Analysis of the Full Bitcoin Transaction Graph}},
+	author       = {Ron, Dorit and Shamir, Adi},
+	year         = 2013,
+	booktitle    = {Financial Cryptography and Data Security},
+	publisher    = {Springer Berlin Heidelberg},
+	address      = {Berlin, Heidelberg},
+	pages        = {6--24},
+	isbn         = {978-3-642-39884-1},
+	editor       = {Sadeghi, Ahmad-Reza}
+}
+@article{Moore2018,
+	title        = {{Revisiting the Risks of Bitcoin Currency Exchange Closure}},
+	author       = {Moore, Tyler and Christin, Nicolas and Szurdi, Janos},
+	year         = 2018,
+	month        = 9,
+	journal      = {ACM Transactions on Internet Technology},
+	publisher    = {ACM},
+	volume       = 18,
+	number       = 4,
+	pages        = {1--18},
+	doi          = {10.1145/3155808},
+	issn         = 15335399,
+	url          = {http://dl.acm.org/citation.cfm?doid=3210373.3155808},
+	keywords     = {Bitcoin, currency exchanges, cybercrime, security economics}
+}
+@article{brunjes2018reward,
+	title        = {{Reward sharing schemes for stake pools}},
+	author       = {Br{\"{u}}njes, Lars and Kiayias, Aggelos and Koutsoupias, Elias and Stouka, Aikaterini-Panagiota},
+	year         = 2018,
+	journal      = {arXiv preprint arXiv:1807.11218}
+}
+@article{brunjes2018rewardb,
+	title        = {{Reward sharing schemes for stake pools}},
+	author       = {Br{\"{u}}njes, Lars and Kiayias, Aggelos and Koutsoupias, Elias and Stouka, Aikaterini-Panagiota},
+	year         = 2018,
+	journal      = {arXiv preprint arXiv:1807.11218}
+}
+@article{li2020robust,
+	title        = {{Robust Proof of Stake: A New Consensus Protocol for Sustainable Blockchain Systems}},
+	author       = {Li, Aiya and Wei, Xianhua and He, Zhou},
+	year         = 2020,
+	journal      = {Sustainability},
+	publisher    = {Multidisciplinary Digital Publishing Institute},
+	volume       = 12,
+	number       = 7,
+	pages        = 2824
+}
+@misc{EOS.IO2020,
+	title        = {{RPC API Guide}},
+	author       = {{EOSIO}},
+	year         = 2020,
+	booktitle    = {EOSIO Developer Portal},
+	url          = {https://developers.eos.io/eosio-nodeos/reference#get_account}
+}
+@article{Godefroid2012,
+	title        = {{SAGE: Whitebox Fuzzing for Security Testing}},
+	author       = {Godefroid, Patrice and Levin, Michael Y. and Molnar, David},
+	year         = 2012,
+	month        = 1,
+	journal      = {Queue},
+	publisher    = {ACM},
+	volume       = 10,
+	number       = 1,
+	pages        = 20,
+	doi          = {10.1145/2090147.2094081},
+	issn         = 15427730,
+	url          = {http://dl.acm.org/citation.cfm?doid=2090147.2094081}
+}
+@article{avalanche_paper,
+	title        = {{Scalable and Probabilistic Leaderless BFT Consensus through Metastability}},
+	author       = {Rocket, Team and Yin, Maofan and Sekniqi, Kevin and van Renesse, Robbert and Sirer, Emin Gün},
+	year         = 2019,
+	journal      = {arXiv preprint arXiv:1906.08936}
+}
+@article{scalable_byzantine,
+	title        = {{Scalable Byzantine reliable broadcast}},
+	author       = {Guerraoui, Rachid and Kuznetsov, Petr and Monti, Matteo and Pavlovic, Matej and Seredinschi, Dragos Adrian},
+	year         = 2019,
+	journal      = {Leibniz International Proceedings in Informatics, LIPIcs},
+	volume       = 146,
+	doi          = {10.4230/LIPIcs.DISC.2019.22},
+	isbn         = 9783959771269,
+	issn         = 18688969,
+	arxivid      = {1908.01738},
+	keywords     = {Byzantine reliable broadcast, Probabilistic distributed algorithms, Scalable distributed systems, Stochastic processes}
+}
+@article{Tsankov2018,
+	title        = {{Securify: Practical Security Analysis of Smart Contracts}},
+	author       = {Tsankov, Petar and Dan, Andrei and Drachsler-Cohen, Dana and Gervais, Arthur and B{\"{u}}nzli, Florian and Vechev, Martin and Cohen, Dana Drachsler and Gervais, Arthur and Buenzli, Florian and Vechev, Martin and Drachsler-Cohen, Dana and Gervais, Arthur and B{\"{u}}nzli, Florian and Vechev, Martin},
+	year         = 2018,
+	journal      = {Proceedings of the 2018 ACM SIGSAC Conference on Computer and Communications Security},
+	publisher    = {ACM},
+	address      = {New York, NY, USA},
+	series       = {CCS '18},
+	number       = {July},
+	pages        = {67--82},
+	doi          = {10.1145/3243734.3243780},
+	isbn         = {978-1-4503-5693-0},
+	url          = {http://doi.acm.org/10.1145/3243734.3243780 http://arxiv.org/abs/1806.01143},
+	arxivid      = {1806.01143},
+	keywords     = {security analysis, smart contracts, stratified datalog, verification}
+}
+@inproceedings{10.1007/978-3-319-67816-0_17,
+	title        = {{Securing Proof-of-Stake Blockchain Protocols}},
+	author       = {Li, Wenting and Andreina, Sébastien and Bohli, Jens-Matthias and Karame, Ghassan},
+	year         = 2017,
+	booktitle    = {Data Privacy Management, Cryptocurrencies and Blockchain Technology},
+	publisher    = {Springer International Publishing},
+	address      = {Cham},
+	pages        = {297--315},
+	isbn         = {978-3-319-67816-0},
+	editor       = {Garcia-Alfaro, Joaquin and Navarro-Arribas, Guillermo and Hartenstein, Hannes and Herrera-Joancomart{\'{i}}, Jordi}
+}
+@techreport{Neuder2019,
+	title        = {{Selfish Behavior in the Tezos Proof-of-Stake Protocol}},
+	author       = {Neuder, Michael and Moroz, Daniel J. and Rao, Rithvik and Parkes, David C.},
+	year         = 2020,
+	url          = {http://arxiv.org/abs/1912.02954},
+	arxivid      = {1912.02954}
+}
+@misc{neuder2019selfish,
+	title        = {{Selfish Behavior in the Tezos Proof-of-Stake Protocol}},
+	author       = {Neuder, Michael and Moroz, Daniel J and Rao, Rithvik and Parkes, David C},
+	year         = 2019,
+	arxivid      = {cs.CR/1912.02954}
+}
+@misc{neuder2019selfishb,
+	title        = {{Selfish Behavior in the Tezos Proof-of-Stake Protocol}},
+	author       = {Neuder, Michael and Moroz, Daniel J and Rao, Rithvik and Parkes, David C},
+	year         = 2019,
+	arxivid      = {cs.CR/1912.02954}
+}
+@article{Grunspan2020,
+	title        = {{Selfish mining and dyck words in Bitcoin and Ethereum networks}},
+	author       = {Grunspan, Cyril and P{\'{e}}rez-Marco, Ricardo},
+	year         = 2020,
+	journal      = {OpenAccess Series in Informatics},
+	volume       = 71,
+	number       = 9,
+	pages        = {1--9},
+	doi          = {10.4230/OASIcs.Tokenomics.2019.11},
+	isbn         = 9783959771085,
+	issn         = 21906807,
+	arxivid      = {1904.07675},
+	keywords     = {Apparent Hashrate, Bitcoin, Blockchain, Catalan Distributions, Dyck Words, Ethereum, Proof-of-Work, Random Walk, Revenue Ratio, Selfish Mining, Stubborn Mining}
+}
+@article{Perez2019,
+	title        = {{Smart Contract Vulnerabilities: Does Anyone Care?}},
+	author       = {Perez, Daniel and Livshits, Benjamin},
+	year         = 2019,
+	month        = 2,
+	url          = {http://arxiv.org/abs/1902.06710},
+	arxivid      = {1902.06710}
+}
+@techreport{Bonneau,
+	title        = {{SoK: Research Perspectives and Challenges for Bitcoin and Cryptocurrencies}},
+	author       = {Bonneau, Joseph and Miller, Andrew and Clark, Jeremy and Narayanan, Arvind and Kroll, Joshua A and Felten, Edward W},
+	url          = {https://bitcointalk.org/,}
+}
+@misc{XRPLedger2020b,
+	title        = {{Source and Destination Tags}},
+	author       = {{XRP Ledger}},
+	year         = 2020,
+	booktitle    = {XRP Ledger Dev Portal},
+	url          = {https://xrpl.org/source-and-destination-tags.html}
+}
+@misc{Tulo2019,
+	title        = {{Spam? suspect BTC payments on XRPL}},
+	author       = {{tulo}},
+	year         = 2019,
+	booktitle    = {Xrp Chat},
+	url          = {https://www.xrpchat.com/topic/33284-spam-suspect-btc-payments-on-xrpl/?do=findComment&comment=793048}
+}
+@inproceedings{ediger2012stinger,
+	title        = {{Stinger: High performance data structure for streaming graphs}},
+	author       = {Ediger, David and McColl, Rob and Riedy, Jason and Bader, David A},
+	year         = 2012,
+	booktitle    = {2012 IEEE Conference on High Performance Extreme Computing},
+	pages        = {1--5},
+	organization = {IEEE}
+}
+@misc{ObsidianSys,
+	title        = {{Summary of Ledger Support for the Babylon Protocol}},
+	author       = {{ObsidianSys}},
+	year         = 2019,
+	url          = {https://www.reddit.com/r/tezos/comments/dj7g9y/summary_of_ledger_support_for_the_babylon_protocol/}
+}
+@misc{SunYin2018,
+	title        = {{Tempus Fugit — Understanding Cycles, Snapshots, Locking and Unlocking Periods in the Tezos Protocol}},
+	author       = {Sun Yin, Awa},
+	year         = 2018,
+	booktitle    = {Cryptium Labs Tezos},
+	url          = {https://medium.com/cryptium/tempus-fugit-understanding-cycles-snapshots-locking-and-unlocking-periods-in-the-tezos-protocol-78b27bd6d62d}
+}
+@misc{CoinMarketCap2020,
+	title        = {{Tezos (XTZ) price, charts, market cap, and other metrics}},
+	author       = {{CoinMarketCap}},
+	year         = 2020,
+	booktitle    = {CoinMarketCap},
+	url          = {https://coinmarketcap.com/currencies/tezos/}
+}
+@techreport{Goodman2014,
+	title        = {{Tezos---a self-amending crypto-ledger White paper}},
+	author       = {Goodman, L M},
+	year         = 2014
+}
+@misc{Silkjr2018,
+	title        = {{The full XRP ledger, visualised​}},
+	author       = {Silkj{\ae}r, Thomas},
+	year         = 2018,
+	url          = {https://xrpcommunity.blog/the-full-xrp-ledger-visualized/}
+}
+@misc{AmitPanghal2019,
+	title        = {{The Lifecycle of an Operation in Tezos}},
+	author       = {{Amit Panghal}},
+	year         = 2019,
+	booktitle    = {TQ Tezos},
+	url          = {https://medium.com/tqtezos/lifecycle-of-an-operation-in-tezos-248c51038ec2}
+}
+@article{quorum,
+	title        = {{The origin of quorum systems}},
+	author       = {Vukoli{\'{c}}, Marko and {others}},
+	year         = 2013,
+	journal      = {Bulletin of EATCS},
+	volume       = 2,
+	number       = 101
+}
+@misc{XRPLedger2019a,
+	title        = {{Transaction Types}},
+	author       = {{XRP Ledger}},
+	year         = 2019,
+	booktitle    = {XRP Ledger Dev Portal},
+	url          = {https://xrpl.org/transaction-types.html}
+}
+@misc{XRPLedger2020,
+	title        = {{Trust Lines and Issuing}},
+	author       = {{XRP Ledger}},
+	year         = 2020,
+	booktitle    = {XRP Ledger Dev Portal},
+	url          = {https://xrpl.org/trust-lines-and-issuing.html}
+}
+@misc{AAAI1714214,
+	title        = {{Unbiased Multivariate Correlation Analysis}},
+	author       = {Wang, Yisen and Romano, Simone and Nguyen, Vinh and Bailey, James and Ma, Xingjun and Xia, Shu-Tao},
+	year         = 2017,
+	url          = {https://aaai.org/ocs/index.php/AAAI/AAAI17/paper/view/14214},
+	keywords     = {bias analysis, multivariate correlation measure, outlier detection, statistical model of independence, subspace clustering}
+}
+@misc{cryptoeprint:2019:070,
+	title        = {{Uncle Traps: Harvesting Rewards in a Queue-based Ethereum Mining Pool}},
+	author       = {Werner, Sam M and Pritz, Paul J and Zamyatin, Alexei and Knottenbelt, William J},
+	year         = 2019,
+	howpublished = {Cryptology ePrint Archive, Report 2019/070}
+}
+@article{Chen2017b,
+	title        = {{Under-optimized smart contracts devour your money}},
+	author       = {Chen, Ting and Li, Xiaoqi and Luo, Xiapu and Zhang, Xiaosong},
+	year         = 2017,
+	journal      = {SANER 2017 - 24th IEEE International Conference on Software Analysis, Evolution, and Reengineering},
+	pages        = {442--446},
+	doi          = {10.1109/SANER.2017.7884650},
+	isbn         = 9781509055012,
+	arxivid      = {1703.03994}
+}
+@misc{algorand_trilemma,
+	title        = {{Understanding Algorand-The blockchain which claims to solve the trilemma}},
+	author       = {Haardik, Haardik},
+	howpublished = {{\textbackslash}url{\{}https://community.algorand.org/blog/understanding-algorand-the-blockchain-which-claims-to-solve-the-trilemma/{\}}}
+}
+@inproceedings{7802939,
+	title        = {{Unsupervised learning for robust Bitcoin fraud detection}},
+	author       = {Monamo, P and Marivate, V and Twala, B},
+	year         = 2016,
+	month        = 8,
+	booktitle    = {2016 Information Security for South Africa (ISSA)},
+	pages        = {129--134},
+	doi          = {10.1109/ISSA.2016.7802939},
+	keywords     = {Bitcoin transactions, Clustering algorithms, Complexity theory, Electric breakdown, Logic gates, Online banking, anomaly, anomaly detection, computer crime, cryptographic currency, cryptography, cybercrime, cybercrime activities, data mining, financial data processing, fraud, fraudulent activity detection, multivariate setup, object clustering, outlier, pattern clustering, rampant absorption, robust Bitcoin fraud detection, trimmed k-means, warrants utilization}
+}
+@article{Dinh2018,
+	title        = {{Untangling Blockchain: A Data Processing View of Blockchain Systems}},
+	author       = {Dinh, Tien Tuan Anh and Liu, Rui and Zhang, Meihui and Chen, Gang and Ooi, Beng Chin and Wang, Ji},
+	year         = 2018,
+	journal      = {IEEE Transactions on Knowledge and Data Engineering},
+	volume       = 30,
+	number       = 7,
+	pages        = {1366--1385},
+	doi          = {10.1109/TKDE.2017.2781227},
+	issn         = 10414347,
+	url          = {https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8246573},
+	arxivid      = {1708.05665},
+	keywords     = {Blockchain, distributed databases, survey}
+}
+@misc{RyanJesperson2019,
+	title        = {{Update: Week of 18 November 2019}},
+	author       = {Jesperson, Ryan},
+	year         = 2019,
+	booktitle    = {Tezos Foundation},
+	url          = {https://tezos.foundation/news/weekly-updates/update-week-of-18-november-2019}
+}
+@misc{Love2013,
+	title        = {{Value tracking and reporting of automated clearing house transactions}},
+	author       = {Love, Robert Anthony and Mauriello, Lantanya Neale and Reckord-Yarde, Nesta Valerie and Robertson, Susan Lynne and Williams, Robert and Nelson, Donald E.},
+	year         = 2013,
+	booktitle    = {U.S. Patent},
+	url          = {https://patentimages.storage.googleapis.com/03/e3/98/0cfb0fe7ee16e9/US8543477.pdf}
+}
+@article{permenev2019verx,
+	title        = {{Verx: Safety verification of smart contracts}},
+	author       = {Permenev, Anton and Dimitrov, Dimitar and Tsankov, Petar and Drachsler-Cohen, Dana and Vechev, Martin},
+	year         = 2019,
+	journal      = {Security and Privacy},
+	volume       = 2020
+}
+@article{mcginn2016visualizing,
+	title        = {{Visualizing dynamic bitcoin transaction patterns}},
+	author       = {McGinn, Dan and Birch, David and Akroyd, David and Molina-Solana, Miguel and Guo, Yike and Knottenbelt, William J},
+	year         = 2016,
+	journal      = {Big data},
+	publisher    = {Mary Ann Liebert, Inc. 140 Huguenot Street, 3rd Floor New Rochelle, NY 10801 USA},
+	volume       = 4,
+	number       = 2,
+	pages        = {109--119}
+}
+@misc{XRPCharts,
+	title        = {{Volume Stats (24 hours)}},
+	author       = {{Ripple}},
+	year         = 2020,
+	booktitle    = {XRP Charts},
+	url          = {https://xrpcharts.ripple.com/}
+}
+@misc{WhaleEx2020,
+	title        = {{WhaleEx - {\#}1 DEX}},
+	author       = {{WhaleEx}},
+	year         = 2020,
+	url          = {https://www.whaleex.com/}
+}
+@misc{Kauffman2019,
+	title        = {{What Are EOSIO System Accounts and What Do They Each Do?}},
+	author       = {Kauffman, Josh},
+	year         = 2019,
+	booktitle    = {EOS Canada},
+	url          = {https://www.eoscanada.com/en/what-are-eosio-system-accounts-and-what-do-they-each-do}
+}
+@inproceedings{Lee2019,
+	title        = {{Who Spent My EOS? On the (In)Security of Resource Management of EOS.IO}},
+	author       = {Lee, Sangsup and Kim, Daejun and Kim, Dongkwan and Son, Sooel and Kim, Yongdae},
+	year         = 2019,
+	booktitle    = {13th USENIX Workshop on Offensive Technologies},
+	pages        = {1--67},
+	url          = {https://www.usenix.org/system/files/woot19-paper_lee.pdf}
+}
+@misc{cryptoeprint:2019:1440,
+	title        = {{Winkle: Foiling Long-Range Attacks in Proof-of-Stake Systems}},
+	author       = {Azouvi, Sarah and Danezis, George and Nikolaenko, Valeria},
+	year         = 2019,
+	howpublished = {Cryptology ePrint Archive, Report 2019/1440}
+}
+@misc{cryptoeprint:2019:1440b,
+	title        = {{Winkle: Foiling Long-Range Attacks in Proof-of-Stake Systems}},
+	author       = {Azouvi, Sarah and Danezis, George and Nikolaenko, Valeria},
+	year         = 2019,
+	howpublished = {Cryptology ePrint Archive, Report 2019/1440}
+}
+@misc{Wind2020,
+	title        = {{XRP ledger full history cluster}},
+	author       = {Wind, Wietse},
+	year         = 2020,
+	url          = {https://rippled.xrptipbot.com/}
+}
+@misc{XRPLedgerProject2020,
+	title        = {{XRPL Explorer}},
+	author       = {{XRP Ledger Project}},
+	year         = 2020,
+	booktitle    = {XRP Ledger},
+	url          = {https://livenet.xrpl.org/}
+}
+@article{Pastrana2019AWealth,
+	title        = {{A First Look at the Crypto-Mining Malware Ecosystem: A Decade of Unrestricted Wealth}},
+	author       = {Pastrana, Sergio and Suarez-Tangil, Guillermo},
+	year         = 2019,
+	month        = 1,
+	url          = {http://arxiv.org/abs/1901.00846},
+	arxivid      = {1901.00846}
+}
+@misc{A-take-on-bitcoins-gini-coefficient-3a353e02075dMedium.com,
+	title        = {{a-take-on-bitcoins-gini-coefficient-3a353e02075d @ medium.com}},
+	url          = {https://medium.com/@tamas.blummer/a-take-on-bitcoins-gini-coefficient-3a353e02075d}
+}
+@misc{Cogarius2019AllIllustrated,
+	title        = {{All you ever wanted to ask about Tezos — Illustrated}},
+	author       = {{Cogarius}},
+	year         = 2019,
+	url          = {https://medium.com/@cogarius/all-you-ever-wanted-to-ask-about-tezos-illustrated-cf2034f000c9}
+}
+@techreport{ChitraCommitteeStellar,
+	title        = {{Committee Selection is More Similar Than You Think: Evidence from Avalanche and Stellar}},
+	author       = {Chitra, Tarun and Chitra, Uthsav},
+	arxivid      = {1904.09839v1},
+	keywords     = {Avalanche, Committee Selection, Distributed Consensus Pro-tocol, Index Terms-Cryptocurrencies, Stellar Consensus Protocol}
+}
+@techreport{Swanson2015Consensus-as-a-service:Systems,
+	title        = {{Consensus-as-a-service: a brief report on the emergence of permissioned, distributed ledger systems}},
+	author       = {Swanson, Tim},
+	year         = 2015
+}
+@techreport{LopesControllingBlockchain,
+	title        = {{Controlling Robots using Artificial Intelligence and a Consortium Blockchain}},
+	author       = {Lopes, Vasco and Alexandre, Luís A and Pereira, Nuno},
+	arxivid      = {1903.00660v1}
+}
+@misc{EarnBet2019EOSNotice,
+	title        = {{EOS 30 Day Notice}},
+	author       = {{EarnBet}},
+	year         = 2019,
+	booktitle    = {https://blog.earnbet.io/}
+}
+@misc{EthereumPractices,
+	title        = {{Ethereum Smart Contract Best Practices}},
+	url          = {https://consensys.github.io/smart-contract-best-practices/}
+}
+@article{LiuFork-FreeProof-of-Activity,
+	title        = {{Fork-Free Hybrid Consensus with Flexible Proof-of-Activity}},
+	author       = {Liu, Zhiqiang}
+}
+@inproceedings{Zamyatin2017SwimmingPools,
+	title        = {{Swimming with Fishes and Sharks: Beneath the Surface of Queue-Based Ethereum Mining Pools}},
+	author       = {Zamyatin, Alexei and Wolter, Katinka and Werner, Sam and Harrison, Peter G. and Mulligan, Catherine E. A. and Knottenbelt, William J.},
+	year         = 2017,
+	month        = 9,
+	booktitle    = {2017 IEEE 25th International Symposium on Modeling, Analysis, and Simulation of Computer and Telecommunication Systems (MASCOTS)},
+	publisher    = {IEEE},
+	pages        = {99--109},
+	doi          = {10.1109/MASCOTS.2017.22},
+	isbn         = {978-1-5386-2764-8},
+	url          = {http://ieeexplore.ieee.org/document/8107436/}
+}
+@techreport{Leiding2018Tezos-basedBlockchains,
+	title        = {{Tezos-based Vehicular Ad Hoc Blockchains}},
+	author       = {Leiding, Benjamin and Vorobev, William V},
+	year         = 2018,
+	keywords     = {Blockchain, Formal Verification, Interoperability, Mobile Ad Hoc Blockchains, Smart Contracts, Tezos, V2X, VANET, Vehicle Networks}
+}
+@techreport{BunzZether:World,
+	title        = {{Zether: Towards Privacy in a Smart Contract World}},
+	author       = {B{\"{u}}nz, Benedikt and Agrawal, Shashank and Boneh, Dan},
+	url          = {https://crypto.stanford.edu/~buenz/papers/zether.pdf}
+}

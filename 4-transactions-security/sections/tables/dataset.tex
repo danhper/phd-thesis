@@ -1,0 +1,24 @@
+\begin{figure*}[htbp]
+  \setlength{\tabcolsep}{4pt}
+  \centering
+    \begin{tabular}{lrrrrrrrr}
+    \toprule
+          & \multicolumn{2}{c}{\bf Block index} & \multicolumn{1}{c}{\bf Count} & \multicolumn{1}{c}{\bf Count} & \multicolumn{1}{c}{\bf Storage} & \multicolumn{3}{c}{\bf Throughput (TPS)} \\
+          & \multicolumn{1}{c}{from} & \multicolumn{1}{c}{to} & \multicolumn{1}{c}{\bf of blocks} & \multicolumn{1}{c}{\bf of transactions} & \multicolumn{1}{c}{\bf (.gzip, GB)} &  Alleged  & Max  & Average \\
+\cmidrule(lr){2-3}
+\cmidrule(lr){4-4}
+\cmidrule(lr){5-5}
+\cmidrule(lr){6-6}
+\cmidrule(lr){7-9}
+
+\bf EOSIO  & \numprint{\EOSStartBlock} & \numprint{\EOSEndBlock} & \blockscount{\EOSStartBlock}{\EOSEndBlock}& \numprint{\EOScount} & 264 & 4,000 \cite{Kramer} & 136 & \tps{\EOScount}{0} \\
+
+\bf Tezos & \numprint{\TezosStartBlock} & \numprint{\TezosEndBlock} & \blockscount{\TezosStartBlock}{\TezosEndBlock} & \numprint{\Tezoscount}  & 1.4 & 40 \cite{lpos}  & 0.57 & \tps{\Tezoscount}{2} \\
+
+\bf XRPL   &  \numprint{\XRPStartBlock} & \numprint{\XRPEndBlock} & \blockscount{\XRPStartBlock}{\XRPEndBlock} & \numprint{\XRPcount} & 130 & 65,000 \cite{Ripplea}& 
+  56 & \tps{\XRPcount}{0} \\
+\bottomrule
+\end{tabular}
+\caption{Characterizing the datasets for each blockchain. All measurements are performed from \startdate to \finishdate. Max throughput is the average TPS within a 6-hour interval that has the highest count of transactions. Storage size is computed with data saved as JSON Lines with one block per line and compressed using gzip level 6 of compression.}
+\label{tab:data-summary}%
+\end{figure*}

@@ -1,0 +1,75 @@
+\section{Related Work}
+\label{sec:related}
+
+Some major smart contracts exploits have been observed on Ethereum in recent years~\cite{Securities2017}. These attacks have been analyzed and classified~\cite{Atzei2017} and many tools and techniques have emerged to prevent such attacks~\cite{harz2018towards,Dika2017}.
+Recent literature has also shown how attacks on Ethereum are evolving with time~\cite{255252}.
+In this section, we will first provide details about two of the most prominent historic exploits and then present existing work aimed at increasing smart contract security.
+
+\subsection{Motivating Large-scale Exploits}
+\point{TheDAO exploit}
+TheDAO exploit~\cite{Securities2017} is one of the most infamous bugs on the Ethereum blockchain. Attackers exploited a re-entrancy vulnerability~\cite{Atzei2017} of the contract which allowed for the draining of the contract's funds. The attacker contract could call the function to withdraw funds in a re-entrant manner before its balance on TheDAO was reduced, making it indeed possible to freely drain funds. A total of more than~3.5 million Ether were drained. Given the severity of the attack, the Ethereum community finally agreed on hard-forking.
+%
+\point{Parity wallet bug}
+The Parity Wallet bug~\cite{Breidenbach} is another prominent vulnerability on the Ethereum blockchain which caused 280 million USD worth of Ethereum to be frozen on the Parity wallet account. It was due to a very simple vulnerability: a library contract used by the parity wallet was not initialized correctly and could be destructed by anyone. Once the library was destructed, any call to the Parity wallet would then fail, effectively locking all funds.
+
+%\subsection{Other contract vulnerabilities}
+%Recent research have proposed different taxonomies of smart contract vulnerabilities~\cite{Luu2016a,Atzei2017,Nikolic2018a}. Here, we will present a few classes of bug that enter in most of the proposed taxonomies.
+
+% \subsection{Analysis Tools For Finding Vulnerabilities}
+
+\subsection{Analyzing and Verifying Smart Contracts}
+\label{ssec:related-analysis-tools}
+There have been a lot of efforts in order to prevent such attacks and to make smart contracts more secure in general. We will here present some of the tools and techniques which have been presented in the literature and, when relevant, describe how they compare to our work.
+
+Analysis tools can roughly be divided in two categories: static analysis and dynamic analysis tools.
+Using the term ``static'' quite loosely, static analysis tools can be defined as tools which catch bugs or vulnerabilities without the need to deploy the smart contracts.
+Runtime analysis tools try to detect these by executing the deployed contracts.
+Our tool fits into the second category.
+
+\point{Static analysis tools} Static analysis tools have been the main focus of research.
+This is understandable, given how critical it is to avoid vulnerabilities in a deployed contract.
+Most of these tools work by analyzing either the bytecode or the high-level code of the contract and check for known vulnerable patterns in these.
+
+Oyente~\cite{Luu2016a} is one of the first tools which has been developed to analyze smart contracts.
+It uses symbolic execution in combination with the Z3 SMT solver~\cite{de2008z3} to check for the following vulnerabilities: transaction ordering dependency, re-entrancy and unhandled exceptions.
+
+ZEUS~\cite{DBLP:conf/ndss/KalraGDS18} is a static analysis tool which works on the Solidity smart contract and not on the bytecode, making it appropriate to assist development efforts rather than to analyze deployed contracts, for which Solidity code is typically not available.
+Zeus transpiles XACML-styled~\cite{XACML} policies to be enforced and the Solidity contract code into LLVM bitcode~\cite{lattner2004llvm} and uses constrained Horn clauses~\cite{bjorner2012program,mcmillan2007interpolants} over it to check that the policy is respected.
+
+Securify~\cite{Tsankov2018} is a static analysis tool which checks security properties of the EVM bytecode of smart contracts.
+The security properties are encoded as patterns written in a Datalog-like~\cite{ullman1984principles} domain-specific language, and checked either for compliance or violation.
+Securify infers semantic facts from the contract and interprets the security patterns to check for their violation or compliance by querying the inferred facts.
+This approach has many similarities with ours, using Datalog to express vulnerability patterns.
+The major difference is that Securify works on the bytecode directly while our tool works on the execution traces.
+
+MadMax~\cite{Grech2018} has similarities with Securify, as it also encodes properties of the smart contract into Datalog, but it focuses on vulnerabilities related to gas.
+It is the first tool to detect ``unbounded mass operations'', where a loop is bounded by a dynamic property such as the number of users, causing the contract to always run out of gas passed a certain number of users.
+MadMax is built on top of the decompiler implemented by Vandal~\cite{Brent2018} and is performant enough to analyze all the contracts of the Ethereum blockchain in only~10 hours.
+
+Several other static analysis tools have been developed, some, such as SmartCheck~\cite{Tikhomirov2017}, being quite generic and handling many classes of vulnerabilities, and other being more domain specific, such as Osiris~\cite{torres2018osiris} focusing on integer overflows, Maian~\cite{Nikolic2018a} focusing on unrestricted actions or Gasper~\cite{Chen2017} focusing on costly gas patterns.
+More recently, ETHBMC~\cite{251546} was designed to also support inter-contract relations, cryptographic hash functions and memcopy-style operations.
+
+Finally, there have also been some efforts to formally verify smart contracts. \cite{Hirai2017} is one of the first efforts in this direction and defines the EVM using Lem~\cite{mulligan2014lem}, which allows to generate definitions for theorem provers such as Coq~\cite{barras1997coq}. \cite{Grishchenko2018} presents a complete small-step semantics of EVM bytecode and formalizes it using the F* proof assistant~\cite{SwamyCFSBY11}. A similar effort is made in~\cite{Hildenbrandt2018} to give an executable formal specification of the EVM using the K Framework~\cite{rosu-serbanuta-2010-jlap}. VerX~\cite{permenev2019verx} is also a recent work allowing users to write properties about smart contracts which will be formally verified by the tool.
+
+\point{Dynamic analysis tools} Although dynamic analysis tools have been less studied than their static counterpart, some work has emerged in recent years.
+
+One of the first work in this line is ContractFuzzer~\cite{Jiang2018}.
+As its name indicates, it uses fuzzing to find vulnerabilities in smart contracts and is capable of detecting a wide range of vulnerabilities such as re-entrancy, locked Ether or unhandled exceptions.
+The tool generates inputs to the contract and checks using an instrumented EVM whether some vulnerabilities have been triggered.
+An important limitation of this fuzzing approach is that it requires the Application Binary Interface of the contract, which is typically not available for contracts deployed on the main Ethereum network.
+
+Sereum~\cite{Rodler2019} focuses on detecting re-entrancy exploitation at runtime by integrating checks in a modified Go Ethereum client.
+The tool analyzes runtime traces and uses taint analysis to ensure that no variable accessing the contract storage is used in a re-entrant call.
+Although there are some similarities with our tool, which also analyzes traces at runtime, Sereum focuses on re-entrancy while our tool is more generic, notably because vulnerabilities pattern can easily be expressed using Datalog, and allows to analyze several more classes of vulnerabilities.
+
+teEther~\cite{Krupp2018} also works at runtime but is different from the previous works presented, as it does not try to protect contracts but rather to actively find an exploit for them. It first analyzes the contract bytecode to look for critical execution paths.
+Critical paths are execution paths which may result in lost funds, for example by sending money to an arbitrary address or being destructed by anyone.
+To find these paths, it uses an approach close to Oyente~\cite{Luu2016a}, first using symbolic execution and then the Z3 SMT solver~\cite{de2008z3} to solve path constraints.
+
+TXSPECTOR~\cite{255340}, which was published soon after the first version of this paper, uses a very similar approach to ours to detect re-entrancy, unchecked call and suicidal contracts.
+They also leverage a Datalog approach to detect vulnerabilities but first transforms the transaction traces into a flow graph rather than adding facts about traces directly to the Datalog database.
+While this does add expressiveness, it makes the analysis significantly more complex, resulting in some analysis timing out on some transactions. Therefore, we believe that their approach could be complementary to ours and used to eliminate potential false-positives of our approach.
+
+\point{Summary} Static analysis tools are typically designed to detect \emph{vulnerable} contracts, while dynamic analysis tools are designed to detect \emph{exploitable} contracts. The only exception is Sereum, which detects contracts \emph{exploited} using re-entrancy.
+Our work is, to the best of our knowledge, the first attempt to detect contracts \emph{exploited} using a wide range of vulnerabilities.
+This is mostly orthogonal with other works and can support analysis tool development efforts by helping to understand what type of exploitation is happening in the wild.

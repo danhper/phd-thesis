@@ -1,0 +1,7 @@
+/.latexmkrc
+/build/
+.auto/
+*.fls
+*.fdb_latexmk
+arxiv/
+evm-metering.tar

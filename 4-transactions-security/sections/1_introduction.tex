@@ -1,0 +1,51 @@
+% !TeX spellcheck = en_US
+
+\section{Introduction}
+\label{sec:introduction}
+
+As the most widely-used cryptocurrency and the first application of a blockchain system, Bitcoin has been frequently criticized for its slow transactional throughput, making it hard to adopt as a payment method.
+Indeed, Bitcoin is only able to process around~10 transactions per second, significantly slower than the throughput offered by centralized payment providers such as Visa, which can process over 65,000 transactions per second~\cite{visa-tps}.
+Many blockchains have since been designed and developed in order to improve scalability, the most valued of these in terms of market capitalization~\cite{CoinMarketCap2020} being EOSIO~\cite{EOS}, Tezos~\cite{Goodman2014}, and XRP Ledger (XRPL)~\cite{xrp_ledger_overview}. 
+
+Although many of these systems have existed for several years already, to the best of our knowledge, no in-depth evaluation of the actual usage of their transactional throughput has yet been performed, and it is unclear up to what point these blockchains have managed to generate economic activity.
+The knowledge of both the quantity and the quality of the realized throughput is crucial for the improvement of blockchain design, and ultimately a better utilization of blockchains.
+In this paper, we analyze transactions of the three blockchains listed above and seek to find out:
+
+\begin{enumerate}
+    \item[RQ1] To what extent has the alleged throughput capacity been achieved in those three blockchains?
+    \item[RQ2] Can we classify transactions by analyzing their metadata and patterns?
+    \item[RQ3] Who are the most active transaction initiators and what is the nature of the transaction they conducted?
+    \item[RQ4] Can we reliably identify DoS and transactional spam attacks by analyzing transaction patterns?
+\end{enumerate}
+
+\point{Contributions} 
+We contribute to the body of literature on blockchain in the following ways:  
+\begin{enumerate}%\itemsep=0pt
+\item We perform the first large-scale detailed analysis of transaction histories of three of the most widely-used high-throughput blockchains: EOSIO, Tezos, and XRPL.
+
+\item We classify on-chain transactions and measure each category's respective share of the total throughput, in terms of the number of transactions and their economic volume.
+
+\item We establish a measurement framework for assessing the quality of transactional throughput in blockchain systems.
+
+\item We expose spamming behaviors that have inflated throughput statistics and caused network congestion.
+
+\item We highlight the large gap between the alleged throughput capacity and the well-intended transactions being performed on those three blockchains.
+\end{enumerate}
+%
+Our analysis serves as the first step towards a better understanding in the nature of user activities on high-scalability blockchains. On-chain monitoring tools can be built based on our framework to detect undesired or even malicious behavior.
+
+\point{Summary of our findings}
+Despite the advertised high throughput and the seemingly commensurate transaction volume, a large portion of on-chain traffic, including payment-related transactions, does not result in actual value transfer. 
+The nature and purpose of non-payment-related activities varies significantly across blockchains.
+
+Specifically, we observe that the current throughput is only \tps{\EOScount}{0}TPS (transactions per second) for EOSIO, \tps{\Tezoscount}{2} TPS for Tezos and \tps{\XRPcount}{0} TPS for XRPL.
+We show that \empirical{96\%} of the throughput on EOSIO was used for the airdrop of a valueless token, \empirical{76\%} of transactions on the Tezos blockchain were used to maintain consensus,
+and that over \empirical{94\%} of transactions on XRPL carried zero monetary value.
+
+
+% \point{Paper organization}
+% The remainder of this paper is organized as follows.
+% In Section~\ref{sec:background} we provide the necessary background on each of the blockchain platforms studied. In Section~\ref{sec:methodology} we describe the data collected from the three blockchains.
+% In Section~\ref{sec:data-analysis} we conduct high-level analyses. 
+% In Section~\ref{sec:case-studies} we present several investigative case studies that highlight how transactions are (mis)used in the three blockchains. 
+% In Section~\ref{sec:related} we summarize related work and conclude in Section~\ref{sec:conclusion}.

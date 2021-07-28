@@ -1,0 +1,78 @@
+\input{4-transactions-security/sections/tables/dataset}
+\section{Methodology}
+\label{sec:methodology}
+In this section, we describe the methodology used to measure the transactional throughput of the selected blockchains.
+
+\subsection{Definitions}
+We first introduce important definitions used in the rest the paper.
+
+\point{Throughput-related definitions}
+When quantified, a throughput value is expressed in TPS (transactions per second).
+\begin{description}
+\item[Alleged Capacity] The theoretical capacity that a blockchain claims to be able to achieve
+\item[Average Throughput] Average throughput recorded on the network throughout the observation period
+\item[Maximum Throughput] Maximum throughput recorded on the network during the observation period
+%\item[Value Transfers] A transfer of an asset holding a non-zero value.
+\end{description}
+
+\point{Blockchain-related definitions}
+We unify the terms that we use across the systems analyzed in this work.
+We sometimes diverge from the definition provided by a particular blockchain for terminological consistency.
+
+\begin{description}
+\item[Block] Entity recorded on a blockchain and included as part of the blockchain to \emph{advance} its state. Blocks are named as such on EOSIO and Tezos, the equivalent of which on XRPL is termed  a ``ledger''.
+\item[Transaction] Entity included at the top-level of a block and typically representing an atomic state transition. These are named as such on EOSIO and XRPL but are called ``operations'' in Tezos.
+\item[Action] Entity included as part of the transaction and describing what the transaction should do. EOSIO and Tezos can have multiple actions per transaction. A single transaction containing multiple actions is only counted towards throughput once.
+Actions are called as such in EOSIO and are the ``contents'' of an ``operation'' on Tezos. XRPL does not feature this concept and each XRPL transaction can be thought of as a single action.
+\end{description}
+
+\subsection{Measurement Framework}
+We implement a framework to measure throughput on the different blockchains.
+Our framework allows one to fetch historical data for all of the blockchains analyzed in this work, and to compute several statistics regarding blocks, transactions, actions and users.
+Transactions and actions can be, where relevant, aggregated by time, type, sender or receivers.
+Our framework is publicly available\footnote{\url{https://github.com/danhper/blockchain-analyzer}} and can easily be extended to add not only new statistics but also new blockchains.
+We provide an extended overview of the framework in~Appendix.
+
+\subsection{Data Collection}
+We collect historical data on the three blockchains from \startdate to \finishdate.
+We provide an overview of the characteristics of the data in~\autoref{tab:data-summary}.
+We note that the numbers of transactions is not the same as in~\autoref{tab:transaction-types-distribution} as here we count only a transaction once, while in the previous table we counted all the actions included in a single transaction.
+
+For all three of the blockchains, we first pinpoint the blocks which correspond to the start and end of our measurement period and use our framework to collect all the blocks included in this range.
+Each time, we use publicly available nodes or data providers to retrieve the necessary data.
+
+\point{EOSIO}
+EOSIO nodes provide an RPC API~\cite{EOS.IO2020} which allows clients to retrieve the content of a single block, through the~\texttt{get\_block} endpoint~\cite{EOSDocs2020}.
+EOSIO also has a list of block producers who usually provide a publicly accessible RPC endpoint. Out of~32 officially advertised endpoints, we shortlist~6 that have a generous rate limit with stable latency and throughput.
+
+We collect data from block~\empirical{\numprint{\EOSStartBlock}} to block~\empirical{\numprint{\EOSEndBlock}}, or a total of~\empirical{\blockscount{\EOSStartBlock}{\EOSEndBlock}} blocks containing~\empirical{631,445,236} transactions, representing more than~\empirical{260}GB of data.
+
+\point{Tezos}
+Similar to EOSIO, Tezos full nodes provide an RPC API and some bakers make it publicly available. We measure the latency and throughput of several nodes and select the one for which we obtained the best results~\cite{tezos-ukraine}.
+We obtain~\empirical{\blockscount{\TezosStartBlock}{\TezosEndBlock}} blocks containing~\empirical{7,890,133} transactions, for a total size of approximately \empirical{1.4} GB of data.
+
+\point{XRPL}
+XRPL has both an RPC API and a websocket API with similar features. Although there are no official public endpoints for XRPL, a high-availability websocket endpoint is provided by the XRP community~\cite{Wind2020}. We use the \texttt{ledger} method of the Websocket API to retrieve the data in the same way we did with EOSIO and Tezos.
+
+In addition, we use the API provided by the ledger explorer XRP Scan~\cite{xrpscan} to retrieve account information including username and parent account.\footnote{A parent account sends initial funds to activate a new account.} 
+Since large XRP users such as exchanges often have multiple accounts, this account information can be used to identify and cluster accounts.
+
+In total, we analyze \blockscount{\XRPStartBlock}{\XRPEndBlock} blocks covering seven months of data, and containing a total of more than~\empirical{150} million transactions. The total size of the compressed data is about~\empirical{130} GB.
+
+
+
+% - network analysis
+
+% - forensics
+
+% - measuring traffic, 
+
+% - behavior pattern of senders, receivers, nodes
+
+% - clustering senders / receivers -- relationship analysis
+
+% - nature of transactions
+
+% - transferrability of our method-- people can use to analyze other blockchains.... 
+
+% - we create a measurement framework: define "claimed", "actual, average", "maximum", "useful" throughput and analyze gaps \autoref{tab:claims-throughput}

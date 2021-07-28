@@ -1,34 +1,35 @@
 \documentclass[a4paper,12pt,twoside]{report}
-\usepackage[left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
-
 \include{thesis.preamble}
-
+\usepackage{thesissetup}
+\input{3-vm-security/preamble}
+\input{4-transactions-security/preamble}
 
 \begin{document}
 
-\title{\LARGE {\bf Title of my Ph.D. Thesis}\\
+\title{\LARGE {\bf Measuring and Improving the Security of Blockchain Execution and Application Layers}\\
  \vspace*{6mm}
 }
 
-\author{Joe Bloggs}
-\submitdate{October 2008}
+\author{Daniel Perez}
+\submitdate{October 2021}
 
 \normallinespacing
 \maketitle
 
 \preface
-\input{abstract/abstract}
-\input{acknowledgements/acknowledgements}
-\input{dedication/dedication}
-\input{quotes/quotes}
+\input{0-abstract/abstract}
+\input{i-acknowledgements/acknowledgements}
+\input{ii-dedication/dedication}
+\input{iii-quotes/quotes}
 
 \body
-\input{introduction/introduction}
-\input{background/background}
+\input{1-introduction/introduction}
+\input{2-background/background}
 
-% body of thesis comes here
+\input{3-vm-security/main}
+\input{4-transactions-security/main}
 
-\input{conclusion/conclusion}
+\input{7-conclusion/conclusion}
 
 \appendix
 % appendices come here
@@ -36,6 +37,6 @@
 
 \addcontentsline{toc}{chapter}{Bibliography}
 \bibliographystyle{alpha}
-\bibliography{bibliography/bibliography}
+\bibliography{bibliography}
 
 \end{document}

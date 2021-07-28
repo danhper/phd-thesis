@@ -1,0 +1,99 @@
+\section{Background}
+\label{sec:background}
+In this section, we briefly describe the Ethereum network and the EVM. Then, we provide an in-depth explanation of how the gas mechanism works and provide additional insights into smart contract execution costs on the Ethereum main network. Finally, we highlight some of the attacks which have been performed by abusing the gas mechanism.
+
+\subsection{Ethereum and the Ethereum Virtual Machine (EVM)}
+The Ethereum~\cite{Buterin2014} platform allows its users to run ``smart contracts'' on its distributed infrastructure. Ethereum \emph{smart contracts} are programs which define a set of rules for the governing of associated funds, typically written in a Turing-complete programming language called Solidity~\cite{Dannen:2017:IES:3103305}. The Solidity code is compiled into EVM bytecode, a low level bytecode designed to be executed by the EVM.
+
+Once the EVM bytecode is generated, it is deployed on the Ethereum blockchain by sending a transaction which only purpose is to create a smart contract with the given code. To execute a smart contract, a user can then send a transaction to this contract. The sender will pay a \emph{transaction fee} which is derived from the contract's computational cost, measured in units of~\emph{gas}~\cite{wood2014ethereum}. The fee itself is paid in Ether (ETH\footnote{When converting ETH to USD, we use the exchange rate on 2020-01-07: 1 ETH = \ETHRate{} USD. For consistency, any monetary amounts denominated in USD are based on this rate.}), the underlying currency of the Ethereum blockchain. When a \emph{miner} successfully mines a blocks, he receives the transaction fee of all the transactions included in the block. We will describe exactly how this transaction fee is computed in the following part of this section.
+
+\subsection{Metering in EVM}
+As briefly outlined in Section~\ref{sec:introduction}, gas is a fundamental component of Ethereum, and generally applicable to permissioned and permissionless blockchain platforms that utilise a distributed virtual machine for contract code execution~\cite{tezos-about,eosio-about}. Gas is the main protection against Denial of Service (DoS) attacks based on non-terminating or resource-intensive programs. It is also used to incentivise miners to process transactions by rewarding them with a fee computed based on the resource usage of the transaction.
+
+\point{Gas cost}
+In the EVM, each transaction has a cost which is computed in and expressed as gas. The cost is split into two parts, a fixed \textit{base cost} of $21,000$ gas, and a variable \emph{execution cost} of the smart contract. 
+Each instruction has a fixed gas cost which has been set by the designers of the EVM~\cite{wood2014ethereum}, who classify the instructions in multiple tiers of gas cost: zero Tier (0 gas), base tier (2 gas), very low tier (3 gas), low tier (5 gas), high tier (10 gas) and special tier where the cost needs more complex rules.
+%
+\begin{figure}[tb]
+  \begin{center}
+    \begin{minipage}{0.42\textwidth}
+\begin{lstlisting}[language=esm]
+PUSH1 0x02 ; very low tier (3 gas)
+PUSH1 0x03 ; very low tier (3 gas)
+MUL        ; low tier      (5 gas)
+PUSH1 0x05 ; very low tier (3 gas)
+SSTORE     ; special tier  (20k gas)
+\end{lstlisting}
+\end{minipage}
+\caption{Example gas cost of an EVM program}
+\label{list:example-gas-cost}
+\end{center}
+\end{figure}
+%
+The gas cost for a transaction in the EVM is the sum over the cost of each instruction in the contract. For example, given the program in Figure~\ref{list:example-gas-cost}, the gas cost will be computed as follow. \op{PUSH1} is in the Very Low Tier and therefore costs~3 gas. It is called~3 times in total and will therefore consume~9 gas. The arguments of \op{PUSH1} do not consume any extra gas. The \op{MUL} instruction is in the Low Tier and hence costs 5 gas. Finally, the \op{SSTORE} will store the result of~$2\times3$ at location 5 in the storage. \op{SSTORE} is in the Special Tier and has slightly more complex pricing rules. Assuming the location in the storage was previously~0, the instruction allocates storage and will cost~20,000 gas. Therefore, this program will cost a total of~20,014 gas to execute. Given the current pricing for storage, the cost of the program is clearly dominated by the storage operation.
+
+It is important to note that, as the transaction has a base cost of~21,000 gas, it will cost a total of~$21\text{,}000 + 20\text{,}014 = 41\text{,}014$ gas to execute the above transaction.
+
+\point{Ethereum Improvement Proposal~(EIP)~150}
+Although the cost of each instruction was decided when first designing the EVM, the authors found that some costs were poorly aligned with actual resource consumption. Particularly, IO-heavy instructions tended to be too cheap, allowing for DOS attacks on the Ethereum~\cite{suicide-attack} blockchain. As a fix, EIP~150~\cite{erc150} was proposed and implemented, significantly increasing the gas consumption of instructions which require to perform IO operations, such as \lstinline{SLOAD} or \lstinline{EXTCODESIZE}. This change revised the cost of under-priced instructions and prevented further DoS attacks such as the one seen in September~2016~\cite{transaction-spam-attack}. This briefly highlights the potential risks rooted in mismatches between instructions and gas costs. While the above cases have been fixed, it is unclear whether all potential issues have been eradicated or not.
+
+\point{Gas price} Up to here, we have explained how the gas cost for executing a contract are computed. However, the gas cost is not the only element needed to compute the total execution cost of a contract. When a transaction is sent, the sender can choose a gas price, namely the amount of \emph{wei} ($1\text{wei} = 10^{-18}~\text{ETH}$) that the sender is ready to pay per unit of gas. For conciseness, these amounts are often expressed in Gwei, where $1\text{Gwei} = 10^9\text{wei}$. Miners will usually prioritise transactions with high gas prices, as this will increase the final fee they receive for processing a transaction.
+
+\point{Transaction fee}
+The transaction fee is the total amount of wei that the sender of the transaction has to pay for the transaction. It is obtained by multiplying the gas price by the gas cost. The transaction fee is non-refundable: even if the transaction fails, it will be paid.
+
+\begin{figure}[tb]
+  \centering
+  \setlength{\tabcolsep}{10pt}
+  \begin{tabular}{lrr}
+    \toprule
+     & \multicolumn{2}{c}{Gas price}\\
+     & Low & High\\
+    Transaction type & (1Gwei) & (80Gwei)\\
+    \midrule
+    Basic (21k gas) & \$\fpeval{round(\ToUSD{21 / 1e6}, 5)} & \$\ToUSD{80 * 21 / 1e6}\\
+    Gas intensive (500k gas) & \$\ToUSD{500 / 1e6} & \$\ToUSD{80 * 500 / 1e6}\\
+    \bottomrule
+  \end{tabular}
+  \caption{Fees for different type of transactions. ``Low'' price is one of the lowest possible price to have a transaction included while ``High'' is a price someone very eager to have his transaction included would pay.}
+  \label{tab:gas-fee}
+\end{figure}
+\begin{figure}[tb]
+\setlength{\tabcolsep}{3pt}
+\centering
+\begin{tabular}{lr}
+    \toprule
+    Number of blocks: & 613,475\\
+    Median gas price: & 9.1 Gwei\\
+    Median gas used (by contracts): & 53,787 \\
+    Median transaction fee: &  0.0008 ETH (\ToUSD{0.0008}~USD)\\
+    \bottomrule
+\end{tabular}
+\caption{Median gas price, gas used and transaction fee from block 8,652,096 (Sep-09-2019) to block 9,286,594 (Jan-15-2020).}
+\label{tab:empirical-gas-fee}
+\end{figure}
+
+\subsection{Gas Statistics}
+Now that we presented the key points about metering in the EVM, we provide concrete numbers about different aspects of the gas price and transaction fees. In particular, we show the amount of transaction fees that a user would have to pay to have his transaction processed by the main Ethereum network.
+
+To give a sense of the transaction fees, we show a variety of typical fees in Figure~\ref{tab:gas-fee}. The fees are divided depending on their gas price and gas consumption. The \textit{Low} gas price is close to the lowest price that can be paid to get the transaction accepted on the Ethereum blockchain. The \textit{High} gas price refers to the price that people would pay when they are extremely eager to get their transaction included, for example when competing with other users to have a transaction included first~\cite{gas-price-history}. The \textit{basic} transaction type refers to transactions consuming only the base amount of gas, without executing any instruction. This is typically the cost to send Ether to a contract or another party. The \textit{gas intensive} transaction type represents computationally expensive transactions, for example, verifying a zero-knowledge proof~\cite{aztec-protocol}. At the time of writing, the maximum amount of gas which can be used in a single block is~\empirical{10,000,000}, which means only~\empirical{20} such transactions could be included in a single block.
+
+In Figure~\ref{tab:empirical-gas-fee}, we show the values of the gas price, gas used and transaction fee. In order to obtain results reflecting the current situation, we limit the analysis to recent blocks. We use all the transactions sent to contracts between September 30, 2019 and January 15, 2020. We find that the median gas price paid by a transaction's sender is around~\empirical{9.1} Gwei, which is around~\empirical{9} times more than the minimum possible fee. It is worth noting that when paying the minimum possible fee, the probability for the transaction to get included in the next block is relatively low and the transaction can therefore be delayed for several blocks: at the time of writing, about \empirical{40\%} of the last 200 blocks accepted a gas price of \empirical{1Gwei}~\cite{eth-gas-station}. This explains that users usually pay a higher fee to get their transaction included faster. The median for the gas consumed by contracts is around~\empirical{50,000} gas, indicating that most transactions perform relatively simple computations. Indeed, the basic fee being~21,000, a simple read followed by an allocation of storage would already result in~46,000 gas. Overall, the median fee paid per transactions is~\empirical{0.0008 ETH} which is around~\empirical{\ToUSD{0.0008} USD}.
+
+% \subsection{Metering in Other Blockchains}
+% WASM, EOS, https://github.com/ewasm/design(https://github.com/ewasm/design/blob/master/metering.md)
+
+\subsection{Previously Known Attacks}
+The Ethereum network has been victim of several Denial of Service (DoS) attacks due to instructions being under-priced. We present two considerable DoS attacks which were performed on the Ethereum network.
+
+\point{\lstinline{EXTCODESIZE} attack}
+In September 2016, a DoS attack was performed on the Ethereum network by flooding it with transactions containing a very large number of \lstinline{EXTCODESIZE} instructions~\cite{transaction-spam-attack}. \lstinline{EXTCODESIZE} is an instruction to retrieve the size in bytes of a given contract's code.
+
+This attack happened because the \lstinline{EXTCODESIZE} instruction was vastly under-priced. At the time of the attack, a single execution of this instruction cost~20 gas, meaning that one could perform around~1,500 instructions with less than~\$0.01. Although by itself, this issue might seem benign, \lstinline{EXTCODESIZE} forces the client to search the contract on disk, resulting in IO heavy transactions. While replaying the Ethereum history on our hardware, the malicious transactions took around~20 to~80 seconds to execute, compared to a few milliseconds for the average transactions. We show the correlation between the clock time and the gas used by transactions during the period of the attack in Figure~\ref{fig:extcodesize-cpu}. Although this attack did not create any issue at the consensus layer, it reduced the rate of block creation by a factor of more than 2 times, with block creation time peaking to more than~30s~\cite{block-time-chart}.
+
+The Ethereum protocol was updated in EIP~150, with all the software running Ethereum, to increase the price of the \lstinline{EXTCODESIZE} from~20 to~700 gas, making the aforementioned attack considerably more expensive to perform. Some performance improvements were also made at the implementation level, allowing clients to process IO-intensive instructions faster.
+
+\point{\lstinline{SUICIDE} Attack}
+Shortly after the \lstinline{EXTCODESIZE} attack, another DoS attack involving the \lstinline{SUICIDE} instruction was performed~\cite{suicide-attack}. The \lstinline{SUICIDE} instruction kills a contract and sends all its remaining Ether to a given address. If this particular address does not exist, a new address would be newly created to receive the funds. Furthermore, at the time of the attack, calling \lstinline{SUICIDE} did not cost any Ether. Given these two properties, an attacker could create and destroy a contract in the same transaction, creating a new contract each time at an extremely low fee. This quickly overused the memory of the nodes, and particularly affected the Go implementation~\cite{geth} which was less memory efficient~\cite{geth-memory-efficiency}.
+
+A twofold fix was issued for this attack in EIP~150. First, and most importantly, \lstinline{SUICIDE} would be charged the regular amount of gas for contract creation when it tried to send Ether to a non-existing address. Subsequently, the price of the \lstinline{SUICIDE} instruction was increased from~0 to~5,000 gas. Again, these measures would make such an attack very expensive.

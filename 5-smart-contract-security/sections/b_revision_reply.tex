@@ -1,0 +1,60 @@
+\newpage
+\section{Major Revision Reply}
+We thank the reviewer for all the helpful feedback.
+We first give an overview of our changes and then discuss point-by-point how we addressed the requested changes.
+
+\subsection{Changes Overview}
+\begin{itemize}
+  \setlength{\itemsep}{-2pt}
+\item We toned down our work and re-framed it slightly to make it clear we are focusing on \emph{exploited} contracts
+\item We added teEther and Maian contracts to the analysis
+\item We added a new type of vulnerability, unrestricted action, which we used to analyze the contracts flagged vulnerable by teEther, Maian and Securify
+\item We improved the logic detection of our tool, eliminating some false positives for integer overflows and adding support for \op{CREATE} based reentrancy attacks
+\item We re-run all our experiments with recent data (up to block \block{10200000})
+\item We addressed as much as we could the comments we received in the previous review round, including a rewrite of the related work section.
+\end{itemize}
+
+\subsection{Addressing Requested Changes}
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+\item Tone down bold claims and title
+
+  We changed the title from ``Smart Contract Vulnerabilities: Does Anyone Care?'' to ``Smart Contract Vulnerabilities: Vulnerable Does Not Imply Exploited''
+  We also revised our abstract, introduction and results summary to a much more neutral tone.
+
+\item Add a paragraph on datalog-analyzer performance (i.e., rough runtime/memory, timeouts etc.).
+
+  We added a paragraph with these information at beginning of Section~\ref{sec:analysis}.
+
+\item Analyze teEther attacks
+
+  We improved our tool to cover a new vulnerability: unrestricted action, which is how we name the vulnerability that teEther tries to exploit. We update the paper to cover the vulnerability in the same way as the others, with a new subsection in Sections~\ref{sec:background},~\ref{sec:methodology} and~\ref{sec:analysis}.
+  We analyzed manually some of the exploits found by teEther and gave an explanation about why they were not exploited in Section~\ref{ssec:analysis-ua}.
+
+\item Update the analysis with more recent data; this paper reports (almost) the same numbers as the previous version. Further, include DAO and Parity Wallet attacks as sanity checks.
+
+  We have re-ran our tool with all the transactions affecting the contracts in our dataset up to block \block{10200000} (2020-06-04) and updated the results accordingly.
+  We have also included contracts flagged vulnerable by Maian~\cite{Nikolic2018a} and teEther which were previously excluded.
+
+  We tested our tool on the transactions of TheDAO (address \addr{0xbb9bc244d798123fde783fcc1c72d3bb8c189413}) and confirmed that we successfully detect the re-entrant transactions draining funds. We discuss this in Section~\ref{ssec:analysis-re}
+
+  We had sanity checks for the contracts unable to withdraw funds because of the Parity wallet bug (\addr{0x863df6bfa4469f3ead0be8f9f2aae51c91a907b4}) in Section~\ref{ssec:analysis-le}. We now added sanity checks for the unrestricted action exploit on the Parity wallet itself in Section~\ref{ssec:analysis-ua}.
+
+\item Produce a dataset section and characterize the dataset both before and after your evaluation
+
+  We already had a dataset section, Section~\ref{sec:datasets}, where we characterized our dataset, and we characterize the dataset after our analysis in Section~\ref{sec:analysis}.
+  Although we did revise and improve both sections, we did not do any major changes there.
+  We are of course open to further feedback on how to improve these.
+
+\item Add a proper discussion of related work and novelty beyond a survey of existing papers
+
+  We rewrote our related work section to improve on these points. We now separated the tools we survey in the related work in static and dynamic tools, comparing them with others, and our tools when relevant. We also added a paragraph emphasizing more clearly how our tool is positioned compared to previous work.
+
+\item Clearly distinguish between vulnerable, exploitable, and exploited and clarify that the paper is answering a question about which contracts actually get exploited, and not whether the contracts could be or could have been exploited.
+
+  We have now made this distinction as clear as we could across the paper, starting from the title and the abstract. The introduction and conclusion have been adjusted accordingly and the related work section have also gone through major changes to reflect this.
+
+\item Analyze the re-entrancy attack pattern found by the Sereum paper (\url{https://github.com/uni-due-syssec/eth-reentrancy-attack-patterns})
+
+  We added the re-entrancy pattern found by Sereum to the test suite we use as sanity check. This help us find that our tool was not covering one of the patterns presented there: create-based re-entrancy. The tool has been updated, along with the Datalog rules described in Section~\ref{sec:methodology}, to cover this case as well.
+\end{itemize}

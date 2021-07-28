@@ -1,0 +1,25 @@
+\begin{figure*}[tb]
+  \centering
+  \setlength{\tabcolsep}{3pt}
+  \begin{tabular}{|lrrr||rr||rr|}
+    \hline
+    
+    \multicolumn{4}{|c||}{\bf Vulnerable} & \multicolumn{2}{c||}{\bf Exploited contracts} &
+    \multicolumn{2}{c|}{\bf Exploited Ether} \\ \hline
+    \bf Vuln. & \bf Vulnerable & \bf Total Ether & \bf Transactions & \bf Contracts & \bf \% of contracts & \bf Exploited & \bf \% of Ether \bigstrut[t]\\
+    & \bf contracts & \bf at stake & \bf analyzed & \bf exploited & \bf exploited & \bf Ether & \bf exploited\\
+
+    \hline\hline
+    \vre & 4,337  & 1,518,067 & 457,073    & 116 &  2.68\% & 6,076 & 0.40\% \bigstrut[t] \\
+    \vue & 11,427 & 419,418   & 3,400,960  & 264 & 2.31\% & 271.9 & 0.068\% \\
+    \vle & 7,285  & 1,416,086 & 10,660,066 &   0 & 0\% & 0 & 0\%\\
+    \vto & 1,881  & 302,679   & 3,002,304  &  54 & 3.72\% & 297.2 & 0.091\%\\
+    \vio & 2,492  & 602,980   & 1,295,913  &  62 & 2.49\% & 1,842 & 0.31\%\\
+    \vua & 5,163  & 580,927   & 3,871,770  &  42 &   0.813\%  &   0    & 0\% \\
+    \hline
+    \bf Total & \VulnerableContracts & \EtherStake & \NumAnalyzedTransactions & \NumExploitedContracts & \PercentExploitedContracts & \ExploitedEther & \PercentExploitedEther \bigstrut \\
+    \hline
+  \end{tabular}
+  \caption{Understanding the exploitation of potentially vulnerable contracts.}
+  \label{fig:findings-summary}
+\end{figure*}

@@ -1,0 +1,40 @@
+version: 2.1
+
+commands:
+  upload_to_s3:
+    description: "Upload draft to S3"
+    parameters:
+      local_path:
+        type: string
+      remote_path:
+        type: string
+      bucket:
+        type: string
+      distribution_id:
+        type: string
+    steps:
+      - run:
+          name: Install AWS CLI
+          command: pip install awscli
+      - run:
+          name: Upload PDF to S3
+          command: aws s3 cp << parameters.local_path >> s3://<< parameters.bucket >><< parameters.remote_path >>
+      - run:
+          name: Invalidate Cloudfront cache
+          command: aws cloudfront create-invalidation --distribution-id << parameters.distribution_id >> --paths << parameters.remote_path >>
+
+jobs:
+  build:
+    docker:
+      - image: danteev/texlive
+    steps:
+      - add_ssh_keys
+      - checkout
+      - run:
+          name: Generate PDF
+          command: make
+      - upload_to_s3:
+          bucket: daniel.perez.sh
+          distribution_id: E3C2FKE97E3G6U
+          local_path: build/main.pdf
+          remote_path: /drafts/smart-contract-vulnerabilities.pdf

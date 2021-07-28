@@ -1,0 +1,113 @@
+\NeedsTeXFormat{LaTeX2e}[2011/06/27]
+\ProvidesPackage{thesissetup}[2019/9/23 v0.01 LaTeX package providing a set of macros commonly used when writing papers]
+
+\newif\ifDRAFT
+\DRAFTfalse
+\DeclareOption{draft}{\DRAFTtrue}
+
+\ProcessOptions\relax
+
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage{enumitem}
+\RequirePackage[left=2cm,right=2cm,top=2cm,bottom=3cm]{geometry}
+
+
+\RequirePackage[hyphens]{url}
+\PassOptionsToPackage{hyphens}{url}\RequirePackage[hidelinks]{hyperref}
+\RequirePackage{booktabs} % For formal tables
+\RequirePackage{graphicx}
+\RequirePackage{multirow}
+\RequirePackage{makecell}
+\RequirePackage{listings}
+\RequirePackage{bigstrut}
+\RequirePackage{subcaption}
+\RequirePackage{xspace}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[font=small,labelfont=bf]{caption}
+\RequirePackage{listings}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\RequirePackage{amsmath}
+\RequirePackage{algpseudocode}
+\RequirePackage{tikz}
+\RequirePackage{algorithm}
+\RequirePackage[autolanguage]{numprint}
+\RequirePackage{xfp}
+\RequirePackage{ae}
+\RequirePackage{aecompl}
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{color}
+\RequirePackage[lighttt]{lmodern}
+
+\RequirePackage{packages/listingsgo}
+
+\npthousandsep{,}
+\npdecimalsign{\ensuremath{.}}
+
+\lstset{
+  basicstyle=\ttfamily,
+  keywordstyle=\bfseries
+}
+
+\lstdefinelanguage{esm}{
+  comment=[l]{;},
+  commentstyle=\color{gray},
+  string=[s]{(}{)},
+  stringstyle=\color{gray}
+}
+
+\lstdefinelanguage{json}{
+  string=[s]{"}{"},
+  stringstyle=\ttfamily,
+  comment=[l]{:},
+  commentstyle=\color{black},
+}
+
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+
+\definecolor{red}{rgb}{1,0,0}
+\definecolor{green}{rgb}{0,1,0}
+\definecolor{blue}{rgb}{0,0,1}
+\definecolor{cyan}{rgb}{0.4,1,1}
+\definecolor{orange}{rgb}{1,0.6,0}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{dkblue}{rgb}{0.1,0.37,0.51}
+\definecolor{dkred}{rgb}{0.6,0,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{purple}{rgb}{0.58,0,0.82}
+\definecolor{yellow}{rgb}{1,1,0}
+\definecolor{dkyellow}{rgb}{1,0.9,0.45}
+
+
+\ifDRAFT
+% Hilighting commands:
+\newcommand{\hl}[1]{\textcolor{dkgreen}{#1}}
+\newcommand{\fix}[1]{\textcolor{red}{#1}}
+\newcommand{\todo}[1]{\textcolor{red}{\textbf{TODO: }#1}}
+\newcommand{\hll}[1]{\textcolor{orange}{#1}}
+\newcommand{\empirical}[1]{\fbox{#1}}
+\else
+% for final sub
+\newcommand{\empirical}[1]{#1}
+\newcommand{\hl}[1]{#1}
+\newcommand{\fix}[1]{{}}
+\newcommand{\todo}[1]{{}}
+\newcommand{\hll}[1]{#1}
+\fi
+
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
+\RequirePackage{pifont}
+
+\newcommand{\point}[1]{\par\smallskip\noindent\textbf{#1.}}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
+  \hspace{-2.5pt}}
+
+\newcommand{\ETHRate}{2000}
+\newcommand{\ToUSD}[1]{\fpeval{#1 * \ETHRate}}

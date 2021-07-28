@@ -1,0 +1,258 @@
+\documentclass[letterpaper,twocolumn,10pt]{article}
+% \renewcommand{\footnotetextcopyrightpermission}[1]{}
+\usepackage{usenix}
+% \documentclass[sigconf]{acmart}
+% \settopmatter{printacmref=false}
+% \renewcommand{\footnotetextcopyrightpermission}[1]{}
+
+\usepackage{hyperref}
+\usepackage{booktabs} % For formal tables
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{listings}
+\usepackage{bigstrut}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{solidity-highlighting}
+\usepackage{xspace}
+\usepackage{numprint}
+\usepackage{graphicx}
+\usepackage{afterpage}
+\usepackage{float}
+\usepackage{stringstrings}
+\usepackage[bottom]{footmisc}
+\npthousandsep{,}
+
+\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}
+%\usepackage{ae,aecompl}
+
+%\usepackage[activate={true,nocompatibility},final,tracking=true,kerning=true,spacing=true,factor=1100,stretch=10,shrink=10]{microtype}
+
+%\settopmatter{printacmref=false}
+
+\usepackage{color}
+\definecolor{red}{rgb}{1,0,0}
+\definecolor{green}{rgb}{0,1,0}
+\definecolor{blue}{rgb}{0,0,1}
+\definecolor{cyan}{rgb}{0.4,1,1}
+\definecolor{orange}{rgb}{1,0.6,0}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{dkred}{rgb}{0.6,0,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{purple}{rgb}{0.58,0,0.82}
+
+\lstset{basicstyle=\ttfamily}
+\lstdefinelanguage{json}{
+    string=[s]{"}{"},
+    stringstyle=\color{black},
+    comment=[l]{:},
+    commentstyle=\color{black},
+}
+\lstdefinelanguage{esm}{
+    comment=[l]{;},
+    commentstyle=\color{gray},
+    string=[s]{(}{)},
+    stringstyle=\color{gray}
+}
+
+%\usepackage{caption}
+\usepackage[font=small,labelfont=bf]{caption}
+
+\newif\ifDRAFT
+\DRAFTtrue
+% Only comment and uncomment false line :
+\DRAFTfalse
+
+\ifDRAFT
+  %Hilighting commands:
+  \newcommand{\hl}[1]{\textcolor{dkgreen}{#1}}
+  \newcommand{\fix}[1]{\textcolor{red}{#1}}
+  \newcommand{\todo}[1]{{\color{red}\bf\em TODO:\/\@#1}}
+  \newcommand{\hll}[1]{\textcolor{orange}{#1}}
+  \newcommand{\smw}[1]{\todo{Comment by Sam: #1}}
+  \newcommand{\empirical}[1]{\textcolor{blue}{#1}}
+\else
+  % for final sub
+  \newcommand{\hl}[1]{#1}
+  \newcommand{\fix}[1]{{}}
+  \newcommand{\todo}[1]{{}}
+  \newcommand{\hll}[1]{#1}
+  \newcommand{\smw}[1]{{}}
+  \newcommand{\empirical}[1]{#1}
+\fi
+
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{0pt}
+\setlength{\textfloatsep}{0.3cm}
+\setlength{\intextsep}{0.3cm}
+
+\newcommand{\correctness}{\point{Analysis correctness}\xspace}
+
+\newcommand{\point}[1]{\par\smallskip\noindent\textbf{#1.}}
+\newcommand{\addr}[2][\small]{{#1\href{https://etherscan.io/address/#2}{\texttt{#2}}}}
+\newcommand{\tx}[2][\small]{{#1\href{https://etherscan.io/tx/#2}{\texttt{\substring{#2}{1}{10}}}}}
+\newcommand{\block}[1]{\href{https://etherscan.io/block/#1}{\numprint{#1}}}
+
+\newcommand{\vuln}[1]{\textsf{#1}}
+\newcommand{\vre}{\vuln{RE}}
+\newcommand{\reentrancy}{Re-Entrancy}
+\newcommand{\vue}{\vuln{UE}}
+\newcommand{\unhandledexceptions}{Unhandled Exceptions}
+\newcommand{\vle}{\vuln{LE}}
+\newcommand{\lockedether}{Locked Ether}
+\newcommand{\vto}{\vuln{TO}}
+\newcommand{\transactionorder}{Transaction Order Dependency}
+\newcommand{\vio}{\vuln{IO}}
+\newcommand{\integeroverflow}{Integer Overflow}
+\newcommand{\vua}{\vuln{UA}}
+\newcommand{\unrestrictedaction}{Unrestricted Action}
+
+\newcommand{\op}[1]{\lstinline{#1}}
+\newcommand{\dterm}[2]{\lstinline$#1${$\left(#2\right)$}}
+\newcommand{\drulesep}{~\lstinline$:-$~}
+\newcommand{\dend}{\lstinline$.$}
+\newcommand{\dsep}{,~}
+
+\newcommand{\VulnTypes}{six\xspace}
+\newcommand{\VulnTypesNum}{6\xspace}
+\newcommand{\PapersAnalyzed}{six\xspace}
+
+\newcommand{\ETHRate}{200}
+\newcommand{\ToUSD}[1]{\numprint{\the\numexpr #1 * \ETHRate\relax}}
+
+% \newcommand{\AnalysisThreshold}{10\xspace}
+
+\newcommand{\EtherClaimedVulnerable}{3~million\xspace}
+\newcommand{\EtherStake}{3,124,433\xspace}
+\newcommand{\EtherClaimedVulnerableUSD}{\ToUSD{3}~million\xspace}
+
+\newcommand{\UpperBoundExploitedEther}{8,487\xspace}
+\newcommand{\ExploitedEther}{8,487\xspace}
+\newcommand{\ExploitedEtherUSD}{1.7 million\xspace}
+\newcommand{\PercentExploitedEther}{0.27\%\xspace}
+\newcommand{\PercentExploitedContracts}{1.98\%\xspace}
+\newcommand{\VulnerableContracts}{23,327\xspace}
+\newcommand{\NumAnalyzedTransactions}{20,241,730\xspace}
+% \newcommand{\NumExploitedContractsWEther}{49\xspace}
+\newcommand{\NumExploitedContracts}{463\xspace}
+
+
+\newenvironment{investigation}[1]{\par\noindent\rule[0.5ex]{\linewidth}{1pt}\par{\noindent{\sf Investigation of the contract at\\ \addr{#1}}}:\\\noindent\rule[0.5ex]{\linewidth}{1pt}}{\\\smallskip{\noindent\rule[0.5ex]{\linewidth}{1pt}}}
+
+
+\renewcommand\textfraction{.05}
+\setcounter{totalnumber}{5}
+%\renewcommand{\floatpagefraction}{.8}
+
+    \renewcommand{\dbltopfraction}{0.9}	% fit big float above 2-col. text
+    \renewcommand{\textfraction}{0.07}	% allow minimal text w. figs
+    %   Parameters for FLOAT pages (not text pages):
+    \renewcommand{\floatpagefraction}{0.7}	% require fuller float pages
+	% N.B.: floatpagefraction MUST be less than topfraction !!
+    \renewcommand{\dblfloatpagefraction}{0.7}	% require fuller float pages
+
+% Copyright
+%\setcopyright{none}
+%\setcopyright{acmcopyright}
+%\setcopyright{acmlicensed}
+%\setcopyright{rightsretained}
+%\setcopyright{usgov}
+%\setcopyright{usgovmixed}
+%\setcopyright{cagov}
+%\setcopyright{cagovmixed}
+
+
+% DOI
+%\acmDOI{10.475/123_4}
+
+% ISBN
+%\acmISBN{123-4567-24-567/08/06}
+
+%Conference
+% Uncomment for final version?
+% \acmConference[CCS'2019]{Conference on Computer and Communications Security}{November 2019}{London, United Kingdom}
+% \acmYear{2019}
+% \copyrightyear{2019}
+% \acmArticle{4}
+% \acmPrice{15.00}
+
+% \setlength{\abovecaptionskip}{0pt}
+% \setlength{\belowcaptionskip}{0pt}
+% \setlength{\textfloatsep}{0.3cm}
+% \setlength{\intextsep}{0.3cm}
+
+% work around for weird arxiv indentation of last reference
+\AtEndDocument{\par\leavevmode}
+
+\begin{document}
+\sloppy
+\title{Smart Contract Vulnerabilities:\\ Vulnerable Does Not Imply Exploited}
+
+\author{
+  {\rm Daniel Perez}\\
+  Imperial College London
+  \and
+  {\rm Benjamin Livshits}\\
+  Imperial College London
+  % copy the following lines to add more authors
+  % \and
+  % {\rm Name}\\
+  % Name Institution
+} % end author
+
+
+\maketitle
+
+\input{sections/0_abstract}
+
+\footnotetext{We use the exchange rate on 2020-05-16: 1 ETH = \ETHRate{} USD. For consistency, any monetary amounts denominated in USD are based on this rate.}
+
+% The code below should be generated by the tool at
+% http://dl.acm.org/ccs.cfm
+% Please copy and paste the code instead of the example below.
+%
+%\begin{CCSXML}
+%<ccs2012>
+%<concept>
+%<concept_id>10002978.10003029.10011150</concept_id>
+%<concept_desc>Security and privacy~Privacy protections</concept_desc>
+%<concept_significance>500</concept_significance>
+%</concept>
+%<concept>
+%<concept_id>10002978.10003029.10011703</concept_id>
+%<concept_desc>Security and privacy~Usability in security and privacy</concept_desc>
+%<concept_significance>300</concept_significance>
+%</concept>
+%</ccs2012>
+%\end{CCSXML}
+
+%\ccsdesc[500]{Security and privacy~Privacy protections}
+%\ccsdesc[300]{Security and privacy~Usability in security and privacy}
+
+%\keywords{Smart contracts, Ethereum, vulnerabilities}
+% \pagestyle{plain}
+\input{sections/1_introduction}
+\input{sections/2_background}
+\input{sections/3_data}
+\input{sections/4_methodology}
+\input{sections/5_analysis}
+% \input{sections/6_eval}
+\input{sections/6_limitations}
+\input{sections/7_discussion}
+\input{sections/8_related}
+\input{sections/9_conclusion}
+% \input{sections/acks}
+%\newpage
+
+% \bibliographystyle{ACM-Reference-Format}
+\bibliographystyle{plain}
+\bibliography{blockchain-security}
+% \balancecolumns
+\appendix
+\input{sections/a_investigations}
+
+% \input{sections/b_revision_reply}
+% \balancecolumns
+\end{document}

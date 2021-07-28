@@ -1,0 +1,50 @@
+% for table 2
+\newcommand{\EOSStartBlock}{82152667}
+\newcommand{\EOSEndBlock}{118286375}
+\newcommand{\XRPStartBlock}{50399027}
+\newcommand{\XRPEndBlock}{55152991}
+\newcommand{\TezosStartBlock}{630709}
+\newcommand{\TezosEndBlock}{932530}
+
+\newcommand{\EOScount}{631445236}
+\newcommand{\Tezoscount}{7890133}
+\newcommand{\XRPcount}{271546797}
+
+
+%\setlength{\abovecaptionskip}{0pt}
+%\setlength{\belowcaptionskip}{0pt}
+%\setlength{\textfloatsep}{0.3cm}
+%\setlength{\intextsep}{0.3cm}
+
+\newcommand{\addr}[2][\small]{{#1\href{https://etherscan.io/address/#2}{\texttt{#2}}}}
+
+\newcommand{\tezaddr}[2][\footnotesize]{{#1\href{https://www.tezos.id/accounts/#2}{\texttt{#2}}}}
+
+\newcommand{\xrpaddr}[2][\footnotesize]{{#1\href{https://xrpscan.com/account/#2}{\texttt{#2}}}}
+
+\newcommand{\coin}[1]{\texttt{#1}}
+
+\newcommand{\block}[1]{\href{https://etherscan.io/block/#1}{#1}}
+
+\newcommand{\startdate}{October~1,~2019\xspace}
+
+\newcommand{\finishdate}{April~30,~2020\xspace}
+
+\newcommand{\blockscount}[2]{\numprint{\fpeval{#2 - #1 + 1}}}
+\newcommand{\tps}[2]{%
+\nprounddigits{#2}%
+\numprint{\fpeval{#1 / 213 / 24 / 3600}}\xspace%
+}
+
+
+\renewcommand\textfraction{.05}
+\setcounter{totalnumber}{5}
+%\renewcommand{\floatpagefraction}{.8}
+
+\renewcommand{\dbltopfraction}{0.9}	% fit big float above 2-col. text
+\renewcommand{\textfraction}{0.07}	% allow minimal text w. figs
+%   Parameters for FLOAT pages (not text pages):
+\renewcommand{\floatpagefraction}{0.7}	% require fuller float pages
+	% N.B.: floatpagefraction MUST be less than topfraction !!
+\renewcommand{\dblfloatpagefraction}{0.7}	% require fuller float pages
+
