@@ -79,7 +79,7 @@ if (!addr.send(100)) { throw; }
 
 % \footnotetext{Section~\ref{ssec:method-io} and Section~\ref{ssec:analysis-io} provide in-depth explanations of the cases where the analysis is unsound}
 
-\input{sections/datalog}
+\input{5-smart-contract-security/sections/datalog}
 
 \subsection{\reentrancy}
 In the EVM, as transactions are executed independently, re-entrancy issues can only occur \emph{within} a single transaction. Therefore, for re-entrancy to be exploited, there must be a call to an external contract which invokes, directly or indirectly, a re-entrant callback to the calling contract. We therefore start by looking for \op{CALL} instructions in the execution traces, while keeping track of the contract currently being executed.

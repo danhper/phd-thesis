@@ -1,0 +1,180 @@
+\section{Top Suppliers and Borrowers}
+\label{sec:top-suppliers-borrowers}
+In~\autoref{tab:top-suppliers-borrowers}, we show the top 10 suppliers and borrowers in terms of amount borrowed and supplied expressed in USD.
+We mark the addresses that are smart contracts. Among those contracts, the one with the most supplied funds, \contractaddr[\scriptsize]{0xa2b47e3d5c44877cca798226b7b8118f9bfb7a56}, is the address of a Curve~\cite{web:curve} pool that has funds coming from a several independent parties.
+No other address among top suppliers and borrowers is a pool address.
+
+\begin{figure}[tbp]
+  \setlength{\tabcolsep}{3.5pt}
+  \begin{subfigure}{\textwidth}
+    \begin{tabular}{lcrl}
+      \toprule
+      \textbf{Address} &  & \textbf{Amount} & \textbf{Description}\\
+      \midrule
+      \contractaddr[\scriptsize]{0x554bd2947df1c8d8d38897bdc92b3b97692b2845} &   & 342,128,032 &\\
+      \contractaddr[\scriptsize]{0xa2b47e3d5c44877cca798226b7b8118f9bfb7a56} & \checkmark  & 40,284,236 & Curve pool\\
+      \contractaddr[\scriptsize]{0x04b0b0e460c9fc583d9c93bc9ae25b353390645e} & \checkmark  & 34,908,472 & Instadapp smart wallet\\
+      \contractaddr[\scriptsize]{0x25599dcbd434af9a17d52444f71c92987fa97cfc} &  & 34,530,570 & \\
+      \contractaddr[\scriptsize]{0x58485ea7106891bdd94c37ced30c6fdbc5293b16} & \checkmark  & 32,686,029 & Multisig wallet\\
+      \contractaddr[\scriptsize]{0x909b443761bbd7fbb876ecde71a37e1433f6af6f} &  & 29,308,425  & \\
+      \contractaddr[\scriptsize]{0xea61f3052753ea2c6a1c208583ad9b0394ed2f28} & \checkmark  & 28,854,366 & DeFi Saver smart wallet\\
+      \contractaddr[\scriptsize]{0x32b2d4ec46d76fc6dabfe958fb0e0bd8db740c84} &  & 27,928,637 & \\
+      \contractaddr[\scriptsize]{0xedcc13d25e23032b61d30c298334f92d7c0ba84e} &  & 27,709,153 & \\
+      \contractaddr[\scriptsize]{0x6d2af065ccb60c0f7e8ec5907c961c42a3447127} &  & 25,559,037 & \\
+      \bottomrule
+    \end{tabular}
+    \caption{Top 10 users with the largest amount of funds supplied}
+  \end{subfigure}
+  \begin{subfigure}{\textwidth}
+    \begin{tabular}{llrl}
+      \toprule
+      \textbf{Address} &  & \textbf{Amount} & \textbf{Description}\\
+      \midrule
+      \contractaddr[\scriptsize]{0x554bd2947df1c8d8d38897bdc92b3b97692b2845} & & 247,143,532 & \\
+      \contractaddr[\scriptsize]{0x25599dcbd434af9a17d52444f71c92987fa97cfc} & & 22,085,613 & \\
+      \contractaddr[\scriptsize]{0x909b443761bbd7fbb876ecde71a37e1433f6af6f} & & 21,030,095 & \\
+      \contractaddr[\scriptsize]{0x58485ea7106891bdd94c37ced30c6fdbc5293b16} & \checkmark & 20,149,687 & Multisig wallet\\
+      \contractaddr[\scriptsize]{0x32b2d4ec46d76fc6dabfe958fb0e0bd8db740c84} & & 18,900,729 & \\
+      \contractaddr[\scriptsize]{0xea61f3052753ea2c6a1c208583ad9b0394ed2f28} & \checkmark & 18,248,324 & DeFi Saver smart wallet\\
+      \contractaddr[\scriptsize]{0xedcc13d25e23032b61d30c298334f92d7c0ba84e} & & 17,643,172 & \\
+      \contractaddr[\scriptsize]{0x6d2af065ccb60c0f7e8ec5907c961c42a3447127} & & 12,015,576 & \\
+      \contractaddr[\scriptsize]{0x79dbd1baf124edd4205b2aba56c29bf3914c8ed0} & & 11,632,820 & \\
+      \contractaddr[\scriptsize]{0x0c8a8dd439069690a5722d5fbb18359a68e279f1} & & 10,009,553 & \\
+      \bottomrule
+    \end{tabular}
+    \caption{Top 10 users with the largest amount of funds borrowed}
+  \end{subfigure}
+  \caption{Top 10 suppliers and borrowers. Amounts are expressed in their USD equivalent. Addresses marked with $\checkmark$ are smart contract addresses, among which the one with the most supplied funds is a Curve pool address that aggregates funds from multiple parties. 
+%   and the ``A'' column is checked if it is an \emph{aggregator} (e.g. Curve pool).
+  }
+  \label{tab:top-suppliers-borrowers}
+\end{figure}
+
+\section{Relationship Between Miners and Liquidators}
+\label{sec:miners-liquidators}
+In~\autoref{tab:miners-liquidators}, we show the 10 miners who mined the most blocks containing at least one liquidation.
+For each miner, we show the 5 liquidators who liquidated the most positions in blocks mined by the given miner.
+Overall, we see that for every miner, the liquidations are spread relatively evenly across the different liquidators.
+Although we only show the top 10 miners for space constraints, we noted that this was the case for all miners in our dataset.
+
+
+\hypersetup{hidelinks}
+\renewcommand{\contractaddr}[2][\ssmall]{{#1\href{https://etherscan.io/token/#2}{\texttt{#2}}}}
+\begin{figure}
+%   \setlength{\tabcolsep}{0.6pt}
+  \scriptsize
+  \renewcommand{\arraystretch}{1.2}
+  \begin{tabular}{@{}l@{}rl@{}r@{}}
+    \toprule
+    \textbf{Miner} & \textbf{Blocks} & \textbf{Liquidators} & \textbf{Liquidations} \\
+          & \textbf{count} & & \textbf{count}\\
+    \midrule
+\multirow{5}{*}{\contractaddr{0x5A0b54D5dc17e0AadC383d2db43B0a0D3E029c4c}} & \multirow{5}{*}{1281} & \contractaddr{0x6a0c50788E462f322959A2458687096994d66316} & 144\\
+                                           &       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} & 114\\
+                                           &       & \contractaddr{0x0c31b6605686aa26df47eb45AF0e4aa6639A5fd6} &  91\\
+                                           &       & \contractaddr{0xb00ba6778cF84100da676101e011B3d229458270} &  76\\
+                                           &       & \contractaddr{0x268a1b7ECC1fE1FaB1eE32a7e61e3b7810BAD4a5} &  70\\
+\hline
+\multirow{5}{*}{\contractaddr{0xEA674fdDe714fd979de3EdF0F56AA9716B898ec8}} & \multirow{5}{*}{969} & \contractaddr{0x6a0c50788E462f322959A2458687096994d66316} &  88\\
+                                           &       & \contractaddr{0xb00ba6778cF84100da676101e011B3d229458270} &  75\\
+                                           &       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} &  70\\
+                                           &       & \contractaddr{0x0c31b6605686aa26df47eb45AF0e4aa6639A5fd6} &  52\\
+                                           &       & \contractaddr{0x268a1b7ECC1fE1FaB1eE32a7e61e3b7810BAD4a5} &  50\\
+\hline
+\multirow{5}{*}{\contractaddr{0x829BD824B016326A401d083B33D092293333A830}} & \multirow{5}{*}{310} & \contractaddr{0x6a0c50788E462f322959A2458687096994d66316} &  31\\
+                                           &       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} &  26\\
+                                           &       & \contractaddr{0x402a75f3500CA1FbA17741Ec916F07a0c9DB195D} &  23\\
+                                           &       & \contractaddr{0xb00ba6778cF84100da676101e011B3d229458270} &  18\\
+                                           &       & \contractaddr{0x029720A9b3CE72f3e1D9C79257E1F19AfE20b6c9} &  17\\
+\hline
+\multirow{5}{*}{\contractaddr{0x52bc44d5378309EE2abF1539BF71dE1b7d7bE3b5}} & \multirow{5}{*}{257} & \contractaddr{0x6a0c50788E462f322959A2458687096994d66316} &  22\\
+                                           &       & \contractaddr{0x10aab4B0EF76AA2AC9b5909e671517a1171B050E} &  21\\
+                                           &       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} &  16\\
+                                           &       & \contractaddr{0x402a75f3500CA1FbA17741Ec916F07a0c9DB195D} &  15\\
+                                           &       & \contractaddr{0x0006e4548AED4502ec8c844567840Ce6eF1013f5} &  14\\
+\hline
+\multirow{5}{*}{\contractaddr{0x04668Ec2f57cC15c381b461B9fEDaB5D451c8F7F}} & \multirow{5}{*}{185} & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} &  22\\
+                                           &       & \contractaddr{0x5DAfafbd7AcD662C909a9601120cf1D9F277e8aE} &  14\\
+                                           &       & \contractaddr{0x10aab4B0EF76AA2AC9b5909e671517a1171B050E} &  14\\
+                                           &       & \contractaddr{0x268a1b7ECC1fE1FaB1eE32a7e61e3b7810BAD4a5} &  12\\
+                                           &       & \contractaddr{0x6a0c50788E462f322959A2458687096994d66316} &  12\\
+\hline
+\multirow{5}{*}{\contractaddr{0xb2930B35844a230f00E51431aCAe96Fe543a0347}} & \multirow{5}{*}{77} & \contractaddr{0x10aab4B0EF76AA2AC9b5909e671517a1171B050E} &   8\\
+                                           &       & \contractaddr{0x0c31b6605686aa26df47eb45AF0e4aa6639A5fd6} &   8\\
+                                           &       & \contractaddr{0x5DAfafbd7AcD662C909a9601120cf1D9F277e8aE} &   6\\
+                                           &       & \contractaddr{0xf8E562f4F30c5DdA0978857067D6585265dA3437} &   6\\
+                                           &       & \contractaddr{0xfDe817C7a0770f42fb80B93dd7A538291C871765} &   5\\
+\hline
+\multirow{5}{*}{\contractaddr{0xD224cA0c819e8E97ba0136B3b95ceFf503B79f53}} & \multirow{5}{*}{73} & \contractaddr{0xb00ba6778cF84100da676101e011B3d229458270} &  13\\
+                                           &       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} &   8\\
+                                           &       & \contractaddr{0x88886841CfCCBf54AdBbC0B6C9cBAceAbec42b8B} &   8\\
+                                           &       & \contractaddr{0xfFA7370a03c2a91f5B1847a90750489d05f52Fa9} &   5\\
+                                           &       & \contractaddr{0x492Ff1c96b398297FcAcd6E7E1E968d2b2fc7Da0} &   5\\
+\hline
+\multirow{5}{*}{\contractaddr{0x4C549990A7eF3FEA8784406c1EECc98bF4211fA5}} & \multirow{5}{*}{68} & \contractaddr{0xb00ba6778cF84100da676101e011B3d229458270} &  12\\
+                                           &       & \contractaddr{0x6a0c50788E462f322959A2458687096994d66316} &   9\\
+                                           &       & \contractaddr{0x402a75f3500CA1FbA17741Ec916F07a0c9DB195D} &   5\\
+                                           &       & \contractaddr{0x10aab4B0EF76AA2AC9b5909e671517a1171B050E} &   4\\
+                                           &       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} &   3\\
+\hline
+\multirow{5}{*}{\contractaddr{0xEEa5B82B61424dF8020f5feDD81767f2d0D25Bfb}} & \multirow{5}{*}{55} & \contractaddr{0xb00ba6778cF84100da676101e011B3d229458270} &   7\\
+                                           &       & \contractaddr{0x402a75f3500CA1FbA17741Ec916F07a0c9DB195D} &   6\\
+                                           &       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} &   5\\
+                                           &       & \contractaddr{0x029720A9b3CE72f3e1D9C79257E1F19AfE20b6c9} &   5\\
+                                           &       & \contractaddr{0x10aab4B0EF76AA2AC9b5909e671517a1171B050E} &   4\\
+\hline
+\multirow{5}{*}{\contractaddr{0x84A0d77c693aDAbE0ebc48F88b3fFFF010577051}} & \multirow{5}{*}{46} & \contractaddr{0xb00ba6778cF84100da676101e011B3d229458270} &   7\\
+                                           &       & \contractaddr{0x0c31b6605686aa26df47eb45AF0e4aa6639A5fd6} &   6\\
+                                           &       & \contractaddr{0x6a0c50788E462f322959A2458687096994d66316} &   5\\
+                                           &       & \contractaddr{0x5e32f33e261a90FF9fE94230387118945599268c} &   5\\
+                                           &       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} &   5\\
+    \bottomrule
+  \end{tabular}
+  \caption{Top 10 miners per number of blocks containing at least a liquidation event mined and top 5 liquidators for each miner per number of liquidations}\label{tab:miners-liquidators}
+\end{figure}
+\hypersetup{pdfborder={0 0 1}}
+
+% \begin{figure}
+%   \setlength{\tabcolsep}{4pt}
+%   \begin{tabular}{rlrrr}
+%     \toprule
+%     \textbf{Rank} &                                           \textbf{Address} & \textbf{Supply} & \textbf{Borrow} & \textbf{Ratio} \\
+%     \midrule
+%     1 &  \contractaddr{0x554bd2947df1c8d8d38897bdc92b3b97692b2845} &         256.60M &         247.14M &           1.04 \\
+%     6 &  \contractaddr{0x909b443761bbd7fbb876ecde71a37e1433f6af6f} &          21.98M &          21.03M &           1.05 \\
+%     16 &  \contractaddr{0x0c8a8dd439069690a5722d5fbb18359a68e279f1} &          10.27M &          10.01M &           1.03 \\
+%     21 &  \contractaddr{0xc2f61a6eeec48d686901d325cde9233b81c793f3} &           8.48M &           8.21M &           1.03 \\
+%     31 &  \contractaddr{0x78f6303f7d49166f2da1bb9c679b675234a645bf} &           5.66M &           5.42M &           1.04 \\
+%     36 &  \contractaddr{0xb7904059e7f4863ad9efe7778dbe5f663e379501} &           4.60M &           4.54M &           1.01 \\
+%     39 &  \contractaddr{0xd09a6dd8ff69c6269922df90b7756df3d0950506} &           4.16M &           4.15M &           1.00 \\
+%     42 &  \contractaddr{0xe0497d23c68118db8f1e8439864c6774dfe0e825} &           3.22M &           3.22M &           1.00 \\
+%     44 &  \contractaddr{0x5893f8aa9c265e4b88bb59ff053b3b1f0270d2a5} &           3.00M &           2.99M &           1.01 \\
+%     50 &  \contractaddr{0xd7600603356a5da560d1a59f70194c58cd28e7ad} &           2.47M &           2.45M &           1.01 \\
+%     \bottomrule
+%   \end{tabular}
+%   \caption{Accounts with a supply to borrow ratio under 1.05 among the top 50 suppliers on Compound.}
+% \end{figure}
+
+
+% \begin{figure}
+%     \centering
+%     \setlength{\tabcolsep}{5pt}
+%     \begin{tabular}{lr}
+%       \toprule
+%       Collateral token & Amount seized (USD) \\
+%       \midrule
+%       \coin{cBAT}               &  2,463,000 \\
+%       \coin{cBTC}               &     62,787 \\
+%       \coin{cDAI}               &  9,778,867 \\
+%       \coin{cETH}               & 39,287,764 \\
+%       \coin{cREP}               &    233,656 \\
+%       \coin{cSAI}               &    165,788 \\
+%       \coin{cUSDC}              &  6,318,983 \\
+%       \coin{cUSDT}              &      7,146 \\
+%       \coin{cZRX}               &    243,838 \\
+%       \bottomrule
+%     \end{tabular}
+%     \caption{Total amount of collateral seized expressed in USD. The exchange rate at time of liquidation is used.}
+%     \label{fig:collateral-seized}
+% \end{figure}
+

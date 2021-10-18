@@ -1,0 +1,149 @@
+\begin{figure}[tbp]
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{./6-application-security/figures/suppliers-borrowers-over-time.pdf}
+    \caption{Number of suppliers and borrowers.}
+    \label{fig:borrowers-suppliers-over-time}
+  \end{subfigure}
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{./6-application-security/figures/borrow-supply-over-time.pdf}
+    \caption{Amount of funds supplied, borrowed and locked.}
+    \label{fig:borrow-supply-over-time}
+  \end{subfigure}
+  \caption{Number of active accounts and amount of funds on Compound over time.}
+\end{figure}
+
+\section{Analysis}
+\label{sec:analysis}
+In this section, we present the results of the analysis performed with the framework outlined in Section~\ref{sec:methodology}.
+We analyze data from the Compound protocol~\cite{Leshner2018} over a period ranging from \StartDate---when the first Compound markets were deployed on the Ethereum main network---to \EndDate.
+The full list of contracts considered for our analysis can be found in Appendix~\ref{sec:monitored-contracts}.
+When analyzing a single market, we choose the market for \coin{DAI}, as it is the largest by an order of magnitude.
+
+\begin{figure}[tbp]
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{./6-application-security/figures/suppliers-distribution.pdf}
+    \caption{Distribution of supplied funds.}
+    \label{fig:suppliers-distribution}
+  \end{subfigure}
+  \begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{./6-application-security/figures/borrowers-distribution.pdf}
+    \caption{Distribution of borrowed funds.}
+    \label{fig:borrowers-distribution}
+  \end{subfigure}
+  \caption{Cumulative distribution of funds in USD.~Accounts are sorted from least to most wealthy and bucketed in bins of 10, i.e. a single bar represents the sum of 10 accounts.}\label{fig:suppliers-borrowers-distribution}
+\end{figure}
+
+
+\subsection{Borrowers and Suppliers}
+We first examine the total number of borrowers and suppliers on Compound by considering any Ethereum account that, at any time within the observation period, either exhibited a non-zero cToken balance or borrowed funds for any Compound market.
+The change in the number of borrowers and suppliers over time is displayed in \autoref{fig:borrowers-suppliers-over-time}.
+
+We see that the total number of suppliers always exceeds the total number of borrowers. 
+This is because on Compound, one can only borrow against funds he supplied as collateral, which automatically makes the borrower also a supplier. 
+Interestingly, the number of suppliers has increased relative to the number of borrowers over time. 
+There is notable sudden jump in both the number of suppliers and borrowers in June~2020.
+
+In terms of total deposits, a very similar trend is observable in \autoref{fig:borrow-supply-over-time}, which shows that at the same time, the total supplied deposits increased, while the total borrows followed shortly after.
+Furthermore, the total funds borrowed exceeded the total funds locked for the first time in July 2020 and have remained so until the end of the examined period.
+We discuss the reasons behind this in the next part of this section.
+
+Despite the similarly increasing trend for the number of suppliers/borrowers and amount of supplied/borrowed funds, we can see in~\autoref{fig:suppliers-borrowers-distribution} that the majority of funds are borrowed and supplied only by a small number of accounts.
+For instance, for the suppliers in~\autoref{fig:suppliers-distribution}, the top user and top 10 users supply~27.4\% and~49\% of total funds, respectively.
+For the borrowers shown in~\autoref{fig:borrowers-distribution}, the top user accounts for 37.1\%, while the top 10 users account for 59.9\% of total borrows.
+While one could think that this concentration comes from the fact that top accounts are pools receiving money from several participants, only one of the top~10 suppliers and none of the top~10 borrowers fit in this category.
+We provide a list of the top suppliers and borrowers with a description of the accounts in~\autoref{tab:top-suppliers-borrowers} of Appendix~\ref{sec:top-suppliers-borrowers}.
+
+\subsection{Leveraging Spirals}
+As we have seen in Section~\ref{sec:plfs}, in PLFs, leveraging can be used either to gain more exposure to a particular currency or to gain some incentive provided by the protocol.
+To understand how leveraging can affect the total amounts borrowed and supplied on Compound, we use the methodology we defined in Section~\ref{ssec:leveraging-spirals-meth} to measure the existence of leveraging spirals on Compound.
+
+We find that the top supplier deposited a total of 342 million USD and borrowed 247 million.
+However, after the inspection of leveraging spirals, we find that the user has provided only 16\% of the funds, while the rest of the minted funds have been part of leveraging spirals, which means that the user provided a total of roughly 55 million USD to the protocol.
+
+In total, we find a total of 2,141 accounts using this leveraging spiral technique for a total of over 600 million USD, or roughly half of the total amount of funds supplied to the protocol.
+
+\subsection{The \coin{COMP} Governance Token}
+The sudden jumps exhibited in Figures~\ref{fig:borrowers-suppliers-over-time} and~\ref{fig:borrow-supply-over-time} can be explained by the launch of Compound's governance token, \coin{COMP}, on June~15,~2020.
+The \coin{COMP} governance token allows holders to participate in voting, create proposals, as well as delegate voting rights.
+In order to empower Compound stakeholders, new \coin{COMP} is minted every block and distributed among borrowers and suppliers in each market.
+
+Initially, \coin{COMP} was allocated proportionally to the accrued interest per market.
+However, the \coin{COMP} distribution model was modified via a governance vote on July~2,~2020, such that the borrowing interest rate was removed as a weighting mechanism in favor of distributing \coin{COMP} per market on a borrowing demand basis, i.e.\ per USD borrowed.
+The distributed \coin{COMP} per market is shared equally between a market's borrowers and suppliers, who receive \coin{COMP} proportionally to their borrowed and supplied amounts, respectively.
+Hence, a Compound user is incentivized to increase his borrow position as long as the borrowing cost does not exceed the value of his \coin{COMP} earnings. This presumably explains the drop in the degree of collateralization, as the total amount locked is seen surpassed by the total borrows after the \coin{COMP} launch (\autoref{fig:borrow-supply-over-time}), leading to elevated liquidation risk of borrow positions.
+
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=0.7\textwidth]{./6-application-security/figures/supply-borrow-over-time.pdf}
+  \caption{Collateral locked over time, showing how close the amounts are from being liquidated. Positions can be liquidated when the ratio drops below~100\%.}
+  \label{fig:liquidatability}
+\end{figure}
+
+\subsection{Liquidation Risk}
+Given the high increase in the number of total funds borrowed and supplied, as well as the decrease in liquidity relative to total borrows, we seek to identify and quantify any changes in liquidation risk on Compound since the launch of \coin{COMP}. 
+\autoref{fig:liquidatability} shows the total USD value of collateral on Compound and how close collateral amounts are from liquidation. 
+In addition to the substantial increase in the total value of collateral on Compound since the launch of \coin{COMP}, the risk-seeking behavior of users has also changed.
+This can be seen by examining collateral to borrow ratios, where since beginning of July,~2020, a total of approximately 350m to 600m USD worth of collateral has been within a 5\% price range of becoming liquidable.
+However, it should be noted that the likelihood of the amount of this collateral becoming liquidable highly depends on the price volatility of the collateral asset.
+
+In order to examine how liquidation risk differs across markets, we measure for the largest market on Compound, namely \coin{DAI}, the sensitivity of collateral becoming liquidable given a decrease in the price of \coin{DAI}.
+\autoref{fig:price-sensitivity} shows the amount of aggregate collateral liquidable at the historic price, as well as at a~3\% and~5\% decrease relative to the historic price for \coin{DAI}.
+We mark the date on which the \coin{COMP} governance token launched with a dashed line.
+It can be seen that since the launch of \coin{COMP},~3\% and~5\% price decreases of \coin{DAI} relative to its peg USD would have resulted in a substantially higher amount of liquidable collateral.
+In particular, a~3\% decrease would have turned collateral worth in excess of~10 million USD liquidable.
+
+\begin{figure}[tb]
+  \centering
+  \includegraphics[width=.7\textwidth]{./6-application-security/figures/dai-sensitivity.pdf}
+  \caption{Sensitivity analysis of the liquidable collateral amount given \coin{DAI} price movement relative to its peg USD. \coin{COMP} launch date is marked by the dashed vertical line.}
+  \label{fig:price-sensitivity}
+\end{figure}
+
+\begin{figure}[tb]
+  \centering
+  \includegraphics[width=.7\textwidth]{./6-application-security/figures/liquidation-over-time.pdf}
+  \caption{Amount (in USD) of liquidated collateral from May ~2019 to August~2020.}
+  \label{fig:liquidations-over-time}
+\end{figure}
+
+\subsection{Liquidations and Liquidators}
+In order to better understand the implications of the increased liquidation risk since the launch of \coin{COMP}, we examine historical liquidations on Compound and subsequently measure the efficiency of liquidators.
+
+\point{Historical Liquidations}
+The increased risk-seeking behavior suggested by the low collateral to borrow ratios presented in the previous section are in accordance with the trend of rising amount of liquidated collateral since the introduction of \coin{COMP}.  
+The total value of collateral liquidated on Compound over time is shown in \autoref{fig:liquidations-over-time}.
+It can be seen that the majority of this collateral was liquidated on a few occasions, perhaps most notably on Black Thursday (March 12, 2020), July 29, 2020 (\coin{DAI} deviating from its peg significantly), and in early September 2020 (\coin{ETH} price drop).
+
+\point{Liquidation Efficiency}
+We measure the efficiency of liquidators as the number of blocks elapsed since a borrow position has become liquidable and the position actually being liquidated.
+The overall historical efficiency of liquidators is shown as a cumulative distribution function in \autoref{fig:blocks-spent}, from which it can be seen that approximately~60\% of the total liquidated collateral (35 million USD) was liquidated within the same block as it became liquidable, suggesting that the majority of liquidations occur via bots in a highly efficient fashion.
+After~2 blocks have elapsed (on average half a minute),~85\% of liquidable collateral has been liquidated, and after 16 blocks this value amounts to~95\%.
+
+It is worth noting that liquidation efficiency has been skewed by the more recent liquidation activities which were of a much larger scale than when the protocol was first launched.
+Specifically, in 2019, only about~26\% of the liquidations occurred in the block during which the position became liquidable, compared to~70\% in 2020.
+This resulted in some lost opportunities for liquidators as shown in~\autoref{fig:price-sensitivity}.
+The account \contractaddr{0xd062eeb318295a09d4262135ef0092979552afe6}, for instance, had more than 3,000,000 USD worth of \coin{ETH} as collateral exposed at block 8,796,900 for the duration of a single block: the account was roughly 20 USD shy of the liquidation threshold but eventually escaped liquidation.
+If a liquidator had captured this opportunity, he could have bought half of this collateral (given the close factor of 0.5), at a 10\% discount, resulting in a profit of 150,000 USD for a single transaction.
+It is clear that with such stakes, participants were incentivized to improve liquidation techniques, resulting in a high level of liquidation speed and scale.
+
+\begin{figure}[tbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{./6-application-security/figures/time-to-liquidation.pdf}
+    \caption{Number of blocks elapsed from the time a position can be liquidated to actual liquidation on Compound from \StartDate to \EndDate, shown as a CDF.}
+    \label{fig:blocks-spent}
+\end{figure}
+
+\subsection{Summary}
+In this section, we have analyzed the Compound protocol with a focus on liquidations.
+We have found that despite the increase in number of suppliers and borrowers over time, the total amount of funds supplied and borrowed remain extremely concentrated among a small set of participants.
+
+We have also seen that the introduction of the \coin{COMP} governance token has changed how users interact with the protocol and the amount of risk that they are willing to take.
+Users now borrow vastly more than before, with the total amount borrowed surpassing the total amount locked.
+Due to excessive borrowing without a sufficiently safe amount of supplied funds, borrow positions now face a higher liquidation risk, such that a crash of~3\% in the price of \coin{DAI} could result in an aggregate liquidation value of over~10 million USD.
+
+Finally, we have shown that the liquidators have become more efficient with time, and are currently able to capture a majority of the liquidable funds instantly.

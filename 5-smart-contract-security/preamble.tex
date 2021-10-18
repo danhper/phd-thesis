@@ -1,0 +1,42 @@
+\newcommand{\correctness}{\point{Analysis correctness}\xspace}
+
+\newcommand{\vuln}[1]{\textsf{#1}}
+\newcommand{\vre}{\vuln{RE}}
+\newcommand{\reentrancy}{Re-Entrancy}
+\newcommand{\vue}{\vuln{UE}}
+\newcommand{\unhandledexceptions}{Unhandled Exceptions}
+\newcommand{\vle}{\vuln{LE}}
+\newcommand{\lockedether}{Locked Ether}
+\newcommand{\vto}{\vuln{TO}}
+\newcommand{\transactionorder}{Transaction Order Dependency}
+\newcommand{\vio}{\vuln{IO}}
+\newcommand{\integeroverflow}{Integer Overflow}
+\newcommand{\vua}{\vuln{UA}}
+\newcommand{\unrestrictedaction}{Unrestricted Action}
+
+\newcommand{\dterm}[2]{\lstinline$#1${$\left(#2\right)$}}
+\newcommand{\drulesep}{~\lstinline$:-$~}
+\newcommand{\dend}{\lstinline$.$}
+\newcommand{\dsep}{,~}
+
+\newcommand{\VulnTypes}{six\xspace}
+\newcommand{\VulnTypesNum}{6\xspace}
+\newcommand{\PapersAnalyzed}{six\xspace}
+
+
+\newcommand{\EtherClaimedVulnerable}{3~million\xspace}
+\newcommand{\EtherStake}{3,124,433\xspace}
+\newcommand{\EtherClaimedVulnerableUSD}{\ToUSD{3}~million\xspace}
+
+\newcommand{\UpperBoundExploitedEther}{8,487\xspace}
+\newcommand{\ExploitedEther}{8,487\xspace}
+\newcommand{\ExploitedEtherUSD}{1.7 million\xspace}
+\newcommand{\PercentExploitedEther}{0.27\%\xspace}
+\newcommand{\PercentExploitedContracts}{1.98\%\xspace}
+\newcommand{\VulnerableContracts}{23,327\xspace}
+\newcommand{\NumAnalyzedTransactions}{20,241,730\xspace}
+% \newcommand{\NumExploitedContractsWEther}{49\xspace}
+\newcommand{\NumExploitedContracts}{463\xspace}
+
+
+\newenvironment{investigation}[1]{\par\noindent\rule[0.5ex]{\linewidth}{1pt}\par{\noindent{\sf Investigation of the contract at\\ \addr{#1}}}:\\\noindent\rule[0.5ex]{\linewidth}{1pt}}{\\\smallskip{\noindent\rule[0.5ex]{\linewidth}{1pt}}}

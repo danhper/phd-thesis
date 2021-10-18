@@ -1,0 +1,37 @@
+\section{Background}
+\label{sec:background}
+In this section we introduce preliminary concepts about blockchains and smart contracts necessary to the understanding of the rest of the paper.
+
+\subsection{Blockchain}
+
+% \point{Blockchain}
+A blockchain, such as Bitcoin~\cite{Nakamoto} or Ethereum~\cite{wood2014ethereum}, is in essence a decentralized append-only database.
+Data is added to the blockchain in the form of transactions that are grouped in blocks.
+Some rules are enforced by the protocols on both transactions and blocks to ensure its correct working.
+Blockchains need to be able to maintain consensus of which blocks are included.
+Both Bitcoin and Ethereum use the Proof-of-Work consensus that requires block producers, often called \emph{miners}, to solve a computationally expensive puzzle to produce a new block \cite{Perez2020c}.
+An important point to note is that miners are allowed to choose which transactions to include in a block and in which order to include them.
+This can potentially allow miners to profit from having a transaction included before another one.
+This is commonly referred to as \emph{miner-extractable value}~\cite{daian2020flash}.
+
+\subsection{Smart Contracts}
+\point{Ethereum smart contracts}
+On Ethereum, smart contracts are programs written in a Turing-complete language, typically Solidity~\cite{docs:solidity}, that define a set of rules that may be invoked by any network participant. 
+These programs rely on the Ethereum Virtual Machine (EVM), a low-level stack machine which executes the compiled EVM bytecode of a smart contract~\cite{wood2014ethereum}.
+Each instruction has a fee measured in so-called \textit{gas}, and the total gas cost of a transaction is a fixed base fee plus the sum of all instructions' gas~\cite{albert2020gasol,Perez2020f}.
+The sender of a transaction must then set a gas price, the amount of \coin{ETH} he is willing to pay per unit of gas consumed for executing the transaction.
+The transaction fee is thus given by the gas price multiplied with the gas cost~\cite{werner2020step,pierro2019influence}.
+Within a transaction, smart contracts can store data in logs, which are metadata specially indexed as part of the transaction.
+This metadata, commonly referred to as \textit{events}, is typically used to allow users to monitor the activity of a contract externally.
+
+\point{Oracles}
+One of the major challenges smart contracts face concerns access to off-chain information, i.e. data that does not natively exist on-chain.
+Oracles are data feeds into smart contracts and provide a mechanism for accessing off-chain information through some third party.
+In DeFi, oracles are commonly used for price feed data to determine the real-time price of assets.
+For instance, via the Compound Open Price Feed~\cite{web:compoundfinance_prices}, vetted third party reporters sign off on price data using a known public key, where the resulting feed can be relied upon by smart contracts.
+
+\point{Stablecoins}
+An alternative to volatile cryptoassets is given by stablecoins, which are priced against a peg and can be either custodial or non-custodial.
+For custodial stablecoins (e.g. \coin{USDC}~\cite{web:usdc}), tokens represent a claim of some off-chain reserve asset, such as fiat currency, which has been entrusted to a custodian.
+Non-custodial stablecoins (e.g. \coin{DAI}~\cite{whitepaper:maker}) seek to establish price stability via economic mechanisms specified by smart contracts.
+For a thorough discussion on stablecoin design, we direct the reader to \cite{Klages-Mundt2020}.

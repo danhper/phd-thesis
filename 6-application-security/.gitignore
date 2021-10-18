@@ -1,0 +1,5 @@
+.auto/
+build/
+.latexmkrc
+arxiv/
+defi-leveraging.tar

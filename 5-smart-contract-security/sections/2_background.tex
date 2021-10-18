@@ -42,7 +42,7 @@ Such an issue can happen not only if the developer forgets to perform critical c
 % A reason for such a bug could be a misnamed function in older versions of Solidity~\cite{Brent2018,Krupp2018}.
 % This issue was the root cause of the the Parity wallet bug~\cite{Tsankov2018,Nikolic2018a} which froze more than 500k Ether.
 
-\input{sections/tables/tools-overview}
+\input{5-smart-contract-security/sections/tables/tools-overview}
 \subsection{Analysis Tools}
 \label{ssec:analysis-tools}
 Smart contracts are generally designed to manipulate and \emph{hold} funds denominated in Ether. This makes them very tempting attack targets, as a successful attack may allow the attacker to directly steal funds from the contract. Given the many common vulnerabilities in smart contracts, some of which we described in the previous section, a large number of tools have been developed to find them automatically~\cite{Luu2016a,Tsankov2018,mythril}. Most of these tools analyze either the contract source code or its compiled EVM bytecode and look for known security issues, such as re-entrancy or transaction order dependency vulnerabilities. We present a summary of these different works in Figure~\ref{fig:prior-results}. The second and third columns respectively present the reported number of contracts analyzed and contracts flagged vulnerable in each paper. The ``vulnerabilities'' columns show the type of vulnerabilities that each tool can check for. We present these vulnerabilities in Subsection~\ref{ssec:vulnerability-types} and give a more detailed description of these tools in Section~\ref{ssec:related-analysis-tools}.

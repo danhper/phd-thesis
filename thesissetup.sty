@@ -15,6 +15,7 @@
 \RequirePackage[hyphens]{url}
 \PassOptionsToPackage{hyphens}{url}\RequirePackage[hidelinks]{hyperref}
 \RequirePackage{booktabs} % For formal tables
+\RequirePackage{graphics}
 \RequirePackage{graphicx}
 \RequirePackage{multirow}
 \RequirePackage{makecell}
@@ -39,8 +40,18 @@
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{color}
 \RequirePackage[lighttt]{lmodern}
+\RequirePackage{afterpage}
+\RequirePackage{float}
+\RequirePackage{stringstrings}
+\RequirePackage[bottom]{footmisc}
+\RequirePackage{tabularx}
+\RequirePackage{longtable}
+\RequirePackage{moresize}
 
+\RequirePackage{packages/solidity-highlighting}
 \RequirePackage{packages/listingsgo}
+
+
 
 \npthousandsep{,}
 \npdecimalsign{\ensuremath{.}}
@@ -69,6 +80,7 @@
 \DeclareMathOperator*{\argmin}{arg\,min}
 
 
+\definecolor{light-gray}{gray}{0.95}
 \definecolor{red}{rgb}{1,0,0}
 \definecolor{green}{rgb}{0,1,0}
 \definecolor{blue}{rgb}{0,0,1}
@@ -111,3 +123,16 @@
 
 \newcommand{\ETHRate}{2000}
 \newcommand{\ToUSD}[1]{\fpeval{#1 * \ETHRate}}
+
+
+\newcommand{\block}[1]{\href{https://etherscan.io/block/#1}{\numprint{#1}}}
+\newcommand{\contractaddr}[2][\small]{{#1\href{https://etherscan.io/address/#2}{\texttt{#2}}}}
+\newcommand{\addr}[2][\small]{{#1\href{https://etherscan.io/address/#2}{\texttt{#2}}}}
+\newcommand{\tx}[2][\small]{{#1\href{https://etherscan.io/tx/#2}{\texttt{\substring{#2}{1}{10}}}}}
+\newcommand{\coin}[1]{\lstinline{#1}}
+
+\newcommand{\op}[1]{\lstinline{#1}}
+
+\newcommand{\code}[1]{\colorbox{light-gray}{\texttt{#1}}}
+\newcommand{\formatint}[1]{\nprounddigits{0}$\numprint{#1}$}
+

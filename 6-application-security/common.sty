@@ -1,0 +1,36 @@
+\NeedsTeXFormat{LaTeX2e}[2011/06/27]
+\ProvidesPackage{common}[2019/9/23 v0.01 LaTeX package providing a set of macros commonly used when writing papers]
+
+\RequirePackage{xcolor}
+\RequirePackage{enumitem}
+% \RequirePackage{amssymb}
+
+\newif\ifDRAFT
+\DRAFTfalse
+\DeclareOption{draft}{\DRAFTtrue}
+
+\ProcessOptions\relax
+\newcommand{\point}[1]{\par\smallskip\noindent\textbf{#1.}}
+\ifDRAFT
+  %Hilighting commands:
+  \newcommand{\hl}[1]{\textcolor{dkgreen}{#1}}
+  \newcommand{\fix}[1]{\textcolor{red}{#1}}
+  \newcommand{\todo}[1]{\textcolor{red}{\textbf{TODO: }#1}}
+  \newcommand{\hll}[1]{\textcolor{orange}{#1}}
+  \newcommand{\empirical}[1]{\fbox{#1}}
+\else
+  % for final sub
+  \newcommand{\empirical}[1]{#1}
+  \newcommand{\hl}[1]{#1}
+  \newcommand{\fix}[1]{{}}
+  \newcommand{\todo}[1]{{}}
+  \newcommand{\hll}[1]{#1}
+\fi
+
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
+  \hspace{-2.5pt}}

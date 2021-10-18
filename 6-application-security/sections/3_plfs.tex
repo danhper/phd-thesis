@@ -1,0 +1,90 @@
+\section{Protocols for Loanable Funds (PLF)}
+\label{sec:plfs}
+In this section, we introduce several concepts of Protocols for Loanable Funds (PLFs) necessary for understanding how liquidations function in DeFi on Ethereum.
+
+\subsection{Supplying and borrowing in DeFi}
+In DeFi, asset supplying and borrowing is achieved via so-called \textit{protocols for loanable funds} (PLFs)~\cite{gudgeon2020defi}, where smart contracts act as trustless intermediaries of loanable funds between suppliers and borrowers in markets of different assets.
+Unlike traditional peer-to-peer lending, deposits are pooled and instantly available to borrowers.
+On a DeFi protocol, the aggregate of tokens that the PLF smart contracts hold, which equals the difference between supplied funds and borrowed funds, is termed \text{locked funds}~\cite{DeFiPulse2020}.
+
+\subsection{Interest model}
+Borrowers are charged interest on the debt at a floating rate determined by a market's underlying interest rate model.
+A small fraction of the paid interest is allocated to a pool of reserves, which is set aside in case of market illiquidity, while the remainder is paid out to suppliers of loanable funds.
+Interest in a given market is generally accrued through market-specific, interest-bearing derivative tokens that appreciate against the underlying asset over time.
+Hence, a supplier of funds receives derivative tokens in exchange for supplied liquidity, representing his share in the total value of the liquidity pool for the underlying asset.
+The most prominent PLFs are Compound~\cite{web:compoundfinance} and Aave~\cite{web:aave}, with 2.5bn USD and 2.7bn USD in total funds locked respectively, at the time of writing~\cite{DeFiPulse2020}.
+
+\subsection{Collateralization}
+Given the pseudonymity of agents in Ethereum, borrow positions need to be overcollateralized to reduce the default risk.
+Thereby, the borrower of an asset is required to supply collateral, where the total value of the supplied collateral exceeds the total value of the borrowed asset.
+Each asset is associated with a collateralization ratio, namely the minimum collateral-to-borrow ratio when the asset is used to collateralize a new borrow position.
+For example, in order to borrow 100 USD worth of \coin{DAI} with \coin{ETH} as collateral at a collateralization ratio of 125\%, a borrower would have to lock 125 USD worth of \coin{ETH} to collateralize the borrow position.
+Thus, the protocol limits monetary risk from defaulted borrow positions, as the underlying collateral of a defaulted position can be sold off to recover the debt.
+The inverse of the collateralization ratio is referred to as the \textit{collateral factor}, which is the amount of a deposit that may be used as collateral.
+For example, if the collateralization ratio on a PLF for the market of \coin{DAI} is $125$\%, the collateral factor would be $0.8$, implying that for each \$$1$ deposit of \coin{DAI}, the supplier may borrow \$$0.8$ worth of some other asset.
+
+\subsection{Liquidation}
+The process of selling a borrower's collateral to recover the debt value upon default is referred to as \textit{liquidation}.
+A borrow position can be liquidated once the value of the collateral falls below some pre-determined liquidation threshold, i.e. the minimum acceptable collateral-to-borrow ratio.
+Any network participant may liquidate these positions by paying the debt asset to acquire the underlying collateral at a discount.
+Hence, liquidators are incentivized to actively monitor others' collateral-to-borrow ratios. 
+Note that in practice, the amount of liquidable collateral that a single liquidator can purchase may be capped.  
+
+\subsection{Leveraging}
+In finance, leverage refers to borrowed funds being used as the funding source for additional, typically more risky capital.
+In DeFi, leverage is the fundamental component of PLFs, as a borrower is required to first take up the role of a supplier and deposit funds which are to be used as leverage for his borrow positions, as we have just seen.
+The typical aim of leveraging is to generate higher returns through increased exposure to a particular investment.
+For example, a borrower wanting to gain increased exposure to \coin{ETH} may:
+\begin{enumerate}
+\item Supply \coin{ETH} on a PLF.
+\item Leverage the deposited \coin{ETH} to borrow \coin{DAI}.
+\item Sell the purchased \coin{DAI} for \coin{ETH}.
+\item Repeat steps $1$ to $3$ as desired. 
+\end{enumerate}
+
+This behavior essentially enables users to construct so-called \textit{leveraging spirals}, whereby a user repeatedly re-supplies borrowed funds in order to get increased exposure to some cryptoasset. 
+However, increased exposure comes at the cost of higher downside risk, i.e., the risk of the value of the leveraged asset or borrowed asset to decrease due to changing market conditions.
+
+\subsection{Use Cases of PLFs}
+We present the different incentives\footnote{Note that leverage on a PLF in DeFi may in part be motivated by tax benefits, as certain jurisdictions may not tax capital gains on borrowed funds. 
+However, a detailed analysis of this lies outside the scope of this paper.} an agent may have for borrowing from and/or supplying to a PLF:
+\begin{description}
+    \item[Interest] Suppliers of funds are incentivized by interest which accrues on a per block basis.
+
+    \item[Leveraged long position] To take on a long position of an asset refers to purchasing an asset with the expectation that it will appreciate in value. 
+    These positions can be taken on a PLF by leveraging the asset on which the long position shall be taken.
+
+    \item[Leveraged short position] A short position refers to borrowing funds of an asset, which one believes will depreciate in value. 
+    Consequently, the taker of a short position sells the borrowed asset, only to repurchase it and pay back the borrower once the price has fallen, while profiting from the price change of the shorted asset.
+    This can be achieved by taking on a leveraged borrow position of a stablecoin, where the locked collateral is the asset to short.
+
+    \item[Liquidity mining] As a means to attract liquidity, PLFs may distribute governance tokens to their liquidity providers.
+    The way these tokens are distributed depends on the PLF. 
+    For instance, on Compound, the governance token \coin{COMP}\footnote{Contract address: \contractaddr{0xc00e94cb662c3520282e6f5717214004a7f26888}} is distributed among users across markets proportionally to the total dollar value of funds borrowed and supplied.
+    This directly incentivizes users to mine liquidity in a market through leveraging in order to receive a larger share of governance tokens.
+    For example, a supplier of funds in market $A$ can borrow against his position additional funds of $A$, at the cost of paying the difference between the earned and paid interest. 
+    The incentive for pursuing this behaviour exists if the reward (i.e.\ the governance token) exceeds the cost of borrowing.
+    
+    \item[Token utility] An agent may be able to obtain a token from a PLF which has some desired utility.
+    For example, for the case of governance tokens, the desired token utility could be the right to participate in protocol governance or a claim on protocol earnings.
+    
+    
+\end{description}
+
+
+% \subsection{Supplying and borrowing incentives}
+% \todo{maybe integrate this with the previous subsection?}
+% As the total liquidity in DeFi is fragmented across protocols, a constant competition over deposits persists, commonly referred to as \textit{liquidity mining}.
+% Apart from earning interest on deposited funds on PLFs, liquidity providers may also earn rewards by receiving protocol-specific tokens. This is commonly seen for not only PLFs \cite{web:compoundfinance}, but also other types of DeFi protocols such as automated market makers~\cite{web:balancer,web:curve} and yield aggregators~\cite{web:yearn}.
+% While these protocol-specific tokens are typically intended for participation in protocol governance, they are also tradable on the open market and thus provide further financial incentive to liquidity providers.
+
+% % While PLFs require borrowers to overcollateralize the debt to provide security to a protocol, a mechanism that may appear rather impractical for borrowers.
+% Despite the cost of over-collateralization, borrowing can also be incentivized in various ways.
+% Firstly, a user may be attracted by the utility of the borrowed token, which could be the right to participate in protocol governance in the case of governance tokens, or protocol earnings that a token holder is entitled to.
+% % there may be several motivations for borrowing cryptoassets.
+% Furthermore, with a protocol that rewards 
+% % liquidity providers 
+% suppliers and borrowers
+% with some native token (e.g. a governance token), a user may chase those token rewards by supplying, borrowing and resupplying the borrowed funds back to the market, giving rise to leveraged borrowing spirals seen above.
+% % whereby a borrower resupplies the borrowed funds for the sole purpose of receiving a larger share of the distributed token rewards.
+% % A third incentive for borrowing could come in the form of tax avoidance by borrowing and lending instead of buying and selling cryptoassets. 
