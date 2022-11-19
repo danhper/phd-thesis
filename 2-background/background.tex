@@ -1,6 +1,139 @@
 \chapter{Background Theory}
 \label{ch:background}
-\section{Blockchain Systems}
-\label{sec:blockchain}
-\section{Distributed Virtual Machines}
-\label{sec:vms}
+\section{Blockchain fundamentals}
+In its essence, a blockchain is an append-only, decentralized database that is replicated across a number of computer nodes. 
+Most blockchain systems record activities in the form of ``transactions''. 
+A transaction typically contains information about its sender, its receiver, as well as the action taken, such as the transfer of an asset. 
+Newly created transactions are broadcast across the network where they get validated by the participants. 
+Valid transactions are grouped into data structures called \textit{blocks}, which are appended to the blockchain by referencing the most recent block.
+Blocks are immutable, and state changes in the blockchain require new blocks to be produced.
+
+Network latency and asynchrony inherent in the distributed nature of blockchains lead to a number of challenges. 
+In particular, a blockchain must be able to reach consensus about the current state when the majority of participating nodes behave honestly. 
+In order to resolve disagreement, a consensus protocol prescribing a set of rules is applied as part of the validation process. 
+
+To ensure consistency, there needs to be:
+
+\begin{enumerate}\itemsep=-1pt
+\item a set of rules to validate transactions \label{req1};
+\item a set of rules to validate blocks \label{req2};
+\item a mechanism to determine which chain of blocks represent. the current state \label{req3}
+\end{enumerate}
+%
+Requirement (\ref{req1}) is usually straightforward to implement, each participant simply verifies that the set of rules holds for each transaction.
+Most blockchains also have a simple solution for Requirement (\ref{req3}): they treat the longest existing chain of blocks as the valid one.
+The biggest challenge, and diversity of solutions arise when it comes to solving Requirement (\ref{req2}).
+Bitcoin provides the first practical solution to this problem, namely, Proof-of-Work~(PoW). Participating nodes who propose new blocks compete to solve a computationally expensive puzzle, and blocks are deemed valid if Requirement (i) they include a solution to this puzzle and (ii) all transactions they contain are valid.
+
+The Proof-of-Work (PoW) consensus, introduced by Bitcoin requires the participant to solve a computationally expensive puzzle to create a new block. Although PoW can maintain consistency well, it is by nature very time- and energy-consuming, which limits its throughput.
+To preserve security while maintaining a sufficient degree of decentralization, scalability is often sacrificed~\cite{Xie2019}.
+Indeed, the rate of block creation for both Bitcoin and Ethereum is relatively slow---on average 10 minutes and 14 seconds per block, respectively---and the only way to increase the throughput is to increase the size of a single block, allowing for more transactions per block.
+
+Another issue related to blockchain systems is the need for all participants to replicate the data.
+Since blockchains are append-only, participants need to ensure that their storage capacity keeps pace with the ever-increasing size of blockchain data. 
+It is therefore crucial for blockchains to be designed in such a way that the storage used increases only moderately with time.
+
+
+\section{Ethereum and the Ethereum Virtual Machine (EVM)}
+The Ethereum~\cite{Buterin2014} platform allows its users to run ``smart contracts'' on its distributed infrastructure. Ethereum \emph{smart contracts} are programs which define a set of rules for the governing of associated funds, typically written in a Turing-complete programming language called Solidity~\cite{Dannen:2017:IES:3103305}. Solidity is similar to JavaScript, yet some notable differences are that it is strongly-typed and has built-in constructs to interact with the Ethereum platform. Programs written in Solidity are compiled into low-level untyped bytecode to be executed on the Ethereum platform by the Ethereum Virtual Machine (EVM)~\cite{wood2014ethereum}. It is important to note that it is also possible to write EVM contracts without using Solidity.
+
+To execute a smart contract, a sender has to send a transaction to the contract and pay a fee which is derived from the contract's computational cost, measured in units of~\emph{gas}. Each executed instruction consumes an agreed upon amount of gas~\cite{wood2014ethereum}. Consumed gas is credited to the miner of the block containing the transaction, while any unused gas is refunded to the sender. In order to avoid system failure stemming from never-terminating programs, transactions specify a gas limit for contract execution. An out-of-gas exception is thrown once this limit has been reached.
+
+Smart contracts themselves have the capability to \emph{call} another account present on the Ethereum blockchain. This functionality is overloaded, as it is used both to call a function in another contract and to send Ether (ETH), the underlying currency in Ethereum, to an account. A particularity of how this works in Ethereum is that calls from within a contract, also called \emph{internal transactions}, do not create new transactions and are therefore not directly recorded on-chain. This means that looking at transactions without executing them does not provide enough information to follow the flow of Ether.
+
+% \subsection{}
+% The Ethereum~\cite{Buterin2014} platform allows its users to run ``smart contracts'' on its distributed infrastructure. Ethereum \emph{smart contracts} are programs which define a set of rules for the governing of associated funds, typically written in a Turing-complete programming language called Solidity~\cite{Dannen:2017:IES:3103305}. The Solidity code is compiled into EVM bytecode, a low level bytecode designed to be executed by the EVM.
+
+% Once the EVM bytecode is generated, it is deployed on the Ethereum blockchain by sending a transaction which only purpose is to create a smart contract with the given code. To execute a smart contract, a user can then send a transaction to this contract. The sender will pay a \emph{transaction fee} which is derived from the contract's computational cost, measured in units of~\emph{gas}~\cite{wood2014ethereum}. The fee itself is paid in Ether (ETH\footnote{When converting ETH to USD, we use the exchange rate on 2020-01-07: 1 ETH = \ETHRate{} USD. For consistency, any monetary amounts denominated in USD are based on this rate.}), the underlying currency of the Ethereum blockchain. When a \emph{miner} successfully mines a blocks, he receives the transaction fee of all the transactions included in the block. We will describe exactly how this transaction fee is computed in the following part of this section.
+
+\subsection{Metering in EVM}
+As briefly outlined in Section~\ref{sec:introduction}, gas is a fundamental component of Ethereum, and generally applicable to permissioned and permissionless blockchain platforms that utilise a distributed virtual machine for contract code execution~\cite{tezos-about,eosio-about}. Gas is the main protection against Denial of Service (DoS) attacks based on non-terminating or resource-intensive programs. It is also used to incentivise miners to process transactions by rewarding them with a fee computed based on the resource usage of the transaction.
+
+\point{Gas cost}
+In the EVM, each transaction has a cost which is computed in and expressed as gas. The cost is split into two parts, a fixed \textit{base cost} of $21,000$ gas, and a variable \emph{execution cost} of the smart contract. 
+Each instruction has a fixed gas cost which has been set by the designers of the EVM~\cite{wood2014ethereum}, who classify the instructions in multiple tiers of gas cost: zero Tier (0 gas), base tier (2 gas), very low tier (3 gas), low tier (5 gas), high tier (10 gas) and special tier where the cost needs more complex rules.
+%
+\begin{figure}[tb]
+  \begin{center}
+    \begin{minipage}{0.42\textwidth}
+\begin{lstlisting}[language=esm]
+PUSH1 0x02 ; very low tier (3 gas)
+PUSH1 0x03 ; very low tier (3 gas)
+MUL        ; low tier      (5 gas)
+PUSH1 0x05 ; very low tier (3 gas)
+SSTORE     ; special tier  (20k gas)
+\end{lstlisting}
+\end{minipage}
+\caption{Example gas cost of an EVM program}
+\label{list:example-gas-cost}
+\end{center}
+\end{figure}
+%
+The gas cost for a transaction in the EVM is the sum over the cost of each instruction in the contract. For example, given the program in Figure~\ref{list:example-gas-cost}, the gas cost will be computed as follow. \op{PUSH1} is in the Very Low Tier and therefore costs~3 gas. It is called~3 times in total and will therefore consume~9 gas. The arguments of \op{PUSH1} do not consume any extra gas. The \op{MUL} instruction is in the Low Tier and hence costs 5 gas. Finally, the \op{SSTORE} will store the result of~$2\times3$ at location 5 in the storage. \op{SSTORE} is in the Special Tier and has slightly more complex pricing rules. Assuming the location in the storage was previously~0, the instruction allocates storage and will cost~20,000 gas. Therefore, this program will cost a total of~20,014 gas to execute. Given the current pricing for storage, the cost of the program is clearly dominated by the storage operation.
+
+It is important to note that, as the transaction has a base cost of~21,000 gas, it will cost a total of~$21\text{,}000 + 20\text{,}014 = 41\text{,}014$ gas to execute the above transaction.
+
+\point{Ethereum Improvement Proposal~(EIP)~150}
+Although the cost of each instruction was decided when first designing the EVM, the authors found that some costs were poorly aligned with actual resource consumption. Particularly, IO-heavy instructions tended to be too cheap, allowing for DOS attacks on the Ethereum~\cite{suicide-attack} blockchain. As a fix, EIP~150~\cite{erc150} was proposed and implemented, significantly increasing the gas consumption of instructions which require to perform IO operations, such as \lstinline{SLOAD} or \lstinline{EXTCODESIZE}. This change revised the cost of under-priced instructions and prevented further DoS attacks such as the one seen in September~2016~\cite{transaction-spam-attack}. This briefly highlights the potential risks rooted in mismatches between instructions and gas costs. While the above cases have been fixed, it is unclear whether all potential issues have been eradicated or not.
+
+\point{Gas price} Up to here, we have explained how the gas cost for executing a contract are computed. However, the gas cost is not the only element needed to compute the total execution cost of a contract. When a transaction is sent, the sender can choose a gas price, namely the amount of \emph{wei} ($1\text{wei} = 10^{-18}~\text{ETH}$) that the sender is ready to pay per unit of gas. For conciseness, these amounts are often expressed in Gwei, where $1\text{Gwei} = 10^9\text{wei}$. Miners will usually prioritise transactions with high gas prices, as this will increase the final fee they receive for processing a transaction.
+
+\point{Transaction fee}
+The transaction fee is the total amount of wei that the sender of the transaction has to pay for the transaction. It is obtained by multiplying the gas price by the gas cost. The transaction fee is non-refundable: even if the transaction fails, it will be paid.
+
+\begin{figure}[tb]
+  \centering
+  \setlength{\tabcolsep}{10pt}
+  \begin{tabular}{lrr}
+    \toprule
+     & \multicolumn{2}{c}{Gas price}\\
+     & Low & High\\
+    Transaction type & (1Gwei) & (80Gwei)\\
+    \midrule
+    Basic (21k gas) & \$\fpeval{round(\ToUSD{21 / 1e6}, 5)} & \$\ToUSD{80 * 21 / 1e6}\\
+    Gas intensive (500k gas) & \$\ToUSD{500 / 1e6} & \$\ToUSD{80 * 500 / 1e6}\\
+    \bottomrule
+  \end{tabular}
+  \caption{Fees for different type of transactions. ``Low'' price is one of the lowest possible price to have a transaction included while ``High'' is a price someone very eager to have his transaction included would pay.}
+  \label{tab:gas-fee}
+\end{figure}
+\begin{figure}[tb]
+\setlength{\tabcolsep}{3pt}
+\centering
+\begin{tabular}{lr}
+    \toprule
+    Number of blocks: & 613,475\\
+    Median gas price: & 9.1 Gwei\\
+    Median gas used (by contracts): & 53,787 \\
+    Median transaction fee: &  0.0008 ETH (\ToUSD{0.0008}~USD)\\
+    \bottomrule
+\end{tabular}
+\caption{Median gas price, gas used and transaction fee from block 8,652,096 (Sep-09-2019) to block 9,286,594 (Jan-15-2020).}
+\label{tab:empirical-gas-fee}
+\end{figure}
+
+\section{Decentralized Finance (DeFi)}
+One of the major application of blockchain systems, and Ethereum in particular is decentralized finance, often referred to as DeFi.
+DeFi is the development of financial systems on top of blockchains using smart contracts.
+DeFi systems have several major characteristics:
+\begin{description}
+  \setlength{\baselineskip}{15pt}
+\item[Non-custodial] Users of DeFi systems should have control over their funds at all time
+\item[Permisionless] DeFi systems should be available to everyone
+\item[Openly auditable] Anyone has the ability to verify the state of a DeFi system at any point in time
+\item[Composable] DeFi systems can be freely composed to interact with one another.
+\end{description}
+
+There are several primitive, in the form of smart contracts, that are often used when building DeFi systems.
+
+\subsection{Oracles}
+One of the major challenges smart contracts face concerns access to off-chain information, i.e. data that does not natively exist on-chain.
+Oracles are data feeds into smart contracts and provide a mechanism for accessing off-chain information through some third party.
+In DeFi, oracles are commonly used for price feed data to determine the real-time price of assets.
+For instance, via the Compound Open Price Feed~\cite{web:compoundfinance_prices}, vetted third party reporters sign off on price data using a known public key, where the resulting feed can be relied upon by smart contracts.
+
+\subsection{Stablecoins}
+An alternative to volatile cryptoassets is given by stablecoins, which are priced against a peg and can be either custodial or non-custodial.
+For custodial stablecoins (e.g. \coin{USDC}~\cite{web:usdc}), tokens represent a claim of some off-chain reserve asset, such as fiat currency, which has been entrusted to a custodian.
+Non-custodial stablecoins (e.g. \coin{DAI}~\cite{whitepaper:maker}) seek to establish price stability via economic mechanisms specified by smart contracts.
+For a thorough discussion on stablecoin design, we direct the reader to \cite{Klages-Mundt2020}.

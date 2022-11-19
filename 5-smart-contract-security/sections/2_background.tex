@@ -1,10 +1,8 @@
 \section{Background}
 \label{sec:background} 
-The Ethereum~\cite{Buterin2014} platform allows its users to run ``smart contracts'' on its distributed infrastructure. Ethereum \emph{smart contracts} are programs which define a set of rules for the governing of associated funds, typically written in a Turing-complete programming language called Solidity~\cite{Dannen:2017:IES:3103305}. Solidity is similar to JavaScript, yet some notable differences are that it is strongly-typed and has built-in constructs to interact with the Ethereum platform. Programs written in Solidity are compiled into low-level untyped bytecode to be executed on the Ethereum platform by the Ethereum Virtual Machine (EVM)~\cite{wood2014ethereum}. It is important to note that it is also possible to write EVM contracts without using Solidity.
-
-To execute a smart contract, a sender has to send a transaction to the contract and pay a fee which is derived from the contract's computational cost, measured in units of~\emph{gas}. Each executed instruction consumes an agreed upon amount of gas~\cite{wood2014ethereum}. Consumed gas is credited to the miner of the block containing the transaction, while any unused gas is refunded to the sender. In order to avoid system failure stemming from never-terminating programs, transactions specify a gas limit for contract execution. An out-of-gas exception is thrown once this limit has been reached.
-
-Smart contracts themselves have the capability to \emph{call} another account present on the Ethereum blockchain. This functionality is overloaded, as it is used both to call a function in another contract and to send Ether (ETH), the underlying currency in Ethereum, to an account. A particularity of how this works in Ethereum is that calls from within a contract, also called \emph{internal transactions}, do not create new transactions and are therefore not directly recorded on-chain. This means that looking at transactions without executing them does not provide enough information to follow the flow of Ether.
+In this section, we first introduce different types of smart contracts vulnerabilities.
+We then present some of the analysis tools available to prevent against such vulnerabilities.
+Finally, we provide some definitions that will be used in the rest of the chapter.
 
 \subsection{Smart Contracts Vulnerabilities}
 \label{ssec:vulnerability-types}

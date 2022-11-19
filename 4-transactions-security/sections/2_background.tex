@@ -1,41 +1,7 @@
 \section{Background}
 \label{sec:background}
 
-In this section, we briefly explain the fundamentals of permissionless blockchains and describe the structure of the three blockchain systems that we evaluate, highlighting their various design aspects. 
-
-\subsection{Blockchain Basics}
-In its essence, a blockchain is an append-only, decentralized database that is replicated across a number of computer nodes. 
-Most blockchain systems record activities in the form of ``transactions''. 
-A transaction typically contains information about its sender, its receiver, as well as the action taken, such as the transfer of an asset. 
-Newly created transactions are broadcast across the network where they get validated by the participants. 
-Valid transactions are grouped into data structures called \textit{blocks}, which are appended to the blockchain by referencing the most recent block.
-Blocks are immutable, and state changes in the blockchain require new blocks to be produced.
-
-Network latency and asynchrony inherent in the distributed nature of blockchains lead to a number of challenges. 
-In particular, a blockchain must be able to reach consensus about the current state when the majority of participating nodes behave honestly. 
-In order to resolve disagreement, a consensus protocol prescribing a set of rules is applied as part of the validation process. 
-
-% To ensure consistency, there needs to be:
-
-% \begin{enumerate}\itemsep=-1pt
-% \item a set of rules to validate transactions \label{req1};
-% \item a set of rules to validate blocks \label{req2};
-% \item a mechanism to determine which chain of blocks represent. the current state \label{req3}
-% \end{enumerate}
-% %
-% Requirement (\ref{req1}) is usually straightforward to implement, each participant simply verifies that the set of rules holds for each transaction.
-% Most blockchains also have a simple solution for Requirement (\ref{req3}): they treat the longest existing chain of blocks as the valid one.
-% The biggest challenge, and diversity of solutions arise when it comes to solving Requirement (\ref{req2}).
-% Bitcoin provides the first practical solution to this problem, namely, Proof-of-Work~(PoW). Participating nodes who propose new blocks compete to solve a computationally expensive puzzle, and blocks are deemed valid if Requirement (i) they include a solution to this puzzle and (ii) all transactions they contain are valid.
-The Proof-of-Work (PoW) consensus,
-introduced by Bitcoin and currently also implemented by Ethereum, requires the participant to solve a computationally expensive puzzle to create a new block. Although PoW can maintain consistency well, it is by nature very time- and energy-consuming, which limits its throughput.
-To preserve security while maintaining a sufficient degree of decentralization, scalability is often sacrificed~\cite{Xie2019}.
-Indeed, the rate of block creation for both Bitcoin and Ethereum is relatively slow---on average 10 minutes and 14 seconds per block, respectively---and the only way to increase the throughput is to increase the size of a single block, allowing for more transactions per block.
-
-Another issue related to blockchain systems is the need for all participants to replicate the data.
-Since blockchains are append-only, participants need to ensure that their storage capacity keeps pace with the ever-increasing size of blockchain data. 
-It is therefore crucial for blockchains to be designed in such a way that the storage used increases only moderately with time.
-
+In this section, we describe the structure of the three blockchain systems that we evaluate, highlighting their various design aspects. We then provide some typical use cases for each of these.
 
 \subsection{Consensus Mechanisms}
 
