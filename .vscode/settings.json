@@ -1,0 +1,12 @@
+{
+  "latex-workshop.latex.outDir": "%DIR%/build",
+  "cSpell.words": ["Aave", "incentivises", "overcollateralized"],
+  "cSpell.language": "en-GB",
+  "grammarly.selectors": [
+    {
+      "language": "latex",
+      "scheme": "file"
+    }
+  ],
+  "grammarly.config.documentDialect": "british"
+}

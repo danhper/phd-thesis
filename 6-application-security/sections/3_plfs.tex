@@ -27,7 +27,7 @@ For example, if the collateralization ratio on a PLF for the market of \coin{DAI
 The process of selling a borrower's collateral to recover the debt value upon default is referred to as \textit{liquidation}.
 A borrow position can be liquidated once the value of the collateral falls below some pre-determined liquidation threshold, i.e. the minimum acceptable collateral-to-borrow ratio.
 Any network participant may liquidate these positions by paying the debt asset to acquire the underlying collateral at a discount.
-Hence, liquidators are incentivized to actively monitor others' collateral-to-borrow ratios. 
+Hence, liquidators are incentivised to actively monitor others' collateral-to-borrow ratios. 
 Note that in practice, the amount of liquidable collateral that a single liquidator can purchase may be capped.  
 
 \subsection{Leveraging}
@@ -42,14 +42,14 @@ For example, a borrower wanting to gain increased exposure to \coin{ETH} may:
 \item Repeat steps $1$ to $3$ as desired. 
 \end{enumerate}
 
-This behavior essentially enables users to construct so-called \textit{leveraging spirals}, whereby a user repeatedly re-supplies borrowed funds in order to get increased exposure to some cryptoasset. 
+This behavior essentially enables users to construct so-called \textit{leveraging spirals}, whereby a user repeatedly re-supplies borrowed funds in order to get increased exposure to some crypto-asset. 
 However, increased exposure comes at the cost of higher downside risk, i.e., the risk of the value of the leveraged asset or borrowed asset to decrease due to changing market conditions.
 
 \subsection{Use Cases of PLFs}
 We present the different incentives\footnote{Note that leverage on a PLF in DeFi may in part be motivated by tax benefits, as certain jurisdictions may not tax capital gains on borrowed funds. 
 However, a detailed analysis of this lies outside the scope of this paper.} an agent may have for borrowing from and/or supplying to a PLF:
 \begin{description}
-    \item[Interest] Suppliers of funds are incentivized by interest which accrues on a per block basis.
+    \item[Interest] Suppliers of funds are incentivised by interest which accrues on a per block basis.
 
     \item[Leveraged long position] To take on a long position of an asset refers to purchasing an asset with the expectation that it will appreciate in value. 
     These positions can be taken on a PLF by leveraging the asset on which the long position shall be taken.
@@ -61,7 +61,7 @@ However, a detailed analysis of this lies outside the scope of this paper.} an a
     \item[Liquidity mining] As a means to attract liquidity, PLFs may distribute governance tokens to their liquidity providers.
     The way these tokens are distributed depends on the PLF. 
     For instance, on Compound, the governance token \coin{COMP}\footnote{Contract address: \contractaddr{0xc00e94cb662c3520282e6f5717214004a7f26888}} is distributed among users across markets proportionally to the total dollar value of funds borrowed and supplied.
-    This directly incentivizes users to mine liquidity in a market through leveraging in order to receive a larger share of governance tokens.
+    This directly incentivises users to mine liquidity in a market through leveraging in order to receive a larger share of governance tokens.
     For example, a supplier of funds in market $A$ can borrow against his position additional funds of $A$, at the cost of paying the difference between the earned and paid interest. 
     The incentive for pursuing this behaviour exists if the reward (i.e.\ the governance token) exceeds the cost of borrowing.
     
