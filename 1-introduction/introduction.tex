@@ -1,32 +1,114 @@
-\chapter{Introduction}
+\chapter{Introduction}\label{chap:introduction}
+Bitcoin launched in 2008 and was the first blockchain system to be deployed.
+It was the first time that the double-spending problem was solved in a production system.
+This opened the door to a new type of financial system, where the trust is not in a centralised entity, but in the system itself.
+Bitcoin did allow for some programmability, but it was limited to a simple scripting language.
+To allow for more complex programmability, and open the door to more complex financial applications, the Ethereum blockchain was launched, featuring an almost Turing-complete programming language that could be used in such a decentralised and trustless environment.
+
+Since the launch of Bitcoin, Ethereum and other blockchains, the blockchain ecosystem has grown tremendously.
+The total capitalisation of blockchain systems has reached a peak of 2 trillion dollars in 2021, and the number of users has grown very rapidly.
+The amount of money that is stored in these systems is also very large, with the total amount of money locked in Decentralised Finance (DeFi) protocols exceeding 100 billion dollars at peak time.
+
+With such strong financial incentives, it is not surprising that the blockchain ecosystem has attracted a lot of attention from attackers.
 
 \section{Motivation and Objectives}
-During the past several years, blockchain systems have gained a lot of traction and adoption, with during peak period, over 100 billion dollars worth of assets sitting in blockchain systems.
-Given he permisionless nature blockchain systems and their large scope in terms of software -- e.g. distributed consensus, untrusted program execution -- there are numerous attack vectors that need to be studied, understood and protected against for blockchain systems to be able to deliver their promises of a safer financial system.
 
-The high-level goal of this thesis is to improve our understanding of the different that allows blockchain systems to operate decentralized financial applications, and ultimately make blockchain systems, and the applications built on top of them more secure.
+Due to the inherent complexity of distributed systems, the execution of untrusted code, and the game theoretical nature of the blockchain, the attack surface of blockchain systems is extremely large.
+The incentive of attacking such systems is also very high, as the attacker can potentially steal millions of dollars in a single attack.
+To make things even worse, the permissionless and pseudonymous nature of blockchains makes it very difficult to identify the attacker and hold them accountable for their actions.
 
+There have been many attacks over the years, that have led to the loss of millions of dollars.
+Since user funds are usually more exposed at the application layer, this type of attack has received the most attention.
+However, many attacks have also been reported at the lower layers of the blockchain stack, such as the execution layer, the transactional layer, and the consensus layer.
+All in all, these attacks had a very negative impact on the adoption and trust in blockchain systems.
 
+For blockchain systems to be able to deliver their promises of a safer financial system, their security needs to improve significantly.
+In that regard, it is important not only to study and understand the different attack vectors that exist in these systems but also to propose and implement improvements that will help make these systems more robust at every part of the stack.
+
+In this thesis, we aim to contribute to improving the security of blockchain systems.
+On a high level, the goal is to improve the understanding of the current security landscape of blockchain systems and to propose improvements that can be deployed in practice and make blockchain systems more secure.
+More particularly, we focus on three main layers of the blockchain stack: the execution layer, the transactional layer, and the application layer.
+At each layer, we keep the same high-level goals of improving understanding and proposing improvements.
 
 \section{Contributions}
 
-Contributions here.
+In this thesis, we make contributions to improving the security of blockchain systems at the execution layer, the transactional layer, and the application layer.
+In the following, we provide a summary of the main contributions of this thesis.
 
+\subsection{Execution Layer}
+At the execution layer, we contribute to improving the security of the Ethereum Virtual Machine (EVM), and in particular, the gas metering mechanism.
+
+To achieve this, we first create an instrumented version of the EVM that enables us to replay and analyse the execution of smart contracts. Using this tool, we analyse several months of transactions and uncover a number of discrepancies in the metering model, including significant inconsistencies in the pricing of instructions. Additionally, we demonstrate that there is very little correlation between the execution cost and the utilised resources, such as CPU and memory.
+
+Based on these observations, we introduce a new type of DoS attack called the \emph{Resource Exhaustion Attack}, which exploits these imperfections to generate low-throughput contracts. We design a genetic algorithm that generates contracts with a throughput on average~\Slowdown times slower than typical contracts, showing that all major Ethereum client implementations are vulnerable. If running on commodity hardware, these clients would be unable to stay in sync with the network when under attack.
+
+Our research indicates that such an attack could be financially attractive not only for Ethereum competitors and speculators but also for Ethereum miners. We responsibly disclose this vulnerability to the Ethereum Foundation and receive a bug bounty reward of 5,000 USD. Finally, we discuss short-term and potential long-term solutions to defend against these attacks.
+
+\subsection{Transactional Layer}
+In the next chapter, we focus on the transactional layer, and in particular, the transaction throughput of more blockchains with higher scalability.
+We analyze network traffic data of three high-scalability blockchains - EOSIO, Tezos, and XRP Ledger (XRPL) - over seven months.
+Our analysis reveals that a small fraction of transactions is used for value transfer purposes.
+Specifically, 96\% of transactions on EOSIO was triggered by airdrops of a currently valueless token, 76\% of throughput on Tezos was used for maintaining consensus, and over 94\% of transactions on XRPL carried no economic value. We also identify a persisting airdrop on EOSIO as a DoS attack and detect a two-month-long spam attack on XRPL.
+We explore the different designs of the three blockchains and how they shape user behaviour.
+Through this analysis, we shed light on the utilization patterns of transactional throughput and provide insights into how the designs of these blockchains can affect user behaviour.
+
+\subsection{Application Layer}
+At the application layer, we focus on one of the most popular applications on the blockchain: Decentralised Finance (DeFi).
+We start by providing formal definitions of \emph{technical security} and \emph{economic security}.
+With that definition in mind, we make contributions to both the technical security and the economic security aspects.
+
+\subsubsection{Technical security}
+
+Most research focused on technical security has been focused on identifying vulnerable contracts.
+However, little has been done to understand the practical implications of these vulnerabilities.
+Here, we take a different approach by examining the extent to which these vulnerabilities are being exploited in practice.
+
+To conduct this study, we surveyed over 20,000 vulnerable contracts that were reported by six recent academic projects.
+We develop a tool capable of automatically detecting the exploitation of these vulnerabilities in the Ethereum blockchain.
+The findings indicate that despite the large amounts at stake, only a small percentage of these contracts have been exploited since deployment.
+
+We explain these results by demonstrating that the funds are highly concentrated in a small number of contracts that are not exploitable in practice.
+This suggests that while identifying and mitigating vulnerabilities in smart contracts is essential, it is equally important to focus on understanding the practical implications of these vulnerabilities.
+
+\subsubsection{Economic security}
+In the economic security section, we focus on one of the most common economic security mechanisms in DeFi: liquidations.
+
+We present the first in-depth empirical analysis of liquidations on protocols for loanable funds (PLFs), focusing on Compound, one of the most widely used PLFs.
+Our study demonstrates the very thin margin with which some users interact with PLF, and that even small variations of only 3\% in an asset's dollar price can result in over 10 million USD becoming liquidatable.
+
+To further understand the implications of this, we investigate the efficiency of liquidators and find that their efficiency has improved significantly over time, with currently over 70\% of liquidatable positions being immediately liquidated.
+Lastly, we discuss how a misconception of the stability of non-custodial stablecoins can foster a false sense of security, leading to an increased overall liquidation risk faced by PLF participants.
+
+The findings of this study highlight the need for robust liquidation mechanisms to protect against potential losses and provide insights into the behaviour of PLF participants.
 
 \section{Statement of Originality}
 I hereby declare that this thesis, entitled ``\thesistitle'', represents my own original work, as well as joint work with co-authors of the included publications.
-No work included in this thesis has been submitted for any other degree or qualification, neither by myself or my co-authors.
+No work included in this thesis has been submitted for any other degree or qualification, neither by myself nor my co-authors.
 All sources used in this research have been duly acknowledged and referenced.
-This thesis is the product of my independent research and represents a significant contribution to the field of distributed ledgers security.
+This thesis is the product of my independent research and represents a significant contribution to the field of blockchain security.
 
 \section{Publications}
 
-In this thesis, we include the following papers:
+The majority of the research presented in this thesis relies on the following peer-reviewed publications.
 
-\begin{itemize}
-\item Broken Metre: Attacking Resource Metering in EVM, NDSS'20 \cite{dblp:conf/ndss/0002l20} %\bibentry{dblp:conf/ndss/0002l20}
-\item Revisiting Transactional Statistics of High-scalability Blockchains, IMC'21
-\item SoK: Decentralized Finance (DeFi), AFT'22
-\item Smart Contract Vulnerabilities: Vulnerable Does Not Imply Exploited, USENIX Security'21
-\item Liquidations: DeFi on a Knife-edge, FC'21
-\end{itemize}
+\begin{enumerate}
+    \item \fullcite{perez2020f}
+    \item \fullcite{perez2020c}
+    \item \fullcite{werner2021} to be included In: \emph{Proceedings of the 4th ACM Conference on Advances in Financial Technologies.} AFT'22
+    \item \fullcite{perez2021s}
+    \item \fullcite{perez2021l}
+\end{enumerate}
+
+During the course of this PhD, we also contributed to the following publications.
+
+\begin{enumerate}
+    \item \fullcite{10.1007/978-3-030-37110-4_1}
+    \item \fullcite{gudgeon2020decentralized}
+    \item \fullcite{pritz2020fast}
+    \item \fullcite{werner2020step}
+    \item \fullcite{10.1007/978-3-030-66172-4_18}
+    \item \fullcite{10.1145/3419614.3423254}
+    \item \fullcite{matsui2023data}
+    \item \fullcite{perez2023dissimilar}
+    \item \fullcite{xu2023auto}
+\end{enumerate}

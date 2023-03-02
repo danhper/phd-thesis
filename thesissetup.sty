@@ -47,8 +47,7 @@
 \RequirePackage{tabularx}
 \RequirePackage{longtable}
 \RequirePackage{moresize}
-\RequirePackage{bibentry}
-\RequirePackage{natbib}
+\RequirePackage[style=alphabetic,backend=biber,maxcitenames=5]{biblatex}
 
 \RequirePackage{packages/solidity-highlighting}
 \RequirePackage{packages/listingsgo}
@@ -98,19 +97,19 @@
 
 
 \ifDRAFT
-% Hilighting commands:
-\newcommand{\hl}[1]{\textcolor{dkgreen}{#1}}
-\newcommand{\fix}[1]{\textcolor{red}{#1}}
-\newcommand{\todo}[1]{\textcolor{red}{\textbf{TODO: }#1}}
-\newcommand{\hll}[1]{\textcolor{orange}{#1}}
-\newcommand{\empirical}[1]{\fbox{#1}}
+  % Hilighting commands:
+  \newcommand{\hl}[1]{\textcolor{dkgreen}{#1}}
+  \newcommand{\fix}[1]{\textcolor{red}{#1}}
+  \newcommand{\todo}[1]{\textcolor{red}{\textbf{TODO: }#1}}
+  \newcommand{\hll}[1]{\textcolor{orange}{#1}}
+  \newcommand{\empirical}[1]{\fbox{#1}}
 \else
-% for final sub
-\newcommand{\empirical}[1]{#1}
-\newcommand{\hl}[1]{#1}
-\newcommand{\fix}[1]{{}}
-\newcommand{\todo}[1]{{}}
-\newcommand{\hll}[1]{#1}
+  % for final sub
+  \newcommand{\empirical}[1]{#1}
+  \newcommand{\hl}[1]{#1}
+  \newcommand{\fix}[1]{{}}
+  \newcommand{\todo}[1]{{}}
+  \newcommand{\hll}[1]{#1}
 \fi
 
 \newlist{todolist}{itemize}{2}
@@ -139,4 +138,4 @@
 \newcommand{\formatint}[1]{\nprounddigits{0}$\numprint{#1}$}
 
 
-\bibliographystyle{alpha}
+% \bibliographystyle{alpha}

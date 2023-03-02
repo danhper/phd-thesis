@@ -1,6 +1,15 @@
 {
   "latex-workshop.latex.outDir": "%DIR%/build",
-  "cSpell.words": ["Aave", "incentivises", "overcollateralized"],
+  "cSpell.words": [
+    "Aave",
+    "EOSIO",
+    "incentivises",
+    "liquidatable",
+    "overcollateralized",
+    "Tezos",
+    "trustless",
+    "XRPL"
+  ],
   "cSpell.language": "en-GB",
   "grammarly.selectors": [
     {
@@ -8,5 +17,8 @@
       "scheme": "file"
     }
   ],
-  "grammarly.config.documentDialect": "british"
+  "grammarly.config.documentDialect": "british",
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.wordWrap": "on"
 }

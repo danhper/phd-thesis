@@ -1,7 +1,7 @@
 \addcontentsline{toc}{chapter}{Abstract}
 
 \begin{abstract}
-During the past several years, blockchain systems have gained a lot of traction and adoption, with during peak period, over 100 billion dollars worth of assets sitting in blockchain systems.
+During the past several years, blockchain systems have gained a lot of traction and adoption, with during peak period, the total capitalisation of these systems exceeding 2 trillion.
 Given the permissionless nature of blockchain systems and their large scope in terms of software -- e.g. distributed consensus, untrusted program execution -- numerous attack vectors need to be studied, understood and protected against for blockchain systems to be able to deliver their promises of a safer financial system.
 
 In this thesis, we study and contribute to improving the security of various parts of the blockchain stack, from the execution to the application layer.
@@ -15,10 +15,11 @@ We discover that low fees, which are in theory attractive to users, can lead to 
 We find that for two of the blockchain we analyse, EOS and Ripple, this type of spam leads to system outages where the blockchain is unable to process transactions.
 Finally, we find that a common motivation for spam transactions is to artificially inflate the activity of the application layer, through wash-trading for example.
 
-In the last main chapter of this thesis, we study the application layer of the blockchain stack, and in particular the decentralised finance (DeFi) ecosystem.
-We start by giving formal definitions of the different types of security, namely technical and economical security.
+In the last main chapter of this thesis, we move to the application layer and turn our focus on decentralised finance (DeFi) ecosystem, which is one of the most prevalent types of application implemented on top of blockchain systems.
+We start by giving formal definitions of the different types of security, namely technical and economic security.
 With that definition in mind, in the first part of this chapter, we study technical security exploits and develop an automated tool to detect on-chain exploits.
 We find that the majority of the exploits found through techniques such as program analysis are not exploited in practice, either because of the lack of feasibility of the exploit or because of the lack of economic incentive to do so.
-In the second part of this chapter, we focus on economical security and study the liquidations mechanism that is used to protect the users of DeFi lending protocols.
+In the second part of this chapter, we focus on economic security and study the liquidation mechanism that is used to protect the users of DeFi lending protocols.
+We highlight how the efficiency of the liquidations has increased over time, and how depegging events of stablecoin have caused very large amounts of liquidations because of the over-confidence in their stability.
 
 \end{abstract}
