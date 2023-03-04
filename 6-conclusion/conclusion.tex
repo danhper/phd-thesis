@@ -2,16 +2,34 @@
 
 \label{ch:conclusions}
 
-\section{Summary of Thesis Achievements}
+In this chapter, we summarise chapter-by-chapter the achievements of our thesis.
 
-Summary.
+\point{Execution layer}
+At the execution layer, we contributed to improving the security of the Ethereum Virtual Machine (EVM), and in particular, the gas metering mechanism.
 
+Our approach involved creating an instrumented version of the EVM that allowed us to replay and analyze the execution of smart contracts.
+By examining several months' worth of transactions, we identified several discrepancies in the metering model, including significant inconsistencies in the pricing of instructions.
+Furthermore, we discovered that there was a weak correlation between execution cost and the resources utilized, such as CPU and memory.
 
-\section{Applications}
+As a result, we introduced a new type of DoS attack, known as the ``Resource Exhaustion Attack'' that leveraged these weaknesses to generate low-throughput contracts.
+To demonstrate the vulnerability of major Ethereum client implementations, we designed a genetic algorithm that generated contracts with a throughput on average \Slowdown times slower than typical contracts.
+Our findings indicated that if these clients were running on commodity hardware, they would be unable to remain synchronized with the network when subjected to this attack.
 
-Applications.
+\point{Transactional layer}
+Our focus at the transactional layer was on blockchains with higher scalability and their transactional throughput.
+To conduct our analysis, we examined transaction data for three high-scalability blockchains: EOSIO, Tezos, and XRP Ledger (XRPL) over a period of seven months.
 
+Our findings revealed that only a small portion of transactions was utilized for value transfer purposes.
+Specifically, 96\% of transactions on EOSIO resulted from airdrops of a token without any current value.
+In the case of Tezos, 76\% of throughput was utilized for maintaining consensus, while over 94\% of transactions on XRPL had no economic value. We also identified a persisting airdrop on EOSIO that qualified as a DoS attack and detected a two-month-long spam attack on XRPL.
 
-\section{Future Work}
+We also explored how the different designs of the three blockchains had impacted user behaviour.
+Through this analysis, we gained insights into utilization patterns of transactional throughput and how blockchain designs could influence user behaviour.
 
-Future Work.
+\point{Application layer}
+At the application layer, we focused on the DeFi ecosystem, and first formalised the concepts of technical and economic security.
+
+We then analysed the technical security of DeFi protocols and found that the majority of the exploits found through techniques such as program analysis were not exploited in practice, either because of the lack of feasibility of the exploit or because of the lack of economic incentive to do so.
+
+Finally, we studied the economic security of DeFi lending protocols and found that the efficiency of the liquidations has increased over time.
+We also found that depegging events of stablecoin have caused very large amounts of liquidations because of the over-confidence in their stability.
