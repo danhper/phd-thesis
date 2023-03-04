@@ -1,4 +1,4 @@
-\begin{figure}
+\begin{table}
   \centering
   \setlength{\tabcolsep}{5pt}
   \begin{tabular}{lrrr}
@@ -16,11 +16,11 @@
   \end{tabular}
   \caption{Summary of the contracts in our dataset.}
   \label{fig:dataset-stats}
-\end{figure}
+\end{table}
 
-\section{Dataset}
+\subsection{Dataset}
 \label{sec:datasets}
-In this paper, we analyze the vulnerable contracts reported by the following~\PapersAnalyzed academic papers:~\cite{Luu2016a},~\cite{DBLP:conf/ndss/KalraGDS18},~\cite{Nikolic2018a},~\cite{Tsankov2018},~\cite{Grech2018} and~\cite{Krupp2018}. To collect information about the addresses analyzed and the vulnerabilities found, we reached out to the authors of the different papers.
+In this section, we analyze the vulnerable contracts reported by the following~\PapersAnalyzed academic papers:~\cite{Luu2016a},~\cite{DBLP:conf/ndss/KalraGDS18},~\cite{Nikolic2018a},~\cite{Tsankov2018},~\cite{Grech2018} and~\cite{Krupp2018}. To collect information about the addresses analyzed and the vulnerabilities found, we reached out to the authors of the different papers.
 
 Oyente~\cite{Luu2016a} data was publicly available~\cite{oyente-benchmarks}. The authors of the other papers were kind enough to provide us with their dataset. We received all the replies within less than a week of contacting the authors.
 
@@ -28,7 +28,7 @@ We also reached out to the authors of~\cite{Tikhomirov2017},~\cite{Jiang2018} an
 
 Our dataset is comprised of a total of \empirical{821,219} contracts, of which \VulnerableContracts contracts have been flagged as vulnerable to at least one of the~\VulnTypes vulnerabilities described in Section~\ref{sec:background}. Although we received the data directly from the authors, the numbers of contracts analyzed usually did not match the data reported in the papers, which we show in Figure~\ref{fig:prior-results}. We believe the two main results for this are: authors improving their tools after the publication and authors not including duplicated contracts in their data they provided us. Therefore, we present the numbers in our dataset, as well as the Ether at stake for vulnerable contracts in Figure~\ref{fig:dataset-stats}. The Ether at stake is computed by summing the balance of all the contracts flagged vulnerable. We use the balance at the time at which each paper was published rather than the current one, as it gives a better sense of the amount of Ether which could potentially have been exploited.
 
-\begin{figure}[tb]
+\begin{table}[tb]
   \begin{subfigure}{0.48\columnwidth}
     \includegraphics[width=\textwidth]{./5a-smart-contract-security/figures/overlap-analyzed.pdf}
     \caption{Overlapping contracts\\analyzed.}
@@ -41,7 +41,7 @@ Our dataset is comprised of a total of \empirical{821,219} contracts, of which \
   \end{subfigure}
   \caption{Histograms that show the overlap in the contracts analyzed and flagged by examined tools.}
 \label{fig:hist-per-tool}
-\end{figure}
+\end{table}
 
 \begin{figure}[tb]
   \setlength{\tabcolsep}{2pt}
@@ -59,9 +59,9 @@ Our dataset is comprised of a total of \empirical{821,219} contracts, of which \
   \label{fig:reentrancy-agreement}
 \end{figure}
 
-\begin{figure*}
+\begin{table}
   \centering
-  \setlength{\tabcolsep}{3pt}
+  \setlength{\tabcolsep}{2pt}
   \small
   \begin{tabular}{lllllll}
     \toprule
@@ -71,9 +71,9 @@ Our dataset is comprised of a total of \empirical{821,219} contracts, of which \
     \hline
     \bf \vue & callstack & unchecked send & handled exceptions & --- & --- & ---\\
     \hline
-    \bf \vto & concurrency & tx order dependency & transaction ordering dependency & --- & --- & ---\\
+    \bf \vto & concurrency & tx order dependency & tx ordering dependency & --- & --- & ---\\
     \hline
-    \bf \vle & --- & failed send & Ether liquidity & unbounded mass operation & greedy & ---\\
+    \bf \vle & --- & failed send & Ether liquidity & unbounded op & greedy & ---\\
     & & & & wallet griefing\\
     \hline
     \bf \vio & --- & integer overflow & --- & integer overflows & --- & --- \\
@@ -83,7 +83,7 @@ Our dataset is comprised of a total of \empirical{821,219} contracts, of which \
   \end{tabular}
   \caption{Mapping of the different vulnerabilities analyzed.}
   \label{fig:vuln-mapping}
-\end{figure*}
+\end{table}
 
 \point{Taxonomy}
 Rather than reusing existing smart contracts vulnerabilities taxonomies~\cite{Atzei2017} as-is, we adapt it to fit the vulnerabilities analyzed by the tools in our dataset. We do not cover vulnerabilities not analyzed by at least \empirical{two} of the \PapersAnalyzed tools. We settle on the~\VulnTypes types of vulnerabilities described in Section~\ref{sec:background}: re-entrancy (\vre), unhandled exception (\vue), locked Ether (\vle), transaction order dependency (\vto), integer overflows (\vio) and unrestricted actions (\vua). As the papers we survey use different terms and slightly different definitions for each of these vulnerabilities, we map the relevant vulnerabilities to one of the \VulnTypes types of vulnerabilities we analyze. We show how we mapped these vulnerabilities in Figure~\ref{fig:vuln-mapping}.

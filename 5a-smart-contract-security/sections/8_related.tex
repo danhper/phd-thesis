@@ -1,25 +1,28 @@
-\section{Related Work}
+\subsection{Related Work}
 \label{sec:related}
 
-Some major smart contracts exploits have been observed on Ethereum in recent years~\cite{Securities2017}. These attacks have been analyzed and classified~\cite{Atzei2017} and many tools and techniques have emerged to prevent such attacks~\cite{harz2018towards,Dika2017}.
-Recent literature has also shown how attacks on Ethereum are evolving with time~\cite{255252}.
-In this section, we will first provide details about two of the most prominent historic exploits and then present existing work aimed at increasing smart contract security.
+% Some major smart contracts exploits have been observed on Ethereum in recent years~\cite{Securities2017}.
+% These attacks have been analyzed and classified~\cite{Atzei2017} and many tools and techniques have emerged to prevent such attacks~\cite{harz2018towards,Dika2017}.
+% Recent literature has also shown how attacks on Ethereum are evolving with time~\cite{255252}.
+% In this section, we will first provide details about two of the most prominent historic exploits and then present existing work aimed at increasing smart contract security.
 
-\subsection{Motivating Large-scale Exploits}
-\point{TheDAO exploit}
-TheDAO exploit~\cite{Securities2017} is one of the most infamous bugs on the Ethereum blockchain. Attackers exploited a re-entrancy vulnerability~\cite{Atzei2017} of the contract which allowed for the draining of the contract's funds. The attacker contract could call the function to withdraw funds in a re-entrant manner before its balance on TheDAO was reduced, making it indeed possible to freely drain funds. A total of more than~3.5 million Ether were drained. Given the severity of the attack, the Ethereum community finally agreed on hard-forking.
-%
-\point{Parity wallet bug}
-The Parity Wallet bug~\cite{Breidenbach} is another prominent vulnerability on the Ethereum blockchain which caused 280 million USD worth of Ethereum to be frozen on the Parity wallet account. It was due to a very simple vulnerability: a library contract used by the parity wallet was not initialized correctly and could be destructed by anyone. Once the library was destructed, any call to the Parity wallet would then fail, effectively locking all funds.
+% \subsubsection{Motivating Large-scale Exploits}
+% \point{TheDAO exploit}
+% TheDAO exploit~\cite{Securities2017} is one of the most infamous bugs on the Ethereum blockchain. Attackers exploited a re-entrancy vulnerability~\cite{Atzei2017} of the contract which allowed for the draining of the contract's funds. The attacker contract could call the function to withdraw funds in a re-entrant manner before its balance on TheDAO was reduced, making it indeed possible to freely drain funds. A total of more than~3.5 million Ether were drained. Given the severity of the attack, the Ethereum community finally agreed on hard-forking.
+% %
+% \point{Parity wallet bug}
+% The Parity Wallet bug~\cite{Breidenbach} is another prominent vulnerability on the Ethereum blockchain which caused 280 million USD worth of Ethereum to be frozen on the Parity wallet account. It was due to a very simple vulnerability: a library contract used by the parity wallet was not initialized correctly and could be destructed by anyone. Once the library was destructed, any call to the Parity wallet would then fail, effectively locking all funds.
 
 %\subsection{Other contract vulnerabilities}
 %Recent research have proposed different taxonomies of smart contract vulnerabilities~\cite{Luu2016a,Atzei2017,Nikolic2018a}. Here, we will present a few classes of bug that enter in most of the proposed taxonomies.
 
 % \subsection{Analysis Tools For Finding Vulnerabilities}
 
-\subsection{Analyzing and Verifying Smart Contracts}
-\label{ssec:related-analysis-tools}
-There have been a lot of efforts in order to prevent such attacks and to make smart contracts more secure in general. We will here present some of the tools and techniques which have been presented in the literature and, when relevant, describe how they compare to our work.
+% \subsubsection{Analyzing and Verifying Smart Contracts}
+% \label{ssec:related-analysis-tools}
+
+There have been a lot of efforts in order to prevent exploits and to make smart contracts more secure in general.
+We will here present some of the tools and techniques which have been presented in the literature and, when relevant, describe how they compare to our work.
 
 Analysis tools can roughly be divided in two categories: static analysis and dynamic analysis tools.
 Using the term ``static'' quite loosely, static analysis tools can be defined as tools which catch bugs or vulnerabilities without the need to deploy the smart contracts.
@@ -66,7 +69,7 @@ teEther~\cite{Krupp2018} also works at runtime but is different from the previou
 Critical paths are execution paths which may result in lost funds, for example by sending money to an arbitrary address or being destructed by anyone.
 To find these paths, it uses an approach close to Oyente~\cite{Luu2016a}, first using symbolic execution and then the Z3 SMT solver~\cite{de2008z3} to solve path constraints.
 
-TXSPECTOR~\cite{255340}, which was published soon after the first version of this paper, uses a very similar approach to ours to detect re-entrancy, unchecked call and suicidal contracts.
+TXSPECTOR~\cite{255340}, which was published soon after the first version of this section, uses a very similar approach to ours to detect re-entrancy, unchecked call and suicidal contracts.
 They also leverage a Datalog approach to detect vulnerabilities but first transforms the transaction traces into a flow graph rather than adding facts about traces directly to the Datalog database.
 While this does add expressiveness, it makes the analysis significantly more complex, resulting in some analysis timing out on some transactions. Therefore, we believe that their approach could be complementary to ours and used to eliminate potential false-positives of our approach.
 

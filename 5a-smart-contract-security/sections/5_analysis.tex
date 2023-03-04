@@ -1,7 +1,7 @@
 \input{5a-smart-contract-security/sections/tables/reentrancy}
 
 
-\section{Analysis of Individual Vulnerabilities}
+\subsection{Analysis of Individual Vulnerabilities}
 \label{sec:analysis}
 
 As described in Section~\ref{sec:datasets}, the combined amount of Ether contained within \emph{all} the vulnerable contracts exceeds~\empirical{3 million} ETH, worth~\empirical{\ToUSD{3} million} USD. In this section, we present the results for each vulnerability one by one; our results have been obtained using the methodology described in Section~\ref{sec:methodology}; the goal is to show how much of this money is actually at risk.
@@ -18,7 +18,7 @@ We then present interesting findings as short case studies.
 
 % report all the contracts with a potential amount of Ether at risk greater than 10 ETH. We choose 10 ETH as a threshold because we think it is low enough to not miss any important attack, while being high enough to filter out most of the contracts. It is therefore appropriate for manual inspection effort. It is important to note that the filter used in this step affects in no way the total amount we report, and is used purely for practical purposes.
 
-\subsection{\vre: \reentrancy}
+\subsubsection{\vre: \reentrancy}
 \label{ssec:analysis-re}
 There are~\empirical{4,337} contracts flagged as vulnerable to re-entrancy by~\cite{Luu2016a,Tsankov2018,DBLP:conf/ndss/KalraGDS18}, with a total of~\empirical{457,073} transactions. After running the analysis described in Section~\ref{sec:methodology} on all the transactions, we found a total of~\empirical{116} contracts which contain re-entrant calls. To look for the monetary amount at risk, we compute the sum of the Ether sent between two contracts in transactions containing re-entrant calls. The total amount of Ether exploited using re-entrancy is of~\empirical{6,076 ETH}, which is considerable as it represents more than \empirical{\ToUSD{6000} USD}.
 
@@ -35,7 +35,7 @@ Finally, we note that our tool finds all the re-entrancy patterns presented by S
 
 \input{5a-smart-contract-security/sections/tables/unhandled-exceptions}
 
-\subsection{\vue: \unhandledexceptions}
+\subsubsection{\vue: \unhandledexceptions}
 \label{ssec:analysis-ue}
 There are~\empirical{11,427} contracts flagged vulnerable to unhandled exceptions by~\cite{Tsankov2018,Luu2016a,DBLP:conf/ndss/KalraGDS18} for a total of more than~\empirical{3.4 million} transactions, which is \emph{an order of magnitude} larger than what we found for re-entrancy issues.
 
@@ -51,7 +51,7 @@ The contract {\small\addr{0x7011f3edc7fa43c81440f9f43a6458174113b162}} has faile
 
 % \input{5a-smart-contract-security/sections/tables/locked-ether}
 
-\subsection{\vle: \lockedether}
+\subsubsection{\vle: \lockedether}
 \label{ssec:analysis-le}
 There are~\empirical{7,285} contracts flagged vulnerable to locked Ether by~\cite{Tsankov2018},~\cite{Grech2018},~\cite{Nikolic2018a} and~\cite{DBLP:conf/ndss/KalraGDS18}. The contracts hold a total value of more than~\empirical{1.4 million} ETH, which is worth more than \empirical{\ToUSD{1} million USD}. We analyze the transactions of the contracts that could potentially be locked by conducting the analysis described in the previous section. Our tool shows than \emph{none} of the contracts are actually affected by the pattern we check for~---~i.e., dependency on a contract which had been destructed.
 We note that our tool currently only covers dependency on a destructed contract as a reason for locked Ether and patterns such as unbounded mass operation are not yet covered.
@@ -71,7 +71,7 @@ To find the contracts, we simply have to use the Datalog query for locked Ether 
 
 \input{5a-smart-contract-security/sections/tables/tod}
 
-\subsection{\vto: \transactionorder}
+\subsubsection{\vto: \transactionorder}
 There are~\empirical{1,881} contracts flagged vulnerable to transaction ordering dependency by~\cite{Luu2016a} and~\cite{DBLP:conf/ndss/KalraGDS18}. We run the analysis described in Section~\ref{sec:methodology} on their \empirical{3,002,304} transactions and obtain a total of~\empirical{54} contracts potentially affected by transaction-order dependency. To estimate the amount of Ether at risk, we sum up the total value of Ether sent, including by internal transactions, during all the flagged transactions, resulting in a total of~\empirical{297.2 ETH} at risk of transaction-order dependency.
 
 \point{Manual analysis}
@@ -81,7 +81,7 @@ For each contract, we find the block where transaction order dependency could ha
 
 \input{5a-smart-contract-security/sections/tables/summary}
 
-\subsection{\vio: \integeroverflow}
+\subsubsection{\vio: \integeroverflow}
 \label{ssec:analysis-io}
 There are~\empirical{2,472} contracts flagged vulnerable to integer overflow, which accounts for a total of more than~\empirical{1.2 million transactions}. We run the approach we described in Section~\ref{sec:methodology} to search for actual occurrences of integer overflows.
 It is worth noting that for integer overflow analysis we rely on properties of the Solidity compiler. To ensure that the contracts we analyze were compiled using Solidity, we fetched all the available source codes for contracts flagged vulnerable to integer overflow from Etherscan~\cite{etherscan}. Out of~\empirical{2,492} contracts,~\empirical{945} had their source code available and all of them were written in Solidity.
@@ -105,7 +105,7 @@ After inspection, it seems that at block height~\block{1364860}, the owner tried
 This resulted in failed calls which happened not to be checked, hence the flag for unhandled exceptions.
 \end{investigation}
 
-\subsection{\unrestrictedaction}
+\subsubsection{\unrestrictedaction}
 \label{ssec:analysis-ua}
 There is a total of \empirical{5,163} contracts flagged by~\cite{Tsankov2018,Nikolic2018a,Krupp2018} as vulnerable to unrestricted actions for a total of \empirical{3,871,770} transactions. We use the approach described in Section~\ref{ssec:method-ua} and find a total of \empirical{42} contracts having suffered of unrestricted actions, which were all non-restricted self-destructs, but none of them held Ether at the time of the exploit.
 
@@ -132,7 +132,7 @@ However, we find that~\empirical{4867} Ether belonged to~\empirical{48} differen
 
 \point{Sanity checking} As a sanity check, in addition to our test suite, we use one of the most famous instance of an unrestricted action: the destructed Parity wallet library contract at address~\addr{0x863df6bfa4469f3ead0be8f9f2aae51c91a907b4}. We analyze the transactions and successfully find an unrestricted store instruction in transaction~\tx{0x05f71e1b2cb4f03e547739db15d080fd30c989eda04d37ce6264c5686e0722c9}, which was used to take control of the wallet.
 
-\subsection{Summary}
+\subsubsection{Summary}
 We summarize all our findings, including the number of contracts originally flagged, the amount of Ether at stake, and the amount \emph{actually exploited} in Figure~\ref{fig:findings-summary}. The \emph{Contracts exploited} column indicates the number of contracts which are flagged exploited and \emph{\% Contracts exploited} is the percentage of this number with respect to the number of contracts flagged vulnerable. The \emph{Exploited Ether} column shows the maximum amount of Ether that could have been exploited and the next column shows the percentage this amount represents compared to the total amount at stake. The \emph{Total} row accounts for contracts flagged with more than one vulnerability only once.
 
 Overall, we find that the \emph{number of contracts exploited} is non negligible, with about \empirical{2\%} to \empirical{4\%} of vulnerable contracts exploited for \empirical{4} of the \VulnTypesNum vulnerabilities covered in our study.
@@ -140,7 +140,7 @@ However, it is important to note that the percentage of Ether exploited is an or
 This indicates that exploited contracts are usually low-value.
 We will expand on this argument further in Section~\ref{sec:discussion}.
 
-% Below, we summarize the main takeaways regarding each vulnerability we examined in this paper.
+% Below, we summarize the main takeaways regarding each vulnerability we examined in this chapter.
 
 % \point{\reentrancy} This is by far the most dangerous issue of all the ones we have analyzed, accounting for more than 65\% of the total exploitations we observed. Although some proposals have been made to add a protection against this in the Solidity compiler~\cite{callstack-attack,solidity-noreetrancy},  we think that this issue should instead be handled at the interpreter level. Sereum~\cite{Rodler2019} is an attempt to do this, and we think that such an addition would help make the Ethereum smart contracts ecosystem considerably more secure.
 

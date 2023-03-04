@@ -1,11 +1,11 @@
-\section{Methodology}
+\subsection{Methodology}
 \label{sec:methodology}
 
 In this section, we describe our methodology for the different analyses we perform with regard to leveraging on a PLF.
 To be able to quantify the extent of leveraged positions over time, we first introduce a state transition framework for tracking the supply and borrow positions across all markets on a given PLF.
 We then describe how we instantiate this framework on the Compound protocol using on-chain events data.
 
-\subsection{Definitions}
+\subsubsection{Definitions}
 
 Throughout the paper, we use the following definitions in the context of PLFs:
 
@@ -28,7 +28,7 @@ Throughout the paper, we use the following definitions in the context of PLFs:
 \end{description}
 
 
-\subsection{States on a PLF}
+\subsubsection{States on a PLF}
 In this section, we provide a formal definition of the state of a PLF.
 We denote $\mathfrak{P}_t$ as the global state of a PLF at time $t$.
 For brevity, in the following definitions, we assume that all the values are at a given time $t$.
@@ -90,7 +90,7 @@ where $\Gamma(m)$ returns the price of the underlying asset denominated in a pre
 
 The transition from a state of a market $m$ from time $t$ to $t+1$ is given by some state transition $\sigma$, such that $m_{t}\xrightarrow[]{\sigma}m_{t+1}$. 
 
-\subsection{Leveraging Spirals on a PLF}
+\subsubsection{Leveraging Spirals on a PLF}
 \label{ssec:leveraging-spirals-meth}
 Here we examine the workings of leveraging in DeFi using a PLF. 
 We assume a speculator on some volatile asset $B$, holds initial capital $\alpha$ in $B$.
@@ -148,7 +148,7 @@ Note that Equation~\eqref{eq:debt} assumes a borrower uses the same collateraliz
 
 
 
-\subsection{States and the Compound PLF}
+\subsubsection{States and the Compound PLF}
 For our analysis, we apply our state transition framework to the Compound PLF.
 Therefore, we briefly present the workings of Compound in the context of our framework.  
 

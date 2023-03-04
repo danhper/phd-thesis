@@ -1,12 +1,13 @@
-\section{Background}
+\subsection{Background}
 \label{sec:background} 
 In this section, we first introduce different types of smart contracts vulnerabilities.
 We then present some of the analysis tools available to prevent against such vulnerabilities.
 Finally, we provide some definitions that will be used in the rest of the chapter.
 
-\subsection{Smart Contracts Vulnerabilities}
+\subsubsection{Smart Contracts Vulnerabilities}
 \label{ssec:vulnerability-types}
-In this subsection, we briefly review some of the most common vulnerability types that have been researched and reported for EVM-based smart contracts. We provide a two-letter abbreviation for each vulnerability which we shall use throughout the remainder of this paper.
+In this subsection, we briefly review some of the most common vulnerability types that have been researched and reported for EVM-based smart contracts.
+We provide a two-letter abbreviation for each vulnerability which we shall use throughout the remainder of this section.
 
 \point{\reentrancy~(\vre)}
 When a contract ``calls'' another account, it can choose the amount of gas it allows the called party to use. If the target account is a contract, it will be executed and can use the provided gas budget. If such a contract is malicious and the gas budget is high enough, it can try to call back in the caller --- a re-entrant call. If the caller's implementation is not re-entrant, for example because it did not update his internal state containing balances information, the attacker can use this vulnerability to drain funds out of the vulnerable contract~\cite{Luu2016a,DBLP:conf/ndss/KalraGDS18,Tsankov2018}.
@@ -41,13 +42,13 @@ Such an issue can happen not only if the developer forgets to perform critical c
 % This issue was the root cause of the the Parity wallet bug~\cite{Tsankov2018,Nikolic2018a} which froze more than 500k Ether.
 
 \input{5a-smart-contract-security/sections/tables/tools-overview}
-\subsection{Analysis Tools}
+\subsubsection{Analysis Tools}
 \label{ssec:analysis-tools}
 Smart contracts are generally designed to manipulate and \emph{hold} funds denominated in Ether. This makes them very tempting attack targets, as a successful attack may allow the attacker to directly steal funds from the contract. Given the many common vulnerabilities in smart contracts, some of which we described in the previous section, a large number of tools have been developed to find them automatically~\cite{Luu2016a,Tsankov2018,mythril}. Most of these tools analyze either the contract source code or its compiled EVM bytecode and look for known security issues, such as re-entrancy or transaction order dependency vulnerabilities. We present a summary of these different works in Figure~\ref{fig:prior-results}. The second and third columns respectively present the reported number of contracts analyzed and contracts flagged vulnerable in each paper. The ``vulnerabilities'' columns show the type of vulnerabilities that each tool can check for. We present these vulnerabilities in Subsection~\ref{ssec:vulnerability-types} and give a more detailed description of these tools in Section~\ref{ssec:related-analysis-tools}.
 
-\subsection{Definitions}
+\subsubsection{Definitions}
 \label{ssec:definitions}
-We give the definitions used in this paper for the terms \emph{vulnerable}, \emph{exploitable} and \emph{exploited}.
+We give the definitions used in this section for the terms \emph{vulnerable}, \emph{exploitable} and \emph{exploited}.
 \begin{description}
 \item[vulnerable:]
   A contract is vulnerable if it has been flagged by a static analysis tool as such.

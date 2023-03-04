@@ -1,6 +1,6 @@
-\section{Investigations}
+\subsection{Investigations}
 \label{sec:investigations}
-In this appendix, we will give a more in-depth security analysis of the top value contracts we presented in Section~\ref{sec:discussion}. In particular, we will focus on the vulnerabilities detected by the different tools and show how it could, or not, affect the contract.
+In this section, we will give a more in-depth security analysis of the top value contracts we presented in Section~\ref{sec:discussion}. In particular, we will focus on the vulnerabilities detected by the different tools and show how it could, or not, affect the contract.
 
 \subsection*{\addr{0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae}}
   This contract has been flagged as being vulnerable to re-entrancy by Oyente. For a contract to be victim of a re-entrancy attack, it must \lstinline{CALL} another contract, sending it enough gas to be able to perform the re-entrant call. In Solidity terms, this is means that the contract has to invoke \lstinline{address.call} and not explicitly set the gas limit. By looking at the source code~\cite{ether-foundation-contract-code}, we find 2 such instances: one at line 352 in the \lstinline{execute} function and another at line 369 in the \lstinline{confirm function}. The \lstinline{execute} is protected by the \lstinline{onlyowner} modifier, which requires the caller to be an owner of the wallet. This means that for a re-entrant call to work, the malicious contract would need to be an owner of the wallet in order to work. The \lstinline{confirm} function is protected by the \lstinline{onlymanyowners} modifier, which requires at least n owners to agree on confirming a particular transaction before it is executed, where n is agreed upon at contract creation time. Furthermore, \lstinline{confirm} will only invoke \lstinline{address.call} on a transaction previously created in the \lstinline{execute} function.
@@ -26,7 +26,7 @@ The contract has two very short functions: \lstinline{withdraw} which allows use
 We first look at the transaction order dependency. As any user will only ever be able to receive the amount of tokens he possesses, the order of the transaction should not be an issue in this contract. We then look at unhandled exceptions. There is indeed a call to \lstinline{send} in the \lstinline{trusteeWithdraw} which is not checked. Although it is not particularly an issue here, as this does not modify any other state, an error should probably be thrown if the call fails. We then look at locked ether. The contract is flagged with locked ether because of what Zeus classifies as ``failed send''. This issue was flagged because if the call to \lstinline{mainDAO.transferFrom} always raised, then the call to \lstinline{msg.sender.send} would never be reached, indeed preventing from reclaiming funds. However, in this context, \lstinline{mainDAO} is a trusted contract and it is therefore safe to assume that \lstinline{mainDAO.transferFrom} will not always fail. Finally, we look at the integer overflow issue. The only place where an overflow could occur is in \lstinline{trusteeWithdraw} at line 23. This could indeed overflow without some assumptions on the different values. For this particular contract, the following assumptions are made.
 
 \lstset{
-  basicstyle=\ttfamily\footnotesize,
+  basicstyle=\ttfamily,
   mathescape
 }
 \begin{align*}

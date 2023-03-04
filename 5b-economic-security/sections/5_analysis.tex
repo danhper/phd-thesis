@@ -14,7 +14,7 @@
   \caption{Number of active accounts and amount of funds on Compound over time.}
 \end{figure}
 
-\section{Analysis}
+\subsection{Analysis}
 \label{sec:analysis}
 In this section, we present the results of the analysis performed with the framework outlined in Section~\ref{sec:methodology}.
 We analyze data from the Compound protocol~\cite{Leshner2018} over a period ranging from \StartDate---when the first Compound markets were deployed on the Ethereum main network---to \EndDate.
@@ -38,7 +38,7 @@ When analyzing a single market, we choose the market for \coin{DAI}, as it is th
 \end{figure}
 
 
-\subsection{Borrowers and Suppliers}
+\subsubsection{Borrowers and Suppliers}
 We first examine the total number of borrowers and suppliers on Compound by considering any Ethereum account that, at any time within the observation period, either exhibited a non-zero cToken balance or borrowed funds for any Compound market.
 The change in the number of borrowers and suppliers over time is displayed in \autoref{fig:borrowers-suppliers-over-time}.
 
@@ -57,7 +57,7 @@ For the borrowers shown in~\autoref{fig:borrowers-distribution}, the top user ac
 While one could think that this concentration comes from the fact that top accounts are pools receiving money from several participants, only one of the top~10 suppliers and none of the top~10 borrowers fit in this category.
 We provide a list of the top suppliers and borrowers with a description of the accounts in~\autoref{tab:top-suppliers-borrowers} of Appendix~\ref{sec:top-suppliers-borrowers}.
 
-\subsection{Leveraging Spirals}
+\subsubsection{Leveraging Spirals}
 As we have seen in Section~\ref{sec:plfs}, in PLFs, leveraging can be used either to gain more exposure to a particular currency or to gain some incentive provided by the protocol.
 To understand how leveraging can affect the total amounts borrowed and supplied on Compound, we use the methodology we defined in Section~\ref{ssec:leveraging-spirals-meth} to measure the existence of leveraging spirals on Compound.
 
@@ -66,7 +66,7 @@ However, after the inspection of leveraging spirals, we find that the user has p
 
 In total, we find a total of 2,141 accounts using this leveraging spiral technique for a total of over 600 million USD, or roughly half of the total amount of funds supplied to the protocol.
 
-\subsection{The \coin{COMP} Governance Token}
+\subsubsection{The \coin{COMP} Governance Token}
 The sudden jumps exhibited in Figures~\ref{fig:borrowers-suppliers-over-time} and~\ref{fig:borrow-supply-over-time} can be explained by the launch of Compound's governance token, \coin{COMP}, on June~15,~2020.
 The \coin{COMP} governance token allows holders to participate in voting, create proposals, as well as delegate voting rights.
 In order to empower Compound stakeholders, new \coin{COMP} is minted every block and distributed among borrowers and suppliers in each market.
@@ -84,7 +84,7 @@ Hence, a Compound user is incentivized to increase his borrow position as long a
   \label{fig:liquidatability}
 \end{figure}
 
-\subsection{Liquidation Risk}
+\subsubsection{Liquidation Risk}
 Given the high increase in the number of total funds borrowed and supplied, as well as the decrease in liquidity relative to total borrows, we seek to identify and quantify any changes in liquidation risk on Compound since the launch of \coin{COMP}. 
 \autoref{fig:liquidatability} shows the total USD value of collateral on Compound and how close collateral amounts are from liquidation. 
 In addition to the substantial increase in the total value of collateral on Compound since the launch of \coin{COMP}, the risk-seeking behavior of users has also changed.
@@ -111,7 +111,7 @@ In particular, a~3\% decrease would have turned collateral worth in excess of~10
   \label{fig:liquidations-over-time}
 \end{figure}
 
-\subsection{Liquidations and Liquidators}
+\subsubsection{Liquidations and Liquidators}
 In order to better understand the implications of the increased liquidation risk since the launch of \coin{COMP}, we examine historical liquidations on Compound and subsequently measure the efficiency of liquidators.
 
 \point{Historical Liquidations}
@@ -138,7 +138,7 @@ It is clear that with such stakes, participants were incentivized to improve liq
     \label{fig:blocks-spent}
 \end{figure}
 
-\subsection{Summary}
+\subsubsection{Summary}
 In this section, we have analyzed the Compound protocol with a focus on liquidations.
 We have found that despite the increase in number of suppliers and borrowers over time, the total amount of funds supplied and borrowed remain extremely concentrated among a small set of participants.
 

@@ -1,27 +1,27 @@
-% \begin{figure}[tb]
-% \begin{lstlisting}[basicstyle=\footnotesize\ttfamily,language=json]
-% [
-%     {"op": "EQ", "pc": 7, 
-%     "depth": 1, "stack": ["2b", "a3"]},
-%     {"op": "ISZERO", "pc": 8, "depth": 1,
-%     "stack": ["00"]}
-% ]
-% \end{lstlisting}
-% \caption{\label{fig:execution-trace}Sample execution trace information.}
-% \end{figure}
+\begin{figure}[tb]
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily,language=json]
+[
+    {"op": "EQ", "pc": 7, 
+    "depth": 1, "stack": ["2b", "a3"]},
+    {"op": "ISZERO", "pc": 8, "depth": 1,
+    "stack": ["00"]}
+]
+\end{lstlisting}
+\caption{\label{fig:execution-trace}Sample execution trace information.}
+\end{figure}
 
 
-\section{Methodology}
+\subsection{Methodology}
 \label{sec:methodology}
 
-In this section, we describe in details the different analyses we perform in order to check for exploits of the vulnerabilities described in Section~\ref{sec:background}.
+In this section, we describe in detail the different analyses we perform in order to check for exploits of the vulnerabilities described in Section~\ref{sec:background}.
 
 To check for potential exploits, we perform bytecode-level transaction analysis, whereby we look at the code executed by the contract when carrying out a particular transaction. We use this type of analysis to detect the~\VulnTypes types of vulnerabilities presented in Section~\ref{sec:background}.
 
 To perform our analyses, we first retrieve transaction data for all the contracts in our dataset. Next, to perform bytecode-level analysis, we extract the execution traces for the transactions which may have affected contracts of interest. We use EVM's debug functionality, which gives us the ability to replay transactions and to trace all the executed instructions. To speed-up the data collection process, we patch the Go Ethereum client~\cite{go-ethereum}, opposed to relying on the Remote Procedure Call~(RPC) functionality provided by the default Ethereum client.
-% We show a truncated sample of the extracted traces in Figure~\ref{fig:execution-trace} for illustration. 
-% %
-% The \lstinline{op} key is the current instruction, \lstinline{pc} is the program counter, \lstinline{depth} is the current level of call nesting, and finally, \lstinline{stack} contains the current state of the stack. We use single-byte values in the example, but the actual values are~32 bytes~(256 bits).
+We show a truncated sample of the extracted traces in Figure~\ref{fig:execution-trace} for illustration. 
+%
+The \lstinline{op} key is the current instruction, \lstinline{pc} is the program counter, \lstinline{depth} is the current level of call nesting, and finally, \lstinline{stack} contains the current state of the stack. We use single-byte values in the example, but the actual values are~32 bytes~(256 bits).
 
 The extracted traces contain a list of executed instructions, as well as the state of the stack at each instruction.
 To analyze the traces, we encode them into a Datalog representation; Datalog is a language implementing first-order logic with recursion~\cite{Immerman99descriptivecomplexity}, which allows us to concisely express properties about the execution traces.
@@ -74,14 +74,14 @@ if (!addr.send(100)) { throw; }
 % Integer overflow	            & no\footnotemark	& no\\
 % \bottomrule\\
 % \end{tabular}
-% \caption{Soundness and completeness properties for the analyses in this paper.}
+% \caption{Soundness and completeness properties for the analyses in this section.}
 % \end{figure}
 
 % \footnotetext{Section~\ref{ssec:method-io} and Section~\ref{ssec:analysis-io} provide in-depth explanations of the cases where the analysis is unsound}
 
 \input{5a-smart-contract-security/sections/datalog}
 
-\subsection{\reentrancy}
+\subsubsection{\reentrancy}
 In the EVM, as transactions are executed independently, re-entrancy issues can only occur \emph{within} a single transaction. Therefore, for re-entrancy to be exploited, there must be a call to an external contract which invokes, directly or indirectly, a re-entrant callback to the calling contract. We therefore start by looking for \op{CALL} instructions in the execution traces, while keeping track of the contract currently being executed.
 
 When \op{CALL} is executed, the address of the contract to be called as well as the value to be sent can be retrieved by inspecting the values on the stack~\cite{wood2014ethereum}. Using this information, we can record \dterm{call}{a_1,a_2,p} facts described in Figure~\ref{fig:datalog-facts}.
@@ -90,7 +90,7 @@ Using these, we then use the query shown in Figure~\ref{fig:queries} to retrieve
 
 \correctness Our analysis for re-entrant calls is sound but not complete. As the EVM executes each contract in a single thread, a re-entrant call must come from a recursive call. For example, given $A$, $B$, $C$ and $D$ being functions, a re-entrant call could be generated with a call path such as $A\rightarrow B \rightarrow C\rightarrow A$. Our tool searches for all mutually-recursive calls; it supports an arbitrarily-long calls path by using a recursive Datalog rule, making the analysis sound. However, we have no way of assessing if a re-entrant call is malicious or not, which can lead to false positives.
 
-\subsection{\unhandledexceptions}
+\subsubsection{\unhandledexceptions}
 %
 When Solidity compiles contracts, methods to send Ether, such as \lstinline{send}, are compiled into the EVM \op{CALL} instructions. We show an example of such a call and its instructions counterpart in Figure~\ref{fig:handled-exception}. If the address passed to \op{CALL} is an address, the EVM executes the code of the contract, otherwise it executes the necessary instructions to transfer Ether to the address. When the EVM is done executing, it pushes either $1$ on the stack, if the \op{CALL} succeeded, or $0$ otherwise. 
 
@@ -106,7 +106,7 @@ We then use a recursive Datalog rule to check if the call result is used directl
 We could obtain false negatives if the call result is used in a condition but the condition is not enough to prevent an exploit.
 However, given that the most prevalent pattern for this vulnerability is the result of \lstinline{send} not being used at all~\cite{Tsankov2018}, and when the result is used, it is typically done within a \lstinline{require} or \lstinline{assert} expression, we hypothesize that such false negatives should be very rare.
 
-\subsection{\lockedether}
+\subsubsection{\lockedether}
 Although there are several reasons for funds locked in a contract, we focus on the case where the contract relies on an external contract which does not exist anymore, as this is the pattern which had the largest financial impact on Ethereum~\cite{Breidenbach}. Such a case can occur when a contract uses another contract as a library to perform some actions on its behalf. To use a contract in this way, the \op{DELEGATECALL} instruction is used instead of \op{CALL}, as the latter does not preserve call data, such as the sender or the value.
 
 The next important part is the behavior of the EVM when trying to call a contract which does not exist anymore.
@@ -119,7 +119,7 @@ If the called contract does not exist anymore, $i_1 + 1 = i_2$ must hold. Theref
 \correctness The approach we use to detect locked Ether is sound and complete for the class of locked funds vulnerability we focus on. All vulnerable contracts must have a \lstinline{DELEGATECALL} instruction. If the issue is present and the call contract has indeed been destructed, it will always result in a no-op call. Our analysis records all of these calls and systematically check for the program counter before and after the execution, making the analysis sound and complete.
 
 
-\subsection{\transactionorder}
+\subsubsection{\transactionorder}
 The first insight to check for exploitation of transaction ordering dependency is that at least two transactions to the same contract must be included in the same block for such an attack to be successful. Furthermore, as shown in~\cite{Luu2016a} or~\cite{Tsankov2018}, exploiting a transaction ordering dependency vulnerability requires manipulation of the contract's storage.
 
 The EVM has only one instruction to read from the storage, \op{SLOAD}, and one instruction to write to the storage, \op{SSTORE}. In the EVM, the location of the storage to use for both of these instructions is passed as an argument, and referred to as the storage \emph{key}. This key is available on the stack at the time the instruction is called. We go through all the transactions of the contracts and each time we encounter one of these instructions, we record either~\dterm{tx_sload}{b\in \mathbb{N}, i\in \mathbb{N}, k\in \mathbb{N}} or \dterm{tx_sstore}{b\in \mathbb{N}, i\in \mathbb{N}, k\in \mathbb{N}} where in each case $b$ is the block number, $i$ is the index of the transaction in the block and $k$ is the storage key being accessed.
@@ -129,7 +129,7 @@ The essence of the rule to check for transaction order dependency issues is then
 \correctness Our approach to check for transaction order dependencies is sound but not complete. With the definition we use, for a contract to have a transaction order dependency it must have two transactions in the same block, which affect the same key in the storage. We check for all such cases, and therefore no false-negatives can exist. However, finding if there is a transaction order dependency requires more knowledge about how the storage is used and our approach could therefore result in false positives.
 
 
-\subsection{\integeroverflow}
+\subsubsection{\integeroverflow}
 \label{ssec:method-io}
 
 % \begin{figure}[tb]
@@ -160,7 +160,7 @@ During the second phase, we use the \dterm{inferred_signed}{v} and \dterm{inferr
 
 \correctness Our analysis for integer overflow is neither sound nor complete. The types are inferred by using properties of the compiler using a heuristic which should work for most of cases but can fail. For example, if a contract contains code which yields \lstinline{AND value 0xff} but value is an \lstinline{uint32}, our type inference algorithm would wrongly infer that this variable is an \lstinline{uint8}. Such error during type inference could cause both false positives and false negatives. However, this type of issue occurs only when the developer uses bit manipulation with a mask similar to what the Solidity compiler generate. We find that such a pattern is rare enough not to skew our data, and give an estimate the possible number of contracts which could follow such a pattern in Section~\ref{ssec:analysis-io}.
 
-\subsection{\unrestrictedaction}
+\subsubsection{\unrestrictedaction}
 \label{ssec:method-ua}
 Unrestricted actions is a broad class of vulnerability, as it can include the ability to set an owner without being allowed to, destruct a contract without permission or yet execute arbitrary code.
 As one of our main goal is to check the exploitation of vulnerable contracts, we stay close to the definitions given by previous works~\cite{Krupp2018} and focus on unrestricted Ether transfer using \op{CALL}, unrestricted writes using and \op{SSTORE}, and code injection using \op{DELEGATECALL} or \op{CALLCODE}.
