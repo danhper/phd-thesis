@@ -55,9 +55,13 @@ The Proof-of-Work (PoW) consensus, introduced by Bitcoin requires the participan
 To preserve security while maintaining a sufficient degree of decentralization, scalability is often sacrificed~\cite{Xie2019}.
 Indeed, the rate of block creation for both Bitcoin is relatively slow---on average 10 minutes per block, respectively---and the only way to increase the throughput is to increase the size of a single block, allowing for more transactions per block.
 
-\point{Proof-of-Stake}
-
-Ethereum has recently transitioned to a new consensus mechanism called Proof-of-Stake (PoS), which solves the same issue as PoW but does not require a large amount of computational power.
+\point{Proof-of-Stake} Along with PoW, Proof-of-Stake (PoW), to which Ethereum has recently transitioned, is another consensus mechanism that solves the same issue without requiring a large amount of computational power.
+PoS requires its participants, called block proposers and validators, to stake a certain amount of their assets to be eligible to create a new block.
+The probability of a block proposer being selected to create a new block is proportional to the total amount of assets they have staked.
+The block proposer is then required to create a new block and broadcast it to the network.
+The validators then verify the block and vote on whether it is valid.
+If the block is invalid, the block proposer is penalised, by taking some of the assets it has staked, and the block is discarded.
+If a majority of the validators agree that the block is valid, it is appended to the blockchain.
 
 \point{Deciding on the valid chain}
 These consensus mechanisms alone are not enough to fulfil Requirement \ref{req3}.
@@ -71,10 +75,16 @@ To prevent this, multiple mechanisms exist but the one used by Ethereum is to fo
 
 
 \subsection{Incentives and fees}
+For both PoW and PoS to work, the miners, or block proposers for PoS, need to be incentivised to participate in the consensus process.
+This is typically done by rewarding them with a certain amount of the asset when they produce a new block, and also giving them the transaction fees of the transactions included in the block.
+For Bitcoin, the incentive mechanism is straightforward: the miner receives a fixed block reward, of which the amount halves every four years, and the sum of all the transaction fees of transactions in the block.
+Ethereum used to work in the same way but has since changed to a more complex incentive mechanism.
+One of the main differences with the Bitcoin model is that the block reward is not fixed but instead varies with the total amount of assets staked in the system.
+Another notable difference is that part of the fees are not distributed to the block proposer but instead are burned, i.e., they are destroyed.
 
 \section{Smart contracts}
-The Ethereum~\cite{buterin2014} platform allows its users to run ``smart contracts'' on its distributed infrastructure.
-Ethereum \emph{smart contracts} are programs which define a set of rules for the governing of associated funds, typically written in a Turing-complete programming language called Solidity~\cite{Dannen:2017:IES:3103305}.
+The Ethereum~\cite{buterin2014} platform was the first to allow its users to run ``smart contracts'' on its distributed infrastructure.
+Smart contracts are programs that define a set of rules for the governing of associated funds, typically written in a Turing-complete programming language, usually Solidity~\cite{Dannen:2017:IES:3103305} in the case of Ethereum.
 Solidity is similar to JavaScript, yet some notable differences are that it is strongly typed and has built-in constructs to interact with the Ethereum platform.
 Programs written in Solidity are compiled into low-level untyped bytecode to be executed on the Ethereum platform by the Ethereum Virtual Machine (EVM)~\cite{wood2014ethereum}.
 It is important to note that it is also possible to write EVM contracts without using Solidity.
@@ -87,16 +97,49 @@ Smart contracts themselves have the capability to \emph{call} another account pr
 \section{Applications}
 
 \point{DAOs} 
-A Decentralized Autonomous Organization (DAO) operates based on computer programs called smart contracts, rather than being subject to the control of any central authority or group of individuals. Decisions within a DAO are reached through a consensus mechanism that permits stakeholders to suggest, deliberate, and vote on various proposals. The blockchain executes the rules and decision-making process in a transparent manner, resulting in a trustless system.
-DAOs can serve a variety of functions, such as managing decentralized funds, investing in projects, creating decentralized social networks, or facilitating community governance. The use cases of DAOs are constantly changing as technology advances, and they are viewed as a promising tool for enabling decentralized and autonomous decision-making.
+One of the earliest applications of distributed ledger technology was the creation of Decentralized Autonomous Organizations (DAOs).
+A DAO is a decentralized organization that uses a blockchain to facilitate the management of its funds and decision-making process.
+It often uses at least a multi-signature wallet to manage its funds, which means that several members of the organisation are required to approve any transfer of funds.
+DAOs also often have more complex rules, such as delays to be able to perform some actions or recurrent payments, that can be enforced by smart contracts.
+The blockchain executes the rules and decision-making process in a transparent manner, resulting in a system requiring less trust than its centralised counterparties.
+DAOs can serve a variety of functions, such as managing decentralized funds, investing in projects, creating decentralized social networks, or facilitating community governance.
 \point{DeFi}
-Decentralized Finance (DeFi) is a peer-to-peer financial system powered by a blockchain, usually Ethereum, that is designed to operate without the need for traditional financial intermediaries such as banks, brokerages, or exchanges.
-In a DeFi system, financial transactions and services are facilitated by smart contracts that automatically execute transactions and enforce the terms of agreements. Examples of DeFi applications include decentralized exchanges (DEXs), where users can trade cryptocurrencies without the need for a centralized exchange, lending platforms that enable borrowers to access loans without going through a traditional bank, and stablecoins that are designed to maintain a stable value.
-\point{NFTs}
+Decentralized Finance (DeFi) is a peer-to-peer financial system powered by a blockchain that is designed to operate without the need for traditional financial intermediaries such as banks, brokerages, or exchanges.
+In a DeFi system, financial transactions and services are facilitated by smart contracts that automatically execute transactions and enforce the terms of agreements.
+Examples of DeFi applications include decentralized exchanges (DEXs), where users can trade cryptocurrencies without the need for a centralized exchange, lending platforms that enable borrowers to access loans without going through a traditional bank, and stablecoins that are designed to maintain a stable value.
+We will discuss DeFi in depth in Chapter~\ref{ch:application-security}.
+\point{Others} There are many other applications of blockchain technology, such as the tokenisation of art, often through non-fungible tokens (NFT), decentralized identity management, decentralized storage, and decentralized social networks.
+Although these are important applications, they are not the focus of this thesis and will not be discussed in detail.
 
-\section{Motivating examples of Attacks on Blockchain Systems}
+\section{Examples of Attacks on Blockchain Systems}
+
+Over the years, blockchain systems have been the target of many attacks.
+These attacks have happened at different levels of the system, from the consensus protocol to the smart contracts.
+In this section, we provide an example attack for each of the layers that we cover in this thesis: execution layer, transactional layer, and application layer.
+Furthermore, for the application layer, we provide an example of a technical attack and an example of an economic attack.
+Formal definitions for these terms are provided in Chapter~\ref{ch:application-security}.
 
 \point{Shanghai attack}
-\point{Polygon DDoS}
-\point{DAO hack}
-\point{Cream Finance exploit}
+In September 2016, a DoS attack was performed on the Ethereum network.
+The attack was performed during a major Ethereum conference taking place in Shanghai, hence the name of the attack.
+The gist of the attack was an attacker flooding Ethereum with transactions that were cheap to execute but would take the network participants a long time to process.
+This resulted in the network taking much longer than normal to produce new blocks and forced Ethereum to revisit their pricing mechanism for transactions.
+We give more in-depth details about this attack in Chapter~\ref{ch:vm-security}.
+
+\point{Solana DDoS}
+While the Shanghai attack is a good example of a DoS attack that relies on abusing the resource pricing mechanism of a transaction, other blockchains have also been the target of DDoS attacks despite the resource pricing mechanism working as intended.
+This happens most often in blockchains that try to have very low transaction fees, such as Solana~\cite{solana}, where a single transaction costs less than a cent.
+In September 2021, an attacker performed a DDoS attack on Solana by sending over 400,000 transactions per second, which is vastly over the network's capacity.
+Because of the extremely low transaction price, the cost of the attack was very moderate for the attacker.
+The Solana network ended up having to rollback the network to be able to recover.
+We discuss similar types of attacks and discuss in-depth the trade-offs of low transaction fees in Chapter~\ref{ch:transactional-security}.
+
+\point{TheDAO hack}
+TheDAO exploit~\cite{Securities2017} is one of the most infamous exploits that occurred in an Ethereum smart contract.
+Attackers exploited a re-entrancy vulnerability~\cite{Atzei2017} of the contract which allowed for the draining of the contract's funds.
+The attacker contract could call the function to withdraw funds in a re-entrant manner before its balance on TheDAO was reduced, making it indeed possible to freely drain funds.
+A total of over 3.5 million Ether were drained.
+Given the severity of the attack, the Ethereum community finally agreed on hard forking.
+We discuss this type of vulnerability in depth in Chapter~\ref{ch:application-security}.
+
+\point{Aave bad debt}
