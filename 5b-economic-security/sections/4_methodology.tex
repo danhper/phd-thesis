@@ -105,7 +105,7 @@ This process is illustrated in Figure~\ref{fig:plf-leverage} and can be repeated
 % Explain how an agent can leverage a position in DeFi: this diagram is a draft
 \begin{figure}[tbp]
     \centering
-    \includegraphics[width=0.8\textwidth]{6-application-security/figures/leveraging.pdf}
+    \includegraphics[width=0.8\textwidth]{5b-economic-security/figures/leveraging.pdf}
     \caption{The steps of leveraging using a PLF. \textbf{1.} Initial capital $\alpha_{B}$ in asset $B$ is deposited as collateral to borrow asset $A$. \textbf{2.} Interest accrues over the debt of the borrow position for asset $B$. \textbf{3.} The borrowed asset $A$ is sold for asset $B$ on the open market. \textbf{4.} The newly purchased units of asset $B$ are locked as collateral for a new borrow position of asset $A$.}
     \label{fig:plf-leverage}
 \end{figure}
@@ -152,7 +152,7 @@ Note that Equation~\eqref{eq:debt} assumes a borrower uses the same collateraliz
 For our analysis, we apply our state transition framework to the Compound PLF.
 Therefore, we briefly present the workings of Compound in the context of our framework.  
 
-\input{6-application-security/tables/compound_events_states}
+\input{5b-economic-security/tables/compound_events_states}
 
 \point{State Transitions}
 We initiate state transitions via events emitted from the Compound protocol smart contracts.

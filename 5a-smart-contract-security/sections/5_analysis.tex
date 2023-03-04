@@ -1,4 +1,4 @@
-\input{5-smart-contract-security/sections/tables/reentrancy}
+\input{5a-smart-contract-security/sections/tables/reentrancy}
 
 
 \section{Analysis of Individual Vulnerabilities}
@@ -33,7 +33,7 @@ As another sanity check, we look at a contract called SpankChain~\cite{spank-cha
 
 Finally, we note that our tool finds all the re-entrancy patterns presented by Sereum~\cite{Rodler2019}, including delegated and create-based re-entrancy\footnote{https://github.com/uni-due-syssec/eth-reentrancy-attack-patterns}.
 
-\input{5-smart-contract-security/sections/tables/unhandled-exceptions}
+\input{5a-smart-contract-security/sections/tables/unhandled-exceptions}
 
 \subsection{\vue: \unhandledexceptions}
 \label{ssec:analysis-ue}
@@ -49,7 +49,7 @@ The contract {\small\addr{0x7011f3edc7fa43c81440f9f43a6458174113b162}} has faile
 \end{investigation}
 
 
-% \input{5-smart-contract-security/sections/tables/locked-ether}
+% \input{5a-smart-contract-security/sections/tables/locked-ether}
 
 \subsection{\vle: \lockedether}
 \label{ssec:analysis-le}
@@ -69,7 +69,7 @@ To find the contracts, we simply have to use the Datalog query for locked Ether 
 % The first contract, which never sent any Ether, at address \addr{0x5a5eff38da95b0d58b6c616f2699168b480953c9} has its code publicly available. After inspection, it seems to be a ``lifelog'' and the fact it is not sending Ether seems to be there by-design; in other words, the funds are not locked. Although we were not able to inspect the other contract because its code was not available, we did not find any vulnerability report for this address.
 
 
-\input{5-smart-contract-security/sections/tables/tod}
+\input{5a-smart-contract-security/sections/tables/tod}
 
 \subsection{\vto: \transactionorder}
 There are~\empirical{1,881} contracts flagged vulnerable to transaction ordering dependency by~\cite{Luu2016a} and~\cite{DBLP:conf/ndss/KalraGDS18}. We run the analysis described in Section~\ref{sec:methodology} on their \empirical{3,002,304} transactions and obtain a total of~\empirical{54} contracts potentially affected by transaction-order dependency. To estimate the amount of Ether at risk, we sum up the total value of Ether sent, including by internal transactions, during all the flagged transactions, resulting in a total of~\empirical{297.2 ETH} at risk of transaction-order dependency.
@@ -77,9 +77,9 @@ There are~\empirical{1,881} contracts flagged vulnerable to transaction ordering
 \point{Manual analysis}
 For each contract, we find the block where transaction order dependency could have happened with the highest balance and report top with their balance at the time of the issue in Figure~\ref{fig:tod-vulnerable}. We manually investigated the contracts listed, they all had their source code available. We confirmed that in all the contracts, it was possible for a user to read and write to the same storage location within a single block. We inspected further \addr{0x3da71558a40f63b960196cc0679847ff50fad22b}, a contract called \lstinline{WithDrawChildDAO} and found that the read was simply for users to check their balance, making the issue benign.
 
-% \input{5-smart-contract-security/sections/tables/integer-overflow}
+% \input{5a-smart-contract-security/sections/tables/integer-overflow}
 
-\input{5-smart-contract-security/sections/tables/summary}
+\input{5a-smart-contract-security/sections/tables/summary}
 
 \subsection{\vio: \integeroverflow}
 \label{ssec:analysis-io}

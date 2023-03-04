@@ -1,13 +1,13 @@
 \begin{figure}[tbp]
   \begin{subfigure}{.5\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{./6-application-security/figures/suppliers-borrowers-over-time.pdf}
+    \includegraphics[width=\textwidth]{./5b-economic-security/figures/suppliers-borrowers-over-time.pdf}
     \caption{Number of suppliers and borrowers.}
     \label{fig:borrowers-suppliers-over-time}
   \end{subfigure}
   \begin{subfigure}{.5\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{./6-application-security/figures/borrow-supply-over-time.pdf}
+    \includegraphics[width=\textwidth]{./5b-economic-security/figures/borrow-supply-over-time.pdf}
     \caption{Amount of funds supplied, borrowed and locked.}
     \label{fig:borrow-supply-over-time}
   \end{subfigure}
@@ -24,13 +24,13 @@ When analyzing a single market, we choose the market for \coin{DAI}, as it is th
 \begin{figure}[tbp]
   \begin{subfigure}{.5\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{./6-application-security/figures/suppliers-distribution.pdf}
+    \includegraphics[width=\textwidth]{./5b-economic-security/figures/suppliers-distribution.pdf}
     \caption{Distribution of supplied funds.}
     \label{fig:suppliers-distribution}
   \end{subfigure}
   \begin{subfigure}{.5\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{./6-application-security/figures/borrowers-distribution.pdf}
+    \includegraphics[width=\textwidth]{./5b-economic-security/figures/borrowers-distribution.pdf}
     \caption{Distribution of borrowed funds.}
     \label{fig:borrowers-distribution}
   \end{subfigure}
@@ -79,7 +79,7 @@ Hence, a Compound user is incentivized to increase his borrow position as long a
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=0.7\textwidth]{./6-application-security/figures/supply-borrow-over-time.pdf}
+  \includegraphics[width=0.7\textwidth]{./5b-economic-security/figures/supply-borrow-over-time.pdf}
   \caption{Collateral locked over time, showing how close the amounts are from being liquidated. Positions can be liquidated when the ratio drops below~100\%.}
   \label{fig:liquidatability}
 \end{figure}
@@ -99,14 +99,14 @@ In particular, a~3\% decrease would have turned collateral worth in excess of~10
 
 \begin{figure}[tb]
   \centering
-  \includegraphics[width=.7\textwidth]{./6-application-security/figures/dai-sensitivity.pdf}
+  \includegraphics[width=.7\textwidth]{./5b-economic-security/figures/dai-sensitivity.pdf}
   \caption{Sensitivity analysis of the liquidable collateral amount given \coin{DAI} price movement relative to its peg USD. \coin{COMP} launch date is marked by the dashed vertical line.}
   \label{fig:price-sensitivity}
 \end{figure}
 
 \begin{figure}[tb]
   \centering
-  \includegraphics[width=.7\textwidth]{./6-application-security/figures/liquidation-over-time.pdf}
+  \includegraphics[width=.7\textwidth]{./5b-economic-security/figures/liquidation-over-time.pdf}
   \caption{Amount (in USD) of liquidated collateral from May ~2019 to August~2020.}
   \label{fig:liquidations-over-time}
 \end{figure}
@@ -133,7 +133,7 @@ It is clear that with such stakes, participants were incentivized to improve liq
 
 \begin{figure}[tbp]
     \centering
-    \includegraphics[width=0.7\textwidth]{./6-application-security/figures/time-to-liquidation.pdf}
+    \includegraphics[width=0.7\textwidth]{./5b-economic-security/figures/time-to-liquidation.pdf}
     \caption{Number of blocks elapsed from the time a position can be liquidated to actual liquidation on Compound from \StartDate to \EndDate, shown as a CDF.}
     \label{fig:blocks-spent}
 \end{figure}
