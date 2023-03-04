@@ -14891,3 +14891,74 @@
   publisher = {ACM},
   address   = {New York, NY, USA}
 } 
+
+@inproceedings{Chen2017Metering,
+  author    = {Chen, Ting
+               and Li, Xiaoqi
+               and Wang, Ying
+               and Chen, Jiachi
+               and Li, Zihao
+               and Luo, Xiapu
+               and Au, Man Ho
+               and Zhang, Xiaosong},
+  editor    = {Liu, Joseph K.
+               and Samarati, Pierangela},
+  title     = {An Adaptive Gas Cost Mechanism for Ethereum to Defend Against Under-Priced DoS Attacks},
+  booktitle = {Information Security Practice and Experience},
+  year      = {2017},
+  publisher = {Springer International Publishing},
+  address   = {Cham},
+  pages     = {3--24},
+  abstract  = {The gas mechanism in Ethereum charges the execution of every operation to ensure that smart contracts running in EVM (Ethereum Virtual Machine) will be eventually term
+               inated. Failing to properly set the gas costs of EVM operations allows attackers to launch DoS attacks on Ethereum. Although Ethereum recently adjusted the gas costs of EVM oper
+               ations to defend against known DoS attacks, it remains unknown whether the new setting is proper and how to configure it to defend against unknown DoS attacks. In this paper, we
+               make the first step to address this challenging issue by first proposing an emulation-based framework to automatically measure the resource consumptions of EVM operations. The 
+               results reveal that Ethereum's new setting is still not proper. Moreover, we obtain an insight that there may always exist exploitable under-priced operations if the cost is fix
+               ed. Hence, we propose a novel gas cost mechanism, which dynamically adjusts the costs of EVM operations according to the number of executions, to thwart DoS attacks. This method
+               punishes the operations that are executed much more frequently than before and lead to high gas costs. To make our solution flexible and secure and avoid frequent update of Eth
+               ereum client, we design a special smart contract that collaborates with the updated EVM for dynamic parameter adjustment. Experimental results demonstrate that our method can ef
+               fectively thwart both known and unknown DoS attacks with flexible parameter settings. Moreover, our method only introduces negligible additional gas consumption for benign users
+               .},
+  isbn      = {978-3-319-72359-4}
+}
+
+@misc{Breidenbach,
+  author = {Breidenbach, Lorenz and Daian, Phil and Juels, Ari and Sirer, Emin G{\"{u}}n},
+  title  = {{An In-Depth Look at the Parity Multisig Bug}},
+  year   = {2017}
+}
+
+@article{DBLP:journals/corr/abs-1905-00553,
+  archiveprefix   = {arXiv},
+  arxivid         = {1905.00553},
+  author          = {Yang, Renlord and Murray, Toby and Rimba, Paul and Parampalli, Udaya},
+  eprint          = {1905.00553},
+  file            = {:home/daniel/tmp/1905.00553.pdf:pdf},
+  journal         = {CoRR},
+  mendeley-groups = {Metering},
+  title           = {{Empirically Analyzing Ethereum's Gas Mechanism}},
+  url             = {http://arxiv.org/abs/1905.00553},
+  volume          = {abs/1905.0},
+  year            = {2019}
+}
+
+@article{DBLP:journals/corr/abs-1811-10403,
+  abstract        = {Gas is a measurement unit of the computational effort that it will take to execute every single operation that takes part in the Ethereum blockchain platform. Each i
+                     nstruction executed by the Ethereum Virtual Machine (EVM) has an associated gas consumption specified by Ethereum. If a transaction exceeds the amount of gas allotted by the use
+                     r (known as gas limit), an out-of-gas exception is raised. There is a wide family of contract vulnerabilities due to out-of-gas behaviours. We report on the design and implement
+                     ation of GASTAP, a Gas-Aware Smart contracT Analysis Platform, which takes as input a smart contract (either in EVM, disassembled EVM, or in Solidity source code) and automatica
+                     lly infers sound gas upper bounds for all its public functions. Our bounds ensure that if the gas limit paid by the user is higher than our inferred gas bounds, the contract is 
+                     free of out-of-gas vulnerabilities.},
+  archiveprefix   = {arXiv},
+  arxivid         = {1811.10403},
+  author          = {Albert, Elvira and Gordillo, Pablo and Rubio, Albert and Sergey, Ilya},
+  eprint          = {1811.10403},
+  file            = {::},
+  journal         = {CoRR},
+  mendeley-groups = {Metering},
+  month           = {nov},
+  title           = {{GASTAP: A Gas Analyzer for Smart Contracts}},
+  url             = {http://arxiv.org/abs/1811.10403},
+  volume          = {abs/1811.1},
+  year            = {2018}
+}

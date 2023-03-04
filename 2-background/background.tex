@@ -12,8 +12,8 @@ Newly created transactions are broadcast across the network where they get valid
 Valid transactions are grouped into data structures called \textit{blocks}, which are appended to the blockchain by referencing the most recent block.
 Blocks are immutable, and state changes in the blockchain require new blocks to be produced.
 
-Network latency and asynchrony inherent in the distributed nature of blockchains lead to a number of challenges. 
-In particular, a blockchain must be able to reach consensus about the current state when the majority of participating nodes behave honestly. 
+Network latency and asynchrony inherent in the distributed nature of blockchains lead to various challenges. 
+In particular, a blockchain must be able to reach a consensus about the current state when the majority of participating nodes behave honestly. 
 In order to resolve the disagreement, a consensus protocol prescribing a set of rules is applied as part of the validation process. 
 
 To ensure consistency, there needs to be:
@@ -27,12 +27,6 @@ To ensure consistency, there needs to be:
 %
 In the following subsections, we will provide definitions and explanations about transactions, blocks and consensus mechanisms, and then describe how the above requirements are fulfilled in most existing blockchain systems.
 
-% Requirement (\ref{req1}) is usually straightforward to implement, each participant simply verifies that the set of rules holds for each transaction.
-% Most blockchains also have a simple solution for Requirement (\ref{req3}): they treat the longest existing chain of blocks as the valid one.
-% The biggest challenge, and diversity of solutions arise when it comes to solving Requirement (\ref{req2}).
-% Bitcoin provides the first practical solution to this problem, namely, Proof-of-Work~(PoW).
-% Participating nodes who propose new blocks compete to solve a computationally expensive puzzle, and blocks are deemed valid if Requirement (i) they include a solution to this puzzle and (ii) all transactions they contain are valid.
-
 \subsection{Transactions and blocks}
 \point{Transactions} The smallest unit of work in most blockchain systems, including Bitcoin and Ethereum, is a transaction.
 The exact content of a transaction varies between different systems. It typically contains information about the sender, the receiver, the amount of the asset being transferred, and information on the fees to be paid for the transaction to be processed.
@@ -42,7 +36,7 @@ The systems also verify that the sender has enough funds to cover the transactio
 Finally, in the case of a smart contract interaction, the execution of the smart contract must also be successful.
 
 \point{Blocks}
-A block is a collection of transactions that are grouped together and appended to the blockchain.
+A block is a collection of transactions that are grouped and appended to the blockchain.
 Blocks typically contain some extra metadata, such as a hash of the previous block, effectively linking them together, a timestamp, and information about the transactions included in the block.
 Each block is usually limited to a maximum number of transactions, and a block is considered valid if all transactions it contains are valid.
 However, this is not the only requirement for a block to be deemed valid since this requirement alone would be prone to double-spending.
@@ -101,7 +95,7 @@ One of the earliest applications of distributed ledger technology was the creati
 A DAO is a decentralized organization that uses a blockchain to facilitate the management of its funds and decision-making process.
 It often uses at least a multi-signature wallet to manage its funds, which means that several members of the organisation are required to approve any transfer of funds.
 DAOs also often have more complex rules, such as delays to be able to perform some actions or recurrent payments, that can be enforced by smart contracts.
-The blockchain executes the rules and decision-making process in a transparent manner, resulting in a system requiring less trust than its centralised counterparties.
+The blockchain executes the rules and decision-making process transparently, resulting in a system requiring less trust than its centralised counterparties.
 DAOs can serve a variety of functions, such as managing decentralized funds, investing in projects, creating decentralized social networks, or facilitating community governance.
 \point{DeFi}
 Decentralized Finance (DeFi) is a peer-to-peer financial system powered by a blockchain that is designed to operate without the need for traditional financial intermediaries such as banks, brokerages, or exchanges.
@@ -123,7 +117,7 @@ Formal definitions for these terms are provided in Chapter~\ref{ch:application-s
 In September 2016, a DoS attack was performed on the Ethereum network.
 The attack was performed during a major Ethereum conference taking place in Shanghai, hence the name of the attack.
 The gist of the attack was an attacker flooding Ethereum with transactions that were cheap to execute but would take the network participants a long time to process.
-This resulted in the network taking much longer than normal to produce new blocks and forced Ethereum to revisit their pricing mechanism for transactions.
+This resulted in the network taking much longer than normal to produce new blocks and forced Ethereum to revisit its pricing mechanism for transactions.
 We give more in-depth details about this attack in Chapter~\ref{ch:vm-security}.
 
 \point{Solana DDoS}
@@ -131,7 +125,7 @@ While the Shanghai attack is a good example of a DoS attack that relies on abusi
 This happens most often in blockchains that try to have very low transaction fees, such as Solana~\cite{solana}, where a single transaction costs less than a cent.
 In September 2021, an attacker performed a DDoS attack on Solana by sending over 400,000 transactions per second, which is vastly over the network's capacity.
 Because of the extremely low transaction price, the cost of the attack was very moderate for the attacker.
-The Solana network ended up having to rollback the network to be able to recover.
+The Solana network ended up having to roll back the network to be able to recover.
 We discuss similar types of attacks and discuss in-depth the trade-offs of low transaction fees in Chapter~\ref{ch:transactional-security}.
 
 \point{TheDAO hack}

@@ -36,7 +36,11 @@
 \label{sec:analysis}
 
 In this section, we analyse the gas consumption of Ethereum smart contracts and try to correlate it with different system resources, such as memory, CPU and storage.
-To measure the consumption, we re-execute the Ethereum blockchain with a patched version of the Ethereum C++ client~\cite{aleth} and collect information about resources for each contract invocation. As described in Section~\ref{sec:background}, EIP~150 influenced the price of many storage related operations, which affected the gas cost of transactions. Therefore, we perform our experiments on a set of ~\empirical{100,000} blocks before EIP~150 and a set of~\empirical{100,000} blocks after EIP~150. EIP~150 was introduced at height~\empirical{2,463,000}. We arbitrarily use block~\empirical{1,400,000} to block ~\empirical{1,500,000} for measurements before EIP~150 and block ~\empirical{2,500,000} to~\empirical{2,600,000} for measurements after EIP~150. Although the block numbers are arbitrary, we assume that the sample of~\empirical{100,000} blocks which roughly corresponds to two weeks, is large enough to obtain reliable data.
+To measure the consumption, we re-execute the Ethereum blockchain with a patched version of the Ethereum C++ client~\cite{aleth} and collect information about resources for each contract invocation.
+As described in \autoref{sec:background}, EIP~150 influenced the price of many storage-related operations, which affected the gas cost of transactions.
+Therefore, we perform our experiments on a set of ~\empirical{100,000} blocks before EIP~150 and a set of~\empirical{100,000} blocks after EIP~150. EIP~150 was introduced at height~\empirical{2,463,000}.
+We arbitrarily use block~\empirical{1,400,000} to block ~\empirical{1,500,000} for measurements before EIP~150 and block ~\empirical{2,500,000} to~\empirical{2,600,000} for measurements after EIP~150.
+Although the block numbers are arbitrary, we assume that the sample of~\empirical{100,000} blocks which roughly corresponds to two weeks, is large enough to obtain reliable data.
 
 Below, we denote the gas usage for a transaction as $G$. All the figures in this section include bands marking a confidence interval of 95\%.
 

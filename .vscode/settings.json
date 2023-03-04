@@ -2,10 +2,25 @@
   "latex-workshop.latex.outDir": "%DIR%/build",
   "cSpell.words": [
     "Aave",
+    "aleth",
+    "BLOCKHASH",
+    "CALLDATACOPY",
+    "CALLDATALOAD",
+    "depegging",
+    "Egli",
+    "entrancy",
     "EOSIO",
     "incentivises",
+    "Knottenbelt",
     "liquidatable",
+    "Miyuki",
+    "MSTORE",
     "overcollateralized",
+    "permissioned",
+    "Ritzdorf",
+    "SLOAD",
+    "speedup",
+    "SSTORE",
     "Tezos",
     "trustless",
     "XRPL"
@@ -20,5 +35,6 @@
   "grammarly.config.documentDialect": "british",
   "editor.formatOnSave": true,
   "editor.formatOnSaveMode": "file",
-  "editor.wordWrap": "on"
+  "editor.wordWrap": "on",
+  "grammarly.config.documentDomain": "academic"
 }
