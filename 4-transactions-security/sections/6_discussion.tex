@@ -1,21 +1,21 @@
 \section{Discussion}
-\label{sec:discussion}
-In this section, we discuss the results from the previous sections and also answer the research questions presented in Section~\ref{sec:introduction} in light of our results.
+\label{sec:4:discussion}
+In this section, we discuss the results from the previous sections and also answer the research questions presented in Section~\ref{sec:4:introduction} in light of our results.
 
 %\todo{interpretation of findings.. why they are way below claimed throughput}
 
 \subsection{Interpretation of the Throughput Values}
 Overall, we observe that the throughput on EOSIO has been volatile since last November, the throughput on Tezos has been very stable over time, and the throughput on XRPL has been stable in general except during the spam episode.
 A common factor between all blockchains is that the current throughput is vastly lower than the alleged capacity even during their utilization peaks, and is on average several orders of magnitude lower.
-A similarity between EOSIO and XRPL is that the maximum throughput was reached due to DoS attacks on the network. Indeed, the maximum numbers of transactions on EOSIO is due to the \coin{EIDOS} coin airdrop, while the peak on XRPL was due to the network being spammed with payments.
+A similarity between EOSIO and XRPL is that the maximum throughput was reached due to DoS attacks on the network. Indeed, the maximum number of transactions on EOSIO is due to the \coin{EIDOS} coin airdrop, while the peak on XRPL was due to the network being spammed with payments.
 However, while the spam on XRPL appeared to be anecdotal and lasted for roughly two months, the spam attack on EOSIO is persistent and has continued for over six months to date.
 That the increased throughput has different implications for each network.
 While on XRPL the consequences of such a spam attack are limited, on EOSIO they forced the network to enter congestion mode, hindering normal usage of the network as transactions become too costly due to the elevated threshold for staking.
 
-Unlike XRPL and EOSIO, Tezos has not seen any spam attack and the level of utilization has been consistent, and relatively low, across time. A majority of the throughput is used for consensus, with most of the spikes in the number of transactions due to baker payments, which are also related to consensus.
+Unlike XRPL and EOSIO, Tezos has not seen any spam attacks and the level of utilization has been consistent, and relatively low, over time. A majority of the throughput is used for consensus, with most of the spikes in the number of transactions due to baker payments, which are also related to consensus.
 
 \subsection{Revisiting Research Questions}
-We now return to the research questions posed in Section~\ref{sec:introduction} and seek to understand better how the different blockchains are used in practice, by attempting to answer them based on the data analysis we perform above.
+We now return to the research questions posed in Section~\ref{sec:4:introduction} and seek to understand better how the different blockchains are used in practice, by attempting to answer them based on the data analysis we perform above.
 
 \point{RQ1: used throughput capacity}
 Although the maximum throughput of all blockchains appears vastly lower than the alleged capacity, the situation is not as simple for EOSIO and XRPL. As previously discussed, EOSIO started to be congested because of an airdrop, preventing regular users to use the blockchain normally.
@@ -23,24 +23,24 @@ During the attack against XRPL, there were several reports of the network being 
 On the other hand, Tezos has not yet come close to maximizing its actual capacity.
 \point{RQ2: classifying actions}
 We made a generalized categorization of transaction types.
-Some transaction types are common to all blockchains, such as peer-to-peer transactions and account related transactions, while other types of transactions are inherent to the particularities of the underlying blockchain. While XRPL and Tezos contain easily identifiable action types, making them easy to classify, EOSIO does not have pre-defined action types and classifying actions requires knowledge of the account receiving the action.
+Some transaction types are common to all blockchains, such as peer-to-peer transactions and account-related transactions, while other types of transactions are inherent to the particularities of the underlying blockchain. While XRPL and Tezos contain easily identifiable action types, making them easy to classify, EOSIO does not have pre-defined action types and classifying actions requires knowledge of the account receiving the action.
 
 \point{RQ3: identifying active blockchain participants}
 EOSIO has named accounts which makes it easy to identify participants.
 XRPL has optional names, which are registered by the most active players such as exchanges.
-Tezos endorsements are often created by bakers, who usually publicize their address and are identifiable. However, there is no easy way to identify participants in peer-to-peer transactions and doing so would require using de-anonymization techniques~\cite{10.1145/2660267.2660379,8802640}.
+Tezos endorsements are often created by bakers, who usually publicise their addresses and are identifiable. However, there is no easy way to identify participants in peer-to-peer transactions and doing so would require using de-anonymization techniques~\cite{10.1145/2660267.2660379,8802640}.
 \point{RQ4: detecting DoS and spam}
-The blockchains analyzed are currently under-utilized and when spam occurs, their utilization level increases significantly, as seen in~\autoref{fig:throughput-time}. This makes DoS and spam attacks very easy to detect by simply looking at the transactions, as we saw for EOSIO and XRPL.
+The blockchains analysed are currently under-utilized and when spam occurs, their utilization level increases significantly, as seen in~\autoref{fig:throughput-time}. This makes DoS and spam attacks very easy to detect by simply looking at the transactions, as we saw for EOSIO and XRPL.
 
 \subsection{Transaction Fee Dilemma}
-Overall, we have seen that there is a dilemma between having lower transactions fees, which induces spam, or having higher transaction fees, which deters legitimate usage of the network.
+Overall, we have seen that there is a dilemma between having lower transaction fees, which induces spam, or having higher transaction fees, which deters legitimate usage of the network.
 
-One the one side, we have seen that both EOSIO and XRPL have chosen to go with extremely low transaction fees, which in both cases resulted in a very large amount of spam.
-On the other side of the spectrum, Ethereum, which has transaction fees based on supply and demand~\cite{Wood2014} has seen a 10-times increase in the fees, mainly because of an increase in the utilization of decentralized finance protocols~\cite{gudgeon2020defi}, making it extremely difficult to use for regular users~\cite{eth-defi-gas}.
+On the one side, we have seen that both EOSIO and XRPL have chosen to go with extremely low transaction fees, which in both cases resulted in a very large amount of spam.
+On the other side of the spectrum, Ethereum, which has transaction fees based on supply and demand~\cite{wood2014} has seen a 10-times increase in the fees, mainly because of an increase in the utilization of decentralized finance protocols~\cite{gudgeon2020decentralized}, making it extremely difficult to use for regular users~\cite{eth-defi-gas}.
 
-There has been work on both sides to improve the current situation but, at the time of writing, no significant progress has been made.
+There has been efforts on both sides to improve the current situation but, at the time of writing, no significant progress has been made.
 Despite fee structure changes having been proposed in XRPL~\cite{xrp-fees}, concerns are that a fee increase discourages the engagement of legitimate users.
 In EOSIO, despite the integration of a new rental market for CPU and RAM~\cite{eos-rental-market}, the current fee structure remains problematic, as the network has now been congested for more than half a year, making it hard to use for regular users.
 On the Ethereum side of things, changes in the current pricing system to try to reduce the transaction fees have been proposed~\cite{eip-1559} but are still under discussion.
 
-Overall, for a functional and sustainable blockchain system, it is crucial to find a balanced transaction fee mechanism that can make regular usage of the network affordable while DoS attacks expensive~\cite{dblp:conf/ndss/0002l20}.
+Overall, for a functional and sustainable blockchain system, it is crucial to find a balanced transaction fee mechanism that can make regular usage of the network affordable while DoS attacks remain expensive~\cite{dblp:conf/ndss/0002l20}.

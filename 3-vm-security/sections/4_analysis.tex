@@ -33,11 +33,11 @@
 \end{figure}
 
 \section{Analysis of Gas Consumption}
-\label{sec:analysis}
+\label{sec:3:analysis}
 
 In this section, we analyse the gas consumption of Ethereum smart contracts and try to correlate it with different system resources, such as memory, CPU and storage.
 To measure the consumption, we re-execute the Ethereum blockchain with a patched version of the Ethereum C++ client~\cite{aleth} and collect information about resources for each contract invocation.
-As described in \autoref{sec:background}, EIP~150 influenced the price of many storage-related operations, which affected the gas cost of transactions.
+As described in \autoref{sec:3:background}, EIP~150 influenced the price of many storage-related operations, which affected the gas cost of transactions.
 Therefore, we perform our experiments on a set of ~\empirical{100,000} blocks before EIP~150 and a set of~\empirical{100,000} blocks after EIP~150. EIP~150 was introduced at height~\empirical{2,463,000}.
 We arbitrarily use block~\empirical{1,400,000} to block ~\empirical{1,500,000} for measurements before EIP~150 and block ~\empirical{2,500,000} to~\empirical{2,600,000} for measurements after EIP~150.
 Although the block numbers are arbitrary, we assume that the sample of~\empirical{100,000} blocks which roughly corresponds to two weeks, is large enough to obtain reliable data.
@@ -49,7 +49,7 @@ Below, we denote the gas usage for a transaction as $G$. All the figures in this
 
 An important point is that contracts which allocate storage in any way, may it be with \lstinline{SSTORE} instructions or \lstinline{LOG} instructions, will see their memory overhead increase, as this extra storage will stay in memory even after the execution of the contract. Although this is not a perfect measurement, as part of the memory may be released later on during the execution of the transaction, it does give a proxy measure of how a particular contract execution affects the memory usage of the client. It is also worth noting that some contracts may also release more memory than they allocate, if, for example, a contract self-destructs itself. As we want to focus on how execution can consume resources, we filter contracts where~$M < 0$.
 
-We first compute the Pearson correlation coefficient\footnote{Pearson score of 1 means perfect positive correlation, 0 means no correlation}~\cite{boslaugh2012statistics} between the extra memory allocated and the gas usage. For contracts prior to  EIP~150, we obtain a score \empirical{0.545} which shows that, although a positive correlation exists between memory and gas usage, the correlation is fairly weak. As described in Section~\ref{sec:background}, EIP~150 influenced widely the price of all storage related operations, which vastly affect the results obtained for memory usage. Indeed, the Pearson correlation coefficient we obtain for post EIP~150 data is~\empirical{0.766}. This shows that the correlation between memory and gas usage is vastly greater after EIP~150.
+We first compute the Pearson correlation coefficient\footnote{Pearson score of 1 means perfect positive correlation, 0 means no correlation}~\cite{boslaugh2012statistics} between the extra memory allocated and the gas usage. For contracts prior to  EIP~150, we obtain a score \empirical{0.545} which shows that, although a positive correlation exists between memory and gas usage, the correlation is fairly weak. As described in Section~\ref{sec:3:background}, EIP~150 influenced widely the price of all storage related operations, which vastly affect the results obtained for memory usage. Indeed, the Pearson correlation coefficient we obtain for post EIP~150 data is~\empirical{0.766}. This shows that the correlation between memory and gas usage is vastly greater after EIP~150.
 
 The data we obtain suggest that there are different trends in terms of correlation between gas and memory usage. Therefore, we decide to separate the data in two categories to try to isolate the two trends. We first compute the ratio of extra memory allocated per gas used: $R_{M/G} = M / G$. The higher the ratio is, the lower a transaction is paying to consume memory. We then split in~10 quantiles and assign the quantile with the highest ratio $R_{M/G}$, that is, the quantile paying the less gas for memory, as being ``Memory intensive''. We define $E$ the set of all executions and $E_{MI}$ as the set of ``memory intensive'' executions.
 

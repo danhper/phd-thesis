@@ -1,9 +1,9 @@
 \section{Attacking the Metering Model of EVM}
-\label{sec:attack}
+\label{sec:3:attack}
 In light of the results we obtained in the previous sections, we hypothesise that it is possible to construct contracts which use a low amount of gas compared to the resources they use.
 
 \subsection{Constructing Resource Exhaustion Attacks}
-In particular, as we showed in Section~\ref{sec:case-studies}, the gas consumption is dominated by the storage allocated but is not as much affected by other resources such as the clock time. Therefore, we decide to use the clock time as a target resource and look for contracts which minimise the throughput in terms of gas per second. We can formulate this as a search problem.
+In particular, as we showed in \autoref{sec:3:case-studies}, the gas consumption is dominated by the storage allocated but is not as much affected by other resources such as the clock time. Therefore, we decide to use the clock time as a target resource and look for contracts which minimise the throughput in terms of gas per second. We can formulate this as a search problem.
 
 \point{Problem formulation}
 We want to find a program which has the minimum possible throughput, where we define the throughput to be the amount of gas processed per second.
@@ -70,7 +70,7 @@ Although our programs do not need to be semantically meaningful, they need to be
 
 
   \point{Initialisation}
-  As the search space is very large, it is important to start with good initial values so that the genetic algorithm can search for promising solutions. For this purpose, we use the result of the results we presented in Section~\ref{sec:case-studies}, in particular, we use the throughput measured for each instruction. We define a function $throughput : \mathbb{I} \rightarrow \mathbb{R}$ which returns the measured throughput of a single instruction. When randomly choosing the instructions with $biased\_sample$, we want to have a higher probability of picking an instruction with a low throughput but want to keep a high enough probability of picking a higher throughput instruction to make sure that these are not all discarded before the search begins. We define the weight of each instruction and then its probability with equations~\ref{eq:initial-weight} and~\ref{eq:initial-prob}.
+  As the search space is very large, it is important to start with good initial values so that the genetic algorithm can search for promising solutions. For this purpose, we use the result of the results we presented in Section~\ref{sec:3:case-studies}, in particular, we use the throughput measured for each instruction. We define a function $throughput : \mathbb{I} \rightarrow \mathbb{R}$ which returns the measured throughput of a single instruction. When randomly choosing the instructions with $biased\_sample$, we want to have a higher probability of picking an instruction with a low throughput but want to keep a high enough probability of picking a higher throughput instruction to make sure that these are not all discarded before the search begins. We define the weight of each instruction and then its probability with equations~\ref{eq:initial-weight} and~\ref{eq:initial-prob}.
 
   \begin{align}
     \label{eq:initial-weight}
@@ -245,13 +245,13 @@ ADDRESS
   The results of running Parity on a more powerful bare-metal server show that even such machines are relatively vulnerable to our attack. Indeed, Parity, which was the fastest of the three clients, still took more than~\empirical{18} seconds to execute the transactions. An important point to notice is that the IO throughput is considerably higher on our bare-metal server, which is most likely one of the main reasons for the speedup.
 
   Finally, we ran our attack on an improved version of geth, which the Ethereum developers pointed us to as a result of our interactions with them. This version includes several optimisations to improve the storage access speed. We can see that these improvements drastically reduced the IO load of the client. With these improvements, geth executes the transactions more than 20 times faster, making the execution speed fast enough to counter such an attack.
-  Our interaction with geth developers shows the effectiveness of responsible vulnerability disclosure, as discussed in \autoref{sec:responsible}.
+  Our interaction with geth developers shows the effectiveness of responsible vulnerability disclosure, as discussed in \autoref{sec:3:responsible}.
 
   \subsection{REA as a Form of DoS}
   Malicious contracts crafted using our algorithm could easily be used to perform a DoS attacks on Ethereum. In this section, we will describe the threat model of such an attack, including the implications and feasibility of the attack.
 
   \point{Attack implications}
-  As described in Section~\ref{sec:background}, there have already been several instances of DoS attacks against Ethereum~\cite{transaction-spam-attack,suicide-attack}.
+  As described in Section~\ref{sec:3:background}, there have already been several instances of DoS attacks against Ethereum~\cite{transaction-spam-attack,suicide-attack}.
   There are several consequences to such attacks.
   The most direct one is a high increase in the block production time~\cite{average-block-time}, which in the worst cases more than doubled, significantly decreasing the total throughput of the network.
   This decrease comes not only from miners who might take more time to validate blocks but also from full nodes who are supposed to relay validated blocks and might take vastly longer to do so.
@@ -284,5 +284,5 @@ Therefore, it is very difficult to accurately evaluate how many nodes would be a
 Nevertheless, the attack was judged severe enough by the Ethereum developers to react very promptly (within less than 24 hours for the first reply and within four days for them to test the fix) after our disclosure.
 
 \subsection{Responsible Disclosure}
-\label{sec:responsible}
+\label{sec:3:responsible}
 Given that the attack is very easy and cheap to execute, and worked on all major clients, we went through a responsible disclosure process. The Ethereum Foundation has an official bug bounty program~\cite{ethereum-bug-bounty} to report vulnerabilities. With the help of colleagues\footnote{Matthias Egli and Hubert Ritzdorf from PwC Switzerland}, we wrote a report summarising our main findings, including a minimal script to execute our attack, and sent it to the bug bounty program on October~3,~2019. We received a reply the next day from the Ethereum Security Lead, acknowledging the issue and pointing us to some ongoing efforts to improve some of the inefficiencies exploited by our attack. The Ethereum foundation team also let us know that they would coordinate with Parity developers. After discussions about the ongoing efforts and some other potential solutions, we have confirmed that our report had been awarded a reward of 5,000~USD on November 17,~2019. Finally, the official announcement was published on the bounty program website on January 7,~2020.

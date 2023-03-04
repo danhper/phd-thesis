@@ -1,5 +1,5 @@
 \section{Data Analysis}
-\label{sec:data-analysis}
+\label{sec:4:data-analysis}
 In this section, we present summary statistics and high-level illustrations of the transactions contained in the datasets of the three different blockchains.
 
 \subsection{Transaction Overview}
@@ -13,18 +13,18 @@ EOSIO does not have pre-defined action types: contract creators can decide on ar
 To be able to classify the actions and understand where throughput on EOSIO is coming from, we manually label the top~\empirical{100} contracts, representing more than 99\% of the total throughput, by grouping them into different categories and assign one of the categories to each action.
 
 \point{EOSIO}
-Interestingly, there is a huge spike in the number of token actions from the November 1, 2019 onward. 
+Interestingly, there is a huge spike in the number of token actions from November 1, 2019, onward. 
 We find that this is due to a new coin called \coin{EIDOS}~\cite{Enumivo2019} giving away tokens. 
 We will describe this more extensively as a case study in Section~\ref{sec:eoscase}. 
 Before this peak, the number of actions on EOSIO was vastly dominated by games, in particular betting games.
 
 \point{Tezos}
 Tezos has a high number of ``endorsements''---76\%, which are used as part of the consensus protocol, and only a small fraction of the throughput are actual actions.
-It is worth noting that the number of ``endorsements'' should be mostly constant regardless of the number of transactions, and that if the number of transactions were to increase enough, the trend would reverse.
+It is worth noting that the number of ``endorsements'' should be mostly constant regardless of the number of transactions and that if the number of transactions were to increase enough, the trend would reverse.
 We can also clearly see that Tezos has very regular spikes, with an interval of approximately two to three days each time.
 These appear to be payments from bakers to stakers \cite{cryptium-labs-payout},\footnote{\url{https://twitter.com/CitezenB/status/1256147427905716224}} which can arguably be thought to be part of the consensus.
-We use the TzKT API\footnote{\url{https://api.tzkt.io/}} to find account names and find that roughly \empirical{53\%} of these ``Transaction'' actions are sent by bakers and \empirical{6\%} of the are sent by the Tezos faucet~\cite{tezos-faucet}.
-Endorsements and actions sent by either bakers or the faucet sums up about 87\% of the total number of actions.
+We use the TzKT API\footnote{\url{https://api.tzkt.io/}} to find account names and find that roughly \empirical{53\%} of these ``Transaction'' actions are sent by bakers and \empirical{6\%} of them are sent by the Tezos faucet~\cite{tezos-faucet}.
+Endorsements and actions sent by either bakers or the faucet sum up about 87\% of the total number of actions.
 
 \begin{figure}[tbp]
     \begin{subfigure}{\columnwidth}
@@ -45,13 +45,14 @@ Endorsements and actions sent by either bakers or the faucet sums up about 87\% 
         \caption{XRPL throughput over time}
         \label{fig:xrp-throughput-time}
     \end{subfigure}
-    \caption{On-chain throughput over time, y-axis represents transaction count per 6 hours.}
+    \caption{On-chain throughput over time, the y-axis represents transaction count per 6 hours.}
     \label{fig:throughput-time}
 \end{figure}
 
-\begin{figure}[tb]
-    \scriptsize
+\begin{table}[tb]
     \centering
+\caption{EOSIO top applications as measured using the number of received transactions.}
+    \label{tab:eos-top-applications}
     \setlength{\tabcolsep}{2pt}
     \begin{tabular}{l l r l r}
     \toprule
@@ -72,10 +73,7 @@ Endorsements and actions sent by either bakers or the faucet sums up about 87\% 
       pornhashbaby & Pornography website & 23,677,938 & record & 99.86\%\\
     \bottomrule
     \end{tabular}
-    \caption{EOSIO top applications as measured using the number of received transactions.}
-    \label{tab:eos-top-applications}
-    \vspace{-0.3cm}
-\end{figure}
+\end{table}
 
 
 \point{XRPL}
@@ -88,13 +86,13 @@ In Section \ref{sec:xrpcase}, we reveal why most transactions during these high-
 Except for the two spam periods, we observe that \texttt{OfferCreate} is the most common transaction type. 
 Nonetheless, \texttt{OfferCreate} transactions contribute little to the total volume on XRPL.\footnote{
 On May 10, 2020, for example, Ripple reported that the 24-hour XRP ledger trade volume---enabled via \texttt{OfferCreate} transactions---only accounts for \empirical{1\%} of the total ledger volume, while the payment volume---enabled via \texttt{Payment} transactions---accounts for \empirical{99\%}.
-} This is because an offer expires if not fulfilled (fully or partially) before the expiry time defined by the offer creator; it can also be cancelled by its creator or superseded by a new offer. In fact, \empirical{0.2\%} of \texttt{OfferCreate} transactions resulted into an actual token exchange deal during our observation period. 
+} This is because an offer expires if not fulfilled (fully or partially) before the expiry time defined by the offer creator; it can also be cancelled by its creator or superseded by a new offer. In fact, \empirical{0.2\%} of \texttt{OfferCreate} transactions resulted in an actual token exchange deal during our observation period. 
 
 
 % With exchanges in the conventional financial market, transaction fees are only levied for matched offers; with decentralized
-% exchanges (DEX) on XRPL, in contrast, every offer placed through \texttt{OfferCreate}, whether or not fulfilled, is boadcast on the network, recorded on the ledger as a transaction and counts towards the overall throughput, and hence incurs an transaction fee.
+% exchanges (DEX) on XRPL, in contrast, every offer placed through \texttt{OfferCreate}, whether or not fulfilled, is broadcasted on the network, recorded on the ledger as a transaction and counts towards the overall throughput, and hence incurs a transaction fee.
 
-% While the official XRP Charts may exclude transactions that Ripple believes not to be ``bona fide'', Ripple does not seem to have exerted censorship. To a very large extent, the results from own independent exploration of XRPL data align well with Ripple's own charts \cite{Ripple2020}. 
+% While the official XRP Charts may exclude transactions that Ripple believes not to be ``bona fide'', Ripple does not seem to have exerted censorship. To a very large extent, the results from independent exploration of XRPL data align well with Ripple's charts \cite{Ripple2020}. 
 
 
 
@@ -102,7 +100,7 @@ On May 10, 2020, for example, Ripple reported that the 24-hour XRP ledger trade 
  
 % To calculate transaction volume is non-trivial on the XRP ledger. Value exchange does not only triggered by transaction type \texttt{Payment}, but also by \texttt{OfferCreate}. A created offer can be non-fulfilled, partially fulfilled or fully fulfilled.
 
-% To measure the value exchange triggered by \texttt{OfferCreate}, we extract the information on how an \texttt{AccountRoot} is modified, and calculated the difference in balance between before and after the transaction. 
+% To measure the value exchange triggered by \texttt{OfferCreate}, we extract the information on how an \texttt{AccountRoot} is modified and calculated the difference in balance between before and after the transaction. 
 
 
 \subsection{Transaction Patterns}
@@ -110,7 +108,7 @@ To understand better what the major sources of traffic constitute, we analyze th
 
 \point{EOSIO}
 In \autoref{tab:eos-top-applications}, we show EOSIO accounts with the highest number of received actions.
-We can see that the \texttt{eosio.token} account, which is the account used to handle \coin{EOS} token transfers, is by far the most used account, and that almost all calls to this account use the \texttt{transfer} action.
+We can see that the \texttt{eosio.token} account, which is the account used to handle \coin{EOS} token transfers, is by far the most used, and almost all calls to this account use the \texttt{transfer} action.
 Although \coin{EOS} transfers are indeed a central part of the EOSIO ecosystem, more than~\empirical{99.9}\% of the transfers shown are exclusively to and from this EIDOS account.
 The second account is a betting website where all the bets are performed transparently using EOSIO.
 However, around~\empirical{80\%} of the actions---\texttt{removetask} and \texttt{log}---are bookkeeping, and the actual betting-related actions such as \texttt{betrecord} represent a very low percentage of the total number of actions.
@@ -121,7 +119,7 @@ Finally, the last account was a pornography website which used EOSIO as a paymen
 \input{4-transactions-security/sections/tables/tezos-top-senders}
 
 \point{Tezos}
-As Tezos neither has account names nor actions in the transactions metadata, analyzing the top receivers' accounts is less interesting, as it is very difficult to perform any type of attribution. However, we find interesting patterns from observing the top sending accounts.
+As Tezos neither has account names nor actions in the transaction metadata, analysing the top receivers' accounts is less interesting, as it is very difficult to perform any type of attribution. However, we find interesting patterns from observing the top sending accounts.
 Most of the top senders in Tezos seem to follow a similar pattern: Sending a small number of transactions (between~\empirical{5} and~\empirical{50}) to many different accounts. 
 Another important thing to note is that all of these accounts are not contracts but regular accounts, which means that the transactions are automated by an off-chain program.
 After further investigation, we find that the top address is the Tezos Faucet~\cite{tezos-faucet}. The other addresses appear to be bakers' payout addresses and the transactions are payouts to stakers~\cite{backerei}, corresponding to the peaks seen in~\autoref{fig:tezos-throughput-time}. For completeness, we include the top senders and some statistics about them in \autoref{tab:tezos-account-edges}.
@@ -152,9 +150,9 @@ Notably, the sixth most active account, \xrpaddr{r96HghtYDxvpHNaru1xbCQPcsHZwqia
 Here, we highlight some of the observations about the data described above. 
 \begin{itemize}\itemsep=0pt
     \item Transactions on EOSIO can be roughly divided by the category of contracts they belong to. 
-    Before the arrival of the \coin{EIDOS} token, approximately~\empirical{50\%} of these are transactions to betting games. The rest was split between token transfers and various forms of entertainment, such as games not involving betting as well as payments to pornography web sites. The launch of \coin{EIDOS} increased the total number of transactions more than tenfold, resulting in~\empirical{96\%} of the transactions being used for token transfers.
+    Before the arrival of the \coin{EIDOS} token, approximately~\empirical{50\%} of these are transactions to betting games. The rest was split between token transfers and various forms of entertainment, such as games not involving betting as well as payments to pornography websites. The launch of \coin{EIDOS} increased the total number of transactions more than tenfold, resulting in~\empirical{96\%} of the transactions being used for token transfers.
     
-    \item The vast majority~(\empirical{76}\%) of transactions on Tezos are used by the \texttt{endorsement} operation to maintain consensus. This is due to the fact that blocks typically contain 32 endorsements~\cite{Tezos2018} and the number of transactions on the network is still low. The rest of the throughput is mainly used by transactions to transfer assets between accounts.
+    \item The vast majority~(\empirical{76}\%) of transactions on Tezos are used by the \texttt{endorsement} operation to maintain consensus. This is because blocks typically contain 32 endorsements~\cite{Tezos2018} and the number of transactions on the network is still low. The rest of the throughput is mainly used by transactions to transfer assets between accounts.
     
-    \item \texttt{OfferCreate} and \texttt{Payment} are the two most popular transaction types on XRPL, accounting for \empirical{59.1\%} and~\empirical{36.9\%} of the total throughput, respectively. Between \startdate and October 8, 2019, before the systematic spamming periods, the fractions of \texttt{OfferCreate} and \texttt{Payment} are \empirical{79\%} and \empirical{18\%}, respectively. Overall, \empirical{one tenth} of the transactions fail.
+    \item \texttt{OfferCreate} and \texttt{Payment} are the two most popular transaction types on XRPL, accounting for \empirical{59.1\%} and~\empirical{36.9\%} of the total throughput, respectively. Between \startdate and October 8, 2019, before the systematic spamming periods, the fractions of \texttt{OfferCreate} and \texttt{Payment} are \empirical{79\%} and \empirical{18\%}, respectively. Overall, \empirical{one-tenth} of the transactions fail.
 \end{itemize}

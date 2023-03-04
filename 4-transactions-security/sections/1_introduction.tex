@@ -1,21 +1,21 @@
 % !TeX spellcheck = en_US
 
 \section{Introduction}
-\label{sec:introduction}
+\label{sec:4:introduction}
 
 As the most widely-used cryptocurrency and the first application of a blockchain system, Bitcoin has been frequently criticized for its slow transactional throughput, making it hard to adopt as a payment method.
-Indeed, Bitcoin is only able to process around~10 transactions per second, significantly slower than the throughput offered by centralized payment providers such as Visa, which can process over 65,000 transactions per second~\cite{visa-tps}.
+Indeed, Bitcoin is only able to process around 10 transactions per second, significantly slower than the throughput offered by centralized payment providers such as Visa, which can process over 65,000 transactions per second~\cite{visa-tps}.
 Many blockchains have since been designed and developed in order to improve scalability, the most valued of these in terms of market capitalization~\cite{CoinMarketCap2020} being EOSIO~\cite{EOS}, Tezos~\cite{Goodman2014}, and XRP Ledger (XRPL)~\cite{xrp_ledger_overview}. 
 
 Although many of these systems have existed for several years already, to the best of our knowledge, no in-depth evaluation of the actual usage of their transactional throughput has yet been performed, and it is unclear up to what point these blockchains have managed to generate economic activity.
 The knowledge of both the quantity and the quality of the realized throughput is crucial for the improvement of blockchain design, and ultimately a better utilization of blockchains.
-In this chapter, we analyze transactions of the three blockchains listed above and seek to find out:
+In this chapter, we analyse transactions of the three blockchains listed above and seek to find out:
 
 \begin{enumerate}
     \item[RQ1] To what extent has the alleged throughput capacity been achieved in those three blockchains?
-    \item[RQ2] Can we classify transactions by analyzing their metadata and patterns?
+    \item[RQ2] Can we classify transactions by analysing their metadata and patterns?
     \item[RQ3] Who are the most active transaction initiators and what is the nature of the transaction they conducted?
-    \item[RQ4] Can we reliably identify DoS and transactional spam attacks by analyzing transaction patterns?
+    \item[RQ4] Can we reliably identify DoS and transactional spam attacks by analysing transaction patterns?
 \end{enumerate}
 
 \point{Contributions} 
@@ -27,16 +27,16 @@ We contribute to the body of literature on blockchain in the following ways:
 
 \item We establish a measurement framework for assessing the quality of transactional throughput in blockchain systems.
 
-\item We expose spamming behaviors that have inflated throughput statistics and caused network congestion.
+\item We expose spamming behaviours that have inflated throughput statistics and caused network congestion.
 
 \item We highlight the large gap between the alleged throughput capacity and the well-intended transactions being performed on those three blockchains.
 \end{enumerate}
 %
-Our analysis serves as the first step towards a better understanding in the nature of user activities on high-scalability blockchains. On-chain monitoring tools can be built based on our framework to detect undesired or even malicious behavior.
+Our analysis serves as the first step towards a better understanding of the nature of user activities on high-scalability blockchains. On-chain monitoring tools can be built based on our framework to detect undesired or even malicious behaviour.
 
 \point{Summary of our findings}
 Despite the advertised high throughput and the seemingly commensurate transaction volume, a large portion of on-chain traffic, including payment-related transactions, does not result in actual value transfer. 
-The nature and purpose of non-payment-related activities varies significantly across blockchains.
+The nature and purpose of non-payment-related activities vary significantly across blockchains.
 
 Specifically, we observe that the current throughput is only \tps{\EOScount}{0}TPS (transactions per second) for EOSIO, \tps{\Tezoscount}{2} TPS for Tezos and \tps{\XRPcount}{0} TPS for XRPL.
 We show that \empirical{96\%} of the throughput on EOSIO was used for the airdrop of a valueless token, \empirical{76\%} of transactions on the Tezos blockchain were used to maintain consensus,

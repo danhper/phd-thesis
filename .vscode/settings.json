@@ -3,6 +3,7 @@
   "cSpell.words": [
     "Aave",
     "aleth",
+    "Bitshares",
     "BLOCKHASH",
     "CALLDATACOPY",
     "CALLDATALOAD",
@@ -10,6 +11,7 @@
     "Egli",
     "entrancy",
     "EOSIO",
+    "faucet",
     "incentivises",
     "Knottenbelt",
     "liquidatable",
@@ -21,8 +23,10 @@
     "SLOAD",
     "speedup",
     "SSTORE",
+    "stakers",
     "Tezos",
     "trustless",
+    "websockets",
     "XRPL"
   ],
   "cSpell.language": "en-GB",
