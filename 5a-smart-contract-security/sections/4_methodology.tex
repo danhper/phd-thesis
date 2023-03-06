@@ -1,5 +1,4 @@
-\begin{figure}[tb]
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily,language=json]
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily,language=json,float=tb,floatplacement=tb,caption=Sample execution trace information.,label=fig:execution-trace]
 [
     {"op": "EQ", "pc": 7, 
     "depth": 1, "stack": ["2b", "a3"]},
@@ -7,21 +6,18 @@
     "stack": ["00"]}
 ]
 \end{lstlisting}
-\caption{\label{fig:execution-trace}Sample execution trace information.}
-\end{figure}
-
 
 \subsection{Methodology}
 \label{sec:methodology}
 
-In this section, we describe in detail the different analyses we perform in order to check for exploits of the vulnerabilities described in Section~\ref{sec:background}.
+In this section, we describe in detail the different analyses we perform in order to check for exploits of the vulnerabilities described in \autoref{sec:5a:background}.
 
-To check for potential exploits, we perform bytecode-level transaction analysis, whereby we look at the code executed by the contract when carrying out a particular transaction. We use this type of analysis to detect the~\VulnTypes types of vulnerabilities presented in Section~\ref{sec:background}.
+To check for potential exploits, we perform bytecode-level transaction analysis, whereby we look at the code executed by the contract when carrying out a particular transaction. We use this type of analysis to detect the~\VulnTypes types of vulnerabilities presented in \autoref{sec:5a:background}.
 
-To perform our analyses, we first retrieve transaction data for all the contracts in our dataset. Next, to perform bytecode-level analysis, we extract the execution traces for the transactions which may have affected contracts of interest. We use EVM's debug functionality, which gives us the ability to replay transactions and to trace all the executed instructions. To speed-up the data collection process, we patch the Go Ethereum client~\cite{go-ethereum}, opposed to relying on the Remote Procedure Call~(RPC) functionality provided by the default Ethereum client.
-We show a truncated sample of the extracted traces in Figure~\ref{fig:execution-trace} for illustration. 
+To perform our analyses, we first retrieve transaction data for all the contracts in our dataset. Next, to perform bytecode-level analysis, we extract the execution traces for the transactions which may have affected contracts of interest. We use the EVM's debug functionality, which gives us the ability to replay transactions and trace all the executed instructions. To speed up the data collection process, we patch the Go Ethereum client~\cite{go-ethereum}, as opposed to relying on the Remote Procedure Call~(RPC) functionality provided by the default Ethereum client.
+We show a truncated sample of the extracted traces in \autoref{fig:execution-trace} for illustration. 
 %
-The \lstinline{op} key is the current instruction, \lstinline{pc} is the program counter, \lstinline{depth} is the current level of call nesting, and finally, \lstinline{stack} contains the current state of the stack. We use single-byte values in the example, but the actual values are~32 bytes~(256 bits).
+The \lstinline{op} key is the current instruction, \lstinline{pc} is the program counter, \lstinline{depth} is the current level of call nesting, and finally, \lstinline{stack} contains the current state of the stack. We use single-byte values in the example, but the actual values are 32 bytes (256 bits).
 
 The extracted traces contain a list of executed instructions, as well as the state of the stack at each instruction.
 To analyze the traces, we encode them into a Datalog representation; Datalog is a language implementing first-order logic with recursion~\cite{Immerman99descriptivecomplexity}, which allows us to concisely express properties about the execution traces.
@@ -31,15 +27,10 @@ We should highlight that our analyses run \emph{automatically} based on the fact
 
 \begin{figure}
   \centering
-  \begin{subfigure}{\columnwidth}
-\begin{lstlisting}[language=Solidity,basicstyle=\footnotesize\ttfamily]
+\begin{lstlisting}[language=Solidity,basicstyle=\footnotesize\ttfamily,label=fig:handled-exception-solidity,caption=Failure handling in Solidity.]
 if (!addr.send(100)) { throw; }
 \end{lstlisting}
-    \caption{Failure handling in Solidity.}
-    \label{fig:handled-exception-solidity}
-  \end{subfigure}
-  \begin{subfigure}{\columnwidth}
-\begin{lstlisting}[language=esm, basicstyle=\footnotesize\ttfamily]
+\begin{lstlisting}[language=esm, basicstyle=\footnotesize\ttfamily,caption=EVM instructions for failure handling.,label=fig:handled-exception-instructions]
 ; preparing call
 (0x65) CALL
 ; call result pushed on the stack
@@ -48,9 +39,6 @@ if (!addr.send(100)) { throw; }
 (0x72) REVERT
 (0x73) JUMPDEST
 \end{lstlisting}
-    \caption{EVM instructions for failure handling.}
-    \label{fig:handled-exception-instructions}
-  \end{subfigure}
   \caption{Correctly handled failed \lstinline{send}.}
   \label{fig:handled-exception}
 \end{figure}
@@ -92,7 +80,7 @@ Using these, we then use the query shown in Figure~\ref{fig:queries} to retrieve
 
 \subsubsection{\unhandledexceptions}
 %
-When Solidity compiles contracts, methods to send Ether, such as \lstinline{send}, are compiled into the EVM \op{CALL} instructions. We show an example of such a call and its instructions counterpart in Figure~\ref{fig:handled-exception}. If the address passed to \op{CALL} is an address, the EVM executes the code of the contract, otherwise it executes the necessary instructions to transfer Ether to the address. When the EVM is done executing, it pushes either $1$ on the stack, if the \op{CALL} succeeded, or $0$ otherwise. 
+When Solidity compiles contracts, methods to send Ether, such as \lstinline{send}, are compiled into the EVM \op{CALL} instructions. We show an example of such a call and its instructions counterpart in \autoref{fig:handled-exception-instructions}. If the address passed to \op{CALL} is an address, the EVM executes the code of the contract, otherwise it executes the necessary instructions to transfer Ether to the address. When the EVM is done executing, it pushes either $1$ on the stack, if the \op{CALL} succeeded, or $0$ otherwise. 
 
 To retrieve information about call results, we can therefore check for \op{CALL} instructions and use the value pushed on the stack after the call execution. The end of the call execution can be easily found by checking when the \lstinline{depth} of the trace turns back to the value it had when the \op{CALL} instruction was executed; we save this information as \dterm{call_result}{v\dsep n} facts.
 An important edge case to consider are calls to pre-compiled contracts, which are typically called by the compiler and do not require their return value to be checked, as they are results to computation where $0$ could be a valid value, but could result in false-positives.

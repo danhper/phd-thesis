@@ -1,7 +1,7 @@
 \subsection{Background}
-\label{sec:background} 
-In this section, we first introduce different types of smart contracts vulnerabilities.
-We then present some of the analysis tools available to prevent against such vulnerabilities.
+\label{sec:5a:background} 
+In this section, we first introduce different types of smart contract vulnerabilities.
+We then present some of the analysis tools available to prevent such vulnerabilities.
 Finally, we provide some definitions that will be used in the rest of the chapter.
 
 \subsubsection{Smart Contracts Vulnerabilities}
@@ -10,41 +10,62 @@ In this subsection, we briefly review some of the most common vulnerability type
 We provide a two-letter abbreviation for each vulnerability which we shall use throughout the remainder of this section.
 
 \point{\reentrancy~(\vre)}
-When a contract ``calls'' another account, it can choose the amount of gas it allows the called party to use. If the target account is a contract, it will be executed and can use the provided gas budget. If such a contract is malicious and the gas budget is high enough, it can try to call back in the caller --- a re-entrant call. If the caller's implementation is not re-entrant, for example because it did not update his internal state containing balances information, the attacker can use this vulnerability to drain funds out of the vulnerable contract~\cite{Luu2016a,DBLP:conf/ndss/KalraGDS18,Tsankov2018}.
-This vulnerability was used in TheDAO exploit~\cite{Securities2017}, essentially causing the Ethereum community to decide to rollback to a previous state using a hard-fork~\cite{mehar2019understanding}. We provide more details about TheDAO exploit in Section~\ref{sec:related}
+When a contract ``calls'' another account, it can choose the amount of gas it allows the called party to use. If the target account is a contract, it will be executed and can use the provided gas budget. If such a contract is malicious and the gas budget is high enough, it can try to call back from the caller --- a re-entrant call. If the caller's implementation is not re-entrant, for example, because it did not update his internal state containing balances information, the attacker can use this vulnerability to drain funds out of the vulnerable contract~\cite{Luu2016a,DBLP:conf/ndss/KalraGDS18,Tsankov2018}.
+This vulnerability was used in TheDAO exploit~\cite{Securities2017}, essentially causing the Ethereum community to decide to roll back to a previous state using a hard-fork~\cite{mehar2019understanding}. We provide more details about TheDAO exploit in Section~\ref{sec:5a:related}
 
 \point{\unhandledexceptions~(\vue)}
-Some low-level operations in Solidity such as \lstinline{send}, which is used to send Ether, do not throw an exception on failure, but rather report the status by returning a boolean. If this return value is unchecked, the caller continues its execution even if the payment failed, which can easily lead to inconsistencies~\cite{Brent2018,Luu2016a,Tikhomirov2017,DBLP:conf/ndss/KalraGDS18}.
+Some low-level operations in Solidity such as \lstinline{send}, which is used to send Ether, do not throw an exception on failure, but rather report the status by returning a boolean.
+If this return value is unchecked, the caller continues its execution even if the payment failed, which can easily lead to inconsistencies~\cite{Brent2018,Luu2016a,Tikhomirov2017,DBLP:conf/ndss/KalraGDS18}.
 
 \point{\lockedether~(\vle)}
-Ethereum smart contracts can, as any account on Ethereum, receive Ether. However, there as several reasons for which the received funds might get locked permanently into the contract.
+Ethereum smart contracts can, as any account on Ethereum, receive Ether. However, there as several reasons causing the received funds to get locked permanently into the contract.
 
 One reason is that the contract may depend on another contract which has been
-destructed using the \op{SELFDESTRUCT} instruction of the EVM --- i.e. its code has been removed and its funds transferred. If this was the only way for such a contract to send Ether, it will result in the funds being permanently locked. This is what happened in the Parity Wallet bug in November~2017, locking millions of USD worth of Ether~\cite{Breidenbach}. We provide more details about the Parity Wallet bug in Section~\ref{sec:related}
+destructed using the \op{SELFDESTRUCT} instruction of the EVM --- i.e. its code has been removed and its funds transferred. If this was the only way for such a contract to send Ether, it will result in the funds being permanently locked. This is what happened in the Parity Wallet bug in November 2017, locking millions of USD worth of Ether~\cite{Breidenbach}. We provide more details about the Parity Wallet bug in Section~\ref{sec:5a:related}
 
 There are also cases where the contract will \emph{always} run out of gas when trying
 to send Ether which could result in locking the contract funds. More details about such issues can be found in~\cite{Grech2018}.
 
 \point{\transactionorder~(\vto)}
-In Ethereum, multiple transactions are included in a single block, which means that the state of a contract can be updated multiple times in the same block. If the order of two transactions calling the same smart contract changes the final outcome, an attacker could exploit this property. For example, given a contract which expects participant to submit the solution to a puzzle in exchange for a reward, a malicious contract owner could reduce the amount of the reward when the transaction is submitted.
+In Ethereum, multiple transactions are included in a single block, which means that the state of a contract can be updated multiple times in the same block. If the order of two transactions calling the same smart contract changes the outcome, an attacker could exploit this property. 
+For example, given a contract which expects participants to submit the solution to a puzzle in exchange for a reward, a malicious contract owner could reduce the amount of the reward when the transaction is submitted.
 
 \point{\integeroverflow~(\vio)}
-Integer overflow and underflow is a common type of bug in many programming languages but in the context of Ethereum it can have very severe consequences. For example, if a loop counter were to overflow, creating an infinite loop, the funds of a contract could become completely frozen. This can be exploited by an attacker if he has a way of incrementing the number of iterations of the loop, for example, by registering enough users to trigger an overflow.
+Integer overflow and underflow are common types of bugs in many programming languages but in the context of Ethereum, they can have very severe consequences. For example, if a loop counter were to overflow, creating an infinite loop, the funds of a contract could become completely frozen. This can be exploited by an attacker if he has a way of incrementing the number of iterations of the loop, for example, by registering enough users to trigger an overflow.
 
 \point{\unrestrictedaction~(\vua)}
 Contracts often perform authorization, by checking the sender of the message, to restrict the type of action that a user can take.
 Typically, only the owner of a contract should be allowed to destroy the contract or set a new owner.
+This owner is usually set in the contract constructor but some contracts were found vulnerable because the owner was not initialized correctly, allowing, for example, an attacker to take ownership of the contract.
+A reason for such a bug could be a misnamed function in older versions of Solidity~\cite{Brent2018,Krupp2018}.
+This issue was the root cause of the the Parity wallet bug~\cite{Tsankov2018,Nikolic2018a} which froze more than 500k Ether.
+
 Such an issue can happen not only if the developer forgets to perform critical checks but also if an attacker can execute arbitrary code, for example by being able to control the address of a delegated call~\cite{Krupp2018}.
 
-% Typically, only the owner 
-% This owner is usually set in the contract constructor but some contracts were found vulnerable because the owner was not initialized correctly, allowing, for example, an attacker to take ownership of the contract.
-% A reason for such a bug could be a misnamed function in older versions of Solidity~\cite{Brent2018,Krupp2018}.
-% This issue was the root cause of the the Parity wallet bug~\cite{Tsankov2018,Nikolic2018a} which froze more than 500k Ether.
 
 \input{5a-smart-contract-security/sections/tables/tools-overview}
 \subsubsection{Analysis Tools}
 \label{ssec:analysis-tools}
-Smart contracts are generally designed to manipulate and \emph{hold} funds denominated in Ether. This makes them very tempting attack targets, as a successful attack may allow the attacker to directly steal funds from the contract. Given the many common vulnerabilities in smart contracts, some of which we described in the previous section, a large number of tools have been developed to find them automatically~\cite{Luu2016a,Tsankov2018,mythril}. Most of these tools analyze either the contract source code or its compiled EVM bytecode and look for known security issues, such as re-entrancy or transaction order dependency vulnerabilities. We present a summary of these different works in Figure~\ref{fig:prior-results}. The second and third columns respectively present the reported number of contracts analyzed and contracts flagged vulnerable in each paper. The ``vulnerabilities'' columns show the type of vulnerabilities that each tool can check for. We present these vulnerabilities in Subsection~\ref{ssec:vulnerability-types} and give a more detailed description of these tools in Section~\ref{ssec:related-analysis-tools}.
+Smart contracts are generally designed to manipulate and \emph{hold} funds denominated in Ether. This makes them very tempting attack targets, as a successful attack may allow the attacker to directly steal funds from the contract.
+Given the many common vulnerabilities in smart contracts, some of which we described in the previous section, a large number of tools have been developed to find them automatically~\cite{Luu2016a,Tsankov2018,mythril}.
+Most of these tools analyze either the contract source code or its compiled EVM bytecode and look for known security issues, such as re-entrancy or transaction order dependency vulnerabilities. We present a summary of these different works in Figure~\ref{fig:prior-results}. The second and third columns respectively present the reported number of contracts analyzed and contracts flagged as vulnerable in each paper. The ``vulnerabilities'' columns show the type of vulnerabilities that each tool can check for. We present these vulnerabilities in Subsection~\ref{ssec:vulnerability-types} and give a more detailed description of these tools in Section~\ref{sec:5a:related}.
+
+\point{Testing}
+Like any piece of software, smart contracts benefit from automated testing and some efforts have therefore been made to make the testing experience more straightforward. Truffle~\cite{truffle} is a popular framework for developing smart contracts, which allows writing both unit and integration tests for smart contracts in JavaScript. One difficulty of testing on the Ethereum platform is that the EVM does not have a single main entry point and bytecode is executed when fulfilling a transaction. Some tools, such as standalone EVM implementations~\cite{ganache} have been developed to ease this process.
+
+\point{Auditing}
+As smart contracts can have a high monetary value, \emph{auditing} contracts for vulnerabilities is a common industrial practice.
+Audits should preferably be performed while contracts are still in the testing phase but given the relatively high cost of auditing (usually around 30,000 to 40,000 USD~\cite{solidified}) some companies choose to perform audits later in their development cycle. In addition to checking for common vulnerabilities and implementation issues such as gas-consuming operations, audits also usually check for divergences from specifications and other high-level logic errors, which are impossible for current automatic tools to detect.
+
+\point{Bounty programs}
+Another common practice for developers to improve the security of their smart contracts is to run bounty programs. While auditing is usually a one-time process, bounty programs remain ongoing throughout a contract's lifetime and allow community members to be rewarded for reporting vulnerabilities. Companies or projects running bounty programs can either choose to reward the contributors by paying them in a fiat currency such as US dollars, cryptograms --- typically Bitcoin or Ether --- or other crypto assets. Some bounty programs, such as the one run by the 0x project~\cite{0x-project}, offer bounties as high as 100,000 USD for critical vulnerabilities.
+
+\point{Contract upgrades}
+In Ethereum, smart contracts are by nature immutable. Once a contract has been deployed on the blockchain, its code cannot be modified. This creates a challenge during the deployment of smart contracts, as upgrading the code requires working around this limitation. There are several approaches to deploying a new version of a smart contract~\cite{consensys-smart-contract-best-practice}.
+
+The first approach is to use a \emph{registry contract} which returns the address of the latest version of a smart contract. When deploying a contract, the contract with the updated version of the code is deployed and the address of the latest version stored in the registry is updated. Although this leaves a lot of flexibility to the developers, it forces the users of the smart contracts to always query the registry before being able to interact with the contract. To avoid adding overhead to the user of the contract, an alternative approach is to use a \emph{facade contract}. In this approach, a contract with a fixed address is deployed but delegates all the calls to another contract, the address of which can be updated~\cite{eip-delegatecall}. The end-user of the contract can therefore always transact with the same contract, while the developers can update the behaviour of the contract by deploying a new contract and updating the facade to delegate to the newly deployed code.
+
+There are two main drawbacks to this approach. One of the drawbacks of this approach is that developers cannot modify the contract interface, as the facade code does not change. The other is that there is a gas cost overhead, as the facade contract uses gas to call the backend contract.
 
 \subsubsection{Definitions}
 \label{ssec:definitions}
@@ -55,27 +76,8 @@ We give the definitions used in this section for the terms \emph{vulnerable}, \e
   As we will see later, this means that some contracts may be \emph{vulnerable} because of a false-positive.
 \item[exploitable:]
   A contract is exploitable if it is vulnerable and the vulnerability could be exploited by an external attacker.
-  For example, if the ``vulnerability'' flagged by a tool is in a function which requires to own the contract, it would be \emph{vulnerable} but not \emph{exploitable}.
+  For example, if the ``vulnerability'' flagged by a tool is in a function which requires owning the contract, it would be \emph{vulnerable} but not \emph{exploitable}.
 \item[exploited:]
   A contract is exploited if it received a transaction on Ethereum's main network which triggered one of its vulnerabilities.
   Therefore, a contract can be \emph{vulnerable} or even \emph{exploitable} without having been \emph{exploited}.
 \end{description}
-
-% \point{Testing}
-% Like any piece of software, smart contracts benefit from automated testing and some efforts have therefore been made to make the testing experience more straightforward. Truffle~\cite{truffle} is a popular framework for developing smart contracts, which allows to write both unit and integration tests for smart contracts in JavaScript. One difficulty of testing on the Ethereum platform is that the EVM does not have a single main entry point and bytecode is executed when fulfilling a transaction. Some tools, such as standalone EVM implementations~\cite{ganache} have been developed to ease this process.
-% % question: do people use more ganache or private network?
-% \point{Auditing}
-% As smarts contracts can have a high monetary value, \emph{auditing} contracts for vulnerabilities is a common industrial practice. Audit should preferably be performed while contracts are still in testing phase but given the relatively high cost of auditing (usually around 30,000 to 40,000 USD~\cite{solidified}) some companies choose to perform audits later in their development cycle. In addition to checking for common vulnerabilities and implementation issues such as gas-consuming operations, audits also usually check for divergences from specifications and other high-level logic errors, which are impossible for current automatic tools to detect.
-
-% \point{Bounty programs}
-% Another common practice for developers to improve the security of their smart contracts is to run bounty programs. While auditing is usually a one-time process, bounty programs remain ongoing throughout a contract's lifetime and allow community members to be rewarded for reporting vulnerabilities. Companies or projects running bounty programs can either choose to reward the contributors by paying them in a fiat currency such as US dollars, a cryptograms --- typically Bitcoin or Ether --- or other crypto assets. Some bounty programs, such as the one run by the 0x project~\cite{0x-project}, offer bounties as high as~100,000 USD for critical vulnerabilities.
-
-% \point{Contract upgrades}
-% In Ethereum, smart contracts are by nature immutable. Once a contract has been deployed on the blockchain, its code cannot be modified. This creates a challenge during the deployment of smart contracts, as upgrading the code requires to work around this limitation. There are several approaches to deploy a new version of a smart contract~\cite{consensys-smart-contract-best-practice}.
-
-% The first approach is to use a \emph{registry contract} which returns the address of the latest version of a smart contract. When deploying a contract, the contract with the updated version of the code is deployed and the address of the latest version stored in the registry is updated. Although this leaves a lot of flexibility to the developers, it forces the users of the smart contracts to always query the registry before being able to interact with the contract. To avoid adding overhead to the user of the contract, an alternative approach is to use a \emph{facade contract}. In this approach, a contract with a fixed address is deployed but delegates all the calls to another contract, the address of which can be updated~\cite{eip-delegatecall}. The end-user of the contract can therefore always transact with the same contract, while the developers are able to update the behavior of the contract by deploying a new contract and updating the facade to delegate to the newly deployed code.
-
-% There are two main drawbacks with this approach. One of the drawbacks of this approach is that developers cannot modify the contract interface, as the facade code does not change. The other is that there is a gas cost overhead, as the facade contract uses gas to call the backend contract.
-
-
-%\subsection{Existing Tools}
