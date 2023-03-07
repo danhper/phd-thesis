@@ -15,7 +15,7 @@ To be able to classify the actions and understand where throughput on EOSIO is c
 \point{EOSIO}
 Interestingly, there is a huge spike in the number of token actions from November 1, 2019, onward. 
 We find that this is due to a new coin called \coin{EIDOS}~\cite{Enumivo2019} giving away tokens. 
-We will describe this more extensively as a case study in Section~\ref{sec:eoscase}. 
+We will describe this more extensively as a case study in \autoref{sec:eoscase}. 
 Before this peak, the number of actions on EOSIO was vastly dominated by games, in particular betting games.
 
 \point{Tezos}
@@ -81,7 +81,7 @@ On XRPL, both successful and unsuccessful transactions are recorded. A successfu
 Across the sample period, roughly~\empirical{one tenth} of transactions are unsuccessful (\autoref{fig:xrp-throughput-time}), with the most frequently registered errors being \texttt{PATH\_DRY} for \texttt{Payment} (insufficient liquidity, hence ``dry'', for specified payment path) and \texttt{tecUNFUNDED\_OFFER} for \texttt{OfferCreate} (no funds for the currency promised to offer by the offer creator). 
 
 Successful transactions primarily consist of \texttt{Payment} (39.6\%) and \texttt{OfferCreate} (59.1\%) (\autoref{tab:transaction-types-distribution}). The number of \texttt{OfferCreate} is generally constant across time, but the number of \texttt{Payment} has a very high variance, with some periods containing virtually no payments and others having significant spikes. 
-In Section \ref{sec:xrpcase}, we reveal why most transactions during these high-volume periods are economically meaningless. 
+In \autoref{sec:xrpcase}, we reveal why most transactions during these high-volume periods are economically meaningless. 
 
 Except for the two spam periods, we observe that \texttt{OfferCreate} is the most common transaction type. 
 Nonetheless, \texttt{OfferCreate} transactions contribute little to the total volume on XRPL.\footnote{
@@ -112,7 +112,7 @@ We can see that the \texttt{eosio.token} account, which is the account used to h
 Although \coin{EOS} transfers are indeed a central part of the EOSIO ecosystem, more than~\empirical{99.9}\% of the transfers shown are exclusively to and from this EIDOS account.
 The second account is a betting website where all the bets are performed transparently using EOSIO.
 However, around~\empirical{80\%} of the actions---\texttt{removetask} and \texttt{log}---are bookkeeping, and the actual betting-related actions such as \texttt{betrecord} represent a very low percentage of the total number of actions.
-The third account is a decentralized exchange and is used to exchange different assets available on EOSIO. This exchange will be discussed in Section~\ref{sec:case-studies}.
+The third account is a decentralized exchange and is used to exchange different assets available on EOSIO. This exchange will be discussed in \autoref{sec:4:case-studies}.
 We could not find information about the fourth account, but it is very actively sending \coin{EOS} tokens to the EIDOS account.
 Finally, the last account was a pornography website which used EOSIO as a payment system. This account is still the fifth account with the highest number of received actions although the service was discontinued in November 2019 for financial reasons~\cite{hashbaby-closing}.
 

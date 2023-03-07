@@ -100,7 +100,7 @@ Note that the cost of borrowing is given by some floating interest rate $\gamma$
 In return for his collateral, the borrower receives $\frac{\alpha}{\delta}$ in the volatile asset $B$.
 As the debt is denominated in units of a stable asset (e.g. \coin{DAI}), the borrower has an upper limit on his net debt, remaining unaffected by any volatility in the value of asset $A$.
 In order to leverage his position, the debt denominated in $A$ may be used to buy\footnote{In practice this may be done via automated market makers \cite{xu2021dexamm} (e.g. Uniswap~\cite{whitepaper:uniswap}) or via decentralized exchanges~\cite{web:dydx}.} additional units of asset $B$, which can subsequently be used to collateralise a new borrow position.
-This process is illustrated in Figure~\ref{fig:plf-leverage} and can be repeated numerous times, by which the total exposure to asset $A$, the underlying collateral to the total debt in asset $A$, increases at a decaying rate.
+This process is illustrated in \autoref{fig:plf-leverage} and can be repeated numerous times, by which the total exposure to asset $A$, the underlying collateral to the total debt in asset $A$, increases at a decaying rate.
 
 % Explain how an agent can leverage a position in DeFi: this diagram is a draft
 \begin{figure}[tbp]
@@ -157,9 +157,9 @@ Therefore, we briefly present the workings of Compound in the context of our fra
 \point{State Transitions}
 We initiate state transitions via events emitted from the Compound protocol smart contracts.
 We provide an overview of the state variables affected by Compound events in \autoref{tab:compound-events}.
-%An extensive list of all Compound events is given in Appendix~\ref{}.
+%An extensive list of all Compound events is given in \autoref{}.
 % The majority of events that update the state of a market are emitted each time a market participant \textit{borrows}, \textit{supplies}, \textit{repays}, \textit{redeems} funds, or gets \textit{liquidated} in a market.
-% A detailed list and description of all Compound events which we use as state transitions is given by Table~\ref{} in Appendix~\ref{}.
+% A detailed list and description of all Compound events which we use as state transitions is given by \autoref{} in \autoref{}.
 
 \point{Funds Supplied}
 Every market on Compound has an associated ``cToken", a token that continuously appreciates against the underlying asset as interest accrues.

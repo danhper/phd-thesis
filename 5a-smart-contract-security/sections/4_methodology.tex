@@ -22,7 +22,7 @@ The \lstinline{op} key is the current instruction, \lstinline{pc} is the program
 The extracted traces contain a list of executed instructions, as well as the state of the stack at each instruction.
 To analyze the traces, we encode them into a Datalog representation; Datalog is a language implementing first-order logic with recursion~\cite{Immerman99descriptivecomplexity}, which allows us to concisely express properties about the execution traces.
 We use the following domains to encode the information about the traces as Datalog facts, noting $V$ as the set of program variables and $A$ as the set of Ethereum addresses.
-We show an overview of the facts that we collect and the relations that we use to check for possible exploits in Figure~\ref{fig:datalog-setup}.
+We show an overview of the facts that we collect and the relations that we use to check for possible exploits in \autoref{fig:datalog-setup}.
 We should highlight that our analyses run \emph{automatically} based on the facts that we extract and the rules that define various violations described in subsequent sections. 
 
 \begin{figure}
@@ -65,7 +65,7 @@ if (!addr.send(100)) { throw; }
 % \caption{Soundness and completeness properties for the analyses in this section.}
 % \end{figure}
 
-% \footnotetext{Section~\ref{ssec:method-io} and Section~\ref{ssec:analysis-io} provide in-depth explanations of the cases where the analysis is unsound}
+% \footnotetext{\autoref{ssec:method-io} and \autoref{ssec:analysis-io} provide in-depth explanations of the cases where the analysis is unsound}
 
 \input{5a-smart-contract-security/sections/datalog}
 
@@ -90,7 +90,7 @@ To retrieve information about call results, we can therefore check for \op{CALL}
 An important edge case to consider are calls to pre-compiled contracts, which are typically called by the compiler and do not require their return value to be checked, as they are results of a computation where $0$ could be a valid value, but could result in false positives.
 As pre-compiled contracts have known addresses between 1 and 10, we choose to simply not record \lstinline{call_result} facts for such calls.
 
-As shown in Figure~\ref{fig:handled-exception-instructions}, the EVM uses the \op{JUMPI} instruction to perform conditional jumps. At the time of writing, this is the only instruction available to execute conditional control flow. We, therefore, mark all the values used as a condition in \op{JUMPI} as \lstinline{in_condition}. We can then check for the unhandled exceptions by looking for call results, which never influence a condition using the query shown in \autoref{fig:queries}.
+As shown in \autoref{fig:handled-exception-instructions}, the EVM uses the \op{JUMPI} instruction to perform conditional jumps. At the time of writing, this is the only instruction available to execute conditional control flow. We, therefore, mark all the values used as a condition in \op{JUMPI} as \lstinline{in_condition}. We can then check for the unhandled exceptions by looking for call results, which never influence a condition using the query shown in \autoref{fig:queries}.
 
 \correctness The analysis we perform to check for unhandled exceptions is complete but not sound.
 All failed calls in the execution of the program will be recorded, while we accumulate facts about the execution.
@@ -106,7 +106,7 @@ When a contract is destructed, it is not completely removed per se, but its code
 When a contract tries to call a contract which has been destructed, the call is a no-op rather than a failure, which means that the next instruction will be executed and the call will be marked as successful.
 To find such patterns, we collect Datalog facts about all the values of the program counter before and after every \lstinline{DELEGATECALL} instruction. In particular, we first mark the program counter value at which the call is executed~---~\dterm{call_entry}{i_1\in \mathbb{N}\dsep a\in A}. Then, using the same approach as for unhandled exceptions, we skip the content of the call and mark the program counter value at which the call returns~---~\dterm{call_exit}{i_2\in \mathbb{N}}.
 
-If the called contract does not exist anymore, $i_1 + 1 = i_2$ must hold. Therefore, we can use the Datalog query shown in Figure~\ref{fig:queries} to retrieve the destructed contracts address.
+If the called contract does not exist anymore, $i_1 + 1 = i_2$ must hold. Therefore, we can use the Datalog query shown in \autoref{fig:queries} to retrieve the destructed contracts address.
 
 \correctness The approach we use to detect locked Ether is sound and complete for the class of locked funds vulnerability we focus on. All vulnerable contracts must have a \lstinline{DELEGATECALL} instruction. If the issue is present and the call contract has indeed been destructed, it will always result in a no-op call. Our analysis records all of these calls and systematically checks for the program counter before and after the execution, making the analysis sound and complete.
 
@@ -155,7 +155,7 @@ During the second phase, we use the \dterm{inferred_signed}{v} and \dterm{inferr
 For example, if a contract contains code which yields \lstinline{AND value 0xff} but \lstinline{value} is an \lstinline{uint32}, our type inference algorithm would wrongly infer that this variable is an \lstinline{uint8}.
 Such errors during type inference could cause both false positives and false negatives.
 However, this type of issue occurs only when the developer uses bit manipulation with a mask similar to what the Solidity compiler generates.
-We find that such a pattern is rare enough not to skew our data, and give an estimate of the possible number of contracts which could follow such a pattern in Section~\ref{ssec:analysis-io}.
+We find that such a pattern is rare enough not to skew our data, and give an estimate of the possible number of contracts which could follow such a pattern in \autoref{ssec:analysis-io}.
 
 \subsubsection{\unrestrictedaction}
 \label{ssec:method-ua}
@@ -172,4 +172,4 @@ Finally, for code injection, we check whether the passed data influences the add
 We take a relatively simple approach of checking whether the message sender influences a condition or not before executing a sensitive instruction.
 This can result in false negatives because the check could be performed inappropriately, for example not reverting the transaction when needed, making the analysis unsound.
 Furthermore, there might be some use cases where it is acceptable to allow any sender to write to the storage, but our analysis would flag such as vulnerable, resulting in false positives.
-We discuss the implications further in Section~\ref{ssec:analysis-ua}.
+We discuss the implications further in \autoref{ssec:analysis-ua}.

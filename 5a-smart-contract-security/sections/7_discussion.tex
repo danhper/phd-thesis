@@ -23,7 +23,7 @@ Even considering the limitations of our system, it is clear that the exploitatio
 % \subsection{Contracts holding money}
 
 We believe that a major reason for the difference between the number of vulnerable contracts reported and the number of contracts exploited is the distribution of Ether among contracts. Indeed, only about~\empirical{2,000} out of the~\VulnerableContracts contracts in our dataset contain Ether, and most of these contracts have a balance lower than~\empirical{1} ETH.
-We show the balance distribution of the contracts containing Ether in our dataset in Figure~\ref{fig:eth-held}. Furthermore, the \empirical{top 10 contracts} hold about~\empirical{95\%} of the total Ether. We show the cumulative distribution of Ether within the contracts containing more than~\empirical{10 ETH} in Figure~\ref{fig:cumulative-eth}. This shows that, as long as the top contracts cannot be exploited, the total amount of Ether that is actually at stake will be nowhere close to the upper bound of ``vulnerable'' Ether.
+We show the balance distribution of the contracts containing Ether in our dataset in \autoref{fig:eth-held}. Furthermore, the \empirical{top 10 contracts} hold about~\empirical{95\%} of the total Ether. We show the cumulative distribution of Ether within the contracts containing more than~\empirical{10 ETH} in \autoref{fig:cumulative-eth}. This shows that, as long as the top contracts cannot be exploited, the total amount of Ether that is actually at stake will be nowhere close to the upper bound of ``vulnerable'' Ether.
 
 To make sure this fact generalizes to the whole Ethereum blockchain and not only our dataset, we also fetch the balances for all existing contracts. This gives a total of~\empirical{15,459,193} contracts. Out of these, we find that only~\empirical{463,538} contracts have a non-zero balance, which is merely 3\% of all the contracts. Out of the contracts with a non-zero balance, the top 10 contracts account for \empirical{54\%} of the total amount of Ether, the top 100 for \empirical{92\%} and the top 1000 for \empirical{99\%}. This shows that our dataset follows the same trend as the Ethereum blockchain in general: a very small amount of contracts hold most of the wealth.
 
@@ -64,7 +64,7 @@ We were able to inspect~\empirical{4} of the~\empirical{5} remaining contracts.
 The contract at address\\\addr{0x07ee55aa48bb72dcc6e9d78256648910de513eca} is the only one for which we were unable to find any information. The second, third and fifth contracts in the list were also multi-signature wallets and exploitation would require a majority owner to be malicious. For example, for Ether to get locked, the owners would have to agree on adding enough extra owners so that all the loops over the owners result in an out-of-gas exception. The contract at address~\addr{0xbf4ed7b27f1d666546e30d74d50d173d20bca754} is a contract known as \lstinline{WithDrawDAO}~\cite{withdraw-dao}. We did not find any particular issue, but it does use a delegate pattern which explains the locked Ether vulnerability marked by Zeus.
 
 Overall, all the contracts from \autoref{fig:vulnerable-active} that we could analyze seemed quite secure and the vulnerabilities flagged were not exploitable.
-Although there are some very rare cases that we present in \ref{sec:5a:related} where contracts with high Ether balances are being stolen, these remain exceptions. The facts we presented up to now help us confirm that the amount of Ether at risk on the Ethereum blockchain is nowhere as close as what is claimed~\cite{DBLP:conf/ndss/KalraGDS18,Grech2018}.
+Although there are some very rare cases that we present in \autoref{sec:5a:related} where contracts with high Ether balances are being stolen, these remain exceptions. The facts we presented up to now help us confirm that the amount of Ether at risk on the Ethereum blockchain is nowhere as close as what is claimed~\cite{DBLP:conf/ndss/KalraGDS18,Grech2018}.
 We now present a thorough investigation of the high-value contracts.
 
 \begin{investigation}{0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae}
@@ -144,12 +144,12 @@ this.balance$_{t+1}$ + mainDAO.balanceOf(this) -
 
 
 % \subsection{Lifespan of contracts}
-% As described in Section~\ref{sec:background}, due to smart contracts deployed on Ethereum being immutable, any update to a contract requires the deployment of a new one. As a result, smart contracts have a relatively short lifespan. We define the lifespan of a smart contract as the number of days elapsed between the first and the last transaction sent to it.
+% As described in \autoref{sec:5a:background}, due to smart contracts deployed on Ethereum being immutable, any update to a contract requires the deployment of a new one. As a result, smart contracts have a relatively short lifespan. We define the lifespan of a smart contract as the number of days elapsed between the first and the last transaction sent to it.
 
 % \begin{figure}[tb]
 %     % \includegraphics[width=\columnwidth]{./figures/recency.pdf}
 %     \caption{Capturing the recency of active contract use.}
 %     \label{fig:recency}
 % \end{figure}
-% Figure~\ref{fig:recency}...
+% \autoref{fig:recency}...
 

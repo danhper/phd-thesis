@@ -101,7 +101,7 @@ DAOs can serve a variety of functions, such as managing decentralized funds, inv
 Decentralized Finance (DeFi) is a peer-to-peer financial system powered by a blockchain that is designed to operate without the need for traditional financial intermediaries such as banks, brokerages, or exchanges.
 In a DeFi system, financial transactions and services are facilitated by smart contracts that automatically execute transactions and enforce the terms of agreements.
 Examples of DeFi applications include decentralized exchanges (DEXs), where users can trade cryptocurrencies without the need for a centralized exchange, lending platforms that enable borrowers to access loans without going through a traditional bank, and stablecoins that are designed to maintain a stable value.
-We will discuss DeFi in depth in Chapter~\ref{ch:application-security}.
+We will discuss DeFi in depth in \autoref{ch:application-security}.
 \point{Others} There are many other applications of blockchain technology, such as the tokenisation of art, often through non-fungible tokens (NFT), decentralized identity management, decentralized storage, and decentralized social networks.
 Although these are important applications, they are not the focus of this thesis and will not be discussed in detail.
 
@@ -111,14 +111,14 @@ Over the years, blockchain systems have been the target of many attacks.
 These attacks have happened at different levels of the system, from the consensus protocol to the smart contracts.
 In this section, we provide an example attack for each of the layers that we cover in this thesis: execution layer, transactional layer, and application layer.
 Furthermore, for the application layer, we provide an example of a technical attack and an example of an economic attack.
-Formal definitions for these terms are provided in Chapter~\ref{ch:application-security}.
+Formal definitions for these terms are provided in \autoref{ch:application-security}.
 
 \point{Shanghai attack}
 In September 2016, a DoS attack was performed on the Ethereum network.
 The attack was performed during a major Ethereum conference taking place in Shanghai, hence the name of the attack.
 The gist of the attack was an attacker flooding Ethereum with transactions that were cheap to execute but would take the network participants a long time to process.
 This resulted in the network taking much longer than normal to produce new blocks and forced Ethereum to revisit its pricing mechanism for transactions.
-We give more in-depth details about this attack in Chapter~\ref{ch:vm-security}.
+We give more in-depth details about this attack in \autoref{ch:vm-security}.
 
 \point{Solana DDoS}
 While the Shanghai attack is a good example of a DoS attack that relies on abusing the resource pricing mechanism of a transaction, other blockchains have also been the target of DDoS attacks despite the resource pricing mechanism working as intended.
@@ -126,7 +126,7 @@ This happens most often in blockchains that try to have very low transaction fee
 In September 2021, an attacker performed a DDoS attack on Solana by sending over 400,000 transactions per second, which is vastly over the network's capacity.
 Because of the extremely low transaction price, the cost of the attack was very moderate for the attacker.
 The Solana network ended up having to roll back the network to be able to recover.
-We discuss similar types of attacks and discuss in-depth the trade-offs of low transaction fees in Chapter~\ref{ch:transactional-security}.
+We discuss similar types of attacks and discuss in-depth the trade-offs of low transaction fees in \autoref{ch:transactional-security}.
 
 \point{TheDAO hack}
 TheDAO exploit~\cite{Securities2017} is one of the most infamous exploits that occurred in an Ethereum smart contract.
@@ -134,6 +134,6 @@ Attackers exploited a reentrancy vulnerability~\cite{Atzei2017} of the contract 
 The attacker contract could call the function to withdraw funds in a re-entrant manner before its balance on TheDAO was reduced, making it indeed possible to freely drain funds.
 A total of over 3.5 million Ether were drained.
 Given the severity of the attack, the Ethereum community finally agreed on hard forking.
-We discuss this type of vulnerability in depth in Chapter~\ref{ch:application-security}.
+We discuss this type of vulnerability in depth in \autoref{ch:application-security}.
 
-\point{Aave bad debt}
+% \point{Aave bad debt}

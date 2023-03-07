@@ -19,7 +19,7 @@
 
 \subsection{Analysis}
 \label{sec:5b:analysis}
-In this section, we present the results of the analysis performed with the framework outlined in Section~\ref{sec:5b:methodology}.
+In this section, we present the results of the analysis performed with the framework outlined in \autoref{sec:5b:methodology}.
 We analyze data from the Compound protocol~\cite{leshner2018} over a period ranging from \StartDate---when the first Compound markets were deployed on the Ethereum main network---to \EndDate.
 In \autoref{tab:monitored-contracts}, we provide a list of contracts we monitored in our analysis.
 When analysing a single market, we choose the market for \coin{DAI}, as it is the largest by an order of magnitude.
@@ -65,7 +65,7 @@ No other address among top suppliers and borrowers is a pool address.
 
 \subsubsection{Leveraging Spirals}
 As we have seen in \autoref{sec:5b:plfs}, in PLFs, leveraging can be used either to gain more exposure to a particular currency or to gain some incentive provided by the protocol.
-To understand how leveraging can affect the total amounts borrowed and supplied on Compound, we use the methodology we defined in Section~\ref{ssec:leveraging-spirals-meth} to measure the existence of leveraging spirals on Compound.
+To understand how leveraging can affect the total amounts borrowed and supplied on Compound, we use the methodology we defined in \autoref{ssec:leveraging-spirals-meth} to measure the existence of leveraging spirals on Compound.
 
 We find that the top supplier deposited a total of 342 million USD and borrowed 247 million.
 However, after the inspection of leveraging spirals, we find that the user has provided only 16\% of the funds, while the rest of the minted funds have been part of leveraging spirals, which means that the user provided a total of roughly 55 million USD to the protocol.
@@ -73,7 +73,7 @@ However, after the inspection of leveraging spirals, we find that the user has p
 In total, we find a total of 2,141 accounts using this leveraging spiral technique for a total of over 600 million USD, or roughly half of the total amount of funds supplied to the protocol.
 
 \subsubsection{The \coin{COMP} Governance Token}
-The sudden jumps exhibited in Figures~\ref{fig:borrowers-suppliers-over-time} and~\ref{fig:borrow-supply-over-time} can be explained by the launch of Compound's governance token, \coin{COMP}, on June~15,~2020.
+The sudden jumps exhibited in \autoref{fig:borrowers-suppliers-over-time} and \autoref{fig:borrow-supply-over-time} can be explained by the launch of Compound's governance token, \coin{COMP}, on June~15,~2020.
 The \coin{COMP} governance token allows holders to participate in voting, create proposals, as well as delegate voting rights.
 In order to empower Compound stakeholders, new \coin{COMP} is minted every block and distributed among borrowers and suppliers in each market.
 
