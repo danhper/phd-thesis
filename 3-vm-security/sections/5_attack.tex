@@ -137,14 +137,14 @@ Although our programs do not need to be semantically meaningful, they need to be
   \begin{figure}[tb]
     \centering
     \includegraphics[width=.8\columnwidth]{./3-vm-security/figures/ga-contract-gas-results.pdf}
-    \caption{Evolution of the average contract throughput as a function of the number of generations.}
+    \caption[Evolution of the throughput as a function of the number of generations]{Evolution of the average contract throughput as a function of the number of generations.}
     \label{fig:throughput-evolution}
   \end{figure}
 
   \begin{figure}[tb]
     \centering
     \includegraphics[width=.7\columnwidth]{./3-vm-security/figures/block-execution-time.pdf}
-    \caption{Execution time as a function of the total amount of gas used by contracts within a block.}
+    \caption[Execution time as a function of the gas used by contracts within a block]{Execution time as a function of the total amount of gas used by contracts within a block.}
     \label{fig:block-exec-speed}
   \end{figure}
 
@@ -201,7 +201,7 @@ ADDRESS
   \begin{table}
     \centering
     \setlength{\tabcolsep}{3pt}
-    \caption{Evaluation of different clients when executing 10M gas worth of malicious transactions. What is presented is the mean across \empirical{three} measurements~$\pm$ standard deviation. All the measurements are performed on our GCP except the ``metal'' which is done on our bare-metal server.}
+    \caption[Evaluation of different Ethereum clients]{Evaluation of different clients when executing 10M gas worth of malicious transactions. What is presented is the mean across \empirical{three} measurements~$\pm$ standard deviation. All the measurements are performed on our GCP except the ``metal'' which is done on our bare-metal server.}
     \label{tab:clients-evaluation}
     \begin{tabular}{l r r r}
       \toprule

@@ -1,17 +1,16 @@
-\begin{figure}[tb]
+\begin{table}[tb]
   \centering
-\small
-\setlength{\tabcolsep}{2pt}
+\caption[Top contracts victim of reentrancy attack]{\vre: Top contracts victim of reentrancy attack and ETH amounts exploited}
+\label{fig:reentrancy-vulnerable}
+\setlength{\tabcolsep}{8pt}
 \begin{tabular}{llr}
 \toprule
 \bf Contract address & \bf Last & \bf Amount \\
  & \bf transaction & \bf exploited \\
 \midrule
-\addr[\scriptsize]{0xd654bdd32fc99471455e86c2e7f7d7b6437e9179} & 2016-06-10 & 5,885\\
-\addr[\scriptsize]{0x675e2c143295b8683b5aed421329c4df85f91b33} & 2015-12-31 & 50.49\\
-\addr[\scriptsize]{0xcd3e727275bc2f511822dc9a26bd7b0bbf161784} & 2017-03-25 & 10.34\\
+\addr{0xd654bdd32fc99471455e86c2e7f7d7b6437e9179} & 2016-06-10 & 5,885\\
+\addr{0x675e2c143295b8683b5aed421329c4df85f91b33} & 2015-12-31 & 50.49\\
+\addr{0xcd3e727275bc2f511822dc9a26bd7b0bbf161784} & 2017-03-25 & 10.34\\
 \bottomrule
 \end{tabular}
-\caption{\vre: Top contracts victim of re-entrancy attack and ETH amounts exploited}
-\label{fig:reentrancy-vulnerable}
-\end{figure}
+\end{table}

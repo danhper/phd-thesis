@@ -1,11 +1,15 @@
 %  is a set of statement identifiers;
 
 
-\begin{figure}[tbp]
-\begin{subfigure}[t]{\columnwidth}
+\begin{table}[tbp]
+\caption{Datalog setup.}
+\label{fig:datalog-setup}
+\begin{subtable}[t]{\columnwidth}
   \centering
  \setlength{\tabcolsep}{4pt}
  %
+  \caption{Datalog facts.}
+  \label{fig:datalog-facts}
  \footnotesize
 \begin{tabular}{ll}
   \toprule
@@ -19,30 +23,26 @@
   \dterm{create}{a_1\in A\dsep a_2\in A\dsep p\in \mathbb{N}} & $a_1$ creates $a_2$ with $p$ Ether\\
   \dterm{expected_result}{v\in V\dsep r\in \mathbb{Z}} & $v$'s expected result is $r$\\
   \dterm{actual_result}{v\in V\dsep r\in \mathbb{Z}} & $v$'s actual result is $r$\\
-  \multirow{2}{*}{\dterm{call_result}{v\in V\dsep n\in\mathbb{N}}} & $v$ is the result of a call\\
-  & and has a value of $n$\\
-  \multirow{2}{*}{\dterm{call_entry}{i\in \mathbb{N}\dsep a\in A}} & contract $a$ is called when\\
-           & program counter is $i$\\
-  \multirow{2}{*}{\dterm{call_exit}{i\in \mathbb{N}}} & program counter is $i$ when\\
-           & exiting a call to a contract\\
-  \multirow{2}{*}{\dterm{tx_sstore}{b\in \mathbb{N}, i\in \mathbb{N}, k\in \mathbb{N}}} & storage key $k$ is written in\\
-  & transaction $i$ of block $b$\\
-  \multirow{2}{*}{\dterm{tx_sload}{b\in \mathbb{N}, i\in \mathbb{N}, k\in \mathbb{N}}} & storage key $k$ is read in\\
-  & transaction $i$ of block $b$\\
+  \multirow{1}{*}{\dterm{call_result}{v\in V\dsep n\in\mathbb{N}}} & $v$ is the result of a call and has a value of $n$\\
+  \multirow{1}{*}{\dterm{call_entry}{i\in \mathbb{N}\dsep a\in A}} & contract $a$ is called when program counter is $i$\\
+  \multirow{1}{*}{\dterm{call_exit}{i\in \mathbb{N}}} & program counter is $i$ when exiting a call to a contract\\
+  \multirow{1}{*}{\dterm{tx_sstore}{b\in \mathbb{N}, i\in \mathbb{N}, k\in \mathbb{N}}} & storage key $k$ is written in transaction $i$ of block $b$\\
+  \multirow{1}{*}{\dterm{tx_sload}{b\in \mathbb{N}, i\in \mathbb{N}, k\in \mathbb{N}}} & storage key $k$ is read in transaction $i$ of block $b$\\
   \dterm{caller}{v\in V, a\in A} & $v$ is the caller with address $a$\\
   \dterm{load_data}{v\in V} & $v$ contains transaction call data\\
   \dterm{restricted_inst}{v\in V} & $v$ is used by a restricted instruction\\
   \dterm{selfdestruct}{v\in V} & $v$ is used in \op{SELFDESTRUCT}\\
   \bottomrule
 \end{tabular}
-\caption{Datalog facts.}
-\label{fig:datalog-facts}
-\end{subfigure}
+\end{subtable}
 
 \vspace{2mm}
 
-\begin{subfigure}[t]{\columnwidth}
+\begin{subtable}[t]{\columnwidth}
   \centering
+
+  \caption{Datalog rule definitions.}
+  \label{fig:relations}
   \setlength{\tabcolsep}{1pt}
   \footnotesize
 \begin{tabular}{l}
@@ -71,45 +71,37 @@
   \midrule
   \dterm{depends_data}{v\in V}\drulesep \dterm{load_data}{v_2\dsep \_}\dsep \dterm{depends}{v, v_2}.\\
   \midrule
-  \dterm{caller_checked}{v \in V}\drulesep \dterm{caller}{v_2, \_}\dsep\\
-  \hspace{11.7em}\dterm{condition_flow}{v_2, v_3}\dsep $v_3 < v$.\\
+  \dterm{caller_checked}{v \in V}\drulesep \dterm{caller}{v_2, \_}\dsep \dterm{condition_flow}{v_2, v_3}\dsep $v_3 < v$.\\
   \bottomrule
 \end{tabular}
-\caption{Datalog rule definitions.}
-\label{fig:relations}
-\end{subfigure}
+\end{subtable}
 
 \vspace{2mm}
 
-\begin{subfigure}[t]{\columnwidth}
+\begin{subtable}[t]{\columnwidth}
   \centering
+  \caption{Datalog queries for detecting different vulnerability classes.}
   \footnotesize
   \setlength{\tabcolsep}{1pt}
   \begin{tabular}{ll}
     \toprule
     \bf Vulnerability & \bf Query \\
     \midrule
-    \reentrancy & \dterm{call_flow}{a_1\dsep a_2\dsep p_1}\dsep \\
-                      & \dterm{call_flow}{a_2\dsep a_1\dsep p_2}\dsep $a_1 \neq a_2$\\
+    \reentrancy & \dterm{call_flow}{a_1\dsep a_2\dsep p_1}\dsep \dterm{call_flow}{a_2\dsep a_1\dsep p_2}\dsep $a_1 \neq a_2$\\
     \midrule
     Unhandled Excep. & \dterm{call_result}{v\dsep 0}\dsep $\lnot$\dterm{condition_flow}{v, \_}\\
     \midrule
-    Transaction Order & \dterm{tx_sstore}{b, t_1, i}\dsep \\
-    Dependency & \dterm{tx_sload}{b, t_2, i}, $t_1 \neq t_2$\\
+    Transaction Order Dependency & \dterm{tx_sstore}{b, t_1, i}\dsep \dterm{tx_sload}{b, t_2, i}, $t_1 \neq t_2$\\
     \midrule
     \lockedether & \dterm{call_entry}{i_1, a}\dsep \dterm{call_exit}{i_2}, $i_1 + 1 = i_2$\\
     \midrule
-    \integeroverflow & \dterm{actual_result}{v\dsep r_1}\dsep\\
-                              & \dterm{expected_result}{v\dsep r_2}\dsep$r_1 \neq r_2$\\
+    \integeroverflow & \dterm{actual_result}{v\dsep r_1}\dsep \dterm{expected_result}{v\dsep r_2}\dsep$r_1 \neq r_2$\\
     \midrule
-    \unrestrictedaction & \dterm{restricted_inst}{v}\dsep \dterm{depends_data}{v}\dsep\\
-                      & $\lnot$\dterm{depends_caller}{v}\dsep $\lnot$\dterm{caller_checked}{v}\\
-    & $\lor$ \dterm{selfdestruct}{v}\dsep $\lnot$\dterm{caller_checked}{v}\\
+    \unrestrictedaction & \dterm{restricted_inst}{v}\dsep \dterm{depends_data}{v}\dsep
+                      $\lnot$\dterm{depends_caller}{v}\dsep\\
+                      & $\lnot$\dterm{caller_checked}{v} $\lor$ \dterm{selfdestruct}{v}\dsep $\lnot$\dterm{caller_checked}{v}\\
     \bottomrule
   \end{tabular}
-  \caption{Datalog queries for detecting different vulnerability classes.}
 \label{fig:queries}
-\end{subfigure}
-\caption{Datalog setup.}
-\label{fig:datalog-setup}
-\end{figure}
+\end{subtable}
+\end{table}

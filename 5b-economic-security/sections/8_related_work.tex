@@ -1,17 +1,17 @@
 \subsection{Related Work}
-\label{sec:related-work}
+\label{sec:5b:related-work}
 
 % Almgren and Chriss~\cite{Almgren1999} demonstrate how liquidity and transaction costs can be accounted for in a portfolio theory framework, and describe a valuation model for portfolios under liquidation.
 
 % Ramcharan~\cite{Ramcharan2020} examine the liquidation with banks and finds that lower bank equity or liquidity results in lower liquidation value of band-owned real estate collateral.
 
-% Chan and Thakor~\cite{CHAN1987} theorize the equilibria of credit rationing, a phenomenon where lenders limit their supply of credit to borrowers. They find that unlimited collateral may nor may not eliminate credit rationing, depending on how a competitive equilibrium is conceptualized.
+% Chan and Thakor~\cite{CHAN1987} theorize the equilibria of credit rationing, a phenomenon where lenders limit their supply of credit to borrowers. They find that unlimited collateral may or may not eliminate credit rationing, depending on how a competitive equilibrium is conceptualized.
 
-% Oehmke~\cite{Oehmke2014} model collateral liquidations upon default of a repo borrower, and suggest repo lenders to consider their own balance seet constraints when executing collateral sell-offs.
+% Oehmke~\cite{Oehmke2014} model collateral liquidations upon default of a repo borrower, and suggest repo lenders consider their balance set constraints when executing collateral sell-offs.
 
-% Vig~\cite{Vig2013} find that the demand for collateralized debt decreases while the supply increases when the rights of creditors are strengthened. In the same vein, Hall~\cite{Hall2012} find that high transferability of collateral results in a tighter linkage between leverage and asset tangibility (fixed assets as a fraction of total assets).
+% Vig~\cite{Vig2013} find that the demand for collateralized debt decreases while the supply increases when the rights of creditors are strengthened. In the same vein, Hall~\cite{Hall2012} find that the high transferability of collateral results in a tighter linkage between leverage and asset tangibility (fixed assets as a fraction of total assets).
 
-% Through an array of case studies, Mann~\cite{Mann2005} discover that in case of distressed loans, lenders rarely take possession of the collateral, but rather seek to be repaid through either refinancing or sale of the collateral.
+% Through an array of case studies, Mann~\cite{Mann2005} discover that in the case of distressed loans, lenders rarely take possession of the collateral, but rather seek to be repaid through either refinancing or sale of the collateral.
 
 % John~\cite{John1993} finds strong empirical evidence for a positive correlation between the liquidity level maintained by an entity and its cost of liquidity, that is, entities with high financial distress costs tend to reduce their exposure to liquidity risks through a lower leverage ratio.
 
@@ -23,29 +23,29 @@
 
 In this section, we briefly discuss existing related work.
 
-A thorough analysis of the Compound protocol with respect to market risks faced by participants was done by~\cite{Kao2020}.
-The authors employ agent-based modeling and simulation to perform stress tests in order to show that Compound remains safe under high volatility scenarios and high levels of outstanding debt.
+A thorough analysis of the Compound protocol with respect to market risks faced by participants was done by~\cite{kao2020}.
+The authors employ agent-based modelling and simulation to perform stress tests in order to show that Compound remains safe under high volatility scenarios and high levels of outstanding debt.
 Furthermore, the authors demonstrate the potential of Compound to scale to accommodate a larger borrow market while maintaining a low default probability.
-This differs from our work as we conduct a detailed empirical analysis on Compound, focusing on how agent behavior under different incentive structures on Compound has affected the protocol's state with regard to liquidation risk.  
+This differs from our work as we conduct a detailed empirical analysis of Compound, focusing on how agent behaviour under different incentive structures on Compound has affected the protocol's state with regard to liquidation risk.  
 
-A first in-depth analysis on PLFs is given by~\cite{gudgeon2020defi}.
-The authors provide a taxonomy on interest rate models employed by PLFs, while also discussing market liquidity, efficiency and interconnectedness across PLFs.
+A first in-depth analysis of PLFs is given by~\cite{10.1145/3419614.3423254}.
+The authors provide a taxonomy of interest rate models employed by PLFs, while also discussing market liquidity, efficiency and interconnectedness across PLFs.
 As part of their analysis, the authors examine the cumulative percentage of locked funds solely for the Compound markets \coin{DAI}, \coin{ETH}, and \coin{USDC}.
 
 In~\cite{bartoletti2020sok}, the authors provide a formal state transition model of PLFs\footnote{Note that in \cite{bartoletti2020sok}, PLFs are referred to as lending pools.} and prove fundamental behavioural properties of PLFs, which had previously only been presented informally in the literature.
-Additionally, the authors examine attack vectors and risks, such as utilization attacks and interest bearing derivative token risk. 
-This work differs to our work, as the authors of~\cite{bartoletti2020sok} formalize the properties of PLFs through an abstract model, while we provide a thorough empirical analysis with a focus on liquidations and risks brought upon by governance tokens, such as for Compound and the \coin{COMP} token.
+Additionally, the authors examine attack vectors and risks, such as utilization attacks and interest-bearing derivative token risks. 
+This work differs from our work, as the authors of~\cite{bartoletti2020sok} formalize the properties of PLFs through an abstract model, while we provide a thorough empirical analysis with a focus on liquidations and risks brought upon by governance tokens, such as for Compound and the \coin{COMP} token.
 
-In \cite{klages2019stability}, the authors show how markets for stablecoins are exposed to deleveraging feedback effects, which can cause periods of illiquidity during crisis.
+In \cite{klages2019stability}, the authors show how markets for stablecoins are exposed to deleveraging feedback effects, which can cause periods of illiquidity during a crisis.
 
-The authors of \cite{gudgeon2020decentralized} demonstrate how various DeFi lending protocols are subject to different attack vectors such as governance attacks and undercollateralization.
+The authors of \cite{gudgeon2020decentralized} demonstrate how various DeFi lending protocols are subject to different attack vectors such as governance attacks and under-collateralization.
 In the context of the proposed governance attack, the lending protocol the authors focus on is Maker~\cite{whitepaper:maker}.
 
 % Add SoK on lending pools
 
 
-% Clack and Vanca~\cite{Clack2018} maintain that for a rigorous design of smart contracts for financial derivatives, it is crucial to have thorough comprehension of the intricacies in conventional legal contracts. They propose a framework for semantic analysis of conventional legal contracts for financial derivative.
+% Clack and Vanca~\cite{Clack2018} maintain that for a rigorous design of smart contracts for financial derivatives, it is crucial to have a thorough comprehension of the intricacies of conventional legal contracts. They propose a framework for semantic analysis of conventional legal contracts for financial derivatives.
 
-% Chen and Bellavitis~\cite{Chen2020} acknowledge that blockchain technology disrupts the financial industry, while also presenting risks that DeFi as a new form of financial service is associated to, including fraud, volatility and regulatory uncertainty.
+% Chen and Bellavitis~\cite{Chen2020} acknowledge that blockchain technology disrupts the financial industry, while also presenting risks that DeFi as a new form of financial service is associated with, including fraud, volatility and regulatory uncertainty.
 
-% Similarly, Zetzsche~\cite{Zetzsche2020} argue that DeFi is susceptible to cyberattacks facilitated by tech-monoculture and increased number of access points to the network.
+% Similarly, Zetzsche~\cite{Zetzsche2020} argue that DeFi is susceptible to cyberattacks facilitated by tech-monoculture and an increased number of access points to the network.

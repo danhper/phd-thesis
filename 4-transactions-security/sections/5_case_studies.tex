@@ -109,11 +109,16 @@ Therefore, a reliable way of evaluating a currency by a certain issuer is to loo
 Normally, only IOU tokens issued by featured XRPL gateways are deemed valuable; in contrast, tokens issued by random accounts are most likely to be deemed worthless. 
 For example, the value of \coin{BTC} IOUs from various issuer accounts could range from~0 to~36,050~\coin{XRP} (\autoref{fig:xchangeissuer}).
 
-\begin{figure}[tb]
-     \centering
-     \begin{subfigure}[b]{\linewidth}
-     \footnotesize
-         \centering
+\begin{table}[tb]
+    \centering
+    \caption{Rate (in \coin{XRP}) of \coin{BTC} IOUs on XRPL.}
+    \label{tab:btcrate}
+     \begin{subtable}[b]{\linewidth}
+        \centering
+        \caption{Rates (in \coin{XRP}) of \coin{BTC} IOUs issued by exemplary accounts in demonstration of the wide rate range. Each rate value is the average exchange rate of the issuer-specific \coin{BTC} IOU tokens. 
+         Data retrieved through \url{https://data.ripple.com/v2/exchange_rates/BTC+{issuer_address}/XRP?date=2020-01-01T00:00:00Z&period=30day} \cite{XRPLedger2020a}.}
+         \label{fig:xchangeissuer}
+        \footnotesize
          \setlength{\tabcolsep}{2.7pt}
             \begin{tabular}{llr}
             \toprule
@@ -126,12 +131,12 @@ For example, the value of \coin{BTC} IOUs from various issuer accounts could ran
             \emph{not registered}    & \xrpaddr{rpJZ5WyotdphojwMLxCr2prhULvG3Voe3X}                 & 0        \\
             \bottomrule
             \end{tabular}
-         \caption{Rates (in \coin{XRP}) of \coin{BTC} IOUs issued by exemplary accounts in demonstration of the wide rate range. Each rate value is the average exchange rate of the issuer-specific \coin{BTC} IOU tokens. 
-         Data retrieved through \url{https://data.ripple.com/v2/exchange_rates/BTC+{issuer_address}/XRP?date=2020-01-01T00:00:00Z&period=30day} \cite{XRPLedger2020a}.}
-         \label{fig:xchangeissuer}
-     \end{subfigure}
+     \end{subtable}
      \vskip 5pt
-     \begin{subfigure}[b]{\linewidth}
+     \begin{subtable}[b]{\linewidth}
+        \caption{Rate (in \coin{XRP}) of \coin{BTC} IOUs issued by \xrpaddr{rKRNtZzfrkTwE4ggqXbmfgoy57RBJYS7TS} at different time. In all the three exchange transactions, the account that buys the \coin{BTC} IOU against \coin{XRP} is \xrpaddr{rMyronEjVcAdqUvhzx4MaBDwBPSPCrDHYm}}.
+         % Data retrieved from \url{https://data.ripple.com/v2/exchanges/BTC+rKRNtZzfrkTwE4ggqXbmfgoy57RBJYS7TS/XRP}~\cite{XRPLedger2020c}.
+         \label{fig:xchangetime}
      \footnotesize
          \centering
         %  \setlength{\tabcolsep}{pt}
@@ -144,14 +149,8 @@ For example, the value of \coin{BTC} IOUs from various issuer accounts could ran
             2020-01-09    & \xrpaddr{rU6m5F9c1eWGKBdLMy1evRwk34HuVc18Wg}      & 0.1        \\
             \bottomrule
             \end{tabular}
-         \caption{Rate (in \coin{XRP}) of \coin{BTC} IOUs issued by \xrpaddr{rKRNtZzfrkTwE4ggqXbmfgoy57RBJYS7TS} at different time. In all the three exchange transactions, the account that buys the \coin{BTC} IOU against \coin{XRP} is \xrpaddr{rMyronEjVcAdqUvhzx4MaBDwBPSPCrDHYm}}.
-         % Data retrieved from \url{https://data.ripple.com/v2/exchanges/BTC+rKRNtZzfrkTwE4ggqXbmfgoy57RBJYS7TS/XRP}~\cite{XRPLedger2020c}.
-         \label{fig:xchangetime}
-     \end{subfigure}
-     \vspace{-1cm}
-        \caption{Rate (in \coin{XRP}) of \coin{BTC} IOUs on XRPL.}
-        \label{tab:btcrate}
-\end{figure}
+     \end{subtable}
+\end{table}
 
 
 The ledger experienced two waves of abnormally high traffic in the form of \texttt{Payment} transactions in late~2019, the first between the end of October and the beginning of November, the second---at a higher level---between the end of November and the beginning of December (\autoref{fig:xrp-throughput-time}). 
@@ -180,7 +179,7 @@ The behaviour triggered a heated debate in the XRP community where a member clai
     \caption{Observation period: February 1, 2020, to \finishdate, during which the throughput was not polluted by systematic \texttt{Payment} spams.}
     \label{fig:xrpsakeysel}
     \end{subfigure}
-    \caption{XRPL throughput by transaction type, success and value transferred.
+    \caption[XRPL throughput by transaction type]{XRPL throughput by transaction type, success and value transferred.
     \colorbox{yellow}{Highlighted} transactions carry economic value.}
 \end{figure}
 
@@ -242,7 +241,7 @@ The average on-ledger exchange rates of those three fiat currency tokens, irresp
     \qquad
     \textcolor{dkyellow}{$\blacksquare$} Receiver
     }
-    \caption{Value flow on the XRP ledger between \startdate and \finishdate. The bandwidth of each flow represents the magnitude of aggregate value transferred denominated in \coin{XRP}. Only \texttt{Payment} transactions are included.}
+    \caption[Value flow on the XRP ledger between \startdate and \finishdate]{Value flow on the XRP ledger between \startdate and \finishdate. The bandwidth of each flow represents the magnitude of aggregate value transferred denominated in \coin{XRP}. Only \texttt{Payment} transactions are included.}
     \label{fig:xrpcf}
 \end{figure}
 

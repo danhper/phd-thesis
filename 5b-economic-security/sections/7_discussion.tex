@@ -1,37 +1,41 @@
 \subsection{Discussion}
-\label{sec:discussion}
+\label{sec:5b:discussion}
 In this section, we enumerate several points that we deem important for the future development of PLFs and DeFi protocols.
 We first discuss the influence of governance tokens, by intention or not, on how users behave within a protocol.
-Subsequently, we discuss potential risks that lie in the use of governance tokens, and the contagion effect that user behavior in a protocol can have on another protocol.
+Subsequently, we discuss potential risks that lie in the use of governance tokens, and the contagion effect that user behaviour in a protocol can have on another protocol.
 Finally, we discuss how miner-extractable value~\cite{daian2020flash} can potentially affect liquidation incentives in such protocols.
 
 \subsubsection{Governance Token Influence}
-As analyzed in Section~\ref{sec:analysis}, the distribution of the \coin{COMP} token has vastly changed the Compound landscape and user behavior.
+As analysed in Section~\ref{sec:5b:analysis}, the distribution of the \coin{COMP} token has vastly changed the Compound landscape and user behaviour.
 Until the introduction of the token, borrowing was costly due to the payable interest, which implies a negative cash flow for the borrower. Therefore, a borrower would only borrow if he could justify this negative cash flow with some application external to Compound.
 With the introduction of this token, borrowing could yield a positive cash flow due to the monetary value of the governance token.
 This creates a situation where both suppliers and borrowers end up with a positive cash flow, inducing users to maximize both their supply and borrow.
 This model is, however, only sustainable when the price of the \coin{COMP} token remains sufficiently high to keep this cash flow positive for borrowers.
-This directly results in users taking increasingly higher risk in an attempt to gain larger monetary rewards, with liquidators ultimately profiting more from their operations.
+This directly results in users taking increasingly higher risks in an attempt to gain larger monetary rewards, with liquidators ultimately profiting more from their operations.
 
 \subsubsection{Governance Token Risks}
 The increased use of governance tokens across DeFi protocols (e.g. \coin{YFI} on Yearn Finance, \coin{AAVE} on Aave, \coin{UNI} on Uniswap) can be seen as a promising step towards achieving a higher degree of decentralization in terms of protocol governance. 
-However, despite the increased usage of governance tokens, to the best of our knowledge there is still a dearth of academic research examining the different governance models and specifically the relation between their security assumptions and the employed governance token.
-For instance, the option to aggregate governance tokens via flash loans \cite{Wang2020} can pose a significant security risk to DeFi protocols should an attacker attempt to propose and execute malicious protocol updates.
-Furthermore, even in the case of flash loan resistant governance models, the relationship between the financial value of a protocol's governance token and the economically secure regions of the protocol remains unexamined and serves as a further risk that designers of governance models have to take into account.
-Despite the existence of protective mechanisms against governance attacks on some protocols (e.g. multi-sig approvals or selected ``guardians'' that are able to halt the governance process), it remains questionable which of such mechanisms are indeed desirable from a decentralized governance perspective and whether there might be more suitable alternatives.
+However, despite the increased usage of governance tokens, to the best of our knowledge, there is still a dearth of academic research examining the different governance models and specifically the relation between their security assumptions and the employed governance token.
+For instance, the option to aggregate governance tokens via flash loans \cite{wang2020} can pose a significant security risk to DeFi protocols should an attacker attempt to propose and execute malicious protocol updates.
+Furthermore, even in the case of flash loan-resistant governance models, the relationship between the financial value of a protocol's governance token and the economically secure regions of the protocol remains unexamined and serves as a further risk that designers of governance models have to take into account.
+Despite the existence of protective mechanisms against governance attacks on some protocols (e.g. multi-sig approvals or selected ``guardians'' that can halt the governance process), it remains questionable which of such mechanisms are indeed desirable from a decentralized governance perspective and whether there might be more suitable alternatives.
 
 \subsubsection{Contagion Effects}
-This behavior also indirectly affected other protocols, in particular \coin{DAI}.
+This behaviour also indirectly affected other protocols, in particular \coin{DAI}.
 The price of \coin{DAI} is aimed to be pegged to 1 USD resting on an arbitrage mechanism, whereby token holders are incentivized to buy or sell \coin{DAI} as soon as the price moves below or above 1 USD, respectively.
 However, a rational user seeking to maximize profit will not sell his \coin{DAI} if holding it somewhere else would yield higher profits.
 This was precisely what was happening with Compound, whose users locking their \coin{DAI} received higher yields in the form of \coin{COMP}, than from selling \coin{DAI} at a premium, thereby resulting in upward price pressure~\cite{cyrus2020upcoming}.
-Interestingly, \coin{DAI} deviating from its peg also has a negative effect for Compound users.
-Indeed, as we saw in Section~\ref{sec:analysis}, many Compound users might have been overconfident about the price stability of \coin{DAI} and thus only collateralize marginally above the threshold when they borrow \coin{DAI}.
+Interestingly, \coin{DAI} deviating from its peg also has a negative effect on Compound users.
+Indeed, as we saw in \autoref{sec:5b:analysis}, many Compound users might have been overconfident about the price stability of \coin{DAI} and thus only collateralise marginally above the threshold when they borrow \coin{DAI}.
 This has resulted in large amounts being liquidated due to the actual, higher extent of the volatility in the \coin{DAI} price.
 
+\input{5b-economic-security/tables/miners_liquidators}
 \subsubsection{Miner-Extractable Value}
 In the context of PLFs, liquidations can be seen as miner-extractable value.
-Indeed, it is easy for the miner to check whether a position is liquidable or not after each processed transaction and to add a transaction to liquidate the position immediately after the transaction making it liquidable.
+Indeed, it is easy for the miner to check whether a position is liquidatable or not after each processed transaction and to add a transaction to liquidate the position immediately after the transaction making it liquidatable.
 In our analysis of the Compound protocol, we have not found any sign of miners participating in liquidations, directly or indirectly.
-We show the top miners and the top liquidators for each miner in~\autoref{tab:miners-liquidators} of Appendix~\ref{sec:miners-liquidators}.
-Although we found no correlation between miners and liquidators, this is a real risk that could make the role of liquidator, which is essential for the protocol security, less interesting for those who are not collaborating with miners.
+In~\autoref{tab:miners-liquidators}, we show the 10 miners who mined the most blocks containing at least one liquidation.
+For each miner, we show the 5 liquidators who liquidated the most positions in blocks mined by the given miner.
+Overall, we see that for every miner, the liquidations are spread relatively evenly across the different liquidators.
+Although we only show the top 10 miners for space constraints, we noted that this was the case for all miners in our dataset.
+Although we found no correlation between miners and liquidators, this is a real risk that could make the role of liquidators, which is essential for protocol security, less interesting for those who are not collaborating with miners.

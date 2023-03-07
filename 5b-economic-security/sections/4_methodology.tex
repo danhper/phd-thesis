@@ -1,7 +1,7 @@
 \subsection{Methodology}
-\label{sec:methodology}
+\label{sec:5b:methodology}
 
-In this section, we describe our methodology for the different analyses we perform with regard to leveraging on a PLF.
+In this section, we describe our methodology for the different analyses we perform about leveraging in PLFs.
 To be able to quantify the extent of leveraged positions over time, we first introduce a state transition framework for tracking the supply and borrow positions across all markets on a given PLF.
 We then describe how we instantiate this framework on the Compound protocol using on-chain events data.
 
@@ -10,9 +10,9 @@ We then describe how we instantiate this framework on the Compound protocol usin
 Throughout the paper, we use the following definitions in the context of PLFs:
 
 \begin{description}
-\item[Market] A smart contract acting as the intermediary of loanable funds for a particular cryptoasset, where users supply and borrow funds. 
+\item[Market] A smart contract acting as the intermediary of loanable funds for a particular crypto asset, where users supply and borrow funds. 
 
-\item[Supply] Funds deposited to a market that can be loaned out to other users and used as collateral against depositors' own borrow positions.
+\item[Supply] Funds deposited to a market that can be loaned out to other users and used as collateral against depositors' borrow positions.
 
 \item[Borrow] Funds loaned out to users of a market.
 
@@ -32,7 +32,7 @@ Throughout the paper, we use the following definitions in the context of PLFs:
 In this section, we provide a formal definition of the state of a PLF.
 We denote $\mathfrak{P}_t$ as the global state of a PLF at time $t$.
 For brevity, in the following definitions, we assume that all the values are at a given time $t$.
-We define the global state for the PLF as
+We define the global state of the PLF as
 \[
   \mathfrak{P} = (\mathcal{M},\Gamma, \mathcal{P}, \Lambda)
 \]
@@ -67,7 +67,7 @@ Similarly, the market's total borrows $\mathcal{B}^m$ is given by:
     \mathcal{B}^m = \sum_{P^m\in \mathcal{P}^m} B^m
 \end{equation}
 
-The state of a participant $P$ is liquidable if the following holds: 
+The state of a participant $P$ is liquidatable if the following holds: 
 % \begin{equation}
 %     \frac{\sum_{m\in \mathcal{M}}
 %     \Big\{\left[S^{m} \cdot \mathcal{C} + \mathcal{I}(S^m)\right] \cdot \Gamma(m)\Big\}
@@ -99,14 +99,14 @@ For simplicity, we shall assume in this illustrative example that a speculator w
 Note that the cost of borrowing is given by some floating interest rate $\gamma$ for the specific asset market.
 In return for his collateral, the borrower receives $\frac{\alpha}{\delta}$ in the volatile asset $B$.
 As the debt is denominated in units of a stable asset (e.g. \coin{DAI}), the borrower has an upper limit on his net debt, remaining unaffected by any volatility in the value of asset $A$.
-In order to leverage his position, the debt denominated in $A$ may be used to buy\footnote{In practice this may be done via automated market makers \cite{xu2021dexAmm} (e.g. Uniswap~\cite{whitepaper:uniswap}) or via decentralized exchanges~\cite{web:dydx}.} additional units of asset $B$, which can subsequently be used to collateralize a new borrow position.
+In order to leverage his position, the debt denominated in $A$ may be used to buy\footnote{In practice this may be done via automated market makers \cite{xu2021dexamm} (e.g. Uniswap~\cite{whitepaper:uniswap}) or via decentralized exchanges~\cite{web:dydx}.} additional units of asset $B$, which can subsequently be used to collateralise a new borrow position.
 This process is illustrated in Figure~\ref{fig:plf-leverage} and can be repeated numerous times, by which the total exposure to asset $A$, the underlying collateral to the total debt in asset $A$, increases at a decaying rate.
 
 % Explain how an agent can leverage a position in DeFi: this diagram is a draft
 \begin{figure}[tbp]
     \centering
     \includegraphics[width=0.8\textwidth]{5b-economic-security/figures/leveraging.pdf}
-    \caption{The steps of leveraging using a PLF. \textbf{1.} Initial capital $\alpha_{B}$ in asset $B$ is deposited as collateral to borrow asset $A$. \textbf{2.} Interest accrues over the debt of the borrow position for asset $B$. \textbf{3.} The borrowed asset $A$ is sold for asset $B$ on the open market. \textbf{4.} The newly purchased units of asset $B$ are locked as collateral for a new borrow position of asset $A$.}
+    \caption[Steps of leveraging using a PLF]{The steps of leveraging using a PLF. \textbf{1.} Initial capital $\alpha_{B}$ in asset $B$ is deposited as collateral to borrow asset $A$. \textbf{2.} Interest accrues over the debt of the borrow position for asset $B$. \textbf{3.} The borrowed asset $A$ is sold for asset $B$ on the open market. \textbf{4.} The newly purchased units of asset $B$ are locked as collateral for a new borrow position of asset $A$.}
     \label{fig:plf-leverage}
 \end{figure}
 
@@ -129,7 +129,7 @@ Note that Equation~\eqref{eq:debt} assumes a borrower uses the same collateraliz
 % In DeFi, such positions can be easily leveraged by locking the asset on which the long position shall be taken as collateral.
 
 % \point{Leveraged short position}
-% A short position refers to borrowing funds of an asset, which one believes will depreciate in value. 
+% A short position refers to borrowing funds of an asset, which one believes will depreciate. 
 % Consequently, the taker of a short position sells the borrowed asset, only to repurchase it and pay back the borrower once the price has fallen, while profiting from the price change of the shorted asset.
 % This can be achieved by taking on a leveraged borrow position of a stablecoin, where the locked collateral is the asset to short.
 
@@ -137,7 +137,7 @@ Note that Equation~\eqref{eq:debt} assumes a borrower uses the same collateraliz
 % As a means to attract liquidity, PLFs may distribute governance tokens to their liquidity providers.
 % The way these tokens are distributed depends on the PLF. 
 % For instance, on Compound, the governance token \coin{COMP}\footnote{Contract address: \contractaddr{0xc00e94cb662c3520282e6f5717214004a7f26888}} is distributed among users across markets proportionally to the total dollar value of funds borrowed and supplied.
-% This directly incentivizes users to mine liquidity in a market through leveraging in order to receive a larger share of governance tokens.
+% This directly incentivises users to mine liquidity in a market through leveraging in order to receive a larger share of governance tokens.
 % For example, a supplier of funds in market $A$ can borrow against his position additional funds of $A$, at the cost of paying the difference between the earned and paid interest. 
 % The incentive for pursuing this behaviour exists if the reward (i.e. the governance token) exceeds the cost of borrowing.\point{Leveraged long position} To take on a long position of an asset refers to purchasing an asset with the expectation that it will appreciate in value. 
 % In DeFi, such positions can be easily leveraged by locking the asset on which the long position shall be taken as collateral.
@@ -164,8 +164,8 @@ We provide an overview of the state variables affected by Compound events in \au
 \point{Funds Supplied}
 Every market on Compound has an associated ``cToken", a token that continuously appreciates against the underlying asset as interest accrues.
 For every deposit in a market, a newly-minted amount of the market's associated cToken is transferred to the depositor.
-Therefore, rather than tracking the total amount of the underlying asset supplied, we account the total deposits of an asset supplied by a market participant in the market's cTokens.
-Likewise, we account the total supply of deposits in the market in cTokens.
+Therefore, rather than tracking the total amount of the underlying asset supplied, we account for the total deposits of an asset supplied by a market participant in the market's cTokens.
+Likewise, we account for the total supply of deposits in the market in cTokens.
 
 
 \point{Funds Borrowed}
@@ -175,7 +175,6 @@ For example, given an exchange rate of 1~\coin{DAI}~=~50 \coin{cDAI}, a collater
 Therefore, as funds are borrowed, an individual's total borrow position, as well as the respective market's total borrows are updated.
 
 \point{Interest}
-% Explain borrow index 
 The accrual of interest is tracked per market via a borrow index, which corresponds to the total interest accrued in the market.
 % We handle state transitions caused by borrow index updates through the \texttt{AccrueInterest} event.
 The borrow index of a market is also used to determine and update the total debt of a borrower in the respective market.
@@ -183,5 +182,5 @@ When funds are borrowed, the current borrow index for the market is stored with 
 When additional funds are borrowed or repaid, the latest borrow index is used to compute the difference of accrued interest since the last borrow and added to the total debt.
 
 \point{Liquidation}
-A borrower on Compound is eligible for liquidation should his total supply of collateral, i.e. the value of the sum of the borrower's cToken holdings per market, weighted by each market's collateral factor, be less than the value of the borrower's aggregate debt (Equation~\eqref{eq:liqcond}).
+A borrower on Compound is eligible for liquidation should his total supply of collateral, i.e. the value of the sum of the borrower's chosen holdings per market, weighted by each market's collateral factor, be less than the value of the borrower's aggregate debt (Equation~\eqref{eq:liqcond}).
 The maximum amount of debt a liquidator may pay back in exchange for collateral is specified by the close factor of a market.

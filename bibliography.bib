@@ -15252,3 +15252,93 @@
   title  = {Descriptive Complexity},
   year   = {1999}
 }
+
+@inproceedings{Rodler2019,
+  booktitle = {Proceedings of 26th Annual Network \& Distributed System Security Symposium (NDSS)},
+  author    = {Michael Rodler and Wenting Li and Ghassan O. Karame and Lucas Davi},
+  year      = {2019},
+  title     = {Sereum: Protecting Existing Smart Contracts Against Re-Entrancy Attacks},
+  month     = {February},
+  url       = {http://tubiblio.ulb.tu-darmstadt.de/111410/},
+  keywords  = {Solutions; S2}
+}
+
+@misc{XACML,
+  title        = {{eXtensible Access Control Markup Language (XACML) XML Media Type}},
+  author       = {Sinnema, Remon and Wilde, Erik},
+  howpublished = {\url{https://tools.ietf.org/html/rfc7061}},
+  year         = {2013},
+  note         = {[Online; accessed 21-January-2019]}
+}
+
+@article{Grishchenko2018,
+  abstract      = {Smart contracts are programs running on cryptocurrency (e.g., Ethereum) blockchains, whose popularity stem from the possibility to perform financial transactions, such as payments and auctions, in a distributed environment without need for any trusted third party. Given their financial nature, bugs or vulnerabilities in these programs may lead to catastrophic consequences, as witnessed by recent attacks. Unfortunately, programming smart contracts is a delicate task that requires strong expertise: Ethereum smart contracts are written in Solidity, a dedicated language resembling JavaScript, and shipped over the blockchain in the EVM bytecode format. In order to rigorously verify the security of smart contracts, it is of paramount importance to formalize their semantics as well as the security properties of interest, in particular at the level of the bytecode being executed. In this paper, we present the first complete small-step semantics of EVM bytecode, which we formalize in the F* proof assistant, obtaining executable code that we successfully validate against the official Ethereum test suite. Furthermore, we formally define for the first time a number of central security properties for smart contracts, such as call integrity, atomicity, and independence from miner controlled parameters. This formalization relies on a combination of hyper- and safety properties. Along this work, we identified various mistakes and imprecisions in existing semantics and verification tools for Ethereum smart contracts, thereby demonstrating once more the importance of rigorous semantic foundations for the design of security verification techniques.},
+  archiveprefix = {arXiv},
+  arxivid       = {1802.08660},
+  author        = {Grishchenko, Ilya and Maffei, Matteo and Schneidewind, Clara},
+  doi           = {10.1007/978-3-319-89722-6_10},
+  eprint        = {1802.08660},
+  file          = {:C$\backslash$:/Users/livshits/Documents/Mendeley Desktop/Grishchenko, Maffei, Schneidewind - 2018 - A Semantic Framework for the Security Analysis of Ethereum smart contracts.pdf:pdf},
+  isbn          = {9783319897219},
+  issn          = {16113349},
+  title         = {{A Semantic Framework for the Security Analysis of Ethereum smart contracts}},
+  url           = {http://arxiv.org/abs/1802.08660{\%}0Ahttp://dx.doi.org/10.1007/978-3-319-89722-6{\_}10},
+  year          = {2018}
+}
+
+@inproceedings{SwamyCFSBY11,
+  author         = {Nikhil Swamy and
+                    Juan Chen and
+                    C{\'{e}}dric Fournet and
+                    Pierre{-}Yves Strub and
+                    Karthikeyan Bhargavan and
+                    Jean Yang},
+  title          = {Secure distributed programming with value-dependent types},
+  booktitle      = {Proceeding of the 16th {ACM} {SIGPLAN} international conference on
+                    Functional Programming},
+  shortbooktitle = {ICFP},
+  pages          = {266--278},
+  year           = {2011},
+  ee             = {http://doi.acm.org/10.1145/2034773.2034811},
+  doi            = {10.1145/2034773.2034811},
+  biburl         = {http://dblp.uni-trier.de/rec/bib/conf/icfp/SwamyCFSBY11},
+  editor         = {Manuel M. T. Chakravarty and
+                    Zhenjiang Hu and
+                    Olivier Danvy},
+  publisher      = {{ACM}},
+  isbn           = {978-1-4503-0865-6},
+  url            = {https://www.microsoft.com/en-us/research/publication/secure-distributed-programming-with-value-dependent-types/}
+}
+
+@inproceedings{Hildenbrandt2018,
+  author    = {Hildenbrandt, Everett and Saxena, Manasvi and Rodrigues, Nishant and Zhu, Xiaoran and Daian, Philip and Guth, Dwight and Moore, Brandon and Park, Daejun and Zhang, Yi and Stefanescu, Andrei and Rosu, Grigore},
+  booktitle = {Proceedings - IEEE Computer Security Foundations Symposium},
+  doi       = {10.1109/CSF.2018.00022},
+  file      = {::},
+  isbn      = {9781538666807},
+  issn      = {19401434},
+  keywords  = {blockchain,ethereum,ethereum-virtual-machine,evm,formal-methods,k-framework,kevm,semantics,smart-contract,verification},
+  pmid      = {19282828},
+  title     = {{KEVM: A complete formal semantics of the ethereum virtual machine}},
+  year      = {2018}
+}
+
+@article{10.1145/3570639,
+  author     = {Xu, Jiahua and Paruch, Krzysztof and Cousaert, Simon and Feng, Yebo},
+  title      = {SoK: Decentralized Exchanges (DEX) with Automated Market Maker (AMM) Protocols},
+  year       = {2023},
+  issue_date = {November 2023},
+  publisher  = {Association for Computing Machinery},
+  address    = {New York, NY, USA},
+  volume     = {55},
+  number     = {11},
+  issn       = {0360-0300},
+  url        = {https://doi.org/10.1145/3570639},
+  doi        = {10.1145/3570639},
+  abstract   = {As an integral part of the decentralized finance (DeFi) ecosystem, decentralized exchanges (DEXs) with automated market maker (AMM) protocols have gained massive traction with the recently revived interest in blockchain and distributed ledger technology (DLT) in general. Instead of matching the buy and sell sides, automated market makers (AMMs) employ a peer-to-pool method and determine asset price algorithmically through a so-called conservation function. To facilitate the improvement and development of AMM-based decentralized exchanges (DEXs), we create the first systematization of knowledge in this area. We first establish a general AMM framework describing the economics and formalizing the system’s state-space representation. We then employ our framework to systematically compare the top AMM protocols’ mechanics, illustrating their conservation functions, as well as slippage and divergence loss functions. We further discuss security and privacy concerns, how they are enabled by AMM-based DEXs’ inherent properties, and explore mitigating solutions. Finally, we conduct a comprehensive literature review on related work covering both DeFi and conventional market microstructure.},
+  journal    = {ACM Comput. Surv.},
+  month      = {feb},
+  articleno  = {238},
+  numpages   = {50},
+  keywords   = {Decentralized finance, decentralized exchange, automated market maker, blockchain, Ethereum}
+}
