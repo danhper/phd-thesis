@@ -20,9 +20,9 @@
 
 \subsection{Dataset}
 \label{sec:5a:datasets}
-In this section, we analyze the vulnerable contracts reported by the following~\PapersAnalyzed academic papers:~\cite{Luu2016a},~\cite{DBLP:conf/ndss/KalraGDS18},~\cite{Nikolic2018a},~\cite{Tsankov2018},~\cite{Grech2018} and~\cite{Krupp2018}. To collect information about the addresses analyzed and the vulnerabilities found, we reached out to the authors of the different papers.
+In this section, we analyze the vulnerable contracts reported by the following~\PapersAnalyzed academic papers:~\cite{luu2016a},~\cite{DBLP:conf/ndss/KalraGDS18},~\cite{Nikolic2018a},~\cite{Tsankov2018},~\cite{Grech2018} and~\cite{Krupp2018}. To collect information about the addresses analyzed and the vulnerabilities found, we reached out to the authors of the different papers.
 
-Oyente~\cite{Luu2016a} data was publicly available~\cite{oyente-benchmarks}. The authors of the other papers were kind enough to provide us with their dataset. We received all the replies within less than a week of contacting the authors.
+Oyente~\cite{luu2016a} data was publicly available~\cite{oyente-benchmarks}. The authors of the other papers were kind enough to provide us with their dataset. We received all the replies within less than a week of contacting the authors.
 
 We also reached out to the authors of~\cite{Tikhomirov2017},~\cite{Jiang2018} and~\cite{Brent2018} but could not obtain their dataset, which is why we left these papers out of our analysis.
 
@@ -87,7 +87,7 @@ We believe the two main results for this are: authors improving their tools afte
 \end{table}
 
 \point{Taxonomy}
-Rather than reusing existing smart contract vulnerability taxonomies~\cite{Atzei2017} as-is, we adapt it to fit the vulnerabilities analysed by the tools in our dataset.
+Rather than reusing existing smart contract vulnerability taxonomies~\cite{atzei2017} as-is, we adapt it to fit the vulnerabilities analysed by the tools in our dataset.
 We do not cover vulnerabilities not analyzed by at least \empirical{two} of the \PapersAnalyzed tools. We settle on the~\VulnTypes types of vulnerabilities described in \autoref{sec:5a:background}: reentrancy (\vre), unhandled exception (\vue), locked Ether (\vle), transaction order dependency (\vto), integer overflows (\vio) and unrestricted actions (\vua). As the papers we survey use different terms and slightly different definitions for each of these vulnerabilities, we map the relevant vulnerabilities to one of the \VulnTypes types of vulnerabilities we analyze. We show how we mapped these vulnerabilities in \autoref{fig:vuln-mapping}.
 
 % \point{Excluded data}
@@ -95,9 +95,9 @@ We do not cover vulnerabilities not analyzed by at least \empirical{two} of the 
 
 \point{Overlapping vulnerabilities}
 In this subsection, we first check how much overlap there is between contracts in our dataset: how many contracts have been analyzed by multiple tools and how many contracts were flagged vulnerable by multiple tools.
-We note that most papers, except for~\cite{Luu2016a}, are written around the same period.
+We note that most papers, except for~\cite{luu2016a}, are written around the same period.
 We find that~\empirical{73,627} out of~\empirical{821,219} contracts have been analyzed by at least two of the tools but only~\empirical{13,751} by at least three tools.
-In \autoref{fig:all-overlap}, we show a histogram of how many different tools analyze a single contract. In \autoref{fig:vulnerable-overlap}, we show the number of tools which flag a single contract as vulnerable to any of the analyzed vulnerabilities. The overlap for both the analyzed and the vulnerable contracts is relatively small. We assume one of the reasons is that some tools work on Solidity code~\cite{DBLP:conf/ndss/KalraGDS18} while other tools work on EVM bytecode~\cite{Tsankov2018,Luu2016a}, making the population of contracts available different among tools.
+In \autoref{fig:all-overlap}, we show a histogram of how many different tools analyze a single contract. In \autoref{fig:vulnerable-overlap}, we show the number of tools which flag a single contract as vulnerable to any of the analyzed vulnerabilities. The overlap for both the analyzed and the vulnerable contracts is relatively small. We assume one of the reasons is that some tools work on Solidity code~\cite{DBLP:conf/ndss/KalraGDS18} while other tools work on EVM bytecode~\cite{Tsankov2018,luu2016a}, making the population of contracts available different among tools.
 
 We also find a lot of contradiction in the analysis of the different tools.
 We choose reentrancy to illustrate this point, as it is supported by three of the tools we analyze. In \autoref{fig:reentrancy-agreement}, we show the agreement between the three tools supporting reentrancy detection. The \emph{Total} column shows the total number of contracts analyzed by both tools in the \emph{Tools} column and flagged by at least one of them as vulnerable to reentrancy. Oyente and Securify agree on only~\empirical{23\%} of the contracts, while Zeus does not seem to agree with any of the other tools.

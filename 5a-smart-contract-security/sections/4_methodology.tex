@@ -112,7 +112,7 @@ If the called contract does not exist anymore, $i_1 + 1 = i_2$ must hold. Theref
 
 
 \subsubsection{\transactionorder}
-The first insight to check for exploitation of transaction ordering dependency is that at least two transactions to the same contract must be included in the same block for such an attack to be successful. Furthermore, as shown in~\cite{Luu2016a} or~\cite{Tsankov2018}, exploiting a transaction ordering dependency vulnerability requires manipulation of the contract's storage.
+The first insight to check for exploitation of transaction ordering dependency is that at least two transactions to the same contract must be included in the same block for such an attack to be successful. Furthermore, as shown in~\cite{luu2016a} or~\cite{Tsankov2018}, exploiting a transaction ordering dependency vulnerability requires manipulation of the contract's storage.
 
 The EVM has only one instruction to read from the storage, \op{SLOAD}, and one instruction to write to the storage, \op{SSTORE}. In the EVM, the location of the storage to use for both of these instructions is passed as an argument and referred to as the storage \emph{key}. This key is available on the stack at the time the instruction is called. We go through all the transactions of the contracts and each time we encounter one of these instructions, we record either~\dterm{tx_sload}{b\in \mathbb{N}, i\in \mathbb{N}, k\in \mathbb{N}} or \dterm{tx_sstore}{b\in \mathbb{N}, i\in \mathbb{N}, k\in \mathbb{N}} where in each case $b$ is the block number, $i$ is the index of the transaction in the block and $k$ is the storage key being accessed.
 

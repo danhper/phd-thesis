@@ -10,12 +10,12 @@ In this subsection, we briefly review some of the most common vulnerability type
 We provide a two-letter abbreviation for each vulnerability which we shall use throughout the remainder of this section.
 
 \point{\reentrancy~(\vre)}
-When a contract ``calls'' another account, it can choose the amount of gas it allows the called party to use. If the target account is a contract, it will be executed and can use the provided gas budget. If such a contract is malicious and the gas budget is high enough, it can try to call back from the caller --- a re-entrant call. If the caller's implementation is not re-entrant, for example, because it did not update his internal state containing balances information, the attacker can use this vulnerability to drain funds out of the vulnerable contract~\cite{Luu2016a,DBLP:conf/ndss/KalraGDS18,Tsankov2018}.
-This vulnerability was used in TheDAO exploit~\cite{Securities2017}, essentially causing the Ethereum community to decide to roll back to a previous state using a hard-fork~\cite{mehar2019understanding}. We provide more details about TheDAO exploit in \autoref{sec:5a:related}
+When a contract ``calls'' another account, it can choose the amount of gas it allows the called party to use. If the target account is a contract, it will be executed and can use the provided gas budget. If such a contract is malicious and the gas budget is high enough, it can try to call back from the caller --- a re-entrant call. If the caller's implementation is not re-entrant, for example, because it did not update his internal state containing balances information, the attacker can use this vulnerability to drain funds out of the vulnerable contract~\cite{luu2016a,DBLP:conf/ndss/KalraGDS18,Tsankov2018}.
+This vulnerability was used in TheDAO exploit~\cite{securities2017}, essentially causing the Ethereum community to decide to roll back to a previous state using a hard-fork~\cite{mehar2019understanding}. We provide more details about TheDAO exploit in \autoref{sec:5a:related}
 
 \point{\unhandledexceptions~(\vue)}
 Some low-level operations in Solidity such as \lstinline{send}, which is used to send Ether, do not throw an exception on failure, but rather report the status by returning a boolean.
-If this return value is unchecked, the caller continues its execution even if the payment failed, which can easily lead to inconsistencies~\cite{Brent2018,Luu2016a,Tikhomirov2017,DBLP:conf/ndss/KalraGDS18}.
+If this return value is unchecked, the caller continues its execution even if the payment failed, which can easily lead to inconsistencies~\cite{Brent2018,luu2016a,Tikhomirov2017,DBLP:conf/ndss/KalraGDS18}.
 
 \point{\lockedether~(\vle)}
 Ethereum smart contracts can, as any account on Ethereum, receive Ether. However, there as several reasons causing the received funds to get locked permanently into the contract.
@@ -47,7 +47,7 @@ Such an issue can happen not only if the developer forgets to perform critical c
 \subsubsection{Analysis Tools}
 \label{ssec:analysis-tools}
 Smart contracts are generally designed to manipulate and \emph{hold} funds denominated in Ether. This makes them very tempting attack targets, as a successful attack may allow the attacker to directly steal funds from the contract.
-Given the many common vulnerabilities in smart contracts, some of which we described in the previous section, a large number of tools have been developed to find them automatically~\cite{Luu2016a,Tsankov2018,mythril}.
+Given the many common vulnerabilities in smart contracts, some of which we described in the previous section, a large number of tools have been developed to find them automatically~\cite{luu2016a,Tsankov2018,mythril}.
 Most of these tools analyze either the contract source code or its compiled EVM bytecode and look for known security issues, such as reentrancy or transaction order dependency vulnerabilities. We present a summary of these different works in \autoref{fig:prior-results}. The second and third columns respectively present the reported number of contracts analyzed and contracts flagged as vulnerable in each paper. The ``vulnerabilities'' columns show the type of vulnerabilities that each tool can check for. We present these vulnerabilities in \autoref{ssec:vulnerability-types} and give a more detailed description of these tools in \autoref{sec:5a:related}.
 
 \point{Testing}

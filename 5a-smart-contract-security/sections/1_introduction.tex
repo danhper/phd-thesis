@@ -2,13 +2,13 @@
 \label{sec:5a:introduction}
 
 When it comes to vulnerability research, especially as it pertains to software security, it is frequently difficult to estimate what fraction of discovered vulnerabilities are exploited in practice. However, public blockchains, with their immutability, ease of access, and what amounts to a replayable execution log for smart contracts present an excellent opportunity for such an investigation. 
-In this work, we aim to contrast the vulnerabilities reported in smart contracts on the Ethereum~\cite{Buterin2014} blockchain with the actual exploitation of these contracts.
+In this work, we aim to contrast the vulnerabilities reported in smart contracts on the Ethereum~\cite{buterin2014} blockchain with the actual exploitation of these contracts.
 
-We collect the data shared with us by the authors of~\PapersAnalyzed recent papers~\cite{Luu2016a,DBLP:conf/ndss/KalraGDS18,Tsankov2018,Grech2018,Nikolic2018a,Krupp2018} that focus on finding smart contract vulnerabilities. These academic datasets are significantly bigger in scale than reports we can find in the wild and because of the sheer number of affected contracts~---~\VulnerableContracts~---~represent an excellent study subject. 
+We collect the data shared with us by the authors of~\PapersAnalyzed recent papers~\cite{luu2016a,DBLP:conf/ndss/KalraGDS18,Tsankov2018,Grech2018,Nikolic2018a,Krupp2018} that focus on finding smart contract vulnerabilities. These academic datasets are significantly bigger in scale than reports we can find in the wild and because of the sheer number of affected contracts~---~\VulnerableContracts~---~represent an excellent study subject. 
 
 To make our approach more general, we express~\VulnTypes different frequently reported vulnerability classes as Datalog queries computed over relations that represent the state of the Ethereum blockchain. The Datalog-based exploit discovery approach gives more scalability to our process; also, while others have used Datalog for static analysis formulation, we are not aware of it being used to capture the dynamic state of the blockchain over time.
 
-We discover that the amount of smart contract exploitation which occurs in the wild is notably lower than what might be believed, given what is suggested by the sometimes sensational nature of some of the famous cryptocurrency exploits such as TheDAO~\cite{Securities2017} or the Parity wallet~\cite{Breidenbach} bugs.
+We discover that the amount of smart contract exploitation which occurs in the wild is notably lower than what might be believed, given what is suggested by the sometimes sensational nature of some of the famous cryptocurrency exploits such as TheDAO~\cite{securities2017} or the Parity wallet~\cite{Breidenbach} bugs.
 
 \point{Contributions} Our contributions are:\itemsep=0pt
 \begin{itemize}\itemsep=-2pt

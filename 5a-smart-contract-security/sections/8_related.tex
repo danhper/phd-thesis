@@ -1,20 +1,20 @@
 \subsection{Related Work}
 \label{sec:5a:related}
 
-% Some major smart contracts exploits have been observed on Ethereum in recent years~\cite{Securities2017}.
-% These attacks have been analyzed and classified~\cite{Atzei2017} and many tools and techniques have emerged to prevent such attacks~\cite{harz2018towards,Dika2017}.
+% Some major smart contracts exploits have been observed on Ethereum in recent years~\cite{securities2017}.
+% These attacks have been analyzed and classified~\cite{atzei2017} and many tools and techniques have emerged to prevent such attacks~\cite{harz2018towards,Dika2017}.
 % Recent literature has also shown how attacks on Ethereum are evolving with time~\cite{255252}.
 % In this section, we will first provide details about two of the most prominent historic exploits and then present existing work aimed at increasing smart contract security.
 
 % \subsubsection{Motivating Large-scale Exploits}
 % \point{TheDAO exploit}
-% TheDAO exploit~\cite{Securities2017} is one of the most infamous bugs on the Ethereum blockchain. Attackers exploited a reentrancy vulnerability~\cite{Atzei2017} of the contract which allowed for the draining of the contract's funds. The attacker contract could call the function to withdraw funds in a re-entrant manner before its balance on TheDAO was reduced, making it indeed possible to freely drain funds. A total of more than 3.5 million Ether were drained. Given the severity of the attack, the Ethereum community finally agreed on hard forking.
+% TheDAO exploit~\cite{securities2017} is one of the most infamous bugs on the Ethereum blockchain. Attackers exploited a reentrancy vulnerability~\cite{atzei2017} of the contract which allowed for the draining of the contract's funds. The attacker contract could call the function to withdraw funds in a re-entrant manner before its balance on TheDAO was reduced, making it indeed possible to freely drain funds. A total of more than 3.5 million Ether were drained. Given the severity of the attack, the Ethereum community finally agreed on hard forking.
 % %
 % \point{Parity wallet bug}
 % The Parity Wallet bug~\cite{Breidenbach} is another prominent vulnerability on the Ethereum blockchain which caused 280 million USD worth of Ethereum to be frozen on the Parity wallet account. It was due to a very simple vulnerability: a library contract used by the parity wallet was not initialized correctly and could be destructed by anyone. Once the library was destructed, any call to the Parity wallet would then fail, effectively locking all funds.
 
 %\subsection{Other contract vulnerabilities}
-%Recent research have proposed different taxonomies of smart contract vulnerabilities~\cite{Luu2016a,Atzei2017,Nikolic2018a}. Here, we will present a few classes of bugs that enter most of the proposed taxonomies.
+%Recent research have proposed different taxonomies of smart contract vulnerabilities~\cite{luu2016a,atzei2017,Nikolic2018a}. Here, we will present a few classes of bugs that enter most of the proposed taxonomies.
 
 % \subsection{Analysis Tools For Finding Vulnerabilities}
 
@@ -33,7 +33,7 @@ Our tool fits into the second category.
 This is understandable, given how critical it is to avoid vulnerabilities in a deployed contract.
 Most of these tools work by analysing either the bytecode or the high-level code of the contract and checking for known vulnerable patterns in these.
 
-Oyente~\cite{Luu2016a} is one of the first tools which has been developed to analyze smart contracts.
+Oyente~\cite{luu2016a} is one of the first tools which has been developed to analyze smart contracts.
 It uses symbolic execution in combination with the Z3 SMT solver~\cite{de2008z3} to check for the following vulnerabilities: transaction ordering dependency, reentrancy and unhandled exceptions.
 
 ZEUS~\cite{DBLP:conf/ndss/KalraGDS18} is a static analysis tool which works on the Solidity smart contract and not on the bytecode, making it appropriate to assist development efforts rather than to analyze deployed contracts, for which Solidity code is typically not available.
@@ -71,7 +71,7 @@ Although there are some similarities with our tool, which also analyzes traces a
 
 teEther~\cite{Krupp2018} also works at runtime but is different from the previous works presented, as it does not try to protect contracts but rather to actively find an exploit for them. It first analyses the contract bytecode to look for critical execution paths.
 Critical paths are execution paths which may result in lost funds, for example by sending money to an arbitrary address or being destructed by anyone.
-To find these paths, it uses an approach close to Oyente~\cite{Luu2016a}, first using symbolic execution and then the Z3 SMT solver~\cite{de2008z3} to solve path constraints.
+To find these paths, it uses an approach close to Oyente~\cite{luu2016a}, first using symbolic execution and then the Z3 SMT solver~\cite{de2008z3} to solve path constraints.
 
 TXSPECTOR~\cite{255340}, which was published soon after the first version of this section, uses a very similar approach to ours to detect reentrancy, unchecked call and suicidal contracts.
 They also leverage a Datalog approach to detect vulnerabilities but first transform the transaction traces into a flow graph rather than adding facts about traces directly to the Datalog database.
