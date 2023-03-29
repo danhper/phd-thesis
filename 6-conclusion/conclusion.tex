@@ -29,7 +29,10 @@ Through this analysis, we gained insights into utilization patterns of transacti
 \point{Application layer}
 At the application layer, we focused on the DeFi ecosystem, and first formalised the concepts of technical and economic security.
 
-We then analysed the technical security of DeFi protocols and found that the majority of the exploits found through techniques such as program analysis were not exploited in practice, either because of the lack of feasibility of the exploit or because of the lack of economic incentive to do so.
+We then analysed the technical security of smart contracts deployed on Ethereum.
+We analysed 20 million transactions interacting with contracts flagged vulnerable by program analysis tools and found that at most \ExploitedEther ETH (\ExploitedEtherUSD USD) of the \EtherClaimedVulnerable ETH (\EtherClaimedVulnerableUSD USD) potentially at risk was exploited, which represents a mere 0.27\%.
+We investigated these contracts in more depth and found that most were not exploited in practice because of the lack of feasibility of the exploit or because of the lack of economic incentive to do so.
 
-Finally, we studied the economic security of DeFi lending protocols and found that the efficiency of the liquidations has increased over time.
-We also found that depegging events of stablecoin have caused very large amounts of liquidations because of the over-confidence in their stability.
+Finally, we studied the economic security of DeFi lending protocols and found that users often have very risky positions, with variations as small as 3\% in an asset's price being able to turn over 10 million USD worth of collateral liquidatable.
+We also found that the efficiency of the liquidations has increased over time and that at the time of the analysis, over 70\% of the liquidations were instant.
+Lastly, we also found that depegging events of stablecoin have caused very large amounts of liquidations because of the over-confidence in their stability.

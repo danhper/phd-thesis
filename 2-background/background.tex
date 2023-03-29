@@ -1,27 +1,27 @@
-\chapter{Background Theory}
+\chapter{Background}
 \label{ch:background}
 
 In this chapter, we will provide background about blockchains, smart contracts, and their applications that will be useful for understanding the rest of the thesis.
 More specific background information, such as some more details about the Ethereum platform, will be provided in the relevant chapters.
 
 \section{Blockchain fundamentals}
-In its essence, a blockchain is an append-only, decentralized database that is replicated across multiple computer nodes. 
-Most blockchain systems record activities in the form of ``transactions''. 
-A transaction typically contains information about its sender, its receiver, as well as the action taken, such as the transfer of an asset. 
-Newly created transactions are broadcast across the network where they get validated by the participants. 
+In its essence, a blockchain is an append-only, decentralized database that is replicated across multiple computer nodes.
+Most blockchain systems record activities in the form of ``transactions''.
+A transaction typically contains information about its sender, its receiver, as well as the action taken, such as the transfer of an asset.
+Newly created transactions are broadcast across the network where they get validated by the participants.
 Valid transactions are grouped into data structures called \textit{blocks}, which are appended to the blockchain by referencing the most recent block.
 Blocks are immutable, and state changes in the blockchain require new blocks to be produced.
 
-Network latency and asynchrony inherent in the distributed nature of blockchains lead to various challenges. 
-In particular, a blockchain must be able to reach a consensus about the current state when the majority of participating nodes behave honestly. 
-In order to resolve the disagreement, a consensus protocol prescribing a set of rules is applied as part of the validation process. 
+Network latency and asynchrony inherent in the distributed nature of blockchains lead to various challenges.
+In particular, a blockchain must be able to reach a consensus about the current state when the majority of participating nodes behave honestly.
+In order to resolve the disagreement, a consensus protocol prescribing a set of rules is applied as part of the validation process.
 
 To ensure consistency, there needs to be:
 
 \begin{enumerate}\itemsep=-1pt
-\item a set of rules to validate transactions \label{req1};
-\item a set of rules to validate blocks \label{req2};
-\item a mechanism to determine which chain of blocks represents the current state \label{req3}
+    \item a set of rules to validate transactions \label{req1};
+    \item a set of rules to validate blocks \label{req2};
+    \item a mechanism to determine which chain of blocks represents the current state \label{req3}
 \end{enumerate}
 
 %
@@ -90,7 +90,7 @@ Smart contracts themselves have the capability to \emph{call} another account pr
 
 \section{Applications}
 
-\point{DAOs} 
+\point{DAOs}
 One of the earliest applications of distributed ledger technology was the creation of Decentralized Autonomous Organizations (DAOs).
 A DAO is a decentralized organization that uses a blockchain to facilitate the management of its funds and decision-making process.
 It often uses at least a multi-signature wallet to manage its funds, which means that several members of the organisation are required to approve any transfer of funds.

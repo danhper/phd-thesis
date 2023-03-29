@@ -3,7 +3,7 @@
 
 Existing literature on transactional patterns and graphs on blockchains has been largely focused on Bitcoin.
 
-Ron et al.~\cite{10.1007/978-3-642-39884-1_2} are among the first to analyze transaction graphs of Bitcoin. Using on-chain transaction data with more than 3 million different addresses, the authors find that Mt.~Gox was at the time by far the most used exchange, covering over~80\% of the exchange-related traffic. 
+Ron et al.~\cite{10.1007/978-3-642-39884-1_2} are among the first to analyze transaction graphs of Bitcoin. Using on-chain transaction data with more than 3 million different addresses, the authors find that Mt.~Gox was at the time by far the most used exchange, covering over~80\% of the exchange-related traffic.
 
 Kondor et al.~\cite{10.1371/journal.pone.0086197} focus on the wealth distribution in Bitcoin and provided an overview of the evolution of various metrics. They find that the Gini coefficient of the balance distribution has increased quite rapidly and show that the wealth distribution in Bitcoin is converging to a power law.
 
@@ -13,10 +13,10 @@ Ranshous et al.~\cite{10.1007/978-3-319-70278-0_16} extend previous work by usin
 
 Di Francesco Maesa et al.~\cite{10.1007/978-3-319-50901-3_59} analyze Bitcoin user graphs to detect unusual behaviour. The authors find that discrepancies such as outliers in the in-degree distribution of nodes are often caused by artificial users' behaviour. They then introduce the notion of pseudo-spam transactions, which consist of transactions with a single input and multiple outputs where only one has a value higher than a Satoshi, the smallest amount that can be sent in a transaction. They find that approximately~0.5\% of the total number of multi-input multi-output transactions followed such a pattern and that these were often chained.
 
-Several other works also exist about the subject and very often try to leverage some machine learning techniques either to cluster or classify Bitcoin addresses. Monamo et al.~\cite{7802939} attempted to detect anomalies on Bitcoin and show that their approach can partly cluster some fraudulent activity on the network. Toyoda et al.~\cite{8254420} focus on classifying Ponzi schemes and related high-yield investment programs by applying supervised learning using features related to transaction patterns, such as the number of transactions an address is involved in, or its ratio of pay-in to pay-out. 
+Several other works also exist about the subject and very often try to leverage some machine learning techniques either to cluster or classify Bitcoin addresses. Monamo et al.~\cite{7802939} attempted to detect anomalies on Bitcoin and show that their approach can partly cluster some fraudulent activity on the network. Toyoda et al.~\cite{8254420} focus on classifying Ponzi schemes and related high-yield investment programs by applying supervised learning using features related to transaction patterns, such as the number of transactions an address is involved in, or its ratio of pay-in to pay-out.
 
 More recently, a study of EOSIO decentralized applications (DApps) has been published \cite{huang2020characterizing}.
 The authors analyze the EOSIO blockchain from another angle: they look at the DApps activities and attempt to detect bots and fraudulent activities.
 The authors identified thousands of bot accounts as well as real-world attacks, 80 of which have been confirmed by DApp teams.
 
-To the best of our knowledge, this is the first academic work to empirically analyze the transactions of Tezos and XRPL and the first to compare transactional throughput on these platforms.
+To the best of our knowledge, this was the first academic work to empirically analyze the transactions of Tezos and XRPL and the first to compare transactional throughput on these platforms.

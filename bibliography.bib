@@ -134,6 +134,7 @@
   year      = {2014}
 }
 
+
 @inproceedings{10.1145/3419614.3423254,
   abstract  = {We coin the term Protocols for Loanable Funds (PLFs) to refer to protocols which establish distributed ledger-based markets for loanable funds. PLFs are emerging as one of the main applications within Decentralized Finance (DeFi), and use smart contract code to facilitate the intermediation of loanable funds. In doing so, these protocols allow agents to borrow and save programmatically. Within these protocols, interest rate mechanisms seek to equilibrate the supply and demand for funds. In this paper, we review the methodologies used to set interest rates on three prominent DeFi PLFs, namely Compound, Aave and dYdX. We provide an empirical examination of how these interest rate rules have behaved since their inception in response to differing degrees of liquidity. We then investigate the market efficiency and inter-connectedness between multiple protocols, examining first whether Uncovered Interest Parity holds within a particular protocol and second whether the interest rates for a particular token market show dependence across protocols, developing a Vector Error Correction Model for the dynamics.},
   address   = {New York, NY, USA},
@@ -663,20 +664,6 @@
   title = {{EIP 779: Hardfork Meta: DAO Fork}},
   url   = {https://eips.ethereum.org/EIPS/eip-779},
   year  = {2017}
-}
-
-@inproceedings{dblp:conf/ndss/0002l20,
-  author    = {Daniel P{\'{e}}rez and Benjamin Livshits},
-  bibsource = {dblp computer science bibliography, https://dblp.org},
-  biburl    = {https://dblp.org/rec/conf/ndss/0002L20.bib},
-  booktitle = {27th Annual Network and Distributed System Security
-               Symposium, {NDSS} 2020, San Diego, California, USA,
-               February 23-26, 2020},
-  publisher = {The Internet Society},
-  timestamp = {Tue, 21 Jul 2020 16:10:07 +0200},
-  title     = {Broken Metre: Attacking Resource Metering in {EVM}},
-  url       = {https://www.ndss-symposium.org/ndss-paper/broken-metre-attacking-resource-metering-in-evm/},
-  year      = {2020}
 }
 
 @inproceedings{DBLP:conf/ndss/KalraGDS18,
@@ -1525,16 +1512,22 @@
   year      = {2020}
 }
 
+
 @inproceedings{perez2020f,
-  address   = {Reston, VA},
-  author    = {Perez, Daniel and Livshits, Benjamin},
-  booktitle = {Network and Distributed System Security Symposium},
-  doi       = {10.14722/ndss.2020.24267},
-  isbn      = {1-891562-61-4},
-  publisher = {Internet Society},
-  title     = {{Broken Metre: Attacking Resource Metering in EVM}},
-  year      = {2020}
+  author    = {Daniel Perez and
+               Benjamin Livshits},
+  title     = {Broken Metre: Attacking Resource Metering in {EVM}},
+  booktitle = {27th Annual Network and Distributed System Security Symposium, {NDSS}
+               2020, San Diego, California, USA, February 23-26, 2020},
+  publisher = {The Internet Society},
+  year      = {2020},
+  url       = {https://www.ndss-symposium.org/ndss-paper/broken-metre-attacking-resource-metering-in-evm/},
+  timestamp = {Tue, 02 Mar 2021 16:03:21 +0100},
+  biburl    = {https://dblp.org/rec/conf/ndss/0002L20.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
 }
+
+
 
 @inproceedings{perez2021l,
   abstract  = {The trustless nature of permissionless blockchains renders overcollateralization a key safety component relied upon by decentralized finance (DeFi) protocols. Nonetheless, factors such as price volatility may undermine this mechanism. In order to protect protocols from suffering losses, undercollateralized positions can be liquidated. In this paper, we present the first in-depth empirical analysis of liquidations on protocols for loanable funds (PLFs). We examine Compound, one of the most widely used PLFs, for a period starting from its conception to September 2020. We analyze participants' behavior and risk-appetite in particular, to elucidate recent developments in the dynamics of the protocol. Furthermore, we assess how this has changed with a modification in Compound's incentive structure and show that variations of only 3{\%} in an asset's dollar price can result in over 10 m USD becoming liquidable. To further understand the implications of this, we investigate the efficiency of liquidators. We find that liquidators' efficiency has improved significantly over time, with currently over 70{\%} of liquidable positions being immediately liquidated. Lastly, we provide a discussion on how a false sense of security fostered by a misconception of the stability of non-custodial stablecoins, increases the overall liquidation risk faced by Compound participants.},
@@ -1570,7 +1563,7 @@
   booktitle    = {Mathematical Research for Blockchain Economy: 3rd International Conference MARBLE 2022, Vilamoura, Portugal},
   organization = {Springer},
   pages        = {109--125},
-  title        = {Dissimilar redundancy in defi},
+  title        = {Dissimilar redundancy in DeFi},
   year         = {2023}
 }
 
@@ -1644,10 +1637,17 @@
 }
 
 @online{solana,
-  title = {Web3 infrastructure for everyone},
+  title = {go-ethereum: Hardware requirements},
   url   = {https://solana.com/},
+  year  = {2022}
+}
+
+@online{ethereum-docs-hardware-requirement,
+  title = {Web3 infrastructure for everyone},
+  url   = {https://geth.ethereum.org/docs/getting-started/hardware-requirements},
   year  = {2023}
 }
+
 
 @misc{solidified,
   howpublished = {\url{https://solidified.io/faq}},
@@ -2097,7 +2097,8 @@
 @article{xu2023auto,
   author  = {Xu, Jiahua and Perez, Daniel and Feng, Yebo and Livshits, Benjamin},
   journal = {arXiv preprint arXiv:2302.09551},
-  title   = {Auto. gov: Learning-based On-chain Governance for Decentralized Finance (DeFi)},
+  title   = {Auto-gov: Learning-based On-chain Governance for Decentralized Finance (DeFi)},
+  url     = {https://arxiv.org/abs/2302.09551},
   year    = {2023}
 }
 

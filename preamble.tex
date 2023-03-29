@@ -75,7 +75,7 @@
 
 % Large () brackets on different lines of an eqnarray environment
 \newcommand{\Leftbrace}[1]{\left(\raisebox{0mm}[#1][#1]{}\right.}
-\newcommand{\Rightbrace}[1]{\left.\raisebox{0mm}[#1][#1]{}\right)}
+    \newcommand{\Rightbrace}[1]{\left.\raisebox{0mm}[#1][#1]{}\right)}
 
 % Funky symobols for footnotes
 \newcommand{\symbolfootnote}{\renewcommand{\thefootnote}{\fnsymbol{footnote}}}
@@ -99,43 +99,46 @@
 
 \def\coop{\mbox{\large $\rhd\!\!\!\lhd$}}
 \newcommand{\sync}[1]{\raisebox{-1.0ex}{$\;\stackrel{\coop}{\scriptscriptstyle
-#1}\,$}}
+                #1}\,$}}
 
 \newtheorem{definition}{Definition}[chapter]
 \newtheorem{theorem}{Theorem}[chapter]
 
 \newcommand{\Figref}[1]{Figure~\ref{#1}}
 \newcommand{\fig}[3]{
- \begin{figure}[!ht]
- \begin{center}
- \scalebox{#3}{\includegraphics{figs/#1.ps}}
- \vspace{-0.1in}
- \caption[ ]{\label{#1} #2}
- \end{center}
- \end{figure}
+    \begin{figure}[!ht]
+        \begin{center}
+            \scalebox{#3}{\includegraphics{figs/#1.ps}}
+            \vspace{-0.1in}
+            \caption[ ]{\label{#1} #2}
+        \end{center}
+    \end{figure}
 }
 
 \newcommand{\figtwo}[8]{
- \begin{figure}
- \parbox[b]{#4 \textwidth}{
- \begin{center}
- \scalebox{#3}{\includegraphics{figs/#1.ps}}
- \vspace{-0.1in}
- \caption{\label{#1}#2}
- \end{center}
- }
- \hfill
- \parbox[b]{#8 \textwidth}{
- \begin{center}
- \scalebox{#7}{\includegraphics{figs/#5.ps}}
- \vspace{-0.1in}
- \caption{\label{#5}#6}
- \end{center}
- }
- \end{figure}
+    \begin{figure}
+        \parbox[b]{#4 \textwidth}{
+            \begin{center}
+                \scalebox{#3}{\includegraphics{figs/#1.ps}}
+                \vspace{-0.1in}
+                \caption{\label{#1}#2}
+            \end{center}
+        }
+        \hfill
+        \parbox[b]{#8 \textwidth}{
+            \begin{center}
+                \scalebox{#7}{\includegraphics{figs/#5.ps}}
+                \vspace{-0.1in}
+                \caption{\label{#5}#6}
+            \end{center}
+        }
+    \end{figure}
 }
 
 \emergencystretch=1em
 
 
 \newcommand{\algorithmautorefname}{Algorithm}
+\def\chapterautorefname{Chapter}
+\def\sectionautorefname{Section}
+\def\subsectionautorefname{Section}

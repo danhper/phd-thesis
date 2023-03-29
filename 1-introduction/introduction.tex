@@ -29,7 +29,8 @@ In that regard, it is important not only to study and understand the different a
 In this thesis, we aim to contribute to improving the security of blockchain systems.
 On a high level, the goal is to improve the understanding of the current security landscape of blockchain systems and to propose improvements that can be deployed in practice and make blockchain systems more secure.
 More particularly, we focus on three main layers of the blockchain stack: the execution layer, the transactional layer, and the application layer.
-At each layer, we keep the same high-level goals of improving understanding and proposing improvements.
+At each layer, we keep the same high-level goals and start by analysing and documenting the security landscape.
+Then, we propose and implement tools that can be used in practice to make blockchain systems more secure.
 
 \section{Contributions}
 
@@ -45,13 +46,20 @@ Based on these observations, we introduce a new type of DoS attack called the \e
 
 Our research indicates that such an attack could be financially attractive not only for Ethereum competitors and speculators but also for Ethereum miners. We responsibly disclose this vulnerability to the Ethereum Foundation and receive a bug bounty reward of 5,000 USD. Finally, we discuss short-term and potential long-term solutions to defend against these attacks.
 
+For this chapter, we have implemented an extension to the aleth Ethereum client\footnote{\url{https://github.com/danhper/aleth}} that allows us to precisely measure gas usage, as well as generate a Resource Exhaustion Attack.
+
 \subsection{Transactional Layer}
 In the next chapter, we focus on the transactional layer, and in particular, the transaction throughput of more blockchains with higher scalability.
 We analyze network traffic data of three high-scalability blockchains - EOSIO, Tezos, and XRP Ledger (XRPL) - over seven months.
 Our analysis reveals that a small fraction of transactions is used for value transfer purposes.
-Specifically, 96\% of transactions on EOSIO were triggered by airdrops of a currently valueless token, 76\% of throughput on Tezos was used for maintaining consensus, and over 94\% of transactions on XRPL carried no economic value. We also identify a persisting airdrop on EOSIO as a DoS attack and detect a two-month-long spam attack on XRPL.
+Specifically, 96\% of transactions on EOSIO were triggered by airdrops of a currently valueless token, 76\% of throughput on Tezos was used for maintaining consensus, and over 94\% of transactions on XRPL carried no economic value.
+This shows that a lot of the throughput of these blockchains is, in one way or another, artificial and does not represent actual adoption.
+We also identify a persisting airdrop on EOSIO as a DoS attack and detect a two-month-long spam attack on XRPL.
 We explore the different designs of the three blockchains and how they shape user behaviour.
 Through this analysis, we shed light on the utilization patterns of transactional throughput and provide insights into how the designs of these blockchains can affect user behaviour.
+Since this analysis was first concluded, other metrics have come up to help confirm the findings, such as the total value locked (TVL) in protocols running on Tezos or EOSIO being as low as respectively 60 million and 120 million at the time of writing, which is a major contrast to the 30 billion locked on Ethereum.
+
+For this chapter, we have implemented a tool that allows us to fetch and analyse transactions from the three blockchains\footnote{\url{https://github.com/danhper/blockchain-analyzer}}.
 
 \subsection{Application Layer}
 At the application layer, we focus on one of the most popular applications on the blockchain: Decentralised Finance (DeFi).
@@ -71,6 +79,8 @@ The findings indicate that despite the large amounts at stake, only a small perc
 We explain these results by demonstrating that the funds are highly concentrated in a small number of contracts that are not exploitable in practice.
 This suggests that while identifying and mitigating vulnerabilities in smart contracts is essential, it is equally important to focus on understanding the practical implications of these vulnerabilities.
 
+For this part of the chapter, we have implemented a tool that allows us to detect the exploitation of vulnerabilities in the Ethereum blockchain\footnote{\url{https://github.com/danhper/evm-analyzer}}.
+
 \subsubsection{Economic security}
 In the economic security section, we focus on one of the most common economic security mechanisms in DeFi: liquidations.
 
@@ -82,6 +92,8 @@ Lastly, we discuss how a misconception of the stability of non-custodial stablec
 
 The findings of this study highlight the need for robust liquidation mechanisms to protect against potential losses and provide insights into the behaviour of PLF participants.
 
+For this part of the chapter, we have implemented a tool that allows us to simulate the Compound protocol and to analyse users' behaviour of Compound\footnote{\url{https://github.com/merofinance/analyzer}}.
+
 \section{Statement of Originality}
 I hereby declare that this thesis, entitled ``\thesistitle'', represents my own original work, as well as joint work with co-authors of the included publications.
 No work included in this thesis has been submitted for any other degree or qualification, neither by myself nor my co-authors.
@@ -92,13 +104,14 @@ This thesis is the product of my independent research and represents a significa
 
 The majority of the research presented in this thesis relies on the following peer-reviewed publications.
 
-\begin{enumerate}
-    \item \fullcite{perez2020f}
-    \item \fullcite{perez2020c}
+\point{Chapter 3} \fullcite{perez2020f}
+\point{Chapter 4} \fullcite{perez2020c}
+\point{Chapter 5}
+\begin{itemize}
     \item \fullcite{werner2021} to be included In: \emph{Proceedings of the 4th ACM Conference on Advances in Financial Technologies.} AFT'22
     \item \fullcite{perez2021s}
     \item \fullcite{perez2021l}
-\end{enumerate}
+\end{itemize}
 
 During the course of this PhD, we also contributed to the following publications.
 
