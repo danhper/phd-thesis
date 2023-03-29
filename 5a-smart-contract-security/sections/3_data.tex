@@ -5,15 +5,15 @@
   \setlength{\tabcolsep}{10pt}
   \begin{tabular}{lrrr}
     \toprule
-    \bf \multirow{2}{*}{Name} & \bf Contracts & \bf Vulnerabilities & \bf Ether at stake\\
-                              & \bf analyzed & \bf found & {\small at time of report} \\
+    \bf \multirow{2}{*}{Name} & \bf Contracts & \bf Vulnerabilities & \bf Ether at stake         \\
+                              & \bf analyzed  & \bf found           & {\small at time of report} \\
     \midrule
-    Oyente & 19,366 & 7,527 & 1,287,032\\
-    Zeus & 1,120 & 861 & 671,188\\
-    Maian & NA & 2,691 & 15.59 \\
-    Securify & 29,694 & 9,185 & 724,306\\
-    MadMax & 91,800 & 6,039 & 1,114,958\\
-    teEther & 784,344 & 1,532 & 1.55\\
+    Oyente                    & 19,366        & 7,527               & 1,287,032                  \\
+    Zeus                      & 1,120         & 861                 & 671,188                    \\
+    Maian                     & NA            & 2,691               & 15.59                      \\
+    Securify                  & 29,694        & 9,185               & 724,306                    \\
+    MadMax                    & 91,800        & 6,039               & 1,114,958                  \\
+    teEther                   & 784,344       & 1,532               & 1.55                       \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -41,7 +41,7 @@ We believe the two main results for this are: authors improving their tools afte
     \label{fig:vulnerable-overlap}
   \end{subfigure}
   \caption[Overlap in the contracts analysed and flagged by examined tools]{Histograms that show the overlap in the contracts analysed and flagged by examined tools.}
-\label{fig:hist-per-tool}
+  \label{fig:hist-per-tool}
 \end{figure}
 
 \begin{table}[tb]
@@ -51,11 +51,11 @@ We believe the two main results for this are: authors improving their tools afte
   \label{fig:reentrancy-agreement}
   \begin{tabular}{lrrrr}
     \toprule
-    \bf Tools & \bf Total & \bf Agreed & \bf Disagreed & \bf \% agreement\\
+    \bf Tools       & \bf Total & \bf Agreed & \bf Disagreed & \bf \% agreement \\
     \midrule
-    Oyente/Securify & 774 & 185 & 589 & 23.9\%\\
-    Oyente/Zeus & 104 & 3 & 101 & 2.88\%\\
-    Zeus/Securify & 108 & 2 & 106 & 1.85\%\\
+    Oyente/Securify & 774       & 185        & 589           & 23.9\%           \\
+    Oyente/Zeus     & 104       & 3          & 101           & 2.88\%           \\
+    Zeus/Securify   & 108       & 2          & 106           & 1.85\%           \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -68,20 +68,20 @@ We believe the two main results for this are: authors improving their tools afte
   \label{fig:vuln-mapping}
   \begin{tabular}{lllllll}
     \toprule
-    & \bf Oyente & \bf ZEUS & \bf Securify & \bf MadMax & \bf Maian & \bf teEther\\
+             & \bf Oyente  & \bf ZEUS            & \bf Securify           & \bf MadMax        & \bf Maian & \bf teEther \\
     \midrule
-    \bf \vre & reentrancy & reentrancy & no writes after call & --- & --- & ---\\
+    \bf \vre & reentrancy  & reentrancy          & no writes after call   & ---               & ---       & ---         \\
     \hline
-    \bf \vue & callstack & unchecked send & handled exceptions & --- & --- & ---\\
+    \bf \vue & callstack   & unchecked send      & handled exceptions     & ---               & ---       & ---         \\
     \hline
-    \bf \vto & concurrency & tx order dependency & tx ordering dependency & --- & --- & ---\\
+    \bf \vto & concurrency & tx order dependency & tx ordering dependency & ---               & ---       & ---         \\
     \hline
-    \bf \vle & --- & failed send & Ether liquidity & unbounded op & greedy & ---\\
-    & & & & wallet griefing\\
+    \bf \vle & ---         & failed send         & Ether liquidity        & unbounded op      & greedy    & ---         \\
+             &             &                     &                        & wallet griefing                             \\
     \hline
-    \bf \vio & --- & integer overflow & --- & integer overflows & --- & --- \\
+    \bf \vio & ---         & integer overflow    & ---                    & integer overflows & ---       & ---         \\
     \hline
-    \bf \vua & --- & integer overflow & --- & integer overflows & prodigal & exploitable\\
+    \bf \vua & ---         & integer overflow    & ---                    & integer overflows & prodigal  & exploitable \\
     \bottomrule
   \end{tabular}
 \end{table}

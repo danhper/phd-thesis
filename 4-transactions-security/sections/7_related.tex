@@ -1,6 +1,7 @@
 \section{Related Work}
 \label{sec:4:related}
 
+\subsection{Previous work}
 Existing literature on transactional patterns and graphs on blockchains has been largely focused on Bitcoin.
 
 Ron et al.~\cite{10.1007/978-3-642-39884-1_2} are among the first to analyze transaction graphs of Bitcoin. Using on-chain transaction data with more than 3 million different addresses, the authors find that Mt.~Gox was at the time by far the most used exchange, covering over~80\% of the exchange-related traffic.
@@ -20,3 +21,14 @@ The authors analyze the EOSIO blockchain from another angle: they look at the DA
 The authors identified thousands of bot accounts as well as real-world attacks, 80 of which have been confirmed by DApp teams.
 
 To the best of our knowledge, this was the first academic work to empirically analyze the transactions of Tezos and XRPL and the first to compare transactional throughput on these platforms.
+
+\subsection{Follow-up work}
+More research using similar methods to the one we present in this paper, or using similar datasets, has been published since our work has been published.
+We highlight a few of these here.
+
+He et al.~\cite{He2021UnderstandingTE} perform a similar analysis to ours but focus on Bitcoin, Ethereum, and EOSIO blockchains.
+The authors analyse billions of transaction records collected from these blockchains over 10 years.
+They show that although the overall blockchain ecosystem shows promising growth over the last decade, a number of worrying ``outliers'', such as attacks or spam, exist that have disrupted its evolution.
+
+In another piece of work, He et al.~\cite{He2022ASO} dig deeper into the EOSIO ecosystem.
+The authors collected all occurred attack events against EOSIO, and systematically studied their root causes, i.e., vulnerabilities lurked in all relying components for EOSIO, as well as the corresponding attacks and mitigations.

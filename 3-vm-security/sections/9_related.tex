@@ -17,7 +17,7 @@ MadMax~\cite{Grech2018} is a static analysis tool to find gas-focused vulnerabil
 \subsubsection*{Gas Estimation}
 Marescotti et al.~\cite{10.1007/978-3-030-03427-6_33} propose two algorithms to compute the upper-bound gas consumption of smart contracts. It introduces a ``gas consumption path'' to encode the gas consumption of a program in its program path. It uses an SMT solver to find an environment resulting in a given path and computes its gas consumption. However, this work is not implemented with actual EVM code and is therefore not evaluated on real-world contracts.
 
-Gastap~\cite{DBLP:journals/corr/abs-1811-10403} is a static analysis tool which allows to compute sound upper bounds for smart contracts. 
+Gastap~\cite{DBLP:journals/corr/abs-1811-10403} is a static analysis tool which allows to compute sound upper bounds for smart contracts.
 This ensures that if the gas limit given to the contract is higher than the computed upper bound, the contract is assured to terminate without out-of-gas exception.
 It transforms the EVM bytecode and models it in terms of equations representing the gas consumption of each instructions.
 It then solves these equations using the equation solver PUBS~\cite{10.1007/978-3-540-69166-2_15}.
@@ -28,3 +28,13 @@ Gastap can compute a gas upper bound on almost all real-world contracts it is ev
 Zheng et al.~\cite{8449244} propose a performance analysis of several blockchain systems which leverage smart contracts. Although the analysis goes beyond smart contracts metering, with metrics such as network-related performance, it includes an analysis of smart contracts metering at the virtual machine level. Notably, it shows that some instructions, such as \lstinline{DIV} and \lstinline{SDIV}, consume the same amount of gas while their consumption of CPU resources is vastly different.
 
 Chen et al.~\cite{Chen2017Metering} propose an alternative gas cost mechanism for Ethereum. The gas cost mechanism is not meant to replace completely the current one, but rather to extend it in order to prevent DoS attacks caused by under-priced EVM instructions. The authors analyse the average number of execution of a single instruction in a contract, and model a gas cost mechanism to punish contracts which excessively execute a particular instruction. This gas mechanism allows normal contracts to almost not be affected by the price changes while mitigating spam attacks which have been seen on the Ethereum blockchain~\cite{transaction-spam-attack}.
+
+\subsection{Follow-up work}
+The work we presented in this chapter has inspired some further research in the area of smart contract metering.
+We will present some of the work that has been done in relation to it.
+
+In a study from Khan et al.~\cite{Khan2021GasCA}, 5,000 Solidity-based smart contract transactions were analysed to identify patterns that affect gas consumption.
+The researchers performed statistical analyses, including correlation and regression, to investigate the relationship between Solidity parameters, opcodes, and gas usage.
+They pinpointed factors that contribute to increases or decreases in gas consumption, with their regression analysis revealing that 87.8\% of the variability in gas consumption is attributed to the examined parameters.
+
+The research conducted by Li et al.~\cite{10.1145/3460120.3485369} uncovers vulnerabilities in transaction handling across all known Ethereum clients, such as Geth. They exploit these flaws to design a series of low-cost denial-of-service attacks called DETER, which can disable a remote Ethereum node's txpool and disrupt critical downstream services, including mining, transaction propagation, and gas stations. DETER attacks are characterized by minimal or zero Ether cost and can potentially cause widespread disruption to the Ethereum network by targeting centralized services like mining pools and transaction relay services.

@@ -20,7 +20,7 @@
 
 % \subsubsection{Analyzing and Verifying Smart Contracts}
 % \label{ssec:related-analysis-tools}
-
+\subsubsection{Previous work}
 There have been a lot of efforts in order to prevent exploits and to make smart contracts more secure in general.
 We will here present some of the tools and techniques which have been presented in the literature and, when relevant, describe how they compare to our work.
 
@@ -73,10 +73,15 @@ teEther~\cite{Krupp2018} also works at runtime but is different from the previou
 Critical paths are execution paths which may result in lost funds, for example by sending money to an arbitrary address or being destructed by anyone.
 To find these paths, it uses an approach close to Oyente~\cite{luu2016a}, first using symbolic execution and then the Z3 SMT solver~\cite{de2008z3} to solve path constraints.
 
-TXSPECTOR~\cite{255340}, which was published soon after the first version of this section, uses a very similar approach to ours to detect reentrancy, unchecked call and suicidal contracts.
-They also leverage a Datalog approach to detect vulnerabilities but first transform the transaction traces into a flow graph rather than adding facts about traces directly to the Datalog database.
-While this does add expressiveness, it makes the analysis significantly more complex, resulting in some analysis timing out on some transactions. Therefore, we believe that their approach could be complementary to ours and used to eliminate potential false positives of our approach.
-
 \point{Summary} Static analysis tools are typically designed to detect \emph{vulnerable} contracts, while dynamic analysis tools are designed to detect \emph{exploitable} contracts. The only exception is Sereum, which detects contracts \emph{exploited} using reentrancy.
 Our work is, to the best of our knowledge, the first attempt to detect contracts \emph{exploited} using a wide range of vulnerabilities.
 This is mostly orthogonal with other works and can support analysis tool development efforts by helping to understand what type of exploitation is happening in the wild.
+
+\subsubsection{Follow-up work}
+More related work has been published since the submission of the paper this part of the chapter is based on.
+We present some of these here.
+
+TXSPECTOR~\cite{255340}, which was published soon after the first version of this section, uses a very similar approach to ours to detect reentrancy, unchecked call and suicidal contracts.
+They also leverage a Datalog approach to detect vulnerabilities but first transform the transaction traces into a flow graph rather than adding facts about traces directly to the Datalog database.
+While this does add expressiveness, it makes the analysis significantly more complex, resulting in some analysis timing out on some transactions.
+Therefore, we believe that their approach could be complementary to ours and used to eliminate potential false positives of our approach.
