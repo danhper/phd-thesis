@@ -9,7 +9,7 @@ It is also used to incentivise miners to process transactions by rewarding them 
 
 \point{Gas cost}
 In the EVM, each transaction has a cost which is computed and expressed as gas.
-The cost is split into two parts, a fixed \textit{base cost} of $21,000$ gas, and a variable \emph{execution cost} of the smart contract. 
+The cost is split into two parts, a fixed \textit{base cost} of $21,000$ gas, and a variable \emph{execution cost} of the smart contract.
 Each instruction has a fixed gas cost which has been set by the designers of the EVM~\cite{wood2014ethereum}, who classify the instructions into multiple tiers of gas cost: zero Tier (0 gas), base tier (2 gas), very low tier (3 gas), low tier (5 gas), high tier (10 gas) and special tier where the cost needs more complex rules.
 %
 \begin{lstlisting}[language=esm,caption=Example gas cost of an EVM program,float=tp,floatplacement=tbp,label=list:example-gas-cost,
@@ -29,7 +29,7 @@ The arguments of \op{PUSH1} do not consume any extra gas.
 The \op{MUL} instruction is in the Low Tier and hence costs 5 gas. Finally, the \op{SSTORE} will store the result of~$2\times3$ at location 5 in the storage.
 \op{SSTORE} is in the Special Tier and has slightly more complex pricing rules.
 Assuming the location in the storage was previously~0, the instruction allocates storage and will cost $20,000$ gas.
-Therefore, this program will cost a total of $20,014$ gas to execute. 
+Therefore, this program will cost a total of $20,014$ gas to execute.
 Given the current pricing for storage, the cost of the program is largely dominated by the storage operation.
 
 It is important to note that, as the transaction has a base cost of~21,000 gas, it will cost a total of~$21\text{,}000 + 20\text{,}014 = 41\text{,}014$ gas to execute the above transaction.
@@ -60,42 +60,42 @@ The transaction fee is non-refundable: even if the transaction fails, it will be
   \label{tab:gas-fee}
   \begin{tabular}{lrr}
     \toprule
-     & \multicolumn{2}{c}{Gas price}\\
-     & Low & High\\
-    Transaction type & (1Gwei) & (80Gwei)\\
+                             & \multicolumn{2}{c}{Gas price}                                    \\
+                             & Low                                   & High                     \\
+    Transaction type         & (1Gwei)                               & (80Gwei)                 \\
     \midrule
-    Basic (21k gas) & \$\fpeval{round(\ToUSD{21 / 1e6}, 5)} & \$\ToUSD{80 * 21 / 1e6}\\
-    Gas intensive (500k gas) & \$\ToUSD{500 / 1e6} & \$\ToUSD{80 * 500 / 1e6}\\
+    Basic (21k gas)          & \$\fpeval{round(\ToUSD{21 / 1e6}, 5)} & \$\ToUSD{80 * 21 / 1e6}  \\
+    Gas intensive (500k gas) & \$\ToUSD{500 / 1e6}                   & \$\ToUSD{80 * 500 / 1e6} \\
     \bottomrule
   \end{tabular}
 \end{table}
 
 \begin{table}[tb]
-\setlength{\tabcolsep}{3pt}
-\centering
-\caption[Median gas price, gas used and transaction fee]{Median gas price, gas used and transaction fee from block 8,652,096 (Sep-09-2019) to block 9,286,594 (Jan-15-2020).}
-\label{tab:empirical-gas-fee}
-\begin{tabular}{lr}
+  \setlength{\tabcolsep}{3pt}
+  \centering
+  \caption[Median gas price, gas used and transaction fee]{Median gas price, gas used and transaction fee from block 8,652,096 (Sep-09-2019) to block 9,286,594 (Jan-15-2020).}
+  \label{tab:empirical-gas-fee}
+  \begin{tabular}{lr}
     \toprule
-    Number of blocks: & 613,475\\
-    Median gas price: & 9.1 Gwei\\
-    Median gas used (by contracts): & 53,787 \\
-    Median transaction fee: &  0.0008 ETH (\ToUSD{0.0008}~USD)\\
+    Number of blocks:               & 613,475                         \\
+    Median gas price:               & 9.1 Gwei                        \\
+    Median gas used (by contracts): & 53,787                          \\
+    Median transaction fee:         & 0.0008 ETH (\ToUSD{0.0008}~USD) \\
     \bottomrule
-\end{tabular}
+  \end{tabular}
 \end{table}
 
 
 \subsection{Gas Statistics}
 Now that we presented the key points about metering in the EVM, we provide concrete numbers about different aspects of the gas price and transaction fees. In particular, we show the total amount of transaction fees that a user would have to pay to have his transaction processed by the main Ethereum network.
 
-To give a sense of the transaction fees, we show a variety of typical fees in \autoref{tab:gas-fee}. The fees are divided depending on their gas price and gas consumption. The \textit{Low} gas price is close to the lowest price that can be paid to get the transaction accepted on the Ethereum blockchain. The \textit{High} gas price refers to the price that people would pay when they are extremely eager to get their transaction included, for example when competing with other users to have a transaction included first~\cite{gas-price-history}. The \textit{basic} transaction type refers to transactions consuming only the base amount of gas, without executing any instruction. This is typically the cost to send Ether to a contract or another party. The \textit{gas intensive} transaction type represents computationally expensive transactions, for example, verifying a zero-knowledge proof~\cite{aztec-protocol}. At the time of writing, the maximum amount of gas which can be used in a single block is~\empirical{10,000,000}, which means only~\empirical{20} such transactions could be included in a single block.
+To give a sense of the transaction fees, we show a variety of typical fees in \autoref{tab:gas-fee}. The fees are divided depending on their gas price and gas consumption. The \textit{Low} gas price is close to the lowest price that can be paid to get the transaction accepted on the Ethereum blockchain. The \textit{High} gas price refers to the price that people would pay when they are extremely eager to get their transaction included, for example when competing with other users to have a transaction included first~\cite{gas-price-history}. The \textit{basic} transaction type refers to transactions consuming only the base amount of gas, without executing any instruction. This is typically the cost to send Ether to a contract or another party. The \textit{gas intensive} transaction type represents computationally expensive transactions, for example, verifying a zero-knowledge proof~\cite{aztec-protocol}. At the time of the analysis, in late 2019, the maximum amount of gas which can be used in a single block is~\empirical{10,000,000}, which means only~\empirical{20} such transactions could be included in a single block.
 
 In \autoref{tab:empirical-gas-fee}, we show the values of the gas price, gas used and transaction fee.
 In order to obtain results reflecting the current situation, we limit the analysis to recent blocks.
 We use all the transactions sent to contracts between September 30, 2019, and January 15, 2020.
 We find that the median gas price paid by a transaction's sender is around~\empirical{9.1} Gwei, which is around~\empirical{9} times more than the minimum possible fee.
-It is worth noting that when paying the minimum possible fee, the probability for the transaction to get included in the next block is relatively low and the transaction can therefore be delayed for several blocks: at the time of writing, about \empirical{40\%} of the last 200 blocks accepted a gas price of \empirical{1Gwei}~\cite{eth-gas-station}.
+It is worth noting that when paying the minimum possible fee, the probability for the transaction to get included in the next block is relatively low and the transaction can therefore be delayed for several blocks: at the time of the analysis, about \empirical{40\%} of the last 200 blocks accepted a gas price of \empirical{1Gwei}~\cite{eth-gas-station}.
 This explains that users usually pay a higher fee to get their transactions included faster.
 The median for the gas consumed by contracts is around~\empirical{50,000} gas, indicating that most transactions perform relatively simple computations.
 Indeed, with the basic fee being 21,000, a simple read followed by an allocation of storage would already result in 46,000 gas.

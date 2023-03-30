@@ -39,6 +39,7 @@ The framework currently allows fetching data either using RPC over HTTP or webso
 Tezos and EOSIO both use the HTTP adapter to retrieve data while XRPL uses the websocket interface.
 The data is retrieved from publicly available archive nodes but the framework can be configured to use other nodes if necessary.
 The retrieved data is stored in a gzipped JSON Lines format where each line corresponds to a block. Blocks are stored in chunks of $n$ blocks per file --- where $n$ can be configured --- making parallel processing straightforward. It took less than two days to fetch all the data presented in~\autoref{tab:data-summary}.
+We note that the average throughput values for XRPL and Tezos are, at the time of writing, still similar to what is presented in ~\autoref{tab:data-summary}, while EOSIO's throughput has more than halved since then.
 
 \begin{lstlisting}[language=json,caption=Configuration file for our measurement framework,label=lis:framework-config]
 {

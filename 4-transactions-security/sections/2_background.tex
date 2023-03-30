@@ -11,23 +11,23 @@ In response to the scalability issues related to PoW, many blockchains have deve
 \label{sec:DPoS}
 EOSIO uses the Delegated Proof-of-Stake~(DPoS) protocol which was first introduced in Bitshares\cite{bitshares}.
 
-Users of EOSIO, stake \coin{EOS} tokens to their favoured block producers (BPs) and can choose to remove their stake at any time. 
-The 21 BPs with the highest stake are allowed to produce blocks whereas the rest are put on standby. 
-Blocks are produced in rounds of~126~($6 \times 21$). 
+Users of EOSIO, stake \coin{EOS} tokens to their favoured block producers (BPs) and can choose to remove their stake at any time.
+The 21 BPs with the highest stake are allowed to produce blocks whereas the rest are put on standby.
+Blocks are produced in rounds of~126~($6 \times 21$).
 The order of block production is scheduled prior to each round and must be agreed upon by at least 15 block producers~\cite{EOS}.
 
 
 \point{Liquid Proof-of-Stake (LPoS) in Tezos}
 For its consensus mechanism, Tezos employs another variant of Delegated Proof-of-Stake: the Liquid Proof-of-Stake~(LPoS)~\cite{Tezos2018}.
 Tezos' LPoS differs from EOSIO's DPoS in that with the former, the number of consensus participants---or ``delegates''---changes dynamically~\cite{Tezos2018, Goodman2014}.
-This is because any node with a minimum amount of staked assets, arbitrarily defined to be~\empirical{8,000} \coin{XTZ} (about 16,000 USD at the time of writing \cite{CoinMarketCap2020}), is allowed to become a delegate, who then has the chance to be selected as either a ``baker'' or an ``endorser''.
-Each block is produced (``baked'') by one randomly selected baker, and verified (``endorsed'') by 32 randomly selected endorsers~\cite{Tezos2018}. 
+This is because any node with a minimum amount of staked assets, arbitrarily defined to be~\empirical{8,000} \coin{XTZ} (about 8,000 USD at the time of writing \cite{CoinMarketCap2020}), is allowed to become a delegate, who then has the chance to be selected as either a ``baker'' or an ``endorser''.
+Each block is produced (``baked'') by one randomly selected baker, and verified (``endorsed'') by 32 randomly selected endorsers~\cite{Tezos2018}.
 The endorsements are included in the following block.
 
 \point{XRP Ledger Consensus Protocol (XRP LCP) in XRPL}
 XRPL is a distributed payment network created by \textit{Ripple Labs Inc.} in~2012 that uses the XRP ledger consensus protocol~\cite{Chase2018}.
-Each user sets up its own unique node list of validators (UNL) that it will listen to during the consensus process. 
-The validators determine which transactions are to be added to the ledger. 
+Each user sets up its own unique node list of validators (UNL) that it will listen to during the consensus process.
+The validators determine which transactions are to be added to the ledger.
 Consensus is reached if at least~\empirical{90\%} of the validators in each one's UNL overlap. If this condition is not met, the consensus is not assured to converge and forks can arise~\cite{Chase2018}.
 
 % The network is decentralized as any user can become a validator and a user can freely select a set of validators for his UNL. 
@@ -65,19 +65,19 @@ In this section, we describe the types of transactions that exist on the three b
 \subsubsection{EOSIO}
 EOSIO differentiates between system and regular accounts.
 The former are built-in accounts created when the blockchain was first instantiated, and are managed by currently active BPs, while the latter can be created by anyone.
-System accounts are further divided into privileged and unprivileged accounts. 
+System accounts are further divided into privileged and unprivileged accounts.
 Privileged accounts, including \texttt{eosio}, \texttt{eosio.msig}, and \texttt{eosio.wrap}, can bypass authorization checks when executing a transaction \cite{EOSIO2019, Kauffman2019} (see \autoref{sec:DPoS}).
 
-EOSIO system contracts, defined in \texttt{eosio.contracts}~\cite{EOSIO2020}, are held by system accounts. 
+EOSIO system contracts, defined in \texttt{eosio.contracts}~\cite{EOSIO2020}, are held by system accounts.
 One of the most commonly used system contracts is \texttt{eosio.token}, which is designed for creating and transferring user-defined tokens~\cite{EOSIO2019}.
-Regular accounts can freely design and deploy smart contracts. 
+Regular accounts can freely design and deploy smart contracts.
 
-Each smart contract on EOSIO has a set of actions. 
-Actions included in non-system contracts are entirely user-defined, and users have a high degree of flexibility in terms of structuring and naming the actions. 
-This makes the analysis of actions challenging, as it requires understanding their true functionality on a case-by-case basis. 
+Each smart contract on EOSIO has a set of actions.
+Actions included in non-system contracts are entirely user-defined, and users have a high degree of flexibility in terms of structuring and naming the actions.
+This makes the analysis of actions challenging, as it requires understanding their true functionality on a case-by-case basis.
 While many actions have a candid name that gives away their functionality (e.g. \texttt{payout} from contract \texttt{betdicegroup}), some are less expressive (e.g. \texttt{m} from user \texttt{pptqipaelyog}).
 
-In \autoref{tab:transaction-types-distribution}, we show different types of existing actions. 
+In \autoref{tab:transaction-types-distribution}, we show different types of existing actions.
 Since actions from non-system contracts have arbitrary designs, we only examine actions that belong to system accounts for the moment, as these are already known and are easier to classify. We make one exception to this and include the actions of \emph{token} contracts, as they have a standardized interface~\cite{eosio-tokens}.
 Overall, we can see that token transfers account alone for more than~\empirical{96\%} of the transactions. The rest of the transactions are mostly user-defined and appear under ``Others'' in the table, while actions defined in system contracts only account for a very small percentage of the entire traffic volume.
 
@@ -91,15 +91,15 @@ Tezos has two types of accounts: implicit and originated.
 Implicit accounts are similar to the type of accounts found in Ethereum, generated from a public-private key pair~\cite{wood2014}.
 These accounts can produce---or ``bake''---blocks and receive stakes, but cannot be used as smart contracts.
 Bakers' accounts must be implicit, to be able to produce blocks.
-Originated accounts are created and managed by implicit accounts, but do not have their private key~\cite{NomadicLabs2018a}. 
+Originated accounts are created and managed by implicit accounts, but do not have their private key~\cite{NomadicLabs2018a}.
 They can function as smart contracts and can delegate voting rights to bakers' implicit accounts~\cite{Labs2018}.
 
 ``Transactions'' on Tezos are termed  ``operations''.
 Operations can be roughly classified into three types: consensus-related, governance-related and manager operations~\cite{AmitPanghal2019}.
-Consensus-related operations, as the name indicates, ensure that all participating nodes agree on one specific version of data to be recorded on the blockchain. 
-Governance-related operations are used to propose and select a new set of rules for the blockchain. 
-However, these events are very rare and only involve bakers, which is why these operations only represent a low percentage of the total number of transactions. 
-Operations mainly consist of delegations and peer-to-peer payment transactions. 
+Consensus-related operations, as the name indicates, ensure that all participating nodes agree on one specific version of data to be recorded on the blockchain.
+Governance-related operations are used to propose and select a new set of rules for the blockchain.
+However, these events are very rare and only involve bakers, which is why these operations only represent a low percentage of the total number of transactions.
+Operations mainly consist of delegations and peer-to-peer payment transactions.
 As shown in \autoref{tab:transaction-types-distribution}, \texttt{endorsement} operations account for a vast majority,~\empirical{76\%}, of total operations.
 % which are used to determine the next block header selected ,
 Endorsements are performed by bakers, and a block needs a minimum of 32 endorsements for it to be accepted~\cite{NomadicLabs2018b}.
@@ -108,40 +108,40 @@ Endorsements are performed by bakers, and a block needs a minimum of 32 endorsem
 
 
 \subsubsection{XRPL}
-XRPL also uses an account-based system to keep track of asset holdings. 
-Accounts are identified by addresses derived from a public and private key pair. 
-There are a handful of ``special addresses'' that are not derived from a key pair. 
-Those addresses either serve special purposes (e.g. acting as the \coin{XRP} issuer) or exist purely for legacy reasons. 
+XRPL also uses an account-based system to keep track of asset holdings.
+Accounts are identified by addresses derived from a public and private key pair.
+There are a handful of ``special addresses'' that are not derived from a key pair.
+Those addresses either serve special purposes (e.g. acting as the \coin{XRP} issuer) or exist purely for legacy reasons.
 Since a secret key is required to sign transactions, funds sent to any of these special addresses cannot be transferred out and are hence permanently lost~\cite{XRPLedger2019}.
 
-XRPL has a large number of predefined transaction types. 
-We show part of them in \autoref{tab:transaction-types-distribution}. 
-The most common transaction types are \texttt{OfferCreate}, which is used to create a new order in a decentralized exchange (DEX) on the ledger, and \texttt{Payment}, which is used to transfer assets. 
+XRPL has a large number of predefined transaction types.
+We show part of them in \autoref{tab:transaction-types-distribution}.
+The most common transaction types are \texttt{OfferCreate}, which is used to create a new order in a decentralized exchange (DEX) on the ledger, and \texttt{Payment}, which is used to transfer assets.
 There are also other types of transactions such as \texttt{OfferCancel} used to cancel a created order or \texttt{TrustSet} which is used to establish a ``trustline''~\cite{xrp_ledger_overview} with another account.
 
 \subsection{Expected Use Cases}
 \label{sec:usecase}
 In this section, we describe the primary intended use cases of the three blockchains and provide a rationale for the way they are being used, to better understand the dynamics of actual transactions evaluated in \autoref{sec:4:data-analysis}.
 
-\point{EOSIO} EOSIO was designed with the goal of high throughput and has a particularity compared to many other blockchains: there are no direct transaction fees. 
+\point{EOSIO} EOSIO was designed with the goal of high throughput and has a particularity compared to many other blockchains: there are no direct transaction fees.
 Resources such as CPU, RAM and bandwidth are rented beforehand, and there is no fixed or variable fee per transaction~\cite{EOS}.
-This makes it a very attractive platform for building decentralized applications with a potentially high number of micro-payments. 
+This makes it a very attractive platform for building decentralized applications with a potentially high number of micro-payments.
 Many games, especially those with a gambling nature, have been developed using EOSIO as a payment platform.
 EOSIO is also used for decentralized exchanges, where the absence of fees and the high throughput allow placing orders on-chain, unlike many decentralized exchanges on other platforms where only the settlement is performed on-chain~\cite{warren20170x}.
 
 \point{Tezos}
-Tezos was one of the first blockchains to adopt on-chain governance. 
-This means that participants can vote to dynamically amend the rules of the consensus. 
-A major advantage of this approach is that the blockchain can keep running without the need for hard forks, as often observed for other blockchains~\cite{byzantium-fork, dao-fork}. 
-Another characteristic of Tezos is the use of a strongly typed programming language with well-defined semantics~\cite{NomadicLabs2018} for its smart contracts, which makes it easier to provide these for correctness. 
+Tezos was one of the first blockchains to adopt on-chain governance.
+This means that participants can vote to dynamically amend the rules of the consensus.
+A major advantage of this approach is that the blockchain can keep running without the need for hard forks, as often observed for other blockchains~\cite{byzantium-fork, dao-fork}.
+Another characteristic of Tezos is the use of a strongly typed programming language with well-defined semantics~\cite{NomadicLabs2018} for its smart contracts, which makes it easier to provide these for correctness.
 These properties make Tezos a very attractive blockchain for financial applications, such as the tokenization of assets~\cite{BTGPactual2019}.
 
-\point{XRPL} 
-Similar to EOSIO, XRPL supports the issuance, circulation, and exchange of customized tokens. 
-However, in contrast to EOSIO, XRPL uses the IOU (``I owe you'') mechanism for payments. 
+\point{XRPL}
+Similar to EOSIO, XRPL supports the issuance, circulation, and exchange of customized tokens.
+However, in contrast to EOSIO, XRPL uses the IOU (``I owe you'') mechanism for payments.
 Specifically, any account on XRPL can issue an IOU with an arbitrary ticker~---~be it \coin{USD} or \coin{BTC}.
-Thus, if Alice pays Bob~10 \coin{BTC} on XRPL, she is effectively sending an IOU of~10 \coin{BTC}, which means ``I (Alice) owe you (Bob)~10 \coin{BTC}''. 
-Whether the \coin{BTC} represents the market value of Bitcoin depends on Alice's ability to redeem her ``debt''~\cite{XRPLedger2020}. 
+Thus, if Alice pays Bob~10 \coin{BTC} on XRPL, she is effectively sending an IOU of~10 \coin{BTC}, which means ``I (Alice) owe you (Bob)~10 \coin{BTC}''.
+Whether the \coin{BTC} represents the market value of Bitcoin depends on Alice's ability to redeem her ``debt''~\cite{XRPLedger2020}.
 This feature contributes to the high throughput on XRPL, as the speed to transfer a specific currency is no more constrained by its original blockchain-related limitations: For example, the transfer of \coin{BTC} on XRPL is not limited by the block production interval of the actual Bitcoin blockchain (typically~10 minutes to an hour to fully commit a block), and the transfer of \coin{USD} is not limited to the speed of the automated clearing house~(ACH) (around two days~\cite{Love2013}).
 
 % XRP has been built from the ground-up to facilitate cross-border cross-currency transfers~\cite{xrp_ledger_overview}. 

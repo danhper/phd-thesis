@@ -26,6 +26,9 @@ Given the relatively large amount of time it takes to re-execute the blockchain,
 
 In this section, the measurements are run between block \empirical{5,171,468 (Feb-28-2018)} and block \empirical{5,587,480 (May-10-2018)}, except in \autoref{ssec:system-resources} where we want to compare after and before EIP-150.
 
+We note that these measurements are not representative of the current state of the Ethereum blockchain, as the network has evolved significantly since then.
+In particular, EIP-2929 was introduced in April 2021~\cite{eip-2929}, partly based on the findings from this chapter, and significantly increased the cost of accessing storage.
+
 \begin{figure}[tb]
   \begin{subfigure}[t]{\columnwidth}
     \centering\includegraphics[width=\columnwidth]{3-vm-security/figures/arithmetic-microbench.pdf}
@@ -125,6 +128,7 @@ The instruction with the highest variance was \lstinline{BLOCKHASH}.
 When it does so, depending on the implementation and the state of the cache, the EVM may need to perform an IO access when executing this instruction, which can result in vastly different execution times.
 The cost of \lstinline{BLOCKHASH} being currently fixed and relatively cheap,~20 gas, it results in an instruction which is vastly under-priced. It is worth noting that in the particular case of \lstinline{BLOCKHASH}, the issue has already been raised more than two years ago in EIP-210~\cite{eip-blockhash}.
 It discussed changing the price of \lstinline{BLOCKHASH} to~800 gas but at the time of writing the proposal is still in draft status and was not included in the Constantinople fork\footnote{Hard fork which took place on Feb 28 2019 on the Ethereum main network}~\cite{constantinople} as it was originally planned to be.
+It has not been included in any further hard fork either.
 
 \begin{table}[tb]
   \centering
