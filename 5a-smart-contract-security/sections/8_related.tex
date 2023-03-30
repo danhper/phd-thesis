@@ -81,7 +81,11 @@ This is mostly orthogonal with other works and can support analysis tool develop
 More related work has been published since the submission of the paper this part of the chapter is based on.
 We present some of these here.
 
-TXSPECTOR~\cite{255340}, which was published soon after the first version of this section, uses a very similar approach to ours to detect reentrancy, unchecked call and suicidal contracts.
+TXSPECTOR~\cite{255340}, which was published soon after the first version of the paper this part of the chapter is based on, uses a very similar approach to ours to detect reentrancy, unchecked call and suicidal contracts.
 They also leverage a Datalog approach to detect vulnerabilities but first transform the transaction traces into a flow graph rather than adding facts about traces directly to the Datalog database.
 While this does add expressiveness, it makes the analysis significantly more complex, resulting in some analysis timing out on some transactions.
 Therefore, we believe that their approach could be complementary to ours and used to eliminate potential false positives of our approach.
+
+Agarwal et al.~\cite{Agarwal2021VulnerabilityAT} have very similar goals to ours and try to identify malicious activity in contracts that are likely vulnerable to exploits.
+They use unsupervised machine learning techniques, in particular, clustering, to try to identify malicious activity in smart contracts.
+Although their approach is very different to ours, the authors confirm that their results were similar to ours and that only a very small portion of the potentially vulnerable contracts was exploited.

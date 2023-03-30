@@ -21,25 +21,27 @@
 % Schleifer and Vishny~\cite{Shleifer2010}
 % Fabbri and Menichini~\cite{Fabbri2010} 
 
+\subsubsection{Previous work}
 In this section, we briefly discuss existing related work.
 
 A thorough analysis of the Compound protocol with respect to market risks faced by participants was done by~\cite{kao2020}.
 The authors employ agent-based modelling and simulation to perform stress tests in order to show that Compound remains safe under high volatility scenarios and high levels of outstanding debt.
 Furthermore, the authors demonstrate the potential of Compound to scale to accommodate a larger borrow market while maintaining a low default probability.
-This differs from our work as we conduct a detailed empirical analysis of Compound, focusing on how agent behaviour under different incentive structures on Compound has affected the protocol's state with regard to liquidation risk.  
+This differs from our work as we conduct a detailed empirical analysis of Compound, focusing on how agent behaviour under different incentive structures on Compound has affected the protocol's state with regard to liquidation risk.
 
 A first in-depth analysis of PLFs is given by~\cite{10.1145/3419614.3423254}.
 The authors provide a taxonomy of interest rate models employed by PLFs, while also discussing market liquidity, efficiency and interconnectedness across PLFs.
 As part of their analysis, the authors examine the cumulative percentage of locked funds solely for the Compound markets \coin{DAI}, \coin{ETH}, and \coin{USDC}.
 
 In~\cite{bartoletti2020sok}, the authors provide a formal state transition model of PLFs\footnote{Note that in \cite{bartoletti2020sok}, PLFs are referred to as lending pools.} and prove fundamental behavioural properties of PLFs, which had previously only been presented informally in the literature.
-Additionally, the authors examine attack vectors and risks, such as utilization attacks and interest-bearing derivative token risks. 
+Additionally, the authors examine attack vectors and risks, such as utilization attacks and interest-bearing derivative token risks.
 This work differs from our work, as the authors of~\cite{bartoletti2020sok} formalize the properties of PLFs through an abstract model, while we provide a thorough empirical analysis with a focus on liquidations and risks brought upon by governance tokens, such as for Compound and the \coin{COMP} token.
 
 In \cite{klages2019stability}, the authors show how markets for stablecoins are exposed to deleveraging feedback effects, which can cause periods of illiquidity during a crisis.
 
 The authors of \cite{gudgeon2020decentralized} demonstrate how various DeFi lending protocols are subject to different attack vectors such as governance attacks and under-collateralization.
 In the context of the proposed governance attack, the lending protocol the authors focus on is Maker~\cite{whitepaper:maker}.
+
 
 % Add SoK on lending pools
 
@@ -49,3 +51,16 @@ In the context of the proposed governance attack, the lending protocol the autho
 % Chen and Bellavitis~\cite{Chen2020} acknowledge that blockchain technology disrupts the financial industry, while also presenting risks that DeFi as a new form of financial service is associated with, including fraud, volatility and regulatory uncertainty.
 
 % Similarly, Zetzsche~\cite{Zetzsche2020} argue that DeFi is susceptible to cyberattacks facilitated by tech-monoculture and an increased number of access points to the network.
+
+
+\subsubsection{Follow-up work}
+In this section, we present work that has followed the paper on which this section is based.
+
+Qin et al.~\cite{10.1145/3487552.3487811} extend our analysis to include more DeFi protocols, including Aave, dYdX, and MakerDAO.
+The authors provide a way to compare the different liquidation mechanisms.
+They found that current liquidation designs effectively incentivize liquidators but often result in the sale of excessive amounts of discounted collateral at the expense of borrowers.
+The research also measures the risks faced by liquidation participants and quantifies the instability of existing lending protocols.
+
+The research conducted by Kozhan et al.~\cite{kozhan2021decentralized} dives deeper into the topic of liquidations in the context of collateralized debt positions and examines the relationship between peg volatility and collateral risk.
+Their findings reveal a negative covariation between DAI price and returns on risky collateral, even after accounting for safe-haven demand and the collateral liquidation impact.
+Moreover, the study shows that the incorporation of safer collateral types has contributed to enhanced peg stability.
