@@ -22,7 +22,7 @@ We add compile options to the original C\texttt{++} client to allow enabling par
 \point{Measurements}
 For all our measurements, we only take into account the execution of the smart contracts and ignore the time taken in networking or other parts of the software. We use a nanosecond precision clock to measure time and measure both the time taken to execute a single smart contract and the time to execute a single instruction. To measure the memory usage of a single transaction, we override globally the \lstinline[language=C++]{new} and \lstinline[language=C++]{delete} operators and record all allocations and deallocations performed by the EVM execution within each transaction. We ensure that this is the only way used by the EVM to perform memory allocation.
 
-Given the relatively large amount of time it takes to re-execute the blockchain, we only execute each measurement once when re-executing. We ensure that we always have enough data points, where enough in the order of millions or more, so that some occasional imprecision in the measurements, which are inevitable in such experiments, do not skew the data.
+Given the relatively large amount of time it takes to re-execute the blockchain, we only execute each measurement once when re-executing. We ensure that we always have enough data points, where enough is in the order of millions or more, so that some occasional imprecision in the measurements, which are inevitable in such experiments, does not skew the data.
 
 In this section, the measurements are run between block \empirical{5,171,468 (Feb-28-2018)} and block \empirical{5,587,480 (May-10-2018)}, except in \autoref{ssec:system-resources} where we want to compare after and before EIP-150.
 
@@ -124,7 +124,7 @@ Depending on these, the time it takes to run the particular instructions can var
 This is the case for an instruction such as \lstinline{EXTCODECOPY}.
 The second reason is much more problematic and comes from the fact that some instructions may require to perform some IO access, which can be influenced by many different factors such as caching, either at the OS or at the application level.
 The instruction with the highest variance was \lstinline{BLOCKHASH}.
-\lstinline{BLOCKHASH} allows to retrieve the hash of a block and allows to look up to~256 block before the current one.
+\lstinline{BLOCKHASH} allows to retrieve the hash of a block and allows to look up up to~256 block before the current one.
 When it does so, depending on the implementation and the state of the cache, the EVM may need to perform an IO access when executing this instruction, which can result in vastly different execution times.
 The cost of \lstinline{BLOCKHASH} being currently fixed and relatively cheap,~20 gas, it results in an instruction which is vastly under-priced. It is worth noting that in the particular case of \lstinline{BLOCKHASH}, the issue has already been raised more than two years ago in EIP-210~\cite{eip-blockhash}.
 It discussed changing the price of \lstinline{BLOCKHASH} to~800 gas but at the time of writing the proposal is still in draft status and was not included in the Constantinople fork\footnote{Hard fork which took place on Feb 28 2019 on the Ethereum main network}~\cite{constantinople} as it was originally planned to be.

@@ -70,7 +70,7 @@ Although our programs do not need to be semantically meaningful, they need to be
 
 
   \point{Initialisation}
-  As the search space is very large, it is important to start with good initial values so that the genetic algorithm can search for promising solutions. For this purpose, we use the result of the results we presented in \autoref{sec:3:case-studies}, in particular, we use the throughput measured for each instruction. We define a function $throughput : \mathbb{I} \rightarrow \mathbb{R}$ which returns the measured throughput of a single instruction. When randomly choosing the instructions with $biased\_sample$, we want to have a higher probability of picking an instruction with a low throughput but want to keep a high enough probability of picking a higher throughput instruction to make sure that these are not all discarded before the search begins. We define the weight of each instruction and then its probability with \autoref{eq:initial-weight} and \autoref{eq:initial-prob}.
+  As the search space is very large, it is important to start with good initial values so that the genetic algorithm can search for promising solutions. For this purpose, we use the result we presented in \autoref{sec:3:case-studies}, in particular, we use the throughput measured for each instruction. We define a function $throughput : \mathbb{I} \rightarrow \mathbb{R}$ which returns the measured throughput of a single instruction. When randomly choosing the instructions with $biased\_sample$, we want to have a higher probability of picking an instruction with a low throughput but want to keep a high enough probability of picking a higher throughput instruction to make sure that these are not all discarded before the search begins. We define the weight of each instruction and then its probability with \autoref{eq:initial-weight} and \autoref{eq:initial-prob}.
 
   \begin{align}
     \label{eq:initial-weight}
@@ -218,7 +218,7 @@ ADDRESS
   \end{table}
 
   \subsection{Evaluation on Other Ethereum Clients}
-  We used aleth~\cite{aleth} to run our genetic algorithm and find low-throughput contracts. In this section, we show that the contracts crafted using our algorithm are also effective on the two most popular Ethereum clients: geth~(v1.9.6)~\cite{geth} and Parity Ethereum~(v2.5.9)~\cite{parity-ethereum}. We also show that the fix released in geth following discussions with the development team successfully resolves the issue. our attack is mainly efficient on less powerful hardware, we include the measurements of Parity on a more powerful bare-metal machine with 4 cores (8 threads) at 2.7GHZ, 32GB of RAM and an SSD with 540MB/s throughput.
+  We used aleth~\cite{aleth} to run our genetic algorithm and find low-throughput contracts. In this section, we show that the contracts crafted using our algorithm are also effective on the two most popular Ethereum clients: geth~(v1.9.6)~\cite{geth} and Parity Ethereum~(v2.5.9)~\cite{parity-ethereum}. We also show that the fix released in geth following discussions with the development team successfully resolves the issue. Our attack is mainly efficient on less powerful hardware, we include the measurements of Parity on a more powerful bare-metal machine with 4 cores (8 threads) at 2.7GHZ, 32GB of RAM and an SSD with 540MB/s throughput.
   %
   To benchmark the clients, we use the following procedure and repeat the measurements \empirical{three} times for each client.
 
@@ -254,7 +254,7 @@ ADDRESS
   A further indirect consequence of such attacks is the loss of trust in the system, which can lead to a decrease in the price of Ethereum, at least for a short period of time~\cite{Chen2017Metering}.
 
   \point{Probable attacker}
-  Although instances of irrational behaviours with likely no profit to the attacker have been seen on Ethereum~\cite{Breidenbach}, we assume that the attacker is rational and wants to profit from such an attack. In this context, there are several ways in which such an attack could be performed.
+  Although instances of irrational behaviours that likely did not profit the attacker have been seen on Ethereum~\cite{Breidenbach}, we assume that the attacker is rational and wants to profit from such an attack. In this context, there are several ways in which such an attack could be performed.
 
   First, this attack could be beneficial to miners. A miner could use these malicious transactions to perform a sort of selfish-mining~\cite{eyal2014majority}.
   Indeed, if the miner chooses to include a small number of malicious transactions in the blocks he mines, the propagation time per block is likely to increase and give the miner a head start on mining the next block.

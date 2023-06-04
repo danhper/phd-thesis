@@ -4,7 +4,7 @@
 \subsection{Analysis of Individual Vulnerabilities}
 \label{sec:5a:analysis}
 
-As described in \autoref{sec:5a:datasets}, the combined amount of Ether contained within \emph{all} the vulnerable contracts exceeds~\empirical{3 million} ETH, worth~\empirical{\ToUSD{3} million} USD. In this section, we present the results for each vulnerability one by one; our results have been obtained using the methodology described in \autoref{sec:5a:methodology}; the goal is to show how much of this money is actually at risk.
+As described in \autoref{sec:5a:datasets}, the combined amount of Ether contained within \emph{all} the vulnerable contracts exceeds~\empirical{3 million} ETH, worth~\empirical{\numprint{\ToUSD{3}} million} USD. In this section, we present the results for each vulnerability one by one; our results have been obtained using the methodology described in \autoref{sec:5a:methodology}; the goal is to show how much of this money is actually at risk.
 
 \point{Methodology}
 For each vulnerability, we perform our analysis in two steps.
@@ -20,10 +20,10 @@ We then present interesting findings as short case studies.
 
 \subsubsection{\vre: \reentrancy}
 \label{ssec:analysis-re}
-There are~\empirical{4,337} contracts flagged as vulnerable to reentrancy by~\cite{luu2016a,Tsankov2018,DBLP:conf/ndss/KalraGDS18}, with a total of~\empirical{457,073} transactions. After running the analysis described in \autoref{sec:5a:methodology} on all the transactions, we found a total of~\empirical{116} contracts which contain re-entrant calls. To look for the monetary amount at risk, we compute the sum of the Ether sent between two contracts in transactions containing re-entrant calls. The total amount of Ether exploited using reentrancy is of~\empirical{6,076 ETH}, which is considerable, as it represents more than \empirical{\ToUSD{6000} USD}.
+There are~\empirical{4,337} contracts flagged as vulnerable to reentrancy by~\cite{luu2016a,Tsankov2018,DBLP:conf/ndss/KalraGDS18}, with a total of~\empirical{457,073} transactions. After running the analysis described in \autoref{sec:5a:methodology} on all the transactions, we found a total of~\empirical{116} contracts which contain re-entrant calls. To look for the monetary amount at risk, we compute the sum of the Ether sent between two contracts in transactions containing re-entrant calls. The total amount of Ether exploited using reentrancy is of~\empirical{6,076 ETH}, which is considerable, as it represents more than \empirical{\numprint{\ToUSD{6000}} USD}.
 
 \point{Manual analysis}
-We manually analyze the top contracts in terms of funds lost and present them in \autoref{fig:reentrancy-vulnerable}. Interestingly, one of these~\empirical{three} potential exploits has a substantial amount of Ether at stake:~\empirical{5,881 ETH}, which corresponds to around~\empirical{\ToUSD{5900} USD}. This address has already been detected as vulnerable by some recent work focusing on reentrancy~\cite{Rodler2019}. It appears that the contract, which is part of the Maker DAO~\cite{maker-dao} platform, was found vulnerable by the authors of the contract, who themselves performed an attack to confirm the risk~\cite{ds-eth-token}.
+We manually analyze the top contracts in terms of funds lost and present them in \autoref{fig:reentrancy-vulnerable}. Interestingly, one of these~\empirical{three} potential exploits has a substantial amount of Ether at stake:~\empirical{5,881 ETH}, which corresponds to around~\empirical{\numprint{\ToUSD{5900}} USD}. This address has already been detected as vulnerable by some recent work focusing on reentrancy~\cite{Rodler2019}. It appears that the contract, which is part of the Maker DAO~\cite{maker-dao} platform, was found vulnerable by the authors of the contract, who themselves performed an attack to confirm the risk~\cite{ds-eth-token}.
 
 \point{Sanity checking}
 We use two different contracts for sanity checking.
@@ -53,7 +53,7 @@ We manually analyze the top contracts and summarize their addresses and the amou
 
 \subsubsection{\vle: \lockedether}
 \label{ssec:analysis-le}
-There are~\empirical{7,285} contracts flagged vulnerable to locked Ether by~\cite{Tsankov2018},~\cite{Grech2018},~\cite{Nikolic2018a} and~\cite{DBLP:conf/ndss/KalraGDS18}. The contracts hold a total value of more than~\empirical{1.4 million} ETH, which is worth more than \empirical{\ToUSD{1} million USD}. We analyze the transactions of the contracts that could potentially be locked by conducting the analysis described in the previous section. Our tool shows that \emph{none} of the contracts are affected by the pattern we check for~---~i.e., dependency on a contract which had been destructed.
+There are~\empirical{7,285} contracts flagged vulnerable to locked Ether by~\cite{Tsankov2018},~\cite{Grech2018},~\cite{Nikolic2018a} and~\cite{DBLP:conf/ndss/KalraGDS18}. The contracts hold a total value of more than~\empirical{1.4 million} ETH, which is worth more than \empirical{\numprint{\ToUSD{1}} million USD}. We analyze the transactions of the contracts that could potentially be locked by conducting the analysis described in the previous section. Our tool shows that \emph{none} of the contracts are affected by the pattern we check for~---~i.e., dependency on a contract that had been destructed.
 We note that our tool currently only covers dependency on a destructed contract as a reason for locked Ether and patterns such as unbounded mass operation are not yet covered.
 
 \point{Parity wallet}
@@ -118,8 +118,8 @@ Therefore, we decide to inspect the contracts in our dataset in more detail to u
 \point{Manual analysis}
 The tool teEther flags \emph{exploitable} contracts, as opposed to simply \emph{vulnerable} contracts.
 Therefore, expect these contracts to be more likely to have been exploited and focus on these for our manual analysis.
-We fetch all the historical balances of teEther contracts and retrieve the maximum amount held at any point in time and find the total of these to equal~\empirical{4921} Ether.
-However, we find that~\empirical{4867} Ether belonged to~\empirical{48} different contracts with the same bytecode, and all had the same transaction pattern, which we describe in the following investigation.
+We fetch all the historical balances of teEther contracts and retrieve the maximum amount held at any point in time and find the total of these to equal to~\empirical{4,921} Ether.
+However, we find that~\empirical{4,867} Ether belonged to~\empirical{48} different contracts with the same bytecode, and all had the same transaction pattern, which we describe in the following investigation.
 
 \begin{investigation}{0xac54413f686927054a56d35415ba49618634e105}
   All contracts with a high historical monetary value found by teEther share the same bytecode, creator and transaction pattern as this contract.
@@ -133,7 +133,7 @@ However, we find that~\empirical{4867} Ether belonged to~\empirical{48} differen
 \point{Sanity checking} As a sanity check, in addition to our test suite, we use one of the most famous instances of an unrestricted action: the destructed Parity wallet library contract at address~\addr{0x863df6bfa4469f3ead0be8f9f2aae51c91a907b4}. We analyze the transactions and successfully find an unrestricted store instruction in transaction~\tx{0x05f71e1b2cb4f03e547739db15d080fd30c989eda04d37ce6264c5686e0722c9}, which was used to take control of the wallet.
 
 \subsubsection{Summary}
-We summarize all our findings, including the number of contracts originally flagged, the amount of Ether at stake, and the amount \emph{actually exploited} in \autoref{fig:findings-summary}. The \emph{Contracts exploited} column indicates the number of contracts which are flagged exploited and \emph{\% Contracts exploited} is the percentage of this number with respect to the number of contracts flagged vulnerable. The \emph{Exploited Ether} column shows the maximum amount of Ether that could have been exploited and the next column shows the percentage this amount represents compared to the total amount at stake. The \emph{Total} row accounts for contracts flagged with more than one vulnerability only once.
+We summarize our findings, including the number of contracts originally flagged, the amount of Ether at stake, and the amount \emph{actually exploited} in \autoref{fig:findings-summary}. The \emph{Contracts exploited} column indicates the number of contracts that are flagged exploited and \emph{\% Contracts exploited} is the percentage of this number with respect to the number of contracts flagged vulnerable. The \emph{Exploited Ether} column shows the maximum amount of Ether that could have been exploited and the next column shows the percentage this amount represents compared to the total amount at stake. The \emph{Total} row accounts for contracts flagged with more than one vulnerability only once.
 
 Overall, we find that the \emph{number of contracts exploited} is non-negligible, with about \empirical{2\%} to \empirical{4\%} of vulnerable contracts exploited for \empirical{4} of the \VulnTypesNum vulnerabilities covered in our study.
 However, it is important to note that the percentage of Ether exploited is an order of magnitude lower, with at most \empirical{0.4\%} of the Ether at stake exploited for reentrancy.

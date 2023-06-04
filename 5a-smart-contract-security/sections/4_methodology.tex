@@ -23,7 +23,7 @@ The extracted traces contain a list of executed instructions, as well as the sta
 To analyze the traces, we encode them into a Datalog representation; Datalog is a language implementing first-order logic with recursion~\cite{Immerman99descriptivecomplexity}, which allows us to concisely express properties about the execution traces.
 We use the following domains to encode the information about the traces as Datalog facts, noting $V$ as the set of program variables and $A$ as the set of Ethereum addresses.
 We show an overview of the facts that we collect and the relations that we use to check for possible exploits in \autoref{fig:datalog-setup}.
-We should highlight that our analyses run \emph{automatically} based on the facts that we extract and the rules that define various violations described in subsequent sections. 
+We highlight that our analyses run \emph{automatically} based on facts extracted from transactions traces and the rules that we define in subsequent sections. 
 
 \begin{figure}
   \centering
