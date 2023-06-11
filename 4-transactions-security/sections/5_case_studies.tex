@@ -42,26 +42,26 @@ This has caused some services to threaten with their migration to another blockc
 The coin seems to be operated by an entity called Enumivo but there is very scarce information about what service it provides. Given the very hostile tone in communications\footnote{\url{https://twitter.com/enumivo/status/1193353931797057536}}, it is likely that the creator indeed intended to congest the EOSIO network. Furthermore, the entity behind the \coin{EIDOS} token seems to be willing to launch a ``sidechain'' of EOSIO~\cite{yas-network}.
 
 \begin{figure*}[tb]
-  \centering
-  \begin{subfigure}{0.323\textwidth}
-    \centering
-    \includegraphics[width=\columnwidth]{./4-transactions-security/figures/babylon-proposals.pdf}
-    \caption{Proposal period}
-  \end{subfigure}
-  %
-  \begin{subfigure}{0.323\textwidth}
-    \centering
-    \includegraphics[width=\columnwidth]{./4-transactions-security/figures/babylon-exploration.pdf}
-    \caption{Exploration period}
-  \end{subfigure}
-  %
-  \begin{subfigure}{0.323\textwidth}
-    \centering
-    \includegraphics[width=\columnwidth]{./4-transactions-security/figures/babylon-promotion.pdf}
-    \caption{Promotion period}
-  \end{subfigure}
-  \caption{Tezos Babylon on-chain amendment voting process.}
-  \label{fig:tezos-votes}
+	\centering
+	\begin{subfigure}{0.323\textwidth}
+		\centering
+		\includegraphics[width=\columnwidth]{./4-transactions-security/figures/babylon-proposals.pdf}
+		\caption{Proposal period}
+	\end{subfigure}
+	%
+	\begin{subfigure}{0.323\textwidth}
+		\centering
+		\includegraphics[width=\columnwidth]{./4-transactions-security/figures/babylon-exploration.pdf}
+		\caption{Exploration period}
+	\end{subfigure}
+	%
+	\begin{subfigure}{0.323\textwidth}
+		\centering
+		\includegraphics[width=\columnwidth]{./4-transactions-security/figures/babylon-promotion.pdf}
+		\caption{Promotion period}
+	\end{subfigure}
+	\caption{Tezos Babylon on-chain amendment voting process.}
+	\label{fig:tezos-votes}
 \end{figure*}
 
 \point{Summary}
@@ -110,46 +110,46 @@ Normally, only IOU tokens issued by featured XRPL gateways are deemed valuable; 
 For example, the value of \coin{BTC} IOUs from various issuer accounts could range from~0 to~36,050~\coin{XRP} (\autoref{fig:xchangeissuer}).
 
 \begin{table}[tb]
-  \centering
-  \caption{Rate (in \coin{XRP}) of \coin{BTC} IOUs on XRPL.}
-  \label{tab:btcrate}
-  \begin{subtable}[b]{\linewidth}
-    \centering
-    \caption{Rates (in \coin{XRP}) of \coin{BTC} IOUs issued by exemplary accounts in demonstration of the wide rate range. Each rate value is the average exchange rate of the issuer-specific \coin{BTC} IOU tokens.
-    Data retrieved through \url{https://data.ripple.com/v2/exchange_rates/BTC+{issuer_address}/XRP?date=2020-01-01T00:00:00Z&period=30day} \cite{XRPLedger2020a}.}
-    \label{fig:xchangeissuer}
-    \footnotesize
-    \setlength{\tabcolsep}{2.7pt}
-    \begin{tabular}{llr}
-      \toprule
-      Issuer name           & Issuer account                               & Rate   \\
-      \midrule
-      Bitstamp              & \xrpaddr{rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B}  & 36,050 \\
-      Gatehub Fifth         & \xrpaddr{rchGBxcD1A1C2tdxF6papQYZ8kjRKMYcL}  & 35,817 \\
-      BTC 2 Ripple          & \xrpaddr{rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q} & 409    \\
-      \emph{not registered} & \xrpaddr{r3fFaoqaJN1wwN68fsMAt4QkRuXkEjB3W4} & 1      \\
-      \emph{not registered} & \xrpaddr{rpJZ5WyotdphojwMLxCr2prhULvG3Voe3X} & 0      \\
-      \bottomrule
-    \end{tabular}
-  \end{subtable}
-  \vskip 5pt
-  \begin{subtable}[b]{\linewidth}
-    \caption{Rate (in \coin{XRP}) of \coin{BTC} IOUs issued by \xrpaddr{rKRNtZzfrkTwE4ggqXbmfgoy57RBJYS7TS} at different time. In all the three exchange transactions, the account that buys the \coin{BTC} IOU against \coin{XRP} is \xrpaddr{rMyronEjVcAdqUvhzx4MaBDwBPSPCrDHYm}}.
-    % Data retrieved from \url{https://data.ripple.com/v2/exchanges/BTC+rKRNtZzfrkTwE4ggqXbmfgoy57RBJYS7TS/XRP}~\cite{XRPLedger2020c}.
-    \label{fig:xchangetime}
-    \footnotesize
-    \centering
-    %  \setlength{\tabcolsep}{pt}
-    \begin{tabular}{llr}
-      \toprule
-      Date       & Seller account of \coin{BTC} IOU             & Rate   \\
-      \midrule
-      2019-12-14 & \xrpaddr{rHVsygEmrjSjafqFxn6dqJWHCdAPE74Zun} & 30,500 \\
-      2020-01-09 & \xrpaddr{rU6m5F9c1eWGKBdLMy1evRwk34HuVc18Wg} & 1      \\
-      2020-01-09 & \xrpaddr{rU6m5F9c1eWGKBdLMy1evRwk34HuVc18Wg} & 0.1    \\
-      \bottomrule
-    \end{tabular}
-  \end{subtable}
+	\centering
+	\caption{Rate (in \coin{XRP}) of \coin{BTC} IOUs on XRPL.}
+	\label{tab:btcrate}
+	\begin{subtable}[b]{\linewidth}
+		\centering
+		\caption{Rates (in \coin{XRP}) of \coin{BTC} IOUs issued by exemplary accounts in demonstration of the wide rate range. Each rate value is the average exchange rate of the issuer-specific \coin{BTC} IOU tokens.
+		Data retrieved through \url{https://data.ripple.com/v2/exchange_rates/BTC+{issuer_address}/XRP?date=2020-01-01T00:00:00Z&period=30day} \cite{XRPLedger2020a}.}
+		\label{fig:xchangeissuer}
+		\footnotesize
+		\setlength{\tabcolsep}{2.7pt}
+		\begin{tabular}{llr}
+			\toprule
+			Issuer name           & Issuer account                               & Rate   \\
+			\midrule
+			Bitstamp              & \xrpaddr{rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B}  & 36,050 \\
+			Gatehub Fifth         & \xrpaddr{rchGBxcD1A1C2tdxF6papQYZ8kjRKMYcL}  & 35,817 \\
+			BTC 2 Ripple          & \xrpaddr{rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q} & 409    \\
+			\emph{not registered} & \xrpaddr{r3fFaoqaJN1wwN68fsMAt4QkRuXkEjB3W4} & 1      \\
+			\emph{not registered} & \xrpaddr{rpJZ5WyotdphojwMLxCr2prhULvG3Voe3X} & 0      \\
+			\bottomrule
+		\end{tabular}
+	\end{subtable}
+	\vskip 5pt
+	\begin{subtable}[b]{\linewidth}
+		\caption{Rate (in \coin{XRP}) of \coin{BTC} IOUs issued by \xrpaddr{rKRNtZzfrkTwE4ggqXbmfgoy57RBJYS7TS} at different time. In all the three exchange transactions, the account that buys the \coin{BTC} IOU against \coin{XRP} is \xrpaddr{rMyronEjVcAdqUvhzx4MaBDwBPSPCrDHYm}}.
+		% Data retrieved from \url{https://data.ripple.com/v2/exchanges/BTC+rKRNtZzfrkTwE4ggqXbmfgoy57RBJYS7TS/XRP}~\cite{XRPLedger2020c}.
+		\label{fig:xchangetime}
+		\footnotesize
+		\centering
+		%  \setlength{\tabcolsep}{pt}
+		\begin{tabular}{llr}
+			\toprule
+			Date       & Seller account of \coin{BTC} IOU             & Rate   \\
+			\midrule
+			2019-12-14 & \xrpaddr{rHVsygEmrjSjafqFxn6dqJWHCdAPE74Zun} & 30,500 \\
+			2020-01-09 & \xrpaddr{rU6m5F9c1eWGKBdLMy1evRwk34HuVc18Wg} & 1      \\
+			2020-01-09 & \xrpaddr{rU6m5F9c1eWGKBdLMy1evRwk34HuVc18Wg} & 0.1    \\
+			\bottomrule
+		\end{tabular}
+	\end{subtable}
 \end{table}
 
 
@@ -163,24 +163,24 @@ The behaviour triggered a heated debate in the XRP community where a member clai
 
 
 \begin{figure}[tbp]
-  \begin{subfigure}{\columnwidth}
-    \includegraphics[
-      width=\linewidth,
-      trim = {0, 20, 0, 10}, clip
-    ]{4-transactions-security/figures/xrp-sankey.pdf}
-    \caption{Observation period: \startdate to \finishdate.}
-    \label{fig:xrpsakeyfull}
-  \end{subfigure}
-  \begin{subfigure}{\columnwidth}
-    \includegraphics[
-      width=\linewidth,
-      trim = {0, 20, 0, 10}, clip
-    ]{4-transactions-security/figures/xrp-sankey3.pdf}
-    \caption{Observation period: February 1, 2020, to \finishdate, during which the throughput was not polluted by systematic \texttt{Payment} spams.}
-    \label{fig:xrpsakeysel}
-  \end{subfigure}
-  \caption[XRPL throughput by transaction type]{XRPL throughput by transaction type, success and value transferred.
-    \colorbox{yellow}{Highlighted} transactions carry economic value.}
+	\begin{subfigure}{\columnwidth}
+		\includegraphics[
+			width=\linewidth,
+			trim = {0, 20, 0, 10}, clip
+		]{4-transactions-security/figures/xrp-sankey.pdf}
+		\caption{Observation period: \startdate to \finishdate.}
+		\label{fig:xrpsakeyfull}
+	\end{subfigure}
+	\begin{subfigure}{\columnwidth}
+		\includegraphics[
+			width=\linewidth,
+			trim = {0, 20, 0, 10}, clip
+		]{4-transactions-security/figures/xrp-sankey3.pdf}
+		\caption{Observation period: February 1, 2020, to \finishdate, during which the throughput was not polluted by systematic \texttt{Payment} spams.}
+		\label{fig:xrpsakeysel}
+	\end{subfigure}
+	\caption[XRPL throughput by transaction type]{XRPL throughput by transaction type, success and value transferred.
+		\colorbox{yellow}{Highlighted} transactions carry economic value.}
 \end{figure}
 
 
@@ -231,18 +231,18 @@ The average on-ledger exchange rates of those three fiat currency tokens, irresp
 
 
 \begin{figure}[tbp]
-  \centering
-  \includegraphics[width=\linewidth,
-    trim = {60, 50, 62, 50}, clip]{4-transactions-security/figures/xrp-cashflow}
-  \tiny{
-    \textcolor{dkblue}{$\blacksquare$} Sender
-    \qquad
-    \textcolor{dkgreen}{$\blacksquare$} Currency
-    \qquad
-    \textcolor{dkyellow}{$\blacksquare$} Receiver
-  }
-  \caption[Value flow on the XRP ledger between \startdate and \finishdate]{Value flow on the XRP ledger between \startdate and \finishdate. The bandwidth of each flow represents the magnitude of aggregate value transferred denominated in \coin{XRP}. Only \texttt{Payment} transactions are included.}
-  \label{fig:xrpcf}
+	\centering
+	\includegraphics[width=\linewidth,
+		trim = {60, 50, 62, 50}, clip]{4-transactions-security/figures/xrp-cashflow}
+	\tiny{
+		\textcolor{dkblue}{$\blacksquare$} Sender
+		\qquad
+		\textcolor{dkgreen}{$\blacksquare$} Currency
+		\qquad
+		\textcolor{dkyellow}{$\blacksquare$} Receiver
+	}
+	\caption[Value flow on the XRP ledger between \startdate and \finishdate]{Value flow on the XRP ledger between \startdate and \finishdate. The bandwidth of each flow represents the magnitude of aggregate value transferred denominated in \coin{XRP}. Only \texttt{Payment} transactions are included.}
+	\label{fig:xrpcf}
 \end{figure}
 
 \point{Fulfilled offers with zero-value tokens}

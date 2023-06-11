@@ -1,10 +1,10 @@
 \subsection{Introduction}
 \label{sec:5a:introduction}
 
-When it comes to vulnerability research, especially as it pertains to software security, it is frequently difficult to estimate what fraction of discovered vulnerabilities are exploited in practice. However, public blockchains, with their immutability, ease of access, and what amounts to a replayable execution log for smart contracts present an excellent opportunity for such an investigation. 
+When it comes to vulnerability research, especially as it pertains to software security, it is frequently difficult to estimate what fraction of discovered vulnerabilities are exploited in practice. However, public blockchains, with their immutability, ease of access, and what amounts to a replayable execution log for smart contracts present an excellent opportunity for such an investigation.
 In this work, we aim to contrast the vulnerabilities reported in smart contracts on the Ethereum~\cite{buterin2014} blockchain with the actual exploitation of these contracts.
 
-We collect the data shared with us by the authors of~\PapersAnalyzed recent papers~\cite{luu2016a,DBLP:conf/ndss/KalraGDS18,Tsankov2018,Grech2018,Nikolic2018a,Krupp2018} that focus on finding smart contract vulnerabilities. These academic datasets are significantly bigger in scale than reports we can find in the wild and because of the sheer number of affected contracts~---~\VulnerableContracts~---~represent an excellent study subject. 
+We collect the data shared with us by the authors of~\PapersAnalyzed recent papers~\cite{luu2016a,DBLP:conf/ndss/KalraGDS18,Tsankov2018,Grech2018,Nikolic2018a,Krupp2018} that focus on finding smart contract vulnerabilities. These academic datasets are significantly bigger in scale than reports we can find in the wild and because of the sheer number of affected contracts~---~\VulnerableContracts~---~represent an excellent study subject.
 
 To make our approach more general, we express~\VulnTypes different frequently reported vulnerability classes as Datalog queries computed over relations that represent the state of the Ethereum blockchain. The Datalog-based exploit discovery approach gives more scalability to our process; also, while others have used Datalog for static analysis formulation, we are not aware of it being used to capture the dynamic state of the blockchain over time.
 
@@ -12,18 +12,18 @@ We discover that the amount of smart contract exploitation which occurs in the w
 
 \point{Contributions} Our contributions are:\itemsep=0pt
 \begin{itemize}\itemsep=-2pt
-% \item
-\item \textbf{Datalog formulation.}
-    We propose a Datalog-based formulation for performing analysis over Ethereum Virtual Machine (EVM) execution traces. We use this highly scalable approach to analyze a total of more than~\empirical{20 million} transactions from the Ethereum blockchain to search for exploits. We highlight that our analyses run \emph{automatically} using data extracted from the transactions and the Datalog rules that we define in this chapter.
+	% \item
+	\item \textbf{Datalog formulation.}
+	      We propose a Datalog-based formulation for performing analysis over Ethereum Virtual Machine (EVM) execution traces. We use this highly scalable approach to analyze a total of more than~\empirical{20 million} transactions from the Ethereum blockchain to search for exploits. We highlight that our analyses run \emph{automatically} using data extracted from the transactions and the Datalog rules that we define in this chapter.
 
-\item \textbf{Experimental evaluation of exploitation.}
-    We analyze the vulnerabilities reported in \PapersAnalyzed recently published studies and conclude that, although the number of \emph{vulnerable} contracts and the amount of money at risk is very high, the amount of money actually \emph{exploited} is several orders of magnitude lower.
+	\item \textbf{Experimental evaluation of exploitation.}
+	      We analyze the vulnerabilities reported in \PapersAnalyzed recently published studies and conclude that, although the number of \emph{vulnerable} contracts and the amount of money at risk is very high, the amount of money actually \emph{exploited} is several orders of magnitude lower.
 
-    We discover that out of~\empirical{\VulnerableContracts} vulnerable contracts worth a total of~\empirical{\EtherStake} ETH,~\empirical{\NumExploitedContracts} contracts may have been exploited for an amount of~\empirical{\ExploitedEther} ETH, which represents only~\empirical{\PercentExploitedEther} of the total amount at stake.
+	      We discover that out of~\empirical{\VulnerableContracts} vulnerable contracts worth a total of~\empirical{\EtherStake} ETH,~\empirical{\NumExploitedContracts} contracts may have been exploited for an amount of~\empirical{\ExploitedEther} ETH, which represents only~\empirical{\PercentExploitedEther} of the total amount at stake.
 
-\item \textbf{Proposed explanations.}
-    We hypothesise that the main reason for these vast differences is that the amount of \emph{exploitable} Ether is very low compared to the amount of Ether flagged \emph{vulnerable}.
-    Indeed, further analysis of the vulnerable contracts and the Ether they contain suggests that a large majority of Ether is held by only a small number of contracts and that the vulnerabilities reported on these contracts are either false positives or not exploitable in practice. We also confirm that the set of all contracts on the Ethereum blockchain has a similar distribution of wealth to our dataset.
+	\item \textbf{Proposed explanations.}
+	      We hypothesise that the main reason for these vast differences is that the amount of \emph{exploitable} Ether is very low compared to the amount of Ether flagged \emph{vulnerable}.
+	      Indeed, further analysis of the vulnerable contracts and the Ether they contain suggests that a large majority of Ether is held by only a small number of contracts and that the vulnerabilities reported on these contracts are either false positives or not exploitable in practice. We also confirm that the set of all contracts on the Ethereum blockchain has a similar distribution of wealth to our dataset.
 \end{itemize}
-To make many of the discussions in this chapter more concrete, we present a thorough investigation of the high-value contracts in \autoref{sec:5a:discussion}. 
+To make many of the discussions in this chapter more concrete, we present a thorough investigation of the high-value contracts in \autoref{sec:5a:discussion}.
 

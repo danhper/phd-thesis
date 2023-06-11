@@ -15,7 +15,7 @@ In this section, we describe in detail the different analyses we perform in orde
 To check for potential exploits, we perform bytecode-level transaction analysis, whereby we look at the code executed by the contract when carrying out a particular transaction. We use this type of analysis to detect the~\VulnTypes types of vulnerabilities presented in \autoref{sec:5a:background}.
 
 To perform our analyses, we first retrieve transaction data for all the contracts in our dataset. Next, to perform bytecode-level analysis, we extract the execution traces for the transactions which may have affected contracts of interest. We use the EVM's debug functionality, which gives us the ability to replay transactions and trace all the executed instructions. To speed up the data collection process, we patch the Go Ethereum client~\cite{go-ethereum}, as opposed to relying on the Remote Procedure Call~(RPC) functionality provided by the default Ethereum client.
-We show a truncated sample of the extracted traces in \autoref{fig:execution-trace} for illustration. 
+We show a truncated sample of the extracted traces in \autoref{fig:execution-trace} for illustration.
 %
 The \lstinline{op} key is the current instruction, \lstinline{pc} is the program counter, \lstinline{depth} is the current level of call nesting, and finally, \lstinline{stack} contains the current state of the stack. We use single-byte values in the example, but the actual values are 32 bytes (256 bits).
 
@@ -23,14 +23,14 @@ The extracted traces contain a list of executed instructions, as well as the sta
 To analyze the traces, we encode them into a Datalog representation; Datalog is a language implementing first-order logic with recursion~\cite{Immerman99descriptivecomplexity}, which allows us to concisely express properties about the execution traces.
 We use the following domains to encode the information about the traces as Datalog facts, noting $V$ as the set of program variables and $A$ as the set of Ethereum addresses.
 We show an overview of the facts that we collect and the relations that we use to check for possible exploits in \autoref{fig:datalog-setup}.
-We highlight that our analyses run \emph{automatically} based on facts extracted from transactions traces and the rules that we define in subsequent sections. 
+We highlight that our analyses run \emph{automatically} based on facts extracted from transactions traces and the rules that we define in subsequent sections.
 
 \begin{figure}
-  \centering
-\begin{lstlisting}[language=Solidity,basicstyle=\footnotesize\ttfamily,label=fig:handled-exception-solidity,caption=Failure handling in Solidity.]
+	\centering
+	\begin{lstlisting}[language=Solidity,basicstyle=\footnotesize\ttfamily,label=fig:handled-exception-solidity,caption=Failure handling in Solidity.]
 if (!addr.send(100)) { throw; }
 \end{lstlisting}
-\begin{lstlisting}[language=esm, basicstyle=\footnotesize\ttfamily,caption=EVM instructions for failure handling.,label=fig:handled-exception-instructions]
+	\begin{lstlisting}[language=esm, basicstyle=\footnotesize\ttfamily,caption=EVM instructions for failure handling.,label=fig:handled-exception-instructions]
 ; preparing call
 (0x65) CALL
 ; call result pushed on the stack
@@ -39,8 +39,8 @@ if (!addr.send(100)) { throw; }
 (0x72) REVERT
 (0x73) JUMPDEST
 \end{lstlisting}
-  \caption{Correctly handled failed \lstinline{send}.}
-  \label{fig:handled-exception}
+	\caption{Correctly handled failed \lstinline{send}.}
+	\label{fig:handled-exception}
 \end{figure}
 
 % \point{Analysis correctness: effects of soundness and completeness}
@@ -84,7 +84,7 @@ Using these, we then use the query shown in \autoref{fig:queries} to retrieve po
 \subsubsection{\unhandledexceptions}
 %
 When Solidity compiles contracts, methods to send Ether, such as \lstinline{send}, are compiled into the EVM \op{CALL} instructions. We show an example of such a call and its instructions counterpart in \autoref{fig:handled-exception-instructions}.
-If the address passed to \op{CALL} is an address, the EVM executes the code of the contract, otherwise, it executes the necessary instructions to transfer Ether to the address. When the EVM is done executing, it pushes either $1$ on the stack, if the \op{CALL} succeeded, or $0$ otherwise. 
+If the address passed to \op{CALL} is an address, the EVM executes the code of the contract, otherwise, it executes the necessary instructions to transfer Ether to the address. When the EVM is done executing, it pushes either $1$ on the stack, if the \op{CALL} succeeded, or $0$ otherwise.
 
 To retrieve information about call results, we can therefore check for \op{CALL} instructions and use the value pushed on the stack after the call execution. The end of the call execution can be easily found by checking when the \lstinline{depth} of the trace turns back to the value it had when the \op{CALL} instruction was executed; we save this information as \dterm{call_result}{v\dsep n} facts.
 An important edge case to consider are calls to pre-compiled contracts, which are typically called by the compiler and do not require their return value to be checked, as they are results of a computation where $0$ could be a valid value, but could result in false positives.
@@ -145,7 +145,7 @@ However, finding if there is a transaction order dependency requires more knowle
 %
 The EVM is completely untyped and expresses everything in terms of 256-bit words. Therefore, types are handled entirely at the compilation level and there is no explicit information about the original types in any execution traces.
 
-To check for integer overflow, we accumulate facts over two passes. In the first pass, we try to recover the sign and size of the different values on the stack. To do so, we use known invariants about the Solidity compilation process. First, any value which is the result of an instruction such as \op{SIGNEXTEND} or \op{SDIV} can be marked to be signed with \dterm{is_signed}{v}. Furthermore, \op{SIGNEXTEND} being the usual sign extension operation for two's complement, it is passed both the value to extend and the number of bits of the value. This allows us to retrieve the size of the signed value. We assume any value not explicitly marked as signed to be unsigned. To retrieve the size of unsigned values, we use another behaviour of the Solidity compiler. 
+To check for integer overflow, we accumulate facts over two passes. In the first pass, we try to recover the sign and size of the different values on the stack. To do so, we use known invariants about the Solidity compilation process. First, any value which is the result of an instruction such as \op{SIGNEXTEND} or \op{SDIV} can be marked to be signed with \dterm{is_signed}{v}. Furthermore, \op{SIGNEXTEND} being the usual sign extension operation for two's complement, it is passed both the value to extend and the number of bits of the value. This allows us to retrieve the size of the signed value. We assume any value not explicitly marked as signed to be unsigned. To retrieve the size of unsigned values, we use another behaviour of the Solidity compiler.
 
 To work around the lack of type in the EVM, the Solidity compiler inserts an \op{AND} instruction to ``cast'' unsigned integers to their correct value. For example, to emulate an \lstinline{uint8}, the compiler inserts \lstinline{AND value 0xff}. In the case of a ``cast'', the second operand $m$ will always be of the form $m = 16^n - 1,~n\in \mathbb{N},~n = 2^p,~p \in [1, 6]$. We use this observation to mark values with the according type: \lstinline{uintN} where $N = n \times 4$. Variables size are stored as \dterm{size}{v\dsep n} facts.
 

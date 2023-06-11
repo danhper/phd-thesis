@@ -1,29 +1,29 @@
 
 \begin{table}[tb]
-  \centering
-  \caption[Events emitted by the Compound protocol]{The events emitted by the Compound protocol smart contracts used for initiating state transitions and the states affected by each event.}
-\label{tab:compound-events}
-  \small
-  \setlength{\tabcolsep}{1.5pt}
-  \begin{tabular}{lp{6cm}c}
-    \toprule
-    {\bf Event} & {\bf Description} &
-    {\bf State variables affected}\\
+	\centering
+	\caption[Events emitted by the Compound protocol]{The events emitted by the Compound protocol smart contracts used for initiating state transitions and the states affected by each event.}
+	\label{tab:compound-events}
+	\small
+	\setlength{\tabcolsep}{1.5pt}
+	\begin{tabular}{lp{6cm}c}
+		\toprule
+		{\bf Event}                   & {\bf Description}                                                                &
+		{\bf State variables affected}                                                                                                                  \\
 
-    \midrule
-    \texttt{Borrow}  & A new borrow position is created. & $\mathcal{B}$  \\ 
-    \texttt{Mint} & cTokens are minted for new deposits. &  $\mathcal{S}$           \\
-    \texttt{RepayBorrow} & A borrow position is partially/fully repaid.& $\mathcal{B}$            \\ 
-    \texttt{LiquidateBorrow} & A borrow position is liquidated. & $\mathcal{B}$, $\mathcal{S}$             \\
-    \texttt{Redeem} & cTokens are used to redeem deposits of the underlying asset. & $\mathcal{S}$ \\
-    \texttt{NewCollateralFactor} & The collateral factor for the associated market is updated. & $\mathcal{C}$   \\
-    \texttt{AccrueInterest} & Interest has accrued for the associated market and its borrow index is updated. & $\mathcal{B}$            \\
-    \texttt{NewInterestRateModel} & The interest rate model for the associated market is updated. & $\mathcal{I}$             \\
-    \texttt{NewInterestParams} & The parameters of the interest rate model for the associated market are updated. & $\mathcal{I}$            \\
-    \texttt{NewCloseFactor} & The close factor is updated. &     $\Lambda$   \\
-    % \texttt{MarketListed} & The associated market is now listed. & $\mathcal{M}$            \\
-    % \texttt{MarketExited} & The associated market is no longer listed. & $\mathcal{M}$          \\
-    % Add NewLiquidityIncentive?
-    \bottomrule
-  \end{tabular}
+		\midrule
+		\texttt{Borrow}               & A new borrow position is created.                                                & $\mathcal{B}$                \\
+		\texttt{Mint}                 & cTokens are minted for new deposits.                                             & $\mathcal{S}$                \\
+		\texttt{RepayBorrow}          & A borrow position is partially/fully repaid.                                     & $\mathcal{B}$                \\
+		\texttt{LiquidateBorrow}      & A borrow position is liquidated.                                                 & $\mathcal{B}$, $\mathcal{S}$ \\
+		\texttt{Redeem}               & cTokens are used to redeem deposits of the underlying asset.                     & $\mathcal{S}$                \\
+		\texttt{NewCollateralFactor}  & The collateral factor for the associated market is updated.                      & $\mathcal{C}$                \\
+		\texttt{AccrueInterest}       & Interest has accrued for the associated market and its borrow index is updated.  & $\mathcal{B}$                \\
+		\texttt{NewInterestRateModel} & The interest rate model for the associated market is updated.                    & $\mathcal{I}$                \\
+		\texttt{NewInterestParams}    & The parameters of the interest rate model for the associated market are updated. & $\mathcal{I}$                \\
+		\texttt{NewCloseFactor}       & The close factor is updated.                                                     & $\Lambda$                    \\
+		% \texttt{MarketListed} & The associated market is now listed. & $\mathcal{M}$            \\
+		% \texttt{MarketExited} & The associated market is no longer listed. & $\mathcal{M}$          \\
+		% Add NewLiquidityIncentive?
+		\bottomrule
+	\end{tabular}
 \end{table}

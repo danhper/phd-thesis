@@ -1,7 +1,7 @@
 \begin{figure}[tb]
-  \centering\includegraphics[width=\textwidth]{3-vm-security/figures/cpu-gas-extcodesize.pdf}
-  \caption{Correlation between gas and clock time when performing a resource exhaustion attack.}
-  \label{fig:extcodesize-cpu}
+	\centering\includegraphics[width=\textwidth]{3-vm-security/figures/cpu-gas-extcodesize.pdf}
+	\caption{Correlation between gas and clock time when performing a resource exhaustion attack.}
+	\label{fig:extcodesize-cpu}
 \end{figure}
 
 \section{Case Studies in Metering}
@@ -30,30 +30,30 @@ We note that these measurements are not representative of the current state of t
 In particular, EIP-2929 was introduced in April 2021~\cite{eip-2929}, partly based on the findings from this chapter, and significantly increased the cost of accessing storage.
 
 \begin{figure}[tb]
-  \begin{subfigure}[t]{\columnwidth}
-    \centering\includegraphics[width=\columnwidth]{3-vm-security/figures/arithmetic-microbench.pdf}
-    \vskip -5mm
-    \caption{Mean time for arithmetic instructions.}
-    \vskip 5mm
-    \label{fig:arithmetic-instruction-times}
-  \end{subfigure}
-  \begin{subfigure}[t]{\columnwidth}
-    \centering
-    \begin{tabular}{crrrr}
-      \toprule
-      \bf \multirow{2}{*}{Instruction} & \bf Gas            & \bf \multirow{2}{*}{Count} & \multicolumn{1}{c}{\bf Mean} & \bf Throughput \\
-                                       & \bf cost           &                            & \textbf{time} (ns)           & (gas / $\mu$s) \\
-      \midrule
-      \texttt{ADD}                     & 3                  & 453,069                    & 82.20                        & 36.50          \\
-      \texttt{MUL}                     & 5                  & 62,818                     & 96.96                        & 51.57          \\
-      \texttt{DIV}                     & 5                  & 107,972                    & 476.23                       & 10.50          \\
-      \texttt{EXP}                     & \textasciitilde 51 & 186,004                    & 287.93                       & 177.1          \\
-      \bottomrule
-    \end{tabular}
-    \caption{Execution time and gas usage for arithmetic instructions.}
-    \label{tab:arithmetic-instruction-times}
-  \end{subfigure}
-  \caption{Comparing execution time and gas usage of arithmetic instructions.}
+	\begin{subfigure}[t]{\columnwidth}
+		\centering\includegraphics[width=\columnwidth]{3-vm-security/figures/arithmetic-microbench.pdf}
+		\vskip -5mm
+		\caption{Mean time for arithmetic instructions.}
+		\vskip 5mm
+		\label{fig:arithmetic-instruction-times}
+	\end{subfigure}
+	\begin{subfigure}[t]{\columnwidth}
+		\centering
+		\begin{tabular}{crrrr}
+			\toprule
+			\bf \multirow{2}{*}{Instruction} & \bf Gas            & \bf \multirow{2}{*}{Count} & \multicolumn{1}{c}{\bf Mean} & \bf Throughput \\
+			                                 & \bf cost           &                            & \textbf{time} (ns)           & (gas / $\mu$s) \\
+			\midrule
+			\texttt{ADD}                     & 3                  & 453,069                    & 82.20                        & 36.50          \\
+			\texttt{MUL}                     & 5                  & 62,818                     & 96.96                        & 51.57          \\
+			\texttt{DIV}                     & 5                  & 107,972                    & 476.23                       & 10.50          \\
+			\texttt{EXP}                     & \textasciitilde 51 & 186,004                    & 287.93                       & 177.1          \\
+			\bottomrule
+		\end{tabular}
+		\caption{Execution time and gas usage for arithmetic instructions.}
+		\label{tab:arithmetic-instruction-times}
+	\end{subfigure}
+	\caption{Comparing execution time and gas usage of arithmetic instructions.}
 \end{figure}
 
 \subsection{Arithmetic Instructions}
@@ -70,27 +70,27 @@ We will show in the coming sections that IO-related operations tend to make thin
 
 
 \begin{table}[tb]
-  \centering
-  \setlength{\tabcolsep}{14pt}
-  \caption{Correlation scores between gas and system resources.}
-  \label{tab:correlation-scores}
-  \begin{tabular}{clr}
-    \toprule
-    \thead[l]{Phase}              & \thead[l]{Resource} & \thead[r]{Pearson \\score}\\
-    \midrule
-    \multirow{4}{*}{Pre EIP-150}  & Memory              & 0.545             \\
-                                  & CPU                 & 0.528             \\
-                                  & Storage             & 0.775             \\
-                                  & Storage/Memory      & \textbf{0.845}    \\
-                                  & Storage/Memory/CPU  & 0.759             \\
-    \midrule
-    \multirow{4}{*}{Post EIP-150} & Memory              & 0.755             \\
-                                  & CPU                 & 0.507             \\
-                                  & Storage             & 0.907             \\
-                                  & Storage/Memory      & \textbf{0.938}    \\
-                                  & Storage/Memory/CPU  & 0.893             \\
-    \bottomrule
-  \end{tabular}
+	\centering
+	\setlength{\tabcolsep}{14pt}
+	\caption{Correlation scores between gas and system resources.}
+	\label{tab:correlation-scores}
+	\begin{tabular}{clr}
+		\toprule
+		\thead[l]{Phase}              & \thead[l]{Resource} & \thead[r]{Pearson \\score}\\
+		\midrule
+		\multirow{4}{*}{Pre EIP-150}  & Memory              & 0.545             \\
+		                              & CPU                 & 0.528             \\
+		                              & Storage             & 0.775             \\
+		                              & Storage/Memory      & \textbf{0.845}    \\
+		                              & Storage/Memory/CPU  & 0.759             \\
+		\midrule
+		\multirow{4}{*}{Post EIP-150} & Memory              & 0.755             \\
+		                              & CPU                 & 0.507             \\
+		                              & Storage             & 0.907             \\
+		                              & Storage/Memory      & \textbf{0.938}    \\
+		                              & Storage/Memory/CPU  & 0.893             \\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
 \subsection{Gas and System Resources Consumption}
@@ -131,36 +131,36 @@ It discussed changing the price of \lstinline{BLOCKHASH} to~800 gas but at the t
 It has not been included in any further hard fork either.
 
 \begin{table}[tb]
-  \centering
-  \caption{Instructions with the highest execution time variance.}
-  \label{tab:high-variance-instructions}
-  \setlength{\tabcolsep}{3pt}
-  \begin{tabular}{lrrr}
-    \toprule
-    \textbf{Instruction} & \textbf{Mean}          & \textbf{Standard}  & \textbf{Measurements} \\
-                         & \textbf{time} ($\mu$s) & \textbf{deviation} & \textbf{count}        \\
-    \midrule
-    \texttt{BLOCKHASH}   & 768                    & 578                & 240,000               \\
-    \texttt{BALANCE}     & 762                    & 449                & 8,625,000             \\
-    \texttt{SLOAD}       & 514                    & 402                & 148,687,000           \\
-    \texttt{EXTCODECOPY} & 403                    & 361                & 23,000                \\
-    \texttt{EXTCODESIZE} & 221                    & 245                & 16,834,000            \\
-    \bottomrule
-  \end{tabular}
+	\centering
+	\caption{Instructions with the highest execution time variance.}
+	\label{tab:high-variance-instructions}
+	\setlength{\tabcolsep}{3pt}
+	\begin{tabular}{lrrr}
+		\toprule
+		\textbf{Instruction} & \textbf{Mean}          & \textbf{Standard}  & \textbf{Measurements} \\
+		                     & \textbf{time} ($\mu$s) & \textbf{deviation} & \textbf{count}        \\
+		\midrule
+		\texttt{BLOCKHASH}   & 768                    & 578                & 240,000               \\
+		\texttt{BALANCE}     & 762                    & 449                & 8,625,000             \\
+		\texttt{SLOAD}       & 514                    & 402                & 148,687,000           \\
+		\texttt{EXTCODECOPY} & 403                    & 361                & 23,000                \\
+		\texttt{EXTCODESIZE} & 221                    & 245                & 16,834,000            \\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
 % \subsection{Branch Prediction and EVM Costs}
 
 \begin{figure}[tb]
-  \includegraphics[width=\columnwidth]{3-vm-security/figures/cache-speed.pdf}
-  \caption[Comparison of throughput with and without page cache]{Comparing throughput with and without page cache: $x$ axis is the relative speed improvement and $y$ axis is the number of contracts.}
-  \label{fig:cache-measurement}
+	\includegraphics[width=\columnwidth]{3-vm-security/figures/cache-speed.pdf}
+	\caption[Comparison of throughput with and without page cache]{Comparing throughput with and without page cache: $x$ axis is the relative speed improvement and $y$ axis is the number of contracts.}
+	\label{fig:cache-measurement}
 \end{figure}
 
 \begin{figure}[tb]
-  \includegraphics[width=\columnwidth]{3-vm-security/figures/cache-persistence.pdf}
-  \caption{Measuring block execution speed with and without the effect of cache.}
-  \label{fig:cache-persistence}
+	\includegraphics[width=\columnwidth]{3-vm-security/figures/cache-persistence.pdf}
+	\caption{Measuring block execution speed with and without the effect of cache.}
+	\label{fig:cache-persistence}
 \end{figure}
 
 \subsection{Memory Caches and EVM Costs}
@@ -170,9 +170,9 @@ Given the high variance in execution time for some instructions, we evaluate the
 \point{Page cache} First, we evaluate how the operating system page cache influences the execution time by reducing the IO latency. We perform the experiment as follows:
 
 \begin{enumerate}
-  \item Generate a contract
-  \item Run the code of the contract $n$ times
-  \item Run the code of the contract $n$ times but drop the page cache between each run
+	\item Generate a contract
+	\item Run the code of the contract $n$ times
+	\item Run the code of the contract $n$ times but drop the page cache between each run
 \end{enumerate}
 %
 We perform this for~\empirical{100} different contracts and measure the execution time for the versions with and without cache. We generate relatively large contracts, which consume on average~\empirical{800,000} gas each.
@@ -188,9 +188,9 @@ Indeed, when running the same experiment with contracts consuming on average~\em
 \point{Caching across blocks} In the next experiment, instead of measuring the cache impact by running a single contract multiple times, we evaluate how the cache impacts the execution time across blocks. In particular, we measure how many blocks need to be executed before the data cached during the previous execution of a contract gets evicted from the different caches. To do so, we perform the following experiment.
 
 \begin{enumerate}
-  \item Generate $n$ blocks, with different contracts in each
-  \item Execute sequentially all the blocks and measure the execution time
-  \item Repeat the previous step $m$ times in the same process and record how the execution speed evolves
+	\item Generate $n$ blocks, with different contracts in each
+	\item Execute sequentially all the blocks and measure the execution time
+	\item Repeat the previous step $m$ times in the same process and record how the execution speed evolves
 \end{enumerate}
 
 We set $m$ to 10 and we try different values for $n$ to see how many blocks are needed for the cache not to provide any further speedup.
@@ -206,8 +206,8 @@ This shows that not only the cache has a very high impact on execution time but 
 \subsection{Summary}
 In this section, we empirically analysed the gas cost and resource consumption of different instructions. To summarise:
 \begin{itemize}
-  \item We see that even for simple instructions, the gas cost is not always consistent with resource usage. Indeed, even for instruction with very predictable speed, such as arithmetic operations, we observe that some instructions have a throughput~\empirical{5} times slower than others.
-  \item We notice that while most instructions have a relatively consistent execution speed, other instructions have large variations in the time it takes to execute. We find that these instructions involve some sort of IO operation.
-  \item Finally, we demonstrate the effect that the page cache has on the execution speed of smart contracts and then show the typical number of blocks for which the page cache still provides speed up.
-  \item Overall, we see that beyond some pricing issues, the metering scheme used by EVM does not allow to express the complexity inherent to IO operations.
+	\item We see that even for simple instructions, the gas cost is not always consistent with resource usage. Indeed, even for instruction with very predictable speed, such as arithmetic operations, we observe that some instructions have a throughput~\empirical{5} times slower than others.
+	\item We notice that while most instructions have a relatively consistent execution speed, other instructions have large variations in the time it takes to execute. We find that these instructions involve some sort of IO operation.
+	\item Finally, we demonstrate the effect that the page cache has on the execution speed of smart contracts and then show the typical number of blocks for which the page cache still provides speed up.
+	\item Overall, we see that beyond some pricing issues, the metering scheme used by EVM does not allow to express the complexity inherent to IO operations.
 \end{itemize}

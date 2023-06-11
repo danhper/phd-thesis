@@ -1,5 +1,5 @@
 \subsection{Background}
-\label{sec:5a:background} 
+\label{sec:5a:background}
 In this section, we first introduce different types of smart contract vulnerabilities.
 We then present some of the analysis tools available to prevent such vulnerabilities.
 Finally, we provide some definitions that will be used in the rest of the chapter.
@@ -27,7 +27,7 @@ There are also cases where the contract will \emph{always} run out of gas when t
 to send Ether which could result in locking the contract funds. More details about such issues can be found in~\cite{Grech2018}.
 
 \point{\transactionorder~(\vto)}
-In Ethereum, multiple transactions are included in a single block, which means that the state of a contract can be updated multiple times in the same block. If the order of two transactions calling the same smart contract changes the outcome, an attacker could exploit this property. 
+In Ethereum, multiple transactions are included in a single block, which means that the state of a contract can be updated multiple times in the same block. If the order of two transactions calling the same smart contract changes the outcome, an attacker could exploit this property.
 For example, given a contract which expects participants to submit the solution to a puzzle in exchange for a reward, a malicious contract owner could reduce the amount of the reward when the transaction is submitted.
 
 \point{\integeroverflow~(\vio)}
@@ -71,13 +71,13 @@ There are two main drawbacks to this approach. One of the drawbacks of this appr
 \label{ssec:definitions}
 We give the definitions used in this section for the terms \emph{vulnerable}, \emph{exploitable} and \emph{exploited}.
 \begin{description}
-\item[vulnerable:]
-  A contract is vulnerable if it has been flagged by a static analysis tool as such.
-  As we will see later, this means that some contracts may be \emph{vulnerable} because of a false-positive.
-\item[exploitable:]
-  A contract is exploitable if it is vulnerable and the vulnerability could be exploited by an external attacker.
-  For example, if the ``vulnerability'' flagged by a tool is in a function which requires owning the contract, it would be \emph{vulnerable} but not \emph{exploitable}.
-\item[exploited:]
-  A contract is exploited if it received a transaction on Ethereum's main network which triggered one of its vulnerabilities.
-  Therefore, a contract can be \emph{vulnerable} or even \emph{exploitable} without having been \emph{exploited}.
+	\item[vulnerable:]
+		A contract is vulnerable if it has been flagged by a static analysis tool as such.
+		As we will see later, this means that some contracts may be \emph{vulnerable} because of a false-positive.
+	\item[exploitable:]
+		A contract is exploitable if it is vulnerable and the vulnerability could be exploited by an external attacker.
+		For example, if the ``vulnerability'' flagged by a tool is in a function which requires owning the contract, it would be \emph{vulnerable} but not \emph{exploitable}.
+	\item[exploited:]
+		A contract is exploited if it received a transaction on Ethereum's main network which triggered one of its vulnerabilities.
+		Therefore, a contract can be \emph{vulnerable} or even \emph{exploitable} without having been \emph{exploited}.
 \end{description}

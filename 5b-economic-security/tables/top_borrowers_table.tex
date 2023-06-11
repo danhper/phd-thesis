@@ -1,45 +1,45 @@
 \begin{table}[tbp]
-  \caption[Top 10 suppliers and borrowers on Compound]{Top 10 suppliers and borrowers. Amounts are expressed in their USD equivalent. Addresses marked with $\checkmark$ are smart contract addresses, among which the one with the most supplied funds is a Curve pool address that aggregates funds from multiple parties. 
-%   and the ``A'' column is checked if it is an \emph{aggregator} (e.g. Curve pool).
-  }
-  \label{tab:top-suppliers-borrowers}
-  \setlength{\tabcolsep}{5pt}
-  \begin{subtable}{\textwidth}
-    \caption{Top 10 users with the largest amount of funds supplied}
-    \begin{tabular}{lcrl}
-      \toprule
-      \textbf{Address} &  & \textbf{Amount} & \textbf{Description}\\
-      \midrule
-      \contractaddr[\small]{0x554bd2947df1c8d8d38897bdc92b3b97692b2845} &   & 342,128,032 &\\
-      \contractaddr[\small]{0xa2b47e3d5c44877cca798226b7b8118f9bfb7a56} & \checkmark  & 40,284,236 & Curve pool\\
-      \contractaddr[\small]{0x04b0b0e460c9fc583d9c93bc9ae25b353390645e} & \checkmark  & 34,908,472 & Instadapp smart wallet\\
-      \contractaddr[\small]{0x25599dcbd434af9a17d52444f71c92987fa97cfc} &  & 34,530,570 & \\
-      \contractaddr[\small]{0x58485ea7106891bdd94c37ced30c6fdbc5293b16} & \checkmark  & 32,686,029 & Multisig wallet\\
-      \contractaddr[\small]{0x909b443761bbd7fbb876ecde71a37e1433f6af6f} &  & 29,308,425  & \\
-      \contractaddr[\small]{0xea61f3052753ea2c6a1c208583ad9b0394ed2f28} & \checkmark  & 28,854,366 & DeFi Saver smart wallet\\
-      \contractaddr[\small]{0x32b2d4ec46d76fc6dabfe958fb0e0bd8db740c84} &  & 27,928,637 & \\
-      \contractaddr[\small]{0xedcc13d25e23032b61d30c298334f92d7c0ba84e} &  & 27,709,153 & \\
-      \contractaddr[\small]{0x6d2af065ccb60c0f7e8ec5907c961c42a3447127} &  & 25,559,037 & \\
-      \bottomrule
-    \end{tabular}
-  \end{subtable}
-  \begin{subtable}{\textwidth}
-    \caption{Top 10 users with the largest amount of funds borrowed}
-    \begin{tabular}{llrl}
-      \toprule
-      \textbf{Address} &  & \textbf{Amount} & \textbf{Description}\\
-      \midrule
-      \contractaddr[\small]{0x554bd2947df1c8d8d38897bdc92b3b97692b2845} & & 247,143,532 & \\
-      \contractaddr[\small]{0x25599dcbd434af9a17d52444f71c92987fa97cfc} & & 22,085,613 & \\
-      \contractaddr[\small]{0x909b443761bbd7fbb876ecde71a37e1433f6af6f} & & 21,030,095 & \\
-      \contractaddr[\small]{0x58485ea7106891bdd94c37ced30c6fdbc5293b16} & \checkmark & 20,149,687 & Multisig wallet\\
-      \contractaddr[\small]{0x32b2d4ec46d76fc6dabfe958fb0e0bd8db740c84} & & 18,900,729 & \\
-      \contractaddr[\small]{0xea61f3052753ea2c6a1c208583ad9b0394ed2f28} & \checkmark & 18,248,324 & DeFi Saver smart wallet\\
-      \contractaddr[\small]{0xedcc13d25e23032b61d30c298334f92d7c0ba84e} & & 17,643,172 & \\
-      \contractaddr[\small]{0x6d2af065ccb60c0f7e8ec5907c961c42a3447127} & & 12,015,576 & \\
-      \contractaddr[\small]{0x79dbd1baf124edd4205b2aba56c29bf3914c8ed0} & & 11,632,820 & \\
-      \contractaddr[\small]{0x0c8a8dd439069690a5722d5fbb18359a68e279f1} & & 10,009,553 & \\
-      \bottomrule
-    \end{tabular}
-  \end{subtable}
+	\caption[Top 10 suppliers and borrowers on Compound]{Top 10 suppliers and borrowers. Amounts are expressed in their USD equivalent. Addresses marked with $\checkmark$ are smart contract addresses, among which the one with the most supplied funds is a Curve pool address that aggregates funds from multiple parties.
+		%   and the ``A'' column is checked if it is an \emph{aggregator} (e.g. Curve pool).
+	}
+	\label{tab:top-suppliers-borrowers}
+	\setlength{\tabcolsep}{5pt}
+	\begin{subtable}{\textwidth}
+		\caption{Top 10 users with the largest amount of funds supplied}
+		\begin{tabular}{lcrl}
+			\toprule
+			\textbf{Address}                                                  &            & \textbf{Amount} & \textbf{Description}    \\
+			\midrule
+			\contractaddr[\small]{0x554bd2947df1c8d8d38897bdc92b3b97692b2845} &            & 342,128,032     &                         \\
+			\contractaddr[\small]{0xa2b47e3d5c44877cca798226b7b8118f9bfb7a56} & \checkmark & 40,284,236      & Curve pool              \\
+			\contractaddr[\small]{0x04b0b0e460c9fc583d9c93bc9ae25b353390645e} & \checkmark & 34,908,472      & Instadapp smart wallet  \\
+			\contractaddr[\small]{0x25599dcbd434af9a17d52444f71c92987fa97cfc} &            & 34,530,570      &                         \\
+			\contractaddr[\small]{0x58485ea7106891bdd94c37ced30c6fdbc5293b16} & \checkmark & 32,686,029      & Multisig wallet         \\
+			\contractaddr[\small]{0x909b443761bbd7fbb876ecde71a37e1433f6af6f} &            & 29,308,425      &                         \\
+			\contractaddr[\small]{0xea61f3052753ea2c6a1c208583ad9b0394ed2f28} & \checkmark & 28,854,366      & DeFi Saver smart wallet \\
+			\contractaddr[\small]{0x32b2d4ec46d76fc6dabfe958fb0e0bd8db740c84} &            & 27,928,637      &                         \\
+			\contractaddr[\small]{0xedcc13d25e23032b61d30c298334f92d7c0ba84e} &            & 27,709,153      &                         \\
+			\contractaddr[\small]{0x6d2af065ccb60c0f7e8ec5907c961c42a3447127} &            & 25,559,037      &                         \\
+			\bottomrule
+		\end{tabular}
+	\end{subtable}
+	\begin{subtable}{\textwidth}
+		\caption{Top 10 users with the largest amount of funds borrowed}
+		\begin{tabular}{llrl}
+			\toprule
+			\textbf{Address}                                                  &            & \textbf{Amount} & \textbf{Description}    \\
+			\midrule
+			\contractaddr[\small]{0x554bd2947df1c8d8d38897bdc92b3b97692b2845} &            & 247,143,532     &                         \\
+			\contractaddr[\small]{0x25599dcbd434af9a17d52444f71c92987fa97cfc} &            & 22,085,613      &                         \\
+			\contractaddr[\small]{0x909b443761bbd7fbb876ecde71a37e1433f6af6f} &            & 21,030,095      &                         \\
+			\contractaddr[\small]{0x58485ea7106891bdd94c37ced30c6fdbc5293b16} & \checkmark & 20,149,687      & Multisig wallet         \\
+			\contractaddr[\small]{0x32b2d4ec46d76fc6dabfe958fb0e0bd8db740c84} &            & 18,900,729      &                         \\
+			\contractaddr[\small]{0xea61f3052753ea2c6a1c208583ad9b0394ed2f28} & \checkmark & 18,248,324      & DeFi Saver smart wallet \\
+			\contractaddr[\small]{0xedcc13d25e23032b61d30c298334f92d7c0ba84e} &            & 17,643,172      &                         \\
+			\contractaddr[\small]{0x6d2af065ccb60c0f7e8ec5907c961c42a3447127} &            & 12,015,576      &                         \\
+			\contractaddr[\small]{0x79dbd1baf124edd4205b2aba56c29bf3914c8ed0} &            & 11,632,820      &                         \\
+			\contractaddr[\small]{0x0c8a8dd439069690a5722d5fbb18359a68e279f1} &            & 10,009,553      &                         \\
+			\bottomrule
+		\end{tabular}
+	\end{subtable}
 \end{table}

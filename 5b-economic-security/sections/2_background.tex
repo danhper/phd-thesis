@@ -7,19 +7,19 @@ One of the major applications of blockchain systems, and Ethereum in particular 
 DeFi is the development of financial systems on top of blockchains using smart contracts.
 DeFi systems have several major characteristics:
 \begin{description}
-  \setlength{\baselineskip}{15pt}
-\item[Non-custodial] Users of DeFi systems should have control over their funds at all time
-\item[Permisionless] DeFi systems should be available to everyone
-\item[Openly auditable] Anyone has the ability to verify the state of a DeFi system at any point in time
-\item[Composable] DeFi systems can be freely composed to interact with one another.
+	\setlength{\baselineskip}{15pt}
+	\item[Non-custodial] Users of DeFi systems should have control over their funds at all time
+	\item[Permisionless] DeFi systems should be available to everyone
+	\item[Openly auditable] Anyone has the ability to verify the state of a DeFi system at any point in time
+	\item[Composable] DeFi systems can be freely composed to interact with one another.
 \end{description}
 
 There are several primitive, in the form of smart contracts, that are often used when building DeFi systems.
 
 \subsubsection{Oracles}
 \label{sec:oracles}
-An oracle is a mechanism for importing off-chain data into the blockchain virtual machine 
-so that it is readable by smart contracts. 
+An oracle is a mechanism for importing off-chain data into the blockchain virtual machine
+so that it is readable by smart contracts.
 This includes off-chain asset prices, such as ETH/USD, as well as off-chain information needed to verify outcomes of prediction markets.
 Oracles are relied upon by various DeFi protocols (e.g.~\cite{leshner2019compound,whitepaper:aave,whitepaper:maker,synthetix2020litepaper,peterson2015augur,leshner2019compound}).
 
@@ -43,6 +43,6 @@ In general, collateral serves as a potential repercussion against misbehaving ag
 % As outlined in Section~\ref{sec:plfs}, in a trustless system without strong identities or legal recourse, overcollateralization creates the economic incentive for the loan to be repaid, or at least insures the lender against losses. 
 As asset prices evolve over time, these systems generally allow automated deleveraging: if an agent's level of collateralization (value of collateral / value of borrowing) falls below a protocol-defined threshold, an arbitrager in the system can reduce the agent's borrowing exposure in return for a portion of their collateral at a discounted valuation. This aims to keep the system fully collateralized.
 
-Overcollateralization is not without risks, however. For instance, as explored in \cite{gudgeon2020decentralized,kao2020analysis}, times of financial crisis (wherein there are persistent negative shocks to collateral asset prices) can result in thin, illiquid markets, in which loans may become under-collateralized despite an automated deleveraging process. 
-In such settings, it can become unprofitable for liquidators, a type of keeper, to initiate liquidations. 
+Overcollateralization is not without risks, however. For instance, as explored in \cite{gudgeon2020decentralized,kao2020analysis}, times of financial crisis (wherein there are persistent negative shocks to collateral asset prices) can result in thin, illiquid markets, in which loans may become under-collateralized despite an automated deleveraging process.
+In such settings, it can become unprofitable for liquidators, a type of keeper, to initiate liquidations.
 Should this occur, rational agents will leave their debt unpaid as that results in a greater payoff.

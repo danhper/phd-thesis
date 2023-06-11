@@ -1,0 +1,26 @@
+# A Layered Approach to Improving Blockchain Systems Security
+
+The PDF version of the thesis and slides can be found on the [releases page](https://github.com/danhper/phd-thesis/releases).
+
+## Abstract
+
+During the past several years, blockchain systems have gained a lot of traction and adoption, with during peak periods, the total capitalisation of these systems exceeding 2 trillion.
+Given the permissionless nature of blockchain systems and their large scope in terms of software - e.g. distributed consensus, untrusted program execution - numerous attack vectors need to be studied, understood and protected against for blockchain systems to be able to deliver their promises of a safer financial system.
+
+In this thesis, we study and contribute to improving the security of various parts of the blockchain stack, from the execution to the application layer.
+
+We start with one of the lowest layers of the Ethereum blockchain stack, the EVM, and study the resource metering mechanism that is used to limit the total amount of resources that can be consumed by a smart contract.
+We discover inconsistencies in the metering mechanism and show and responsibly disclose that it would have been possible to execute transactions that would result in a denial of service attack on the Ethereum blockchain.
+Our findings were part of the motivation of Ethereum for changing some of its gas metering mechanisms.
+
+We then broaden our analysis to other blockchain systems and study how different fee mechanisms affect the transactional throughput as well as the usage of the blockchain.
+We discover that low fees, which are in theory attractive to users, can lead to a lot of spam.
+We find that for two of the blockchain we analyse, EOS and Ripple, this type of spam leads to system outages where the blockchain is unable to process transactions.
+Finally, we find that a common motivation for spam transactions is to artificially inflate the activity of the application layer, through wash-trading for example.
+
+In the last main chapter of this thesis, we move to the application layer and turn our focus on decentralised finance (DeFi) ecosystem, which is one of the most prevalent types of application implemented on top of blockchain systems.
+We start by giving formal definitions of the different types of security, namely technical and economic security.
+With that definition in mind, in the first part of this chapter, we study technical security exploits and develop an automated tool to detect on-chain exploits.
+We find that the majority of the exploits found through techniques such as program analysis are not exploited in practice, either because of the lack of feasibility of the exploit or because of the lack of economic incentive to do so.
+In the second part of this chapter, we focus on economic security and study the liquidation mechanism that is used to protect the users of DeFi lending protocols.
+We highlight how the efficiency of the liquidations has increased over time, and how depegging events of stablecoin have caused very large amounts of liquidations because of the over-confidence in their stability.

@@ -54,35 +54,35 @@ It is obtained by multiplying the gas price by the gas cost.
 The transaction fee is non-refundable: even if the transaction fails, it will be paid.
 
 \begin{table}[tb]
-  \centering
-  \setlength{\tabcolsep}{10pt}
-  \caption[Fees for different types of transactions]{Fees for different types of transactions. ``Low'' price is one of the lowest possible prices to have a transaction included while ``High'' is a price someone very eager to have his transaction included would pay.}
-  \label{tab:gas-fee}
-  \begin{tabular}{lrr}
-    \toprule
-                             & \multicolumn{2}{c}{Gas price}                                    \\
-                             & Low                                   & High                     \\
-    Transaction type         & (1Gwei)                               & (80Gwei)                 \\
-    \midrule
-    Basic (21k gas)          & \$\fpeval{round(\ToUSD{21 / 1e6}, 5)} & \$\ToUSD{80 * 21 / 1e6}  \\
-    Gas intensive (500k gas) & \$\ToUSD{500 / 1e6}                   & \$\ToUSD{80 * 500 / 1e6} \\
-    \bottomrule
-  \end{tabular}
+	\centering
+	\setlength{\tabcolsep}{10pt}
+	\caption[Fees for different types of transactions]{Fees for different types of transactions. ``Low'' price is one of the lowest possible prices to have a transaction included while ``High'' is a price someone very eager to have his transaction included would pay.}
+	\label{tab:gas-fee}
+	\begin{tabular}{lrr}
+		\toprule
+		                         & \multicolumn{2}{c}{Gas price}                                    \\
+		                         & Low                                   & High                     \\
+		Transaction type         & (1Gwei)                               & (80Gwei)                 \\
+		\midrule
+		Basic (21k gas)          & \$\fpeval{round(\ToUSD{21 / 1e6}, 5)} & \$\ToUSD{80 * 21 / 1e6}  \\
+		Gas intensive (500k gas) & \$\ToUSD{500 / 1e6}                   & \$\ToUSD{80 * 500 / 1e6} \\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
 \begin{table}[tb]
-  \setlength{\tabcolsep}{3pt}
-  \centering
-  \caption[Median gas price, gas used and transaction fee]{Median gas price, gas used and transaction fee from block 8,652,096 (Sep-09-2019) to block 9,286,594 (Jan-15-2020).}
-  \label{tab:empirical-gas-fee}
-  \begin{tabular}{lr}
-    \toprule
-    Number of blocks:               & 613,475                         \\
-    Median gas price:               & 9.1 Gwei                        \\
-    Median gas used (by contracts): & 53,787                          \\
-    Median transaction fee:         & 0.0008 ETH (\ToUSD{0.0008}~USD) \\
-    \bottomrule
-  \end{tabular}
+	\setlength{\tabcolsep}{3pt}
+	\centering
+	\caption[Median gas price, gas used and transaction fee]{Median gas price, gas used and transaction fee from block 8,652,096 (Sep-09-2019) to block 9,286,594 (Jan-15-2020).}
+	\label{tab:empirical-gas-fee}
+	\begin{tabular}{lr}
+		\toprule
+		Number of blocks:               & 613,475                         \\
+		Median gas price:               & 9.1 Gwei                        \\
+		Median gas used (by contracts): & 53,787                          \\
+		Median transaction fee:         & 0.0008 ETH (\ToUSD{0.0008}~USD) \\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
 

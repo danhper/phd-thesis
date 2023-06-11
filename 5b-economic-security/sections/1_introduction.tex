@@ -1,7 +1,7 @@
 \subsection{Introduction}
 \label{sec:5b:introduction}
 
-As explained earlier in this chapter, Decentralized Finance (DeFi) refers to a peer-to-peer, permissionless blockchain-based ecosystem that utilizes the integrity of smart contracts for the advancement and disintermediation of traditional financial primitives. 
+As explained earlier in this chapter, Decentralized Finance (DeFi) refers to a peer-to-peer, permissionless blockchain-based ecosystem that utilizes the integrity of smart contracts for the advancement and disintermediation of traditional financial primitives.
 One of the most prominent DeFi applications on the Ethereum blockchain~\cite{wood2014ethereum} is protocols for loanable funds (PLFs)~\cite{10.1145/3419614.3423254}.
 On PLFs, markets for loanable funds are established via smart contracts that facilitate borrowing and lending \cite{10.1145/3570639}.
 In the absence of strong identities on Ethereum, creditor protection tends to be ensured through over-collateralization, whereby a borrower must provide collateral worth more than the value of the borrowed amount.
@@ -9,7 +9,7 @@ In the case where the value of the collateral-to-borrow ratio drops below some l
 However, little is known about the behaviour of agents towards liquidation risk on a PLF.
 Furthermore, despite liquidators playing a critical role in the DeFi ecosystem, the efficiency with which they liquidate positions has not yet been thoroughly analyzed.
 
-In this section, we first lay out a framework for quantifying the state of a generic PLF and its markets over time. 
+In this section, we first lay out a framework for quantifying the state of a generic PLF and its markets over time.
 We subsequently instantiate this framework to all markets on Compound~\cite{leshner2018}, one of the largest PLFs in terms of locked funds.
 We analyze how liquidation risk has changed over time, specifically after the launch of Compound's governance token.
 Furthermore, we seek to quantify this liquidation risk through a price sensitivity analysis.
@@ -17,16 +17,16 @@ In a discussion, we elaborate on how the interdependence of different DeFi proto
 
 \point{Contributions} This section makes the following contributions:
 \begin{itemize}
-    \item We present an abstract framework to reason about the state of PLFs.
-    
-    \item We provide an open-source implementation\footnote{\url{https://github.com/backdfund/analyzer}} of the proposed framework for Compound, one of the largest PLFs in terms of total locked funds.
-    
-    \item We perform an empirical analysis on the historical data for Compound, from \StartDate to \EndDate and make the following observations:
-    \begin{enumerate}%[label={(\roman*)}]
-    \item despite increases in the number of suppliers and borrowers, the total funds locked are mostly accounted for by a small subset of participants; 
-    \item the introduction of Compound's governance token had protocol-wide implications as liquidation risk increased as a consequence of the higher risk-seeking behaviour of participants;
-    \item liquidators became significantly more efficient over time, liquidating over 70\% of liquidatable positions instantly.
-    \end{enumerate}
-    
-    \item Using our findings, we demonstrate how interactions between protocols' incentive structures can directly result in unexpected risks to participants.
+	\item We present an abstract framework to reason about the state of PLFs.
+
+	\item We provide an open-source implementation\footnote{\url{https://github.com/backdfund/analyzer}} of the proposed framework for Compound, one of the largest PLFs in terms of total locked funds.
+
+	\item We perform an empirical analysis on the historical data for Compound, from \StartDate to \EndDate and make the following observations:
+	      \begin{enumerate}%[label={(\roman*)}]
+		      \item despite increases in the number of suppliers and borrowers, the total funds locked are mostly accounted for by a small subset of participants;
+		      \item the introduction of Compound's governance token had protocol-wide implications as liquidation risk increased as a consequence of the higher risk-seeking behaviour of participants;
+		      \item liquidators became significantly more efficient over time, liquidating over 70\% of liquidatable positions instantly.
+	      \end{enumerate}
+
+	\item Using our findings, we demonstrate how interactions between protocols' incentive structures can directly result in unexpected risks to participants.
 \end{itemize}

@@ -1,17 +1,17 @@
 \begin{figure}[tbp]
-  \begin{subfigure}{.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{./5b-economic-security/figures/suppliers-borrowers-over-time.pdf}
-    \caption{Number of suppliers and borrowers.}
-    \label{fig:borrowers-suppliers-over-time}
-  \end{subfigure}
-  \begin{subfigure}{.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{./5b-economic-security/figures/borrow-supply-over-time.pdf}
-    \caption{Amount of funds supplied, borrowed and locked.}
-    \label{fig:borrow-supply-over-time}
-  \end{subfigure}
-  \caption{Number of active accounts and amount of funds on Compound over time.}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./5b-economic-security/figures/suppliers-borrowers-over-time.pdf}
+		\caption{Number of suppliers and borrowers.}
+		\label{fig:borrowers-suppliers-over-time}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./5b-economic-security/figures/borrow-supply-over-time.pdf}
+		\caption{Amount of funds supplied, borrowed and locked.}
+		\label{fig:borrow-supply-over-time}
+	\end{subfigure}
+	\caption{Number of active accounts and amount of funds on Compound over time.}
 \end{figure}
 
 \input{5b-economic-security/tables/monitored_contracts}
@@ -25,19 +25,19 @@ In \autoref{tab:monitored-contracts}, we provide a list of contracts we monitore
 When analysing a single market, we choose the market for \coin{DAI}, as it is the largest by an order of magnitude.
 
 \begin{figure}[tbp]
-  \begin{subfigure}{.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{./5b-economic-security/figures/suppliers-distribution.pdf}
-    \caption{Distribution of supplied funds.}
-    \label{fig:suppliers-distribution}
-  \end{subfigure}
-  \begin{subfigure}{.5\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{./5b-economic-security/figures/borrowers-distribution.pdf}
-    \caption{Distribution of borrowed funds.}
-    \label{fig:borrowers-distribution}
-  \end{subfigure}
-  \caption[Cumulative distribution of funds in USD on Compound]{Cumulative distribution of funds in USD.~Accounts are sorted from least to most wealthy and bucketed in bins of 10, i.e. a single bar represents the sum of 10 accounts.}\label{fig:suppliers-borrowers-distribution}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./5b-economic-security/figures/suppliers-distribution.pdf}
+		\caption{Distribution of supplied funds.}
+		\label{fig:suppliers-distribution}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{./5b-economic-security/figures/borrowers-distribution.pdf}
+		\caption{Distribution of borrowed funds.}
+		\label{fig:borrowers-distribution}
+	\end{subfigure}
+	\caption[Cumulative distribution of funds in USD on Compound]{Cumulative distribution of funds in USD.~Accounts are sorted from least to most wealthy and bucketed in bins of 10, i.e. a single bar represents the sum of 10 accounts.}\label{fig:suppliers-borrowers-distribution}
 \end{figure}
 
 
@@ -45,9 +45,9 @@ When analysing a single market, we choose the market for \coin{DAI}, as it is th
 We first examine the total number of borrowers and suppliers on Compound by considering any Ethereum account that, at any time within the observation period, either exhibited a non-zero cToken balance or borrowed funds for any Compound market.
 The change in the number of borrowers and suppliers over time is displayed in \autoref{fig:borrowers-suppliers-over-time}.
 
-We see that the total number of suppliers always exceeds the total number of borrowers. 
-This is because on Compound, one can only borrow against funds he supplied as collateral, which automatically makes the borrower also a supplier. 
-Interestingly, the number of suppliers has increased relative to the number of borrowers over time. 
+We see that the total number of suppliers always exceeds the total number of borrowers.
+This is because on Compound, one can only borrow against funds he supplied as collateral, which automatically makes the borrower also a supplier.
+Interestingly, the number of suppliers has increased relative to the number of borrowers over time.
 There is a notable sudden jump in both the number of suppliers and borrowers in June~2020.
 
 In terms of total deposits, a very similar trend is observable in \autoref{fig:borrow-supply-over-time}, which shows that at the same time, the total supplied deposits increased, while the total borrows followed shortly after.
@@ -84,15 +84,15 @@ Hence, a Compound user is incentivized to increase his borrow position as long a
 
 
 \begin{figure}[tbp]
-  \centering
-  \includegraphics[width=0.7\textwidth]{./5b-economic-security/figures/supply-borrow-over-time.pdf}
-  \caption[Collateral locked on Compound over time]{Collateral locked over time, showing how close the amounts are from being liquidated. Positions can be liquidated when the ratio drops below~100\%.}
-  \label{fig:liquidatability}
+	\centering
+	\includegraphics[width=0.7\textwidth]{./5b-economic-security/figures/supply-borrow-over-time.pdf}
+	\caption[Collateral locked on Compound over time]{Collateral locked over time, showing how close the amounts are from being liquidated. Positions can be liquidated when the ratio drops below~100\%.}
+	\label{fig:liquidatability}
 \end{figure}
 
 \subsubsection{Liquidation Risk}
-Given the high increase in the number of total funds borrowed and supplied, as well as the decrease in liquidity relative to total borrows, we seek to identify and quantify any changes in liquidation risk on Compound since the launch of \coin{COMP}. 
-\autoref{fig:liquidatability} shows the total USD value of collateral on Compound and how close collateral amounts are to liquidation. 
+Given the high increase in the number of total funds borrowed and supplied, as well as the decrease in liquidity relative to total borrows, we seek to identify and quantify any changes in liquidation risk on Compound since the launch of \coin{COMP}.
+\autoref{fig:liquidatability} shows the total USD value of collateral on Compound and how close collateral amounts are to liquidation.
 In addition to the substantial increase in the total value of collateral on Compound since the launch of \coin{COMP}, the risk-seeking behaviour of users has also changed.
 This can be seen by examining collateral-to-borrow ratios, where since the beginning of July,~2020, a total of approximately 350m to 600m USD worth of collateral has been within a 5\% price range of becoming liquidatable.
 However, it should be noted that the likelihood of the amount of this collateral becoming liquidatable highly depends on the price volatility of the collateral asset.
@@ -104,24 +104,24 @@ It can be seen that since the launch of \coin{COMP},~3\% and~5\% price decreases
 In particular, a~3\% decrease would have turned collateral worth in excess of~10 million USD liquidatable.
 
 \begin{figure}[tb]
-  \centering
-  \includegraphics[width=.7\textwidth]{./5b-economic-security/figures/dai-sensitivity.pdf}
-  \caption[Sensitivity analysis of the liquidatable collateral amount]{Sensitivity analysis of the liquidatable collateral amount given \coin{DAI} price movement relative to its peg USD. \coin{COMP} launch date is marked by the dashed vertical line.}
-  \label{fig:price-sensitivity}
+	\centering
+	\includegraphics[width=.7\textwidth]{./5b-economic-security/figures/dai-sensitivity.pdf}
+	\caption[Sensitivity analysis of the liquidatable collateral amount]{Sensitivity analysis of the liquidatable collateral amount given \coin{DAI} price movement relative to its peg USD. \coin{COMP} launch date is marked by the dashed vertical line.}
+	\label{fig:price-sensitivity}
 \end{figure}
 
 \begin{figure}[tb]
-  \centering
-  \includegraphics[width=.7\textwidth]{./5b-economic-security/figures/liquidation-over-time.pdf}
-  \caption{Amount (in USD) of liquidated collateral from May ~2019 to August 2020.}
-  \label{fig:liquidations-over-time}
+	\centering
+	\includegraphics[width=.7\textwidth]{./5b-economic-security/figures/liquidation-over-time.pdf}
+	\caption{Amount (in USD) of liquidated collateral from May ~2019 to August 2020.}
+	\label{fig:liquidations-over-time}
 \end{figure}
 
 \subsubsection{Liquidations and Liquidators}
 In order to better understand the implications of the increased liquidation risk since the launch of \coin{COMP}, we examine historical liquidations on Compound and subsequently measure the efficiency of liquidators.
 
 \point{Historical Liquidations}
-The increased risk-seeking behaviour suggested by the low collateral-to-borrow ratios presented in the previous section are in accordance with the trend of rising amount of liquidated collateral since the introduction of \coin{COMP}.  
+The increased risk-seeking behaviour suggested by the low collateral-to-borrow ratios presented in the previous section are in accordance with the trend of rising amount of liquidated collateral since the introduction of \coin{COMP}.
 The total value of collateral liquidated on Compound over time is shown in \autoref{fig:liquidations-over-time}.
 It can be seen that the majority of this collateral was liquidated on a few occasions, perhaps most notably on Black Thursday (March 12, 2020), July 29, 2020 (\coin{DAI} deviating from its peg significantly), and in early September 2020 (\coin{ETH} price drop).
 
@@ -138,10 +138,10 @@ If a liquidator had captured this opportunity, he could have bought half of this
 It is clear that with such stakes, participants were incentivized to improve liquidation techniques, resulting in a high level of liquidation speed and scale.
 
 \begin{figure}[tbp]
-    \centering
-    \includegraphics[width=0.7\textwidth]{./5b-economic-security/figures/time-to-liquidation.pdf}
-    \caption[Number of blocks elapsed until liquidation]{Number of blocks elapsed from the time a position can be liquidated to actual liquidation on Compound from \StartDate to \EndDate, shown as a CDF.}
-    \label{fig:blocks-spent}
+	\centering
+	\includegraphics[width=0.7\textwidth]{./5b-economic-security/figures/time-to-liquidation.pdf}
+	\caption[Number of blocks elapsed until liquidation]{Number of blocks elapsed from the time a position can be liquidated to actual liquidation on Compound from \StartDate to \EndDate, shown as a CDF.}
+	\label{fig:blocks-spent}
 \end{figure}
 
 \subsubsection{Summary}

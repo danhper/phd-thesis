@@ -45,7 +45,7 @@ We find a total of~\empirical{264} contracts where failed calls have not been ch
 We manually analyze the top contracts and summarize their addresses and the amount at risk in \autoref{fig:unhandled-exceptions}. The Solidity code is available for \empirical{three} of these contracts. We confirm that in all cases the issue came from misuse of a low-level Solidity function such as \lstinline{send}.
 
 \begin{investigation}{0x7011f3edc7fa43c81440f9f43a6458174113b162}
-  The contract {\small\addr{0x7011f3edc7fa43c81440f9f43a6458174113b162}} has failed to send a total of \empirical{52.90} Ether and currently still holds a balance of \empirical{69.3} Ether at the time of writing. After investigation, we find that the contract is an abandoned pyramid scheme~\cite{ethereum-pyramid}. The contract has a total of \empirical{21} calls which failed, all trying to send \empirical{2.7} Ether, which appears to have been the reward of the pyramid scheme at this point in time. Unfortunately, the code of this contract was not available for further inspection but we conclude that there is a high chance that some of the users in the pyramid scheme did not correctly obtain their reward because of this issue.
+	The contract {\small\addr{0x7011f3edc7fa43c81440f9f43a6458174113b162}} has failed to send a total of \empirical{52.90} Ether and currently still holds a balance of \empirical{69.3} Ether at the time of writing. After investigation, we find that the contract is an abandoned pyramid scheme~\cite{ethereum-pyramid}. The contract has a total of \empirical{21} calls which failed, all trying to send \empirical{2.7} Ether, which appears to have been the reward of the pyramid scheme at this point in time. Unfortunately, the code of this contract was not available for further inspection but we conclude that there is a high chance that some of the users in the pyramid scheme did not correctly obtain their reward because of this issue.
 \end{investigation}
 
 
@@ -98,11 +98,11 @@ We find that a very frequent cause of overflow is rather an underflow of unsigne
 We highlight one such case in the following investigation.
 
 \begin{investigation}{0xdcabd383a7c497069d0804070e4ba70ab6ecdd51}
-  This contract was flagged positive to both unhandled exceptions and integer overflow by our tool.
-  %
-  After inspection, it seems that at block height~\block{1364860}, the owner tried to reduce the fees but the unsigned value of the fees overflowed and became a huge number. Because of this issue, the contract was then trying to send large amounts of Ether.
-  %
-  This resulted in failed calls which happened not to be checked, hence the flag for unhandled exceptions.
+	This contract was flagged positive to both unhandled exceptions and integer overflow by our tool.
+	%
+	After inspection, it seems that at block height~\block{1364860}, the owner tried to reduce the fees but the unsigned value of the fees overflowed and became a huge number. Because of this issue, the contract was then trying to send large amounts of Ether.
+	%
+	This resulted in failed calls which happened not to be checked, hence the flag for unhandled exceptions.
 \end{investigation}
 
 \subsubsection{\unrestrictedaction}
@@ -122,12 +122,12 @@ We fetch all the historical balances of teEther contracts and retrieve the maxim
 However, we find that~\empirical{4,867} Ether belonged to~\empirical{48} different contracts with the same bytecode, and all had the same transaction pattern, which we describe in the following investigation.
 
 \begin{investigation}{0xac54413f686927054a56d35415ba49618634e105}
-  All contracts with a high historical monetary value found by teEther share the same bytecode, creator and transaction pattern as this contract.
-  The contracts are created by\\ \addr{0x15f889d2469d1be0e0699632d8d448f2178a7afe}, receive Ether from Kraken, an exchange, and send the same amount to \addr{0xd1bf1706306c7b667c67ffb5c1f76cc7637685bd} a couple of blocks later.
-  We could not find further information about these addresses.
-  We decompile the contract to understand how the contracts were exploitable and find that during the few blocks they held money, exploiting the contract would have been as simple as sending a transaction with the address to which to transfer the funds as an argument.
-  This is a very dangerous situation but because the Ether was usually sent within a minute to another address, an attacker would have needed to be very proactive and use advanced tooling to exploit the contract.
-  This illustrates well how a contract can be \emph{exploitable} but have little chance of being \emph{exploited} in practice.
+	All contracts with a high historical monetary value found by teEther share the same bytecode, creator and transaction pattern as this contract.
+	The contracts are created by\\ \addr{0x15f889d2469d1be0e0699632d8d448f2178a7afe}, receive Ether from Kraken, an exchange, and send the same amount to \addr{0xd1bf1706306c7b667c67ffb5c1f76cc7637685bd} a couple of blocks later.
+	We could not find further information about these addresses.
+	We decompile the contract to understand how the contracts were exploitable and find that during the few blocks they held money, exploiting the contract would have been as simple as sending a transaction with the address to which to transfer the funds as an argument.
+	This is a very dangerous situation but because the Ether was usually sent within a minute to another address, an attacker would have needed to be very proactive and use advanced tooling to exploit the contract.
+	This illustrates well how a contract can be \emph{exploitable} but have little chance of being \emph{exploited} in practice.
 \end{investigation}
 
 \point{Sanity checking} As a sanity check, in addition to our test suite, we use one of the most famous instances of an unrestricted action: the destructed Parity wallet library contract at address~\addr{0x863df6bfa4469f3ead0be8f9f2aae51c91a907b4}. We analyze the transactions and successfully find an unrestricted store instruction in transaction~\tx{0x05f71e1b2cb4f03e547739db15d080fd30c989eda04d37ce6264c5686e0722c9}, which was used to take control of the wallet.

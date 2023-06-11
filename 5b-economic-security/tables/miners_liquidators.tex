@@ -1,73 +1,73 @@
 \renewcommand{\contractaddr}[2][\scriptsize]{{#1\href{https://etherscan.io/token/#2}{\texttt{#2}}}}
 \begin{table}
-%   \setlength{\tabcolsep}{0.6pt}
-  \scriptsize
-  \caption[Top 10 miners involved in liquidations]{Top 10 miners per number of blocks containing at least a liquidation event mined and top 5 liquidators for each miner per number of liquidations}\label{tab:miners-liquidators}
-  \renewcommand{\arraystretch}{1.2}
-  \begin{tabular}{@{}l@{}rl@{}r@{}}
-    \toprule
-    \textbf{Miner} & \textbf{Blocks} & \textbf{Liquidators} & \textbf{Liquidations} \\
-          & \textbf{count} & & \textbf{count}\\
-    \midrule
-\multirow{5}{*}{\contractaddr{0x5A0b54D5dc17e0AadC383d2db43B0a0D3E029c4c}} & \multirow{5}{*}{1281} & \contractaddr{0x6a0c50788E462f322959A2458687096994d66316} & 144\\
-                                           &       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} & 114\\
-                                           &       & \contractaddr{0x0c31b6605686aa26df47eb45AF0e4aa6639A5fd6} &  91\\
-                                           &       & \contractaddr{0xb00ba6778cF84100da676101e011B3d229458270} &  76\\
-                                           &       & \contractaddr{0x268a1b7ECC1fE1FaB1eE32a7e61e3b7810BAD4a5} &  70\\
-\hline
-\multirow{5}{*}{\contractaddr{0xEA674fdDe714fd979de3EdF0F56AA9716B898ec8}} & \multirow{5}{*}{969} & \contractaddr{0x6a0c50788E462f322959A2458687096994d66316} &  88\\
-                                           &       & \contractaddr{0xb00ba6778cF84100da676101e011B3d229458270} &  75\\
-                                           &       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} &  70\\
-                                           &       & \contractaddr{0x0c31b6605686aa26df47eb45AF0e4aa6639A5fd6} &  52\\
-                                           &       & \contractaddr{0x268a1b7ECC1fE1FaB1eE32a7e61e3b7810BAD4a5} &  50\\
-\hline
-\multirow{5}{*}{\contractaddr{0x829BD824B016326A401d083B33D092293333A830}} & \multirow{5}{*}{310} & \contractaddr{0x6a0c50788E462f322959A2458687096994d66316} &  31\\
-                                           &       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} &  26\\
-                                           &       & \contractaddr{0x402a75f3500CA1FbA17741Ec916F07a0c9DB195D} &  23\\
-                                           &       & \contractaddr{0xb00ba6778cF84100da676101e011B3d229458270} &  18\\
-                                           &       & \contractaddr{0x029720A9b3CE72f3e1D9C79257E1F19AfE20b6c9} &  17\\
-\hline
-\multirow{5}{*}{\contractaddr{0x52bc44d5378309EE2abF1539BF71dE1b7d7bE3b5}} & \multirow{5}{*}{257} & \contractaddr{0x6a0c50788E462f322959A2458687096994d66316} &  22\\
-                                           &       & \contractaddr{0x10aab4B0EF76AA2AC9b5909e671517a1171B050E} &  21\\
-                                           &       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} &  16\\
-                                           &       & \contractaddr{0x402a75f3500CA1FbA17741Ec916F07a0c9DB195D} &  15\\
-                                           &       & \contractaddr{0x0006e4548AED4502ec8c844567840Ce6eF1013f5} &  14\\
-\hline
-\multirow{5}{*}{\contractaddr{0x04668Ec2f57cC15c381b461B9fEDaB5D451c8F7F}} & \multirow{5}{*}{185} & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} &  22\\
-                                           &       & \contractaddr{0x5DAfafbd7AcD662C909a9601120cf1D9F277e8aE} &  14\\
-                                           &       & \contractaddr{0x10aab4B0EF76AA2AC9b5909e671517a1171B050E} &  14\\
-                                           &       & \contractaddr{0x268a1b7ECC1fE1FaB1eE32a7e61e3b7810BAD4a5} &  12\\
-                                           &       & \contractaddr{0x6a0c50788E462f322959A2458687096994d66316} &  12\\
-\hline
-\multirow{5}{*}{\contractaddr{0xb2930B35844a230f00E51431aCAe96Fe543a0347}} & \multirow{5}{*}{77} & \contractaddr{0x10aab4B0EF76AA2AC9b5909e671517a1171B050E} &   8\\
-                                           &       & \contractaddr{0x0c31b6605686aa26df47eb45AF0e4aa6639A5fd6} &   8\\
-                                           &       & \contractaddr{0x5DAfafbd7AcD662C909a9601120cf1D9F277e8aE} &   6\\
-                                           &       & \contractaddr{0xf8E562f4F30c5DdA0978857067D6585265dA3437} &   6\\
-                                           &       & \contractaddr{0xfDe817C7a0770f42fb80B93dd7A538291C871765} &   5\\
-\hline
-\multirow{5}{*}{\contractaddr{0xD224cA0c819e8E97ba0136B3b95ceFf503B79f53}} & \multirow{5}{*}{73} & \contractaddr{0xb00ba6778cF84100da676101e011B3d229458270} &  13\\
-                                           &       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} &   8\\
-                                           &       & \contractaddr{0x88886841CfCCBf54AdBbC0B6C9cBAceAbec42b8B} &   8\\
-                                           &       & \contractaddr{0xfFA7370a03c2a91f5B1847a90750489d05f52Fa9} &   5\\
-                                           &       & \contractaddr{0x492Ff1c96b398297FcAcd6E7E1E968d2b2fc7Da0} &   5\\
-\hline
-\multirow{5}{*}{\contractaddr{0x4C549990A7eF3FEA8784406c1EECc98bF4211fA5}} & \multirow{5}{*}{68} & \contractaddr{0xb00ba6778cF84100da676101e011B3d229458270} &  12\\
-                                           &       & \contractaddr{0x6a0c50788E462f322959A2458687096994d66316} &   9\\
-                                           &       & \contractaddr{0x402a75f3500CA1FbA17741Ec916F07a0c9DB195D} &   5\\
-                                           &       & \contractaddr{0x10aab4B0EF76AA2AC9b5909e671517a1171B050E} &   4\\
-                                           &       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} &   3\\
-\hline
-\multirow{5}{*}{\contractaddr{0xEEa5B82B61424dF8020f5feDD81767f2d0D25Bfb}} & \multirow{5}{*}{55} & \contractaddr{0xb00ba6778cF84100da676101e011B3d229458270} &   7\\
-                                           &       & \contractaddr{0x402a75f3500CA1FbA17741Ec916F07a0c9DB195D} &   6\\
-                                           &       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} &   5\\
-                                           &       & \contractaddr{0x029720A9b3CE72f3e1D9C79257E1F19AfE20b6c9} &   5\\
-                                           &       & \contractaddr{0x10aab4B0EF76AA2AC9b5909e671517a1171B050E} &   4\\
-\hline
-\multirow{5}{*}{\contractaddr{0x84A0d77c693aDAbE0ebc48F88b3fFFF010577051}} & \multirow{5}{*}{46} & \contractaddr{0xb00ba6778cF84100da676101e011B3d229458270} &   7\\
-                                           &       & \contractaddr{0x0c31b6605686aa26df47eb45AF0e4aa6639A5fd6} &   6\\
-                                           &       & \contractaddr{0x6a0c50788E462f322959A2458687096994d66316} &   5\\
-                                           &       & \contractaddr{0x5e32f33e261a90FF9fE94230387118945599268c} &   5\\
-                                           &       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} &   5\\
-    \bottomrule
-  \end{tabular}
+	%   \setlength{\tabcolsep}{0.6pt}
+	\scriptsize
+	\caption[Top 10 miners involved in liquidations]{Top 10 miners per number of blocks containing at least a liquidation event mined and top 5 liquidators for each miner per number of liquidations}\label{tab:miners-liquidators}
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabular}{@{}l@{}rl@{}r@{}}
+		\toprule
+		\textbf{Miner}                                                             & \textbf{Blocks}       & \textbf{Liquidators}                                      & \textbf{Liquidations} \\
+		                                                                           & \textbf{count}        &                                                           & \textbf{count}        \\
+		\midrule
+		\multirow{5}{*}{\contractaddr{0x5A0b54D5dc17e0AadC383d2db43B0a0D3E029c4c}} & \multirow{5}{*}{1281} & \contractaddr{0x6a0c50788E462f322959A2458687096994d66316} & 144                   \\
+		                                                                           &                       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} & 114                   \\
+		                                                                           &                       & \contractaddr{0x0c31b6605686aa26df47eb45AF0e4aa6639A5fd6} & 91                    \\
+		                                                                           &                       & \contractaddr{0xb00ba6778cF84100da676101e011B3d229458270} & 76                    \\
+		                                                                           &                       & \contractaddr{0x268a1b7ECC1fE1FaB1eE32a7e61e3b7810BAD4a5} & 70                    \\
+		\hline
+		\multirow{5}{*}{\contractaddr{0xEA674fdDe714fd979de3EdF0F56AA9716B898ec8}} & \multirow{5}{*}{969}  & \contractaddr{0x6a0c50788E462f322959A2458687096994d66316} & 88                    \\
+		                                                                           &                       & \contractaddr{0xb00ba6778cF84100da676101e011B3d229458270} & 75                    \\
+		                                                                           &                       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} & 70                    \\
+		                                                                           &                       & \contractaddr{0x0c31b6605686aa26df47eb45AF0e4aa6639A5fd6} & 52                    \\
+		                                                                           &                       & \contractaddr{0x268a1b7ECC1fE1FaB1eE32a7e61e3b7810BAD4a5} & 50                    \\
+		\hline
+		\multirow{5}{*}{\contractaddr{0x829BD824B016326A401d083B33D092293333A830}} & \multirow{5}{*}{310}  & \contractaddr{0x6a0c50788E462f322959A2458687096994d66316} & 31                    \\
+		                                                                           &                       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} & 26                    \\
+		                                                                           &                       & \contractaddr{0x402a75f3500CA1FbA17741Ec916F07a0c9DB195D} & 23                    \\
+		                                                                           &                       & \contractaddr{0xb00ba6778cF84100da676101e011B3d229458270} & 18                    \\
+		                                                                           &                       & \contractaddr{0x029720A9b3CE72f3e1D9C79257E1F19AfE20b6c9} & 17                    \\
+		\hline
+		\multirow{5}{*}{\contractaddr{0x52bc44d5378309EE2abF1539BF71dE1b7d7bE3b5}} & \multirow{5}{*}{257}  & \contractaddr{0x6a0c50788E462f322959A2458687096994d66316} & 22                    \\
+		                                                                           &                       & \contractaddr{0x10aab4B0EF76AA2AC9b5909e671517a1171B050E} & 21                    \\
+		                                                                           &                       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} & 16                    \\
+		                                                                           &                       & \contractaddr{0x402a75f3500CA1FbA17741Ec916F07a0c9DB195D} & 15                    \\
+		                                                                           &                       & \contractaddr{0x0006e4548AED4502ec8c844567840Ce6eF1013f5} & 14                    \\
+		\hline
+		\multirow{5}{*}{\contractaddr{0x04668Ec2f57cC15c381b461B9fEDaB5D451c8F7F}} & \multirow{5}{*}{185}  & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} & 22                    \\
+		                                                                           &                       & \contractaddr{0x5DAfafbd7AcD662C909a9601120cf1D9F277e8aE} & 14                    \\
+		                                                                           &                       & \contractaddr{0x10aab4B0EF76AA2AC9b5909e671517a1171B050E} & 14                    \\
+		                                                                           &                       & \contractaddr{0x268a1b7ECC1fE1FaB1eE32a7e61e3b7810BAD4a5} & 12                    \\
+		                                                                           &                       & \contractaddr{0x6a0c50788E462f322959A2458687096994d66316} & 12                    \\
+		\hline
+		\multirow{5}{*}{\contractaddr{0xb2930B35844a230f00E51431aCAe96Fe543a0347}} & \multirow{5}{*}{77}   & \contractaddr{0x10aab4B0EF76AA2AC9b5909e671517a1171B050E} & 8                     \\
+		                                                                           &                       & \contractaddr{0x0c31b6605686aa26df47eb45AF0e4aa6639A5fd6} & 8                     \\
+		                                                                           &                       & \contractaddr{0x5DAfafbd7AcD662C909a9601120cf1D9F277e8aE} & 6                     \\
+		                                                                           &                       & \contractaddr{0xf8E562f4F30c5DdA0978857067D6585265dA3437} & 6                     \\
+		                                                                           &                       & \contractaddr{0xfDe817C7a0770f42fb80B93dd7A538291C871765} & 5                     \\
+		\hline
+		\multirow{5}{*}{\contractaddr{0xD224cA0c819e8E97ba0136B3b95ceFf503B79f53}} & \multirow{5}{*}{73}   & \contractaddr{0xb00ba6778cF84100da676101e011B3d229458270} & 13                    \\
+		                                                                           &                       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} & 8                     \\
+		                                                                           &                       & \contractaddr{0x88886841CfCCBf54AdBbC0B6C9cBAceAbec42b8B} & 8                     \\
+		                                                                           &                       & \contractaddr{0xfFA7370a03c2a91f5B1847a90750489d05f52Fa9} & 5                     \\
+		                                                                           &                       & \contractaddr{0x492Ff1c96b398297FcAcd6E7E1E968d2b2fc7Da0} & 5                     \\
+		\hline
+		\multirow{5}{*}{\contractaddr{0x4C549990A7eF3FEA8784406c1EECc98bF4211fA5}} & \multirow{5}{*}{68}   & \contractaddr{0xb00ba6778cF84100da676101e011B3d229458270} & 12                    \\
+		                                                                           &                       & \contractaddr{0x6a0c50788E462f322959A2458687096994d66316} & 9                     \\
+		                                                                           &                       & \contractaddr{0x402a75f3500CA1FbA17741Ec916F07a0c9DB195D} & 5                     \\
+		                                                                           &                       & \contractaddr{0x10aab4B0EF76AA2AC9b5909e671517a1171B050E} & 4                     \\
+		                                                                           &                       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} & 3                     \\
+		\hline
+		\multirow{5}{*}{\contractaddr{0xEEa5B82B61424dF8020f5feDD81767f2d0D25Bfb}} & \multirow{5}{*}{55}   & \contractaddr{0xb00ba6778cF84100da676101e011B3d229458270} & 7                     \\
+		                                                                           &                       & \contractaddr{0x402a75f3500CA1FbA17741Ec916F07a0c9DB195D} & 6                     \\
+		                                                                           &                       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} & 5                     \\
+		                                                                           &                       & \contractaddr{0x029720A9b3CE72f3e1D9C79257E1F19AfE20b6c9} & 5                     \\
+		                                                                           &                       & \contractaddr{0x10aab4B0EF76AA2AC9b5909e671517a1171B050E} & 4                     \\
+		\hline
+		\multirow{5}{*}{\contractaddr{0x84A0d77c693aDAbE0ebc48F88b3fFFF010577051}} & \multirow{5}{*}{46}   & \contractaddr{0xb00ba6778cF84100da676101e011B3d229458270} & 7                     \\
+		                                                                           &                       & \contractaddr{0x0c31b6605686aa26df47eb45AF0e4aa6639A5fd6} & 6                     \\
+		                                                                           &                       & \contractaddr{0x6a0c50788E462f322959A2458687096994d66316} & 5                     \\
+		                                                                           &                       & \contractaddr{0x5e32f33e261a90FF9fE94230387118945599268c} & 5                     \\
+		                                                                           &                       & \contractaddr{0x8c863333c2E92f02e01F7A3c6d131E4d59f78990} & 5                     \\
+		\bottomrule
+	\end{tabular}
 \end{table}

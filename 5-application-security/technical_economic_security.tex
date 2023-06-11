@@ -7,32 +7,32 @@ In a technical exploit, an attacker effectively finds a sequence of contract cal
 Such exploits can be performed risk-free (and often in a sense ``instantaneously'') because the outcomes for the attacker are binary: either the attack is successful and the attacker profits or the transaction reverts (effectively the attack doesn't happen) and the attacker only loses some gas fees.
 
 \begin{figure}[htp]
-  \centering
-  \begin{tikzpicture}[auto,
-      > = Stealth,
-      node distance = 10mm,
-      box/.style = {draw=gray, very thick,
-          minimum height=11mm, text width=22mm,
-          align=center},
-      every edge/.style = {draw, very thick},
-      every edge quotes/.style = {font=\footnotesize, align=center, inner sep=1pt}
-    ]
-    % from bottom to top
-    \node (n11) [devil,evil,minimum size=1cm] {};
-    \node (n12) [box, right=of n11] { Contract 1};
-    \node (n13)[box, right=of n12] {Contract 2};
-    \node (n21) [box, below=of n12] {Contract N};
-    \node (n22) [box, below=of n13] {Contract 3};
-    %Lines
-    \draw
-    (n11) edge [<->, "\$\$"]        (n12)
-    (n12) edge [->]        (n13)
-    (n13) edge [->]        (n22)
-    (n22) edge [dotted]    (n21)
-    (n21) edge [->]        (n12);
-  \end{tikzpicture}
-  \caption{Diagram of a technical exploit.}
-  \label{fig:technical-security-illustration}
+	\centering
+	\begin{tikzpicture}[auto,
+			> = Stealth,
+			node distance = 10mm,
+			box/.style = {draw=gray, very thick,
+					minimum height=11mm, text width=22mm,
+					align=center},
+			every edge/.style = {draw, very thick},
+			every edge quotes/.style = {font=\footnotesize, align=center, inner sep=1pt}
+		]
+		% from bottom to top
+		\node (n11) [devil,evil,minimum size=1cm] {};
+		\node (n12) [box, right=of n11] { Contract 1};
+		\node (n13)[box, right=of n12] {Contract 2};
+		\node (n21) [box, below=of n12] {Contract N};
+		\node (n22) [box, below=of n13] {Contract 3};
+		%Lines
+		\draw
+		(n11) edge [<->, "\$\$"]        (n12)
+		(n12) edge [->]        (n13)
+		(n13) edge [->]        (n22)
+		(n22) edge [dotted]    (n21)
+		(n21) edge [->]        (n12);
+	\end{tikzpicture}
+	\caption{Diagram of a technical exploit.}
+	\label{fig:technical-security-illustration}
 \end{figure}
 
 In current blockchain implementations, this coincides with (1) manipulating an on-chain system within a single transaction, which is risk-free for anyone, and (2) manipulating transactions within the same block, which is risk-free for the miner generating that block or for an attacker who creates a bundle of transactions that are required to execute atomically in the order given.
@@ -42,7 +42,7 @@ We identify three categories of attacks that fall within technical security risk
 These security risks are often addressable with program analysis and formal models to specify protocols, although these problems can quickly become complex to formulate and computationally hard.
 
 \begin{tcolorbox}[boxsep=1pt,left=2pt,right=2pt,top=2pt,bottom=2pt, title=Technical Security]
-  \emph{A protocol is technically secure if it is not possible for an attacker to atomically exploit the protocol at the expense of value held by the protocol or its users. Due to atomicity, these attacks can generate risk-free profit. A common property of technical exploits is that they occur within a single transaction or a bundle of transactions in a block.}
+	\emph{A protocol is technically secure if it is not possible for an attacker to atomically exploit the protocol at the expense of value held by the protocol or its users. Due to atomicity, these attacks can generate risk-free profit. A common property of technical exploits is that they occur within a single transaction or a bundle of transactions in a block.}
 \end{tcolorbox}
 
 
@@ -54,46 +54,46 @@ In an economic exploit, an attacker performs multiple actions at different place
 Economic security is effectively about an exploiting agent who tries to manipulate a market or incentive structure over some time period (even if short, it is not instantaneous). Compared to technical exploits, since economic exploits are non-atomic, they come with upfront tangible costs, a probability of attack failure and risk related to mis-estimating the market response. Thus they are not risk-free and commonly involve manipulations over many transactions or blocks.
 
 \begin{figure}[htp]
-  \centering
-  \begin{tikzpicture}[auto,
-      > = Stealth,
-      node distance = 10mm,
-      box/.style = {draw=gray, very thick,
-          minimum height=6mm, text width=15mm,
-          align=center},
-      every edge/.style = {draw, very thick},
-      every edge quotes/.style = {font=\footnotesize, align=center, inner sep=1pt}
-    ]
-    % from bottom to top
-    \node (n11) [] {t = 0};
-    \node (n12) [devil,evil,minimum size=6mm, right=of n11] {};
-    \node (n13) [box, right=of n12] {Contract 1};
-    \node (n14) [box, right=of n13] {Contract N};
-    \node (n21) [below=of n11] {...};
-    \node (n22) [below=of n12] {};
-    \node (n23) [below=of n13] {Market conditions change};
-    \node (n24) [below=of n14] {};
-    \node (n31) [below=of n21] {t = i};
-    \node (n32) [devil,evil,minimum size=6mm, below=of n22] {};
-    \node (n33) [box, below=of n23] {Contract 1};
-    \node (n34) [box, below=of n24] {Contract 2};
-    \node (n41) [below=of n31] {};
-    \node (n42) [below=of n32] {};
-    \node (n43) [box, below=of n33] {Contract N};
-    \node (n44) [box, below=of n34] {Contract 3};
-    %Lines
-    \draw
-    (n12) edge [->]     (n13)
-    (n13) edge [dashed, ->] (n14)
-    (n32) edge [<->, "\$\$ ?"]                   (n33)
-    (n33) edge [->]                   (n34)
-    (n44) edge [->]               (n34)
-    (n34) edge [->]                   (n44)
-    (n44) edge [dotted]                   (n43)
-    (n43) edge [->]       (n33);
-  \end{tikzpicture}
-  \caption{Diagram of an economic exploit.}
-  \label{fig:economic-security-illustration2}
+	\centering
+	\begin{tikzpicture}[auto,
+			> = Stealth,
+			node distance = 10mm,
+			box/.style = {draw=gray, very thick,
+					minimum height=6mm, text width=15mm,
+					align=center},
+			every edge/.style = {draw, very thick},
+			every edge quotes/.style = {font=\footnotesize, align=center, inner sep=1pt}
+		]
+		% from bottom to top
+		\node (n11) [] {t = 0};
+		\node (n12) [devil,evil,minimum size=6mm, right=of n11] {};
+		\node (n13) [box, right=of n12] {Contract 1};
+		\node (n14) [box, right=of n13] {Contract N};
+		\node (n21) [below=of n11] {...};
+		\node (n22) [below=of n12] {};
+		\node (n23) [below=of n13] {Market conditions change};
+		\node (n24) [below=of n14] {};
+		\node (n31) [below=of n21] {t = i};
+		\node (n32) [devil,evil,minimum size=6mm, below=of n22] {};
+		\node (n33) [box, below=of n23] {Contract 1};
+		\node (n34) [box, below=of n24] {Contract 2};
+		\node (n41) [below=of n31] {};
+		\node (n42) [below=of n32] {};
+		\node (n43) [box, below=of n33] {Contract N};
+		\node (n44) [box, below=of n34] {Contract 3};
+		%Lines
+		\draw
+		(n12) edge [->]     (n13)
+		(n13) edge [dashed, ->] (n14)
+		(n32) edge [<->, "\$\$ ?"]                   (n33)
+		(n33) edge [->]                   (n34)
+		(n44) edge [->]               (n34)
+		(n34) edge [->]                   (n44)
+		(n44) edge [dotted]                   (n43)
+		(n43) edge [->]       (n33);
+	\end{tikzpicture}
+	\caption{Diagram of an economic exploit.}
+	\label{fig:economic-security-illustration2}
 \end{figure}
 
 
@@ -106,5 +106,5 @@ In this way also, technical security must be a first bar: if a protocol is not t
 
 
 \begin{tcolorbox}[boxsep=1pt,left=2pt,right=2pt,top=2pt,bottom=2pt, title=Economic Security]
-  \emph{A protocol is economically secure if it is economically infeasible (e.g., unprofitable) for an attacker to perform exploits that are strictly non-atomic at the expense of value held by the protocol or its users. As economic exploits are non-atomic (or else they are better described as technical), they are not risk-free.}
+	\emph{A protocol is economically secure if it is economically infeasible (e.g., unprofitable) for an attacker to perform exploits that are strictly non-atomic at the expense of value held by the protocol or its users. As economic exploits are non-atomic (or else they are better described as technical), they are not risk-free.}
 \end{tcolorbox}

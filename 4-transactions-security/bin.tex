@@ -1,41 +1,41 @@
 
 
 \begin{figure}[tb]
-\setlength{\tabcolsep}{1.3pt}
-\centering
-\begin{tabular}{llrrr}
-\toprule
-\bf Blockchain & \bf Monitoring site & \bf Recent & \bf Valuable\\ 
- &                     & \bf TPS    & \bf TPS\\
-\midrule 
-EOS     &  \href{https://eosnetworkmonitor.io/}{EOS Network Monitor} & 20 & 14 \\
-Tezos   &  \href{https://tzstats.com/}{TZ Stats} & 0.08 & 0.0156 \\
-XRP     & \href{https://xrpscan.com/metrics}{XRP Scan} & 12 & 0.43 \\
-\bottomrule
-\end{tabular}
-\caption{Observed recent throughput from blockchain online  monitors and nodes (\startdate to \finishdate).}
-\label{fig:observed-tps}
+	\setlength{\tabcolsep}{1.3pt}
+	\centering
+	\begin{tabular}{llrrr}
+		\toprule
+		\bf Blockchain & \bf Monitoring site                                       & \bf Recent & \bf Valuable \\
+		               &                                                           & \bf TPS    & \bf TPS      \\
+		\midrule
+		EOS            & \href{https://eosnetworkmonitor.io/}{EOS Network Monitor} & 20         & 14           \\
+		Tezos          & \href{https://tzstats.com/}{TZ Stats}                     & 0.08       & 0.0156       \\
+		XRP            & \href{https://xrpscan.com/metrics}{XRP Scan}              & 12         & 0.43         \\
+		\bottomrule
+	\end{tabular}
+	\caption{Observed recent throughput from blockchain online  monitors and nodes (\startdate to \finishdate).}
+	\label{fig:observed-tps}
 \end{figure}
 
 
 
 
 \begin{figure}[bt]
-\footnotesize
-\centering
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{l r r r}
-\toprule
-      & \textbf{PoW}       & \textbf{DPoS} & \textbf{XRP LCP} \\
-\midrule
-Tx/s               & 3-7        & 50,000     & 1500     \\
-Block time & 10s - 30 min. & \textless 0.5 sec     & 4-5 sec \\ 
-Tolerated power & \textless 25\% of computing & \textless 51\% of & \textless 20\% of \\
-of adversary &  power~\cite{pow_selfish_mining} & stake &  nodes~\cite{Chase2018}\\
-\bottomrule
-\end{tabular}
-\caption{Summary of the different consensus mechanisms.}
-\label{tab:consensus-mechanisms}
+	\footnotesize
+	\centering
+	\setlength{\tabcolsep}{4pt}
+	\begin{tabular}{l r r r}
+		\toprule
+		                & \textbf{PoW}                    & \textbf{DPoS}     & \textbf{XRP LCP}       \\
+		\midrule
+		Tx/s            & 3-7                             & 50,000            & 1500                   \\
+		Block time      & 10s - 30 min.                   & \textless 0.5 sec & 4-5 sec                \\
+		Tolerated power & \textless 25\% of computing     & \textless 51\% of & \textless 20\% of      \\
+		of adversary    & power~\cite{pow_selfish_mining} & stake             & nodes~\cite{Chase2018} \\
+		\bottomrule
+	\end{tabular}
+	\caption{Summary of the different consensus mechanisms.}
+	\label{tab:consensus-mechanisms}
 \end{figure}
 
 
@@ -44,43 +44,43 @@ of adversary &  power~\cite{pow_selfish_mining} & stake &  nodes~\cite{Chase2018
 
 
 \begin{figure}[tb]
-    \centering
-    \begin{tabular}{lll}
-    \toprule
-        \bf EOS & \bf Tezos & \bf XRP\\
-    \midrule
-        System account   & Implicit account   & Special address\\
-        Regular account  & Originated account & Regular address\\
-    \bottomrule
-    \end{tabular}
-    \caption{Type of accounts of different blockchains.}
-    \label{tab:account-types}
+	\centering
+	\begin{tabular}{lll}
+		\toprule
+		\bf EOS         & \bf Tezos          & \bf XRP         \\
+		\midrule
+		System account  & Implicit account   & Special address \\
+		Regular account & Originated account & Regular address \\
+		\bottomrule
+	\end{tabular}
+	\caption{Type of accounts of different blockchains.}
+	\label{tab:account-types}
 \end{figure}
 
 
 \begin{figure}[tb]
-    \footnotesize
-    \centering
-    \setlength{\tabcolsep}{16pt}
-    \begin{tabular}{l r r r}
-        \toprule
-        \textbf{Number of} & \multicolumn{3}{l}{\textbf{Number of accounts}}\\
-        \textbf{transactions} & \textbf{XRP} & \textbf{EOS} & \textbf{Tezos}\\
-        \midrule
-                   1 & &  25,207 & 15,427\\ 
-                < 10 & &  56,516 &  7,917\\
-               <  50 & &  41,768 & 12,346\\
-              <  100 & &  14,834 &     46\\
-              <  200 & &   4,547 &     15\\
-             < 3,000 & &   2,762 &     14\\
-            < 10,000 & &     135 &      1\\
-           < 100,000 & &     105 &      0\\
-         < 1,000,000 & &      37 &      0\\
-        < 10,000,000 & &       2 &      0\\
-    \bottomrule
-    \end{tabular}
-    \caption{Histogram of the number of accounts with respect to the number of outgoing transactions.}
-    \label{tab:tx-count-histogram}
+	\footnotesize
+	\centering
+	\setlength{\tabcolsep}{16pt}
+	\begin{tabular}{l r r r}
+		\toprule
+		\textbf{Number of}    & \multicolumn{3}{l}{\textbf{Number of accounts}}                                 \\
+		\textbf{transactions} & \textbf{XRP}                                    & \textbf{EOS} & \textbf{Tezos} \\
+		\midrule
+		1                     &                                                 & 25,207       & 15,427         \\
+		< 10                  &                                                 & 56,516       & 7,917          \\
+		<  50                 &                                                 & 41,768       & 12,346         \\
+		<  100                &                                                 & 14,834       & 46             \\
+		<  200                &                                                 & 4,547        & 15             \\
+		< 3,000               &                                                 & 2,762        & 14             \\
+		< 10,000              &                                                 & 135          & 1              \\
+		< 100,000             &                                                 & 105          & 0              \\
+		< 1,000,000           &                                                 & 37           & 0              \\
+		< 10,000,000          &                                                 & 2            & 0              \\
+		\bottomrule
+	\end{tabular}
+	\caption{Histogram of the number of accounts with respect to the number of outgoing transactions.}
+	\label{tab:tx-count-histogram}
 \end{figure}
 
 
@@ -92,43 +92,43 @@ Ranshous et al.~\cite{10.1007/978-3-319-70278-0_16} extended previous work by us
 Di Francesco Maesa et al.~\cite{10.1007/978-3-319-50901-3_59} analysed Bitcoin user graphs to detect unusual behaviours. The authors find that discrepancies such as outliers in the in-degree distribution of nodes are often caused by artificial users' behaviour. They then introduce the notion of pseudo-spam transactions, which consist of transactions with a single input and multiple outputs where only one has a value higher than a Satoshi, the smallest amount that can be sent in a transaction. The find that approximately~0.5\% of the total number of multi-input multi-output transactions followed such a pattern and that these were often chained.
 
 
-Ron et al.~\cite{10.1007/978-3-642-39884-1_2} were among the first to analyze transaction graphs Bitcoin. Using on-chain transaction data with more than~3 million different addresses, the authors found that Mt.~Gox was at the time by far the most used exchange, covering over~80\% of the exchange-related traffic. 
+Ron et al.~\cite{10.1007/978-3-642-39884-1_2} were among the first to analyze transaction graphs Bitcoin. Using on-chain transaction data with more than~3 million different addresses, the authors found that Mt.~Gox was at the time by far the most used exchange, covering over~80\% of the exchange-related traffic.
 %They also analyzed the topology of the graph, looking at the emergence of long chains, fork-merge patterns, self-loops or yet tree-like structures.
 
 
 
 \begin{figure*}[tbp]
-  \centering
-    \setlength{\tabcolsep}{2.2pt}
-    \footnotesize
-    \begin{tabular}{@{}lp{0.7in}rrp{1.2in}rrp{0.9in}rr@{}}
-    \toprule
-      & \multicolumn{3}{c}{\textbf{EOSIO}} & \multicolumn{3}{c}{\textbf{Tezos}} & \multicolumn{3}{c}{\textbf{ XRPL }} \\
-    Category & Action name & \# & \% & Operation kind & \# & \% & Transaction type &  \#  & \% \\
-    \cmidrule(r){1-1} \cmidrule(rl){2-4} \cmidrule(rl){5-7} \cmidrule(l){8-10}
-    P2P transaction & Transfer &                       2,257,001,096  & \textbf{             91.6} & Transaction &                     599,366  &              16.2  & Payment &                    100,328,458  & \textbf{             36.9} \\
-      &   &   &                   -    &   &   &                   -    & EscrowFinish &                                    677  &                 0.0  \\
-    \cmidrule(r){1-1} \cmidrule(rl){2-4} \cmidrule(rl){5-7} \cmidrule(l){8-10}
-    Account actions & bidname &                                  243,942  &                 0.0  & Origination &                         2,073  &                 0.1  & TrustSet &                         3,339,620  &                 1.2  \\
-      & deposit &                                  199,317  &                 0.0  & Reveal &                       28,626  &                 0.8  & AccountSet &                            150,401  &                 0.1  \\
-      & newaccount &                                  114,710  &                 0.0  & Activate &                             960  &                 0.0  & SignerListSet &                              13,707  &                 0.0  \\
-      & updateauth &                                    61,071  &                 0.0  &   &   &   & SetRegularKey &                                    734  &                 0.0  \\
-      & linkauth &                                    59,417  &                 0.0  &   &   &   & DepositPreauth &                                         3  &                 0.0  \\
-    \cmidrule(r){1-1} \cmidrule(rl){2-4} \cmidrule(rl){5-7} \cmidrule(l){8-10}
-    Other actions & delegatebw &                                  364,376  &                 0.0  & Endorsement &                 3,021,296  & \textbf{             81.7} & OfferCreate &                    160,451,595  & \textbf{             59.1} \\
-      & buyrambytes &                                  163,052  &                 0.0  & Delegation &                       14,611  &                 0.4  & OfferCancel &                         7,259,908  &                 2.7  \\
-      & undelegatebw &                                  156,454  &                 0.0  & Reveal nonce &                       28,626  &                 0.8  & EscrowCreate &                                 1,393  &                 0.0  \\
-      & rentcpu &                                  154,517  &                 0.0  & Ballot &                             155  &                 0.0  & EscrowCancel &                                      84  &                 0.0  \\
-      & voteproducer &                                    65,888  &                 0.0  & Proposals &                               90  &                 0.0  & PaymentChannelClaim &                                    172  &                 0.0  \\
-      & buyram &                                  599,951  &                 0.0  & Double baking evidence &                                 4  &                 0.0  & PaymentChannelCreate &                                      33  &                 0.0  \\
-      & Others &                          205,674,738  &                 8.3  &   &   &   & EnableAmendment &                                      12  &                 0.0  \\
-    \midrule
-    \midrule
-    Total &   &                       2,464,858,529  &            100.0  &   &                 3,695,807  &            100.0  &   &                    271,546,797  &            100.0  \\
-    \bottomrule
-    \end{tabular}
-    \caption{Distribution of transaction types per blockchain.}
-    \label{tab:transaction-types-distribution}%
+	\centering
+	\setlength{\tabcolsep}{2.2pt}
+	\footnotesize
+	\begin{tabular}{@{}lp{0.7in}rrp{1.2in}rrp{0.9in}rr@{}}
+		\toprule
+		                & \multicolumn{3}{c}{\textbf{EOSIO}} & \multicolumn{3}{c}{\textbf{Tezos}} & \multicolumn{3}{c}{\textbf{ XRPL }}                                                                                                                                     \\
+		Category        & Action name                        & \#                                 & \%                                  & Operation kind         & \#        & \%                         & Transaction type     & \#          & \%                         \\
+		\cmidrule(r){1-1} \cmidrule(rl){2-4} \cmidrule(rl){5-7} \cmidrule(l){8-10}
+		P2P transaction & Transfer                           & 2,257,001,096                      & \textbf{             91.6}          & Transaction            & 599,366   & 16.2                       & Payment              & 100,328,458 & \textbf{             36.9} \\
+		                &                                    &                                    & -                                   &                        &           & -                          & EscrowFinish         & 677         & 0.0                        \\
+		\cmidrule(r){1-1} \cmidrule(rl){2-4} \cmidrule(rl){5-7} \cmidrule(l){8-10}
+		Account actions & bidname                            & 243,942                            & 0.0                                 & Origination            & 2,073     & 0.1                        & TrustSet             & 3,339,620   & 1.2                        \\
+		                & deposit                            & 199,317                            & 0.0                                 & Reveal                 & 28,626    & 0.8                        & AccountSet           & 150,401     & 0.1                        \\
+		                & newaccount                         & 114,710                            & 0.0                                 & Activate               & 960       & 0.0                        & SignerListSet        & 13,707      & 0.0                        \\
+		                & updateauth                         & 61,071                             & 0.0                                 &                        &           &                            & SetRegularKey        & 734         & 0.0                        \\
+		                & linkauth                           & 59,417                             & 0.0                                 &                        &           &                            & DepositPreauth       & 3           & 0.0                        \\
+		\cmidrule(r){1-1} \cmidrule(rl){2-4} \cmidrule(rl){5-7} \cmidrule(l){8-10}
+		Other actions   & delegatebw                         & 364,376                            & 0.0                                 & Endorsement            & 3,021,296 & \textbf{             81.7} & OfferCreate          & 160,451,595 & \textbf{             59.1} \\
+		                & buyrambytes                        & 163,052                            & 0.0                                 & Delegation             & 14,611    & 0.4                        & OfferCancel          & 7,259,908   & 2.7                        \\
+		                & undelegatebw                       & 156,454                            & 0.0                                 & Reveal nonce           & 28,626    & 0.8                        & EscrowCreate         & 1,393       & 0.0                        \\
+		                & rentcpu                            & 154,517                            & 0.0                                 & Ballot                 & 155       & 0.0                        & EscrowCancel         & 84          & 0.0                        \\
+		                & voteproducer                       & 65,888                             & 0.0                                 & Proposals              & 90        & 0.0                        & PaymentChannelClaim  & 172         & 0.0                        \\
+		                & buyram                             & 599,951                            & 0.0                                 & Double baking evidence & 4         & 0.0                        & PaymentChannelCreate & 33          & 0.0                        \\
+		                & Others                             & 205,674,738                        & 8.3                                 &                        &           &                            & EnableAmendment      & 12          & 0.0                        \\
+		\midrule
+		\midrule
+		Total           &                                    & 2,464,858,529                      & 100.0                               &                        & 3,695,807 & 100.0                      &                      & 271,546,797 & 100.0                      \\
+		\bottomrule
+	\end{tabular}
+	\caption{Distribution of transaction types per blockchain.}
+	\label{tab:transaction-types-distribution}%
 \end{figure*}
 
 
@@ -138,35 +138,35 @@ Ron et al.~\cite{10.1007/978-3-642-39884-1_2} were among the first to analyze tr
 
 % Table generated by Excel2LaTeX from sheet 'Sheet1'
 \begin{table}[htbp]
-  \centering
-  \caption{Add caption}
-    \begin{tabular}{llrrlrrlrr}
-    \toprule
-      & \multicolumn{3}{c}{\textbf{EOSIO}} & \multicolumn{3}{c}{\textbf{Tezos}} & \multicolumn{3}{c}{\textbf{ XRPL }} \\
-    Category & Action name & \# & \% & Operation kind & \# & \% & Transaction type &  \#  & \% \\
-    \cmidrule(r){1-1} \cmidrule(rl){2-4} \cmidrule(rl){5-7} \cmidrule(l){8-10}
-    P2P transaction & \textbf{Transfer} &    8,479,573,653  & \textbf{             96.2 } & Transaction &    1,941,230  &      21.4  & \textbf{Payment} &    100,328,458  & \textbf{     36.9} \\
-      &   &   &   &   &   &   & EscrowFinish &                    677  &         0.0  \\
-    \cmidrule(r){1-1} \cmidrule(rl){2-4} \cmidrule(rl){5-7} \cmidrule(l){8-10}
-    Account actions & newaccount &                289,680  &                0.0  & Reveal &        113,915  &         0.0  & TrustSet &         3,339,620  &         1.2  \\
-      & bidname &                244,248  &                0.0  & Origination &            3,159  &         1.3  & AccountSet &            150,401  &         0.1  \\
-      & deposit &                243,881  &                0.0  & Activate &            2,659  &         0.0  & SignerListSet &              13,707  &         0.0  \\
-      & linkauth & 148693 & 0.0 &   &   &   & SetRegularKey &                    734  &         0.0  \\
-      & updateauth &                136,926  &                0.0  &   &   &   & DepositPreauth &                         3  &         0.0  \\
-    \cmidrule(r){1-1} \cmidrule(rl){2-4} \cmidrule(rl){5-7} \cmidrule(l){8-10}
-    Other actions & delegatebw &                684,449  &                0.0  & \textbf{Endorsement} &    6,957,612  & \textbf{     76.6 } & \textbf{OfferCreate} &    160,451,595  & \textbf{     59.1 } \\
-      & undelegatebw &                461,320  &                0.0  & Delegation &          56,336  &         0.6  & OfferCancel &         7,259,908  &         2.7  \\
-      & buyrambytes &                353,695  &                0.0  & Reveal nonce &            9,409  &         0.1  & EscrowCreate &                 1,393  &         0.0  \\
-      & rentcpu &                187,878  &                0.0  & Ballot &                514  &         0.0  & EscrowCancel &                      84  &         0.0  \\
-      & voteproducer &                137,713  &                0.0  & Proposals &                  90  &         0.0  & PaymentChannelClaim &                    172  &         0.0  \\
-      & buyram &                  89,971  &                0.0  & Double baking evidence &                    4  &         0.0  & PaymentChannelCreate &                      33  &         0.0  \\
-      & Others &        332,799,590  &                3.8  &   &   &   & EnableAmendment &                      12  &         0.0  \\
-    \midrule
-    \midrule
-    Total &   &    8,815,351,697  &           100.0  &   &    9,084,928  &    100.0  &   &    271,546,797  &    100.0  \\
-    \bottomrule
-    \end{tabular}%
-  \label{tab:addlabel}%
+	\centering
+	\caption{Add caption}
+	\begin{tabular}{llrrlrrlrr}
+		\toprule
+		                & \multicolumn{3}{c}{\textbf{EOSIO}} & \multicolumn{3}{c}{\textbf{Tezos}} & \multicolumn{3}{c}{\textbf{ XRPL }}                                                                                                                       \\
+		Category        & Action name                        & \#                                 & \%                                  & Operation kind         & \#        & \%                  & Transaction type     & \#          & \%                  \\
+		\cmidrule(r){1-1} \cmidrule(rl){2-4} \cmidrule(rl){5-7} \cmidrule(l){8-10}
+		P2P transaction & \textbf{Transfer}                  & 8,479,573,653                      & \textbf{             96.2 }         & Transaction            & 1,941,230 & 21.4                & \textbf{Payment}     & 100,328,458 & \textbf{     36.9}  \\
+		                &                                    &                                    &                                     &                        &           &                     & EscrowFinish         & 677         & 0.0                 \\
+		\cmidrule(r){1-1} \cmidrule(rl){2-4} \cmidrule(rl){5-7} \cmidrule(l){8-10}
+		Account actions & newaccount                         & 289,680                            & 0.0                                 & Reveal                 & 113,915   & 0.0                 & TrustSet             & 3,339,620   & 1.2                 \\
+		                & bidname                            & 244,248                            & 0.0                                 & Origination            & 3,159     & 1.3                 & AccountSet           & 150,401     & 0.1                 \\
+		                & deposit                            & 243,881                            & 0.0                                 & Activate               & 2,659     & 0.0                 & SignerListSet        & 13,707      & 0.0                 \\
+		                & linkauth                           & 148693                             & 0.0                                 &                        &           &                     & SetRegularKey        & 734         & 0.0                 \\
+		                & updateauth                         & 136,926                            & 0.0                                 &                        &           &                     & DepositPreauth       & 3           & 0.0                 \\
+		\cmidrule(r){1-1} \cmidrule(rl){2-4} \cmidrule(rl){5-7} \cmidrule(l){8-10}
+		Other actions   & delegatebw                         & 684,449                            & 0.0                                 & \textbf{Endorsement}   & 6,957,612 & \textbf{     76.6 } & \textbf{OfferCreate} & 160,451,595 & \textbf{     59.1 } \\
+		                & undelegatebw                       & 461,320                            & 0.0                                 & Delegation             & 56,336    & 0.6                 & OfferCancel          & 7,259,908   & 2.7                 \\
+		                & buyrambytes                        & 353,695                            & 0.0                                 & Reveal nonce           & 9,409     & 0.1                 & EscrowCreate         & 1,393       & 0.0                 \\
+		                & rentcpu                            & 187,878                            & 0.0                                 & Ballot                 & 514       & 0.0                 & EscrowCancel         & 84          & 0.0                 \\
+		                & voteproducer                       & 137,713                            & 0.0                                 & Proposals              & 90        & 0.0                 & PaymentChannelClaim  & 172         & 0.0                 \\
+		                & buyram                             & 89,971                             & 0.0                                 & Double baking evidence & 4         & 0.0                 & PaymentChannelCreate & 33          & 0.0                 \\
+		                & Others                             & 332,799,590                        & 3.8                                 &                        &           &                     & EnableAmendment      & 12          & 0.0                 \\
+		\midrule
+		\midrule
+		Total           &                                    & 8,815,351,697                      & 100.0                               &                        & 9,084,928 & 100.0               &                      & 271,546,797 & 100.0               \\
+		\bottomrule
+	\end{tabular}%
+	\label{tab:addlabel}%
 \end{table}%
 
 

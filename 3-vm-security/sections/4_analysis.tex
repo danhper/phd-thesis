@@ -1,35 +1,35 @@
 \begin{figure}[t!]
-\begin{subfigure}{.8\columnwidth}
-  \centering\includegraphics[width=.8\columnwidth]{figures/memory-usage-1400000-1500000.pdf}
-  \caption{Pre EIP~150 correlation between gas and memory usage.}
-  \label{fig:gas-memory-pre-eip150}
-\end{subfigure}
+	\begin{subfigure}{.8\columnwidth}
+		\centering\includegraphics[width=.8\columnwidth]{figures/memory-usage-1400000-1500000.pdf}
+		\caption{Pre EIP~150 correlation between gas and memory usage.}
+		\label{fig:gas-memory-pre-eip150}
+	\end{subfigure}
 
-\begin{subfigure}{.8\columnwidth}
-  \centering\includegraphics[width=.8\columnwidth]{figures/memory-usage-2500000-2600000.pdf}
-  \caption{Post EIP~150 correlation between gas and memory usage.}
-  \label{fig:gas-memory-post-eip150}
-\end{subfigure}
+	\begin{subfigure}{.8\columnwidth}
+		\centering\includegraphics[width=.8\columnwidth]{figures/memory-usage-2500000-2600000.pdf}
+		\caption{Post EIP~150 correlation between gas and memory usage.}
+		\label{fig:gas-memory-post-eip150}
+	\end{subfigure}
 
-\begin{subfigure}{.9\columnwidth}
-  \centering
-  \begin{tabular}{clrr}
-    \toprule
-    \thead[l]{Phase} & \thead[l]{Executions\\set} & \thead[r]{Pearson\\score} & \thead[r]{Gas/byte}\\
-    \midrule
-    \multirow{3}{*}{Pre EIP~150} & $E$ & 0.545 & 3.96\\
-    & $E_{MI}$ & 0.773 & 1.80\\
-    & $E \setminus E_{MI}$ & 0.633 & 4.96\\
-    \midrule
-    \multirow{3}{*}{Post EIP~150} & $E$ & 0.755 & 7.67\\
-    & $E_{MI}$ & 0.902 & 4.16\\
-    & $E \setminus E_{MI}$ & 0.907 & 11.7\\
-    \bottomrule
-  \end{tabular}
-  \caption{Relation between allocated memory and gas usage.}
-  \label{tab:gas-memory-relation}
-\end{subfigure}
-\caption{Correlation between gas and memory usage.}
+	\begin{subfigure}{.9\columnwidth}
+		\centering
+		\begin{tabular}{clrr}
+			\toprule
+			\thead[l]{Phase}              & \thead[l]{Executions                \\set} & \thead[r]{Pearson\\score} & \thead[r]{Gas/byte}\\
+			\midrule
+			\multirow{3}{*}{Pre EIP~150}  & $E$                  & 0.545 & 3.96 \\
+			                              & $E_{MI}$             & 0.773 & 1.80 \\
+			                              & $E \setminus E_{MI}$ & 0.633 & 4.96 \\
+			\midrule
+			\multirow{3}{*}{Post EIP~150} & $E$                  & 0.755 & 7.67 \\
+			                              & $E_{MI}$             & 0.902 & 4.16 \\
+			                              & $E \setminus E_{MI}$ & 0.907 & 11.7 \\
+			\bottomrule
+		\end{tabular}
+		\caption{Relation between allocated memory and gas usage.}
+		\label{tab:gas-memory-relation}
+	\end{subfigure}
+	\caption{Correlation between gas and memory usage.}
 \end{figure}
 
 \section{Analysis of Gas Consumption}
@@ -45,7 +45,7 @@ Although the block numbers are arbitrary, we assume that the sample of~\empirica
 Below, we denote the gas usage for a transaction as $G$. All the figures in this section include bands marking a confidence interval of 95\%.
 
 \subsection{Memory Usage}
- We note $M_{+}$ the amount of memory allocated and $M_{-}$ the amount of memory deallocated. We compute the extra amount of memory allocated $M = M_{+} - M_{-}$ to execute a particular transaction, that is, the difference between the total amount of memory allocated and the total amount of memory deallocated.
+We note $M_{+}$ the amount of memory allocated and $M_{-}$ the amount of memory deallocated. We compute the extra amount of memory allocated $M = M_{+} - M_{-}$ to execute a particular transaction, that is, the difference between the total amount of memory allocated and the total amount of memory deallocated.
 
 An important point is that contracts which allocate storage in any way, may it be with \lstinline{SSTORE} instructions or \lstinline{LOG} instructions, will see their memory overhead increase, as this extra storage will stay in memory even after the execution of the contract. Although this is not a perfect measurement, as part of the memory may be released later on during the execution of the transaction, it does give a proxy measure of how a particular contract execution affects the memory usage of the client. It is also worth noting that some contracts may also release more memory than they allocate, if, for example, a contract self-destructs itself. As we want to focus on how execution can consume resources, we filter contracts where~$M < 0$.
 
@@ -58,9 +58,9 @@ We plot our results pre and post EIP~150 in \autoref{fig:gas-memory-pre-eip150} 
 There are several interesting points to note about the results. First, EIP~150 resulted in a significant increase in the price of gas per memory, which had the effect of increasing the correlation between these two variables. Second, after EIP~150, the difference between normal and memory intensive contracts becomes more visible, with the gas per byte cost going from~\empirical{4.16} for memory intensive contract executions up to~\empirical{11.7} for others. Nevertheless, both type of contracts have a high correlation score between gas and memory allocated. This shows that there are important discrepancies on how pricing is done for consumed memory depending on the characteristics of the contract being executed.
 
 \begin{figure}[tb]
-  \centering\includegraphics[width=.8\columnwidth]{figures/cpu-usage-1400000-1500000--2500000-2600000.pdf}
-  \caption{Correlation between gas and CPU usage.}
-  \label{fig:gas-cpu}
+	\centering\includegraphics[width=.8\columnwidth]{figures/cpu-usage-1400000-1500000--2500000-2600000.pdf}
+	\caption{Correlation between gas and CPU usage.}
+	\label{fig:gas-cpu}
 \end{figure}
 
 \subsection{CPU Usage}
@@ -71,8 +71,8 @@ Again, we compute the Pearson correlation score between CPU and gas usage. The s
 We plot the relation between the CPU and gas usage before and after EIP~150 in \autoref{fig:gas-cpu}. Although the correlation is fairly low, it is interesting to see that with EIP~150, as a consequence of storage related operation increasing, the relative cost of CPU has decreased.
 
 \begin{figure}[tb] \centering\includegraphics[width=.8\columnwidth]{figures/storage-usage-1400000-1500000--2500000-2600000.pdf}
-  \caption{Correlation between gas and storage usage.}
-  \label{fig:gas-storage}
+	\caption{Correlation between gas and storage usage.}
+	\label{fig:gas-storage}
 \end{figure}
 
 \subsection{Storage Usage}
@@ -82,25 +82,25 @@ We compute the Pearson's correlation before and after EIP~150 and obtain respect
 We plot the relation between the storage allocated and the gas used before and after EIP~150 in \autoref{fig:gas-storage}. Although EIP~150 increased the price for a lot of storage related instructions, it changed neither the price of allocating a new value, nor the reimbursement received when deallocating a value. This explains that, unlike for memory, the cost does not go up after EIP~150. An interesting point to notice is that the execution cost does not split into two different gas usage trends as they do with memory, which suggests that the storage cost is not what is creating this effect for the extra memory allocated.
 
 \begin{figure}[tb]
-  \centering
-  \setlength{\tabcolsep}{10pt}  
-  \begin{tabular}{clr}
-    \toprule
-    \thead[l]{Phase} & \thead[l]{Resources} & \thead[r]{Pearson\\score}\\
-    \midrule
-    \multirow{4}{*}{Pre EIP~150} & Memory/CPU & 0.591\\
-    & Storage/CPU & 0.725\\
-    & Storage/Memory & 0.845\\
-    & Storage/Memory/CPU & 0.759\\
-    \midrule
-    \multirow{4}{*}{Post EIP~150} & Memory/CPU & 0.741\\
-    & Storage/CPU & 0.837\\
-    & Storage/Memory & 0.938\\
-    & Storage/Memory/CPU & 0.893\\
-    \bottomrule
-  \end{tabular}
-  \caption{Multivariate correlation between gas and resources.}
-  \label{tab:multivar-correlation-scores}
+	\centering
+	\setlength{\tabcolsep}{10pt}
+	\begin{tabular}{clr}
+		\toprule
+		\thead[l]{Phase}              & \thead[l]{Resources} & \thead[r]{Pearson \\score}\\
+		\midrule
+		\multirow{4}{*}{Pre EIP~150}  & Memory/CPU           & 0.591             \\
+		                              & Storage/CPU          & 0.725             \\
+		                              & Storage/Memory       & 0.845             \\
+		                              & Storage/Memory/CPU   & 0.759             \\
+		\midrule
+		\multirow{4}{*}{Post EIP~150} & Memory/CPU           & 0.741             \\
+		                              & Storage/CPU          & 0.837             \\
+		                              & Storage/Memory       & 0.938             \\
+		                              & Storage/Memory/CPU   & 0.893             \\
+		\bottomrule
+	\end{tabular}
+	\caption{Multivariate correlation between gas and resources.}
+	\label{tab:multivar-correlation-scores}
 \end{figure}
 
 \subsection{Multi-variate Correlation}
@@ -109,8 +109,8 @@ Instead of simply using a bi-variate correlation between gas consumption and a r
 Given $n$ measures for $m$ resources $r_1, \cdots, r_m$, we note $R_1, \cdots, R_m$ the vectors of measures for each resource, which will each have a dimension of $n$. We first use \autoref{eq:normalize} to normalise each vector $R_i$ to a new vector $R'_i$ so that each vector $R'_i$ has a mean of 0 and a standard deviation of 1. We note $\overline{R_i}$ the mean of $R_i$ and $\sigma_{R_i}$ its standard deviation.
 
 \begin{equation}
-  \label{eq:normalize}
-  R'_i = \frac{R_{i} - \overline{R_i}}{\sigma_{R_i}}
+	\label{eq:normalize}
+	R'_i = \frac{R_{i} - \overline{R_i}}{\sigma_{R_i}}
 \end{equation}
 %
 We then concatenate vectors $R'_1,\cdots,R'_m$ into a $n\times m$ matrix $M$ and use a principal component analysis~\cite{abdi2010principal} to reduce the dimension of $M$ to $n\times 1$. The vector we obtain represent the aggregated usage of the different resources. We finally compute the Pearson's correlation score between this vector and the gas used. We show the results we obtain in \autoref{tab:multivar-correlation-scores}.
@@ -118,27 +118,27 @@ We then concatenate vectors $R'_1,\cdots,R'_m$ into a $n\times m$ matrix $M$ and
 Overall we find that for both pre- and post-EIP~150 measurements the aggregation of memory and storage correlates best with gas usage. On the opposite, the CPU usage seem to be adding more noise than information and adding the CPU usage always result in a lower correlation than without it.
 
 \begin{figure}[tb]
-  \centering
-  \setlength{\tabcolsep}{14pt}
-  \begin{tabular}{clr}
-    \toprule
-    \thead[l]{Phase} & \thead[l]{Resource} & \thead[r]{Pearson\\score}\\
-    \midrule
-    \multirow{4}{*}{Pre EIP~150} & Memory & 0.773\\
-    & CPU & 0.528\\
-    & Storage & 0.775\\
-    & Storage/Memory & 0.845\\
-    \midrule
-    \multirow{4}{*}{Post EIP~150} & Memory & 0.755\\
-    & CPU & 0.507\\
-    & Storage & 0.907\\
-    & Storage/Memory & 0.938\\
-    \bottomrule
-  \end{tabular}
-  \caption{Correlation between gas and resources.}
-  \label{tab:correlation-scores}
+	\centering
+	\setlength{\tabcolsep}{14pt}
+	\begin{tabular}{clr}
+		\toprule
+		\thead[l]{Phase}              & \thead[l]{Resource} & \thead[r]{Pearson \\score}\\
+		\midrule
+		\multirow{4}{*}{Pre EIP~150}  & Memory              & 0.773             \\
+		                              & CPU                 & 0.528             \\
+		                              & Storage             & 0.775             \\
+		                              & Storage/Memory      & 0.845             \\
+		\midrule
+		\multirow{4}{*}{Post EIP~150} & Memory              & 0.755             \\
+		                              & CPU                 & 0.507             \\
+		                              & Storage             & 0.907             \\
+		                              & Storage/Memory      & 0.938             \\
+		\bottomrule
+	\end{tabular}
+	\caption{Correlation between gas and resources.}
+	\label{tab:correlation-scores}
 \end{figure}
 
 \subsection{Summary}
-Overall, we have seen that the gas usage is dominated by the \emph{storage allocated}, which can also be approximated reasonably well by the memory allocation during a single contract execution. On the other hand, given the high cost of storage, we find that CPU usage and gas usage correlate poorly. 
+Overall, we have seen that the gas usage is dominated by the \emph{storage allocated}, which can also be approximated reasonably well by the memory allocation during a single contract execution. On the other hand, given the high cost of storage, we find that CPU usage and gas usage correlate poorly.
 We summarise all bi-variate correlations as well as the best performing multivariate correlation in \autoref{tab:correlation-scores}.

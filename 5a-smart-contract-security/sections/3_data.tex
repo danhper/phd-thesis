@@ -1,21 +1,21 @@
 \begin{table}
-  \centering
-  \caption{Summary of the contracts in our dataset.}
-  \label{fig:dataset-stats}
-  \setlength{\tabcolsep}{10pt}
-  \begin{tabular}{lrrr}
-    \toprule
-    \bf \multirow{2}{*}{Name} & \bf Contracts & \bf Vulnerabilities & \bf Ether at stake         \\
-                              & \bf analyzed  & \bf found           & {\small at time of report} \\
-    \midrule
-    Oyente                    & 19,366        & 7,527               & 1,287,032                  \\
-    Zeus                      & 1,120         & 861                 & 671,188                    \\
-    Maian                     & NA            & 2,691               & 15.59                      \\
-    Securify                  & 29,694        & 9,185               & 724,306                    \\
-    MadMax                    & 91,800        & 6,039               & 1,114,958                  \\
-    teEther                   & 784,344       & 1,532               & 1.55                       \\
-    \bottomrule
-  \end{tabular}
+	\centering
+	\caption{Summary of the contracts in our dataset.}
+	\label{fig:dataset-stats}
+	\setlength{\tabcolsep}{10pt}
+	\begin{tabular}{lrrr}
+		\toprule
+		\bf \multirow{2}{*}{Name} & \bf Contracts & \bf Vulnerabilities & \bf Ether at stake         \\
+		                          & \bf analyzed  & \bf found           & {\small at time of report} \\
+		\midrule
+		Oyente                    & 19,366        & 7,527               & 1,287,032                  \\
+		Zeus                      & 1,120         & 861                 & 671,188                    \\
+		Maian                     & NA            & 2,691               & 15.59                      \\
+		Securify                  & 29,694        & 9,185               & 724,306                    \\
+		MadMax                    & 91,800        & 6,039               & 1,114,958                  \\
+		teEther                   & 784,344       & 1,532               & 1.55                       \\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
 \subsection{Dataset}
@@ -30,60 +30,60 @@ Our dataset is comprised of a total of \empirical{821,219} contracts, of which \
 We believe the two main results for this are: authors improving their tools after the publication and authors, not including duplicated contracts in the data they provided us. Therefore, we present the numbers in our dataset, as well as the Ether at stake for vulnerable contracts in \autoref{fig:dataset-stats}. The Ether at stake is computed by summing the balance of all the contracts flagged vulnerable. We use the balance at the time at which each paper was published rather than the current one, as it gives a better sense of the amount of Ether which could potentially have been exploited.
 
 \begin{figure}[tb]
-  \begin{subfigure}{0.48\columnwidth}
-    \includegraphics[width=\textwidth]{./5a-smart-contract-security/figures/overlap-analyzed.pdf}
-    \caption{Overlapping contracts analysed.}
-    \label{fig:all-overlap}
-  \end{subfigure}
-  \begin{subfigure}{0.48\columnwidth}
-    \includegraphics[width=\textwidth]{./5a-smart-contract-security/figures/overlap-vulnerable.pdf}
-    \caption{Overlapping vulnerabilities flagged.}
-    \label{fig:vulnerable-overlap}
-  \end{subfigure}
-  \caption[Overlap in the contracts analysed and flagged by examined tools]{Histograms that show the overlap in the contracts analysed and flagged by examined tools.}
-  \label{fig:hist-per-tool}
+	\begin{subfigure}{0.48\columnwidth}
+		\includegraphics[width=\textwidth]{./5a-smart-contract-security/figures/overlap-analyzed.pdf}
+		\caption{Overlapping contracts analysed.}
+		\label{fig:all-overlap}
+	\end{subfigure}
+	\begin{subfigure}{0.48\columnwidth}
+		\includegraphics[width=\textwidth]{./5a-smart-contract-security/figures/overlap-vulnerable.pdf}
+		\caption{Overlapping vulnerabilities flagged.}
+		\label{fig:vulnerable-overlap}
+	\end{subfigure}
+	\caption[Overlap in the contracts analysed and flagged by examined tools]{Histograms that show the overlap in the contracts analysed and flagged by examined tools.}
+	\label{fig:hist-per-tool}
 \end{figure}
 
 \begin{table}[tb]
-  \setlength{\tabcolsep}{2pt}
-  \centering
-  \caption{Agreement among tools for reentrancy analysis.}
-  \label{fig:reentrancy-agreement}
-  \begin{tabular}{lrrrr}
-    \toprule
-    \bf Tools       & \bf Total & \bf Agreed & \bf Disagreed & \bf \% agreement \\
-    \midrule
-    Oyente/Securify & 774       & 185        & 589           & 23.9\%           \\
-    Oyente/Zeus     & 104       & 3          & 101           & 2.88\%           \\
-    Zeus/Securify   & 108       & 2          & 106           & 1.85\%           \\
-    \bottomrule
-  \end{tabular}
+	\setlength{\tabcolsep}{2pt}
+	\centering
+	\caption{Agreement among tools for reentrancy analysis.}
+	\label{fig:reentrancy-agreement}
+	\begin{tabular}{lrrrr}
+		\toprule
+		\bf Tools       & \bf Total & \bf Agreed & \bf Disagreed & \bf \% agreement \\
+		\midrule
+		Oyente/Securify & 774       & 185        & 589           & 23.9\%           \\
+		Oyente/Zeus     & 104       & 3          & 101           & 2.88\%           \\
+		Zeus/Securify   & 108       & 2          & 106           & 1.85\%           \\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
 \begin{table}
-  \centering
-  \setlength{\tabcolsep}{2pt}
-  \small
-  \caption{Mapping of the different vulnerabilities analyzed.}
-  \label{fig:vuln-mapping}
-  \begin{tabular}{lllllll}
-    \toprule
-             & \bf Oyente  & \bf ZEUS            & \bf Securify           & \bf MadMax        & \bf Maian & \bf teEther \\
-    \midrule
-    \bf \vre & reentrancy  & reentrancy          & no writes after call   & ---               & ---       & ---         \\
-    \hline
-    \bf \vue & callstack   & unchecked send      & handled exceptions     & ---               & ---       & ---         \\
-    \hline
-    \bf \vto & concurrency & tx order dependency & tx ordering dependency & ---               & ---       & ---         \\
-    \hline
-    \bf \vle & ---         & failed send         & Ether liquidity        & unbounded op      & greedy    & ---         \\
-             &             &                     &                        & wallet griefing                             \\
-    \hline
-    \bf \vio & ---         & integer overflow    & ---                    & integer overflows & ---       & ---         \\
-    \hline
-    \bf \vua & ---         & integer overflow    & ---                    & integer overflows & prodigal  & exploitable \\
-    \bottomrule
-  \end{tabular}
+	\centering
+	\setlength{\tabcolsep}{2pt}
+	\small
+	\caption{Mapping of the different vulnerabilities analyzed.}
+	\label{fig:vuln-mapping}
+	\begin{tabular}{lllllll}
+		\toprule
+		         & \bf Oyente  & \bf ZEUS            & \bf Securify           & \bf MadMax        & \bf Maian & \bf teEther \\
+		\midrule
+		\bf \vre & reentrancy  & reentrancy          & no writes after call   & ---               & ---       & ---         \\
+		\hline
+		\bf \vue & callstack   & unchecked send      & handled exceptions     & ---               & ---       & ---         \\
+		\hline
+		\bf \vto & concurrency & tx order dependency & tx ordering dependency & ---               & ---       & ---         \\
+		\hline
+		\bf \vle & ---         & failed send         & Ether liquidity        & unbounded op      & greedy    & ---         \\
+		         &             &                     &                        & wallet griefing                             \\
+		\hline
+		\bf \vio & ---         & integer overflow    & ---                    & integer overflows & ---       & ---         \\
+		\hline
+		\bf \vua & ---         & integer overflow    & ---                    & integer overflows & prodigal  & exploitable \\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
 \point{Taxonomy}

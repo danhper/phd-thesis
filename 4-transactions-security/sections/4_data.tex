@@ -27,52 +27,52 @@ We use the TzKT API\footnote{\url{https://api.tzkt.io/}} to find account names a
 Endorsements and actions sent by either bakers or the faucet sum up about 87\% of the total number of actions.
 
 \begin{figure}[tbp]
-    \begin{subfigure}{\columnwidth}
-        \centering
-        \includegraphics[height=.27\textheight]{./4-transactions-security/figures/eos-chart-area.pdf}
-        \caption{EOSIO throughput over time}
-        \label{fig:eos-throughput-time}
-    \end{subfigure}
-    \begin{subfigure}{\columnwidth}
-        \centering
-        \includegraphics[height=.27\textheight]{./4-transactions-security/figures/tezos-chart-area.pdf}
-        \caption{Tezos throughput over time}
-        \label{fig:tezos-throughput-time}
-    \end{subfigure}
-    \begin{subfigure}{\columnwidth}
-        \centering
-        \includegraphics[height=.27\textheight]{./4-transactions-security/figures/xrp-chart-area.pdf}
-        \caption{XRPL throughput over time}
-        \label{fig:xrp-throughput-time}
-    \end{subfigure}
-    \caption[On-chain throughput over time]{On-chain throughput over time, the y-axis represents transaction count per 6 hours.}
-    \label{fig:throughput-time}
+	\begin{subfigure}{\columnwidth}
+		\centering
+		\includegraphics[height=.27\textheight]{./4-transactions-security/figures/eos-chart-area.pdf}
+		\caption{EOSIO throughput over time}
+		\label{fig:eos-throughput-time}
+	\end{subfigure}
+	\begin{subfigure}{\columnwidth}
+		\centering
+		\includegraphics[height=.27\textheight]{./4-transactions-security/figures/tezos-chart-area.pdf}
+		\caption{Tezos throughput over time}
+		\label{fig:tezos-throughput-time}
+	\end{subfigure}
+	\begin{subfigure}{\columnwidth}
+		\centering
+		\includegraphics[height=.27\textheight]{./4-transactions-security/figures/xrp-chart-area.pdf}
+		\caption{XRPL throughput over time}
+		\label{fig:xrp-throughput-time}
+	\end{subfigure}
+	\caption[On-chain throughput over time]{On-chain throughput over time, the y-axis represents transaction count per 6 hours.}
+	\label{fig:throughput-time}
 \end{figure}
 
 \begin{table}[tb]
-    \centering
-    \caption[EOSIO top applications]{EOSIO top applications as measured using the number of received transactions.}
-    \label{tab:eos-top-applications}
-    \setlength{\tabcolsep}{2pt}
-    \begin{tabular}{l l r l r}
-        \toprule
-        \textbf{Receiver}             & \textbf{Description}           & \textbf{Tx Count}           & \multicolumn{2}{c}{\bf Actions}           \\
-                                      &                                &                             & \bf Name                        & \bf \%  \\
-        \midrule
-        eosio.token                   & EOS token                      & 8,430,707,864               & transfer                        & 100.0\% \\
-        \midrule
-        \multirow{2}{*}{betdicetasks} & \multirow{2}{*}{Gambling game} & \multirow{2}{*}{32,804,674} & removetask                      & 66.65\% \\
-                                      &                                &                             & log                             & 15.71\% \\
-        \midrule
-        \multirow{3}{*}{whaleextrust} & \multirow{2}{*}{Decentralized} & \multirow{3}{*}{26,102,077} & verifytrade2                    & 18.63\% \\
-                                      &                                &                             & verifytrade3                    & 17.52\% \\
-                                      & exchange                       &                             & clearing                        & 16.77\% \\
-        \midrule
-        pptqipaelyog                  & Unknown                        & 24,109,437                  & m                               & 93.00\% \\
-        \midrule
-        pornhashbaby                  & Pornography website            & 23,677,938                  & record                          & 99.86\% \\
-        \bottomrule
-    \end{tabular}
+	\centering
+	\caption[EOSIO top applications]{EOSIO top applications as measured using the number of received transactions.}
+	\label{tab:eos-top-applications}
+	\setlength{\tabcolsep}{2pt}
+	\begin{tabular}{l l r l r}
+		\toprule
+		\textbf{Receiver}             & \textbf{Description}           & \textbf{Tx Count}           & \multicolumn{2}{c}{\bf Actions}           \\
+		                              &                                &                             & \bf Name                        & \bf \%  \\
+		\midrule
+		eosio.token                   & EOS token                      & 8,430,707,864               & transfer                        & 100.0\% \\
+		\midrule
+		\multirow{2}{*}{betdicetasks} & \multirow{2}{*}{Gambling game} & \multirow{2}{*}{32,804,674} & removetask                      & 66.65\% \\
+		                              &                                &                             & log                             & 15.71\% \\
+		\midrule
+		\multirow{3}{*}{whaleextrust} & \multirow{2}{*}{Decentralized} & \multirow{3}{*}{26,102,077} & verifytrade2                    & 18.63\% \\
+		                              &                                &                             & verifytrade3                    & 17.52\% \\
+		                              & exchange                       &                             & clearing                        & 16.77\% \\
+		\midrule
+		pptqipaelyog                  & Unknown                        & 24,109,437                  & m                               & 93.00\% \\
+		\midrule
+		pornhashbaby                  & Pornography website            & 23,677,938                  & record                          & 99.86\% \\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
 
@@ -85,7 +85,7 @@ In \autoref{sec:xrpcase}, we reveal why most transactions during these high-volu
 
 Except for the two spam periods, we observe that \texttt{OfferCreate} is the most common transaction type.
 Nonetheless, \texttt{OfferCreate} transactions contribute little to the total volume on XRPL.\footnote{
-    On May 10, 2020, for example, Ripple reported that the 24-hour XRP ledger trade volume---enabled via \texttt{OfferCreate} transactions---only accounts for \empirical{1\%} of the total ledger volume, while the payment volume---enabled via \texttt{Payment} transactions---accounts for \empirical{99\%}.
+	On May 10, 2020, for example, Ripple reported that the 24-hour XRP ledger trade volume---enabled via \texttt{OfferCreate} transactions---only accounts for \empirical{1\%} of the total ledger volume, while the payment volume---enabled via \texttt{Payment} transactions---accounts for \empirical{99\%}.
 } This is because an offer expires if not fulfilled (fully or partially) before the expiry time defined by the offer creator; it can also be cancelled by its creator or superseded by a new offer. In fact, \empirical{0.2\%} of \texttt{OfferCreate} transactions resulted in an actual token exchange deal during our observation period.
 
 
@@ -133,10 +133,10 @@ The distribution of the number of transactions per account is highly skewed.
 \autoref{tab:xrpspammers} lists of the top~10 accounts by the number of conducted transactions.
 With the exception of \xrpaddr{rKLpjpCoXgLQQYQyj13zgay73rsgmzNH13} and \xrpaddr{r96HghtYDxvpHNaru1xbCQPcsHZwqiaENE}, all these accounts share suspiciously similar patterns:
 \begin{enumerate}
-    \item more than~98\% of their transactions are \texttt{OfferCreate};
-    \item they are either descendants of an account from \href{https://www.huobi.com/}{Huobi}, a crypto exchange founded in China, or frequently transact with descendants from Huobi;
-    \item they have all transacted using \coin{CNY};
-    \item their payment transactions conspicuously use the same destination tag \texttt{104398}, a field that---similar to a bank reference number---exchanges and gateways use to specify which client is the beneficiary of the payment~\cite{XRPLedger2020b}.
+	\item more than~98\% of their transactions are \texttt{OfferCreate};
+	\item they are either descendants of an account from \href{https://www.huobi.com/}{Huobi}, a crypto exchange founded in China, or frequently transact with descendants from Huobi;
+	\item they have all transacted using \coin{CNY};
+	\item their payment transactions conspicuously use the same destination tag \texttt{104398}, a field that---similar to a bank reference number---exchanges and gateways use to specify which client is the beneficiary of the payment~\cite{XRPLedger2020b}.
 \end{enumerate}
 %
 The aforementioned similarities, in particular the last one, signal that those accounts are controlled by the same entity, presumably with a strong connection to Huobi.
@@ -149,10 +149,10 @@ Notably, the sixth most active account, \xrpaddr{r96HghtYDxvpHNaru1xbCQPcsHZwqia
 \subsection{Analysis Summary}
 Here, we highlight some of the observations about the data described above.
 \begin{itemize}\itemsep=0pt
-    \item Transactions on EOSIO can be roughly divided by the category of contracts they belong to.
-          Before the arrival of the \coin{EIDOS} token, approximately~\empirical{50\%} of these are transactions to betting games. The rest was split between token transfers and various forms of entertainment, such as games not involving betting as well as payments to pornography websites. The launch of \coin{EIDOS} increased the total number of transactions more than tenfold, resulting in~\empirical{96\%} of the transactions being used for token transfers.
+	\item Transactions on EOSIO can be roughly divided by the category of contracts they belong to.
+	      Before the arrival of the \coin{EIDOS} token, approximately~\empirical{50\%} of these are transactions to betting games. The rest was split between token transfers and various forms of entertainment, such as games not involving betting as well as payments to pornography websites. The launch of \coin{EIDOS} increased the total number of transactions more than tenfold, resulting in~\empirical{96\%} of the transactions being used for token transfers.
 
-    \item The vast majority~(\empirical{76}\%) of transactions on Tezos are used by the \texttt{endorsement} operation to maintain consensus. This is because blocks typically contain 32 endorsements~\cite{Tezos2018} and the number of transactions on the network is still low. The rest of the throughput is mainly used by transactions to transfer assets between accounts.
+	\item The vast majority~(\empirical{76}\%) of transactions on Tezos are used by the \texttt{endorsement} operation to maintain consensus. This is because blocks typically contain 32 endorsements~\cite{Tezos2018} and the number of transactions on the network is still low. The rest of the throughput is mainly used by transactions to transfer assets between accounts.
 
-    \item \texttt{OfferCreate} and \texttt{Payment} are the two most popular transaction types on XRPL, accounting for \empirical{59.1\%} and~\empirical{36.9\%} of the total throughput, respectively. Between \startdate and October 8, 2019, before the systematic spamming periods, the fractions of \texttt{OfferCreate} and \texttt{Payment} are \empirical{79\%} and \empirical{18\%}, respectively. Overall, \empirical{one-tenth} of the transactions fail.
+	\item \texttt{OfferCreate} and \texttt{Payment} are the two most popular transaction types on XRPL, accounting for \empirical{59.1\%} and~\empirical{36.9\%} of the total throughput, respectively. Between \startdate and October 8, 2019, before the systematic spamming periods, the fractions of \texttt{OfferCreate} and \texttt{Payment} are \empirical{79\%} and \empirical{18\%}, respectively. Overall, \empirical{one-tenth} of the transactions fail.
 \end{itemize}
